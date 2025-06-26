@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Home - GreenBook{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1 class="section-header">Welcome to GreenBook</h1>
+    <p class="page-subtitle">The prestige golf simulation and analytics platform</p>
+
+    <hr class="accent-line">
+
+    <div class="card-grid">
+        <div class="card">
+            <span class="card-icon">🏳️</span>
+            <div class="card-title">Golf Courses</div>
+            <div class="card-subtitle">{{ course_count if course_count else '25+' }}</div>
+            <div class="card-desc">Championship venues</div>
+        </div>
+        <div class="card">
+            <span class="card-icon">🏆</span>
+            <div class="card-title">Tournaments</div>
+            <div class="card-subtitle">Coming Soon</div>
+            <div class="card-desc">Exciting competitions</div>
+        </div>
+        <div class="card">
+            <span class="card-icon">💰</span>
+            <div class="card-title">Betting Pool</div>
+            <div class="card-subtitle">Coming Soon</div>
+            <div class="card-desc">Place your bets</div>
+        </div>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 2.5rem; justify-content: center; margin-bottom: 2.5rem;">
+        <div style="flex: 1 1 350px; min-width: 320px; max-width: 500px;">
+            <h2 class="section-header" style="font-size: 1.5rem; display: flex; align-items: center; gap: 0.7rem;">
+                <span style="font-size: 1.7rem;">🎯</span> What's New
+            </h2>
+            <ul style="color: var(--greenbook-offwhite); line-height: 1.7; font-size: 1.08rem;">
+                <li>Comprehensive player database with realistic attributes</li>
+                <li>Detailed course characteristics and weather conditions</li>
+                <li>Advanced statistics and performance metrics</li>
+                <li>Tournament simulation system (coming soon)</li>
+                <li>Real time betting platform (coming soon)</li>
+            </ul>
+        </div>
+        <div style="flex: 1 1 350px; min-width: 320px; max-width: 500px;">
+            <h2 class="section-header" style="font-size: 1.5rem; display: flex; align-items: center; gap: 0.7rem;">
+                <span style="font-size: 1.7rem;">🚀</span> Quick Actions
+            </h2>
+            <div style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <a href="/players" class="btn">Browse Players</a>
+                <a href="/courses" class="btn">Explore Courses</a>
+            </div>
+        </div>
+    </div>
+
+    <hr class="accent-line">
+
+    <div style="text-align: center; color: #E9C46A; font-style: italic; margin-top: 2.5rem;">
+        <p>Experience the prestige and excitement of GreenBook: where classic golf tradition meets modern analytics and betting.</p>
+        <p style="margin-top: 0.5rem;">Stay tuned for our upcoming betting features!</p>
+    </div>
+</div>
+{% endblock %} 

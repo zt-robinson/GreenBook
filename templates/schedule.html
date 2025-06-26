@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Schedule - GreenBook{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1 class="page-title">Tournament Schedule</h1>
+    <p class="page-subtitle">Upcoming events for the current season</p>
+
+    <div class="table-container">
+        <table style="width: 100%; table-layout: fixed;">
+            <thead>
+                <tr>
+                    <th style="width: 24%; text-align: left;">TOURNAMENT</th>
+                    <th style="width: 10%; text-align: center;">FIELD SIZE</th>
+                    <th style="width: 16%; text-align: left;">COURSE</th>
+                    <th style="width: 12%; text-align: center;">PURSE</th>
+                    <th style="width: 12%; text-align: center;">START DATE</th>
+                    <th style="width: 26%; text-align: center;">ROUND START TIMES (all times EST)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in tournaments %}
+                <tr>
+                    <td style="text-align: left; font-weight: bold;">
+                        <a href="/tournament/{{ t['id'] }}" style="color: #174A2A; text-decoration: none; font-family: var(--headline-serif);">{{ t['name'] }}</a>
+                    </td>
+                    <td style="text-align: center;">{{ t['field_size'] }}</td>
+                    <td style="text-align: left;">{{ t['course_name'] }}</td>
+                    <td style="text-align: center;">${{ '{:,}'.format(t['purse_amount']) }}</td>
+                    <td style="text-align: center;">{{ t['start_date_formatted'] }}</td>
+                    <td style="text-align: center;">
+                        R1: {{ t['round_1_start_fmt'] }} <b> | </b> R2: {{ t['round_2_start_fmt'] }} <b> | </b> R3: {{ t['round_3_start_fmt'] }} <b> | </b> R4: {{ t['round_4_start_fmt'] }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem; color: #5B4636; font-style: italic;">
+        <p>Showing {{ tournaments|length }} tournaments in the schedule</p>
+    </div>
+</div>
+{% endblock %}

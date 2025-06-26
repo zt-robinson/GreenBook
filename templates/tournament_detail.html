@@ -1,0 +1,258 @@
+{% macro format_teetime(teetime) %}
+    {# Convert 24-hour time to 12-hour am/pm #}
+    {% set hour = teetime.split(':')[0]|int %}
+    {% set minute = teetime.split(':')[1]|int %}
+    {% set suffix = 'am' if hour < 12 or hour == 24 else 'pm' %}
+    {% set hour12 = hour % 12 if hour % 12 != 0 else 12 %}
+    {{ hour12 }}:{{ '%02d' % minute }}{{ suffix }}
+{% endmacro %}
+
+{% extends "base.html" %}
+
+{% block title %}{{ tournament['name'] }} - GreenBook{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <!-- Tournament Billboard -->
+    <div class="billboard" style="background: linear-gradient(135deg, #2a5298, #1e3c72); color: white; padding: 1.3rem 2rem; border-radius: 15px; margin-bottom: 2rem; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; gap: 1.2rem; align-items: stretch; min-height: 0;">
+        <!-- LEFT SIDE: Main Info Container (spans full height) -->
+        <div id="main-info-box" style="grid-column: 1; grid-row: 1 / 3; background: rgba(255,255,255,0.12); border-radius: 8px; padding: 1.1rem 1.5rem 0.7rem 1.5rem; display: flex; flex-direction: column; justify-content: flex-start; gap: 0.6rem; height: 100%; min-height: 0;">
+            <div>
+                <h1 style="margin: 0 0 1rem 0; font-size: 2.2rem;">{{ tournament['name'] }}</h1>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="flex: 1;">
+                        <div style="margin-bottom: 0.3rem;"><strong>Date:</strong> {{ tournament['start_date_formatted'] }}</div>
+                        <div style="margin-bottom: 0.3rem;"><strong>Course:</strong> {{ tournament['course_name'] }}</div>
+                        <div style="margin-bottom: 0.3rem;"><strong>Field Size:</strong> {{ tournament['field_size'] }} players</div>
+                        <div style="margin-bottom: 0.3rem;"><strong>Type:</strong> {{ tournament['type_display'] }}</div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="margin-bottom: 0.3rem;"><strong>Purse:</strong> ${{ '{:,}'.format(tournament['purse_amount']) }}</div>
+                        <div style="margin-bottom: 0.3rem;"><strong>Tour Points to Winner:</strong> {{ winner_points }}</div>
+                        <div><strong>Cut Line:</strong> {{ cut_line }}</div>
+                    </div>
+                </div>
+            </div>
+            <div id="countdown" style="font-size: 1.1rem; font-weight: bold; text-align: center; background: rgba(255,255,255,0.15); padding: 0.6rem 1.2rem; border-radius: 8px; margin: 0;"></div>
+            <div>
+                <div style="display: flex; width: 100%; gap: 0.5rem; margin: 0.2rem 0 0 0;">
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3rem 0.7rem; font-size: 0.85rem; text-align: center; font-weight: normal; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <span style="font-weight: bold; font-size: 0.9em;">Round 1</span>
+                        <span style="font-size: 1em;">{{ tournament['round_1_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3rem 0.7rem; font-size: 0.85rem; text-align: center; font-weight: normal; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <span style="font-weight: bold; font-size: 0.9em;">Round 2</span>
+                        <span style="font-size: 1em;">{{ tournament['round_2_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3rem 0.7rem; font-size: 0.85rem; text-align: center; font-weight: normal; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <span style="font-weight: bold; font-size: 0.9em;">Round 3</span>
+                        <span style="font-size: 1em;">{{ tournament['round_3_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3rem 0.7rem; font-size: 0.85rem; text-align: center; font-weight: normal; flex: 1 1 0; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <span style="font-weight: bold; font-size: 0.9em;">Round 4</span>
+                        <span style="font-size: 1em;">{{ tournament['round_4_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- TOP RIGHT: Weather Container -->
+        <div id="weather-betting-col" style="grid-column: 2; grid-row: 1 / 3; display: flex; flex-direction: column; height: 100%; min-height: 0;">
+            <div style="background: rgba(255,255,255,0.13); border-radius: 8px; padding: 0.7rem 1.2rem 0.7rem 1.2rem; margin-bottom: 0.7rem; width: 100%; flex: 1 1 auto; display: flex; flex-direction: column; align-items: flex-start;">
+                <h3 style="font-size: 1.2rem; margin: 0 0 0.3rem 0; opacity: 0.9; align-self: flex-start;">Weather Forecast</h3>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.7rem; width: 100%;">
+                    <div style="text-align: center; background: rgba(255,255,255,0.18); padding: 0.7rem; border-radius: 6px; min-width: 0; border: 1px solid rgba(255,255,255,0.18);">
+                        <div style="font-size: 0.9rem; font-weight: bold; margin-bottom: 0.2rem;">Round 1</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">☀️</div>
+                        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 0.1rem;">72°F</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Humidity: 45%</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Rain: 10%</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.18); padding: 0.7rem; border-radius: 6px; min-width: 0; border: 1px solid rgba(255,255,255,0.18);">
+                        <div style="font-size: 0.9rem; font-weight: bold; margin-bottom: 0.2rem;">Round 2</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">⛅</div>
+                        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 0.1rem;">68°F</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Humidity: 55%</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Rain: 25%</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.18); padding: 0.7rem; border-radius: 6px; min-width: 0; border: 1px solid rgba(255,255,255,0.18);">
+                        <div style="font-size: 0.9rem; font-weight: bold; margin-bottom: 0.2rem;">Round 3</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">🌧️</div>
+                        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 0.1rem;">65°F</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Humidity: 75%</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Rain: 60%</div>
+                    </div>
+                    <div style="text-align: center; background: rgba(255,255,255,0.18); padding: 0.7rem; border-radius: 6px; min-width: 0; border: 1px solid rgba(255,255,255,0.18);">
+                        <div style="font-size: 0.9rem; font-weight: bold; margin-bottom: 0.2rem;">Round 4</div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.2rem;">☀️</div>
+                        <div style="font-size: 1rem; font-weight: bold; margin-bottom: 0.1rem;">70°F</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Humidity: 50%</div>
+                        <div style="font-size: 0.8rem; opacity: 0.8;">Rain: 15%</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Betting Favorites: minimal height, only heading and icon -->
+            <div style="background: rgba(255,255,255,0.12); border-radius: 8px; padding: 0.3rem 1.2rem 0.3rem 1.2rem; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 0; flex: 0 0 auto;">
+                <h3 style="font-size: 1.2rem; margin: 0 0 0.1rem 0; opacity: 0.9;">Betting Favorites</h3>
+                <div style="text-align: center; width: 100%; margin: 0; padding: 0;">
+                    <span style="font-size: 1.5rem;">🎯</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @media (max-width: 768px) {
+            .billboard {
+                grid-template-columns: 1fr !important;
+                grid-template-rows: auto auto auto !important;
+            }
+            
+            .billboard > div:nth-child(1) {
+                grid-column: 1 !important;
+                grid-row: 1 !important;
+            }
+            
+            .billboard > div:nth-child(2) {
+                grid-column: 1 !important;
+                grid-row: 2 !important;
+            }
+            
+            .billboard > div:nth-child(3) {
+                grid-column: 1 !important;
+                grid-row: 3 !important;
+            }
+        }
+        .main-info-table {
+            font-size: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 400;
+        }
+        .main-info-table th, .main-info-table td {
+            font-size: 12px;
+            font-weight: 400;
+        }
+    </style>
+
+    <!-- Leaderboard/Field (Pre-Tournament) -->
+    <div style="margin-bottom: 2rem;">
+        <h2 class="page-title">Tournament Field</h2>
+        {% if show_provisional %}
+        <div style="background: #f5f6fa; border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; color: #1e3c72; font-weight: bold;">
+            Field not yet finalized. Additional players may qualify as more events are played.
+        </div>
+        <div style="max-width: 1100px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 2px 12px rgba(30,60,114,0.07); padding: 1.2rem 1.5rem; display: block;">
+            <div class="provisional-columns" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; width: 100%; max-width: 100%;">
+                {% for column in qualifier_columns %}
+                <table class="main-info-table" style="width: 100%; background: transparent; border-radius: 7px; border-collapse: separate; border-spacing: 0; margin: 0;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: left; padding: 0.13em 0.3em 0.13em 0.3em; font-weight: 700;">Player</th>
+                            <th style="text-align: center; padding: 0.13em 0.2em; min-width: 2.5em; font-weight: 700;">Rank</th>
+                            <th style="text-align: center; padding: 0.13em 0.2em; min-width: 2.5em; font-weight: 700;">Events</th>
+                            <th style="text-align: center; padding: 0.13em 0.2em; min-width: 7.5em; font-weight: 700;">Winnings</th>
+                            <th style="text-align: center; padding: 0.13em 0.2em; min-width: 2.5em; font-weight: 700;">World</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for player in column %}
+                        <tr>
+                            <td style="text-align: left; padding: 0.09em 0.3em 0.09em 0.3em; white-space: nowrap;">
+                                {% set flag_code = country_to_flag_iso(player['country']) %}
+                                {% if flag_code %}
+                                    <img src="{{ url_for('static', filename='flags/' ~ flag_code ~ '.svg') }}" alt="{{ player['country'] }} flag" style="width: 15px; height: 10px; vertical-align: middle; margin-right: 3px;">
+                                {% endif %}
+                                {{ player['name'] }}
+                            </td>
+                            <td style="text-align: center; padding: 0.09em 0.2em; min-width: 2.5em;">{{ player['tour_rank'] or '-' }}</td>
+                            <td style="text-align: center; padding: 0.09em 0.2em; min-width: 2.5em;">{{ player['events'] or '-' }}</td>
+                            <td style="text-align: center; padding: 0.09em 0.2em; min-width: 7.5em;">${{ '{:,.0f}'.format(player['season_money'] or 0) }}</td>
+                            <td style="text-align: center; padding: 0.09em 0.2em; min-width: 2.5em;">{{ player['world_rank'] or '-' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="group-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.6rem; max-width: 1100px; margin: 0 auto;">
+            {% for group in groups %}
+            <div class="group-card" style="background: #e6f0fa; border-radius: 7px; padding: 0.4rem 0.5rem 0.2rem 0.5rem; box-shadow: 0 1px 4px rgba(30,60,114,0.04); display: flex; flex-direction: column; align-items: stretch; min-width: 0;">
+                <div style="font-weight: bold; color: #2a5298; font-size: 0.75rem; margin-bottom: 0.18rem; text-align: center; display: flex; justify-content: center; align-items: center; gap: 0.4em;">
+                    <span>Group {{ group.group_number }}</span>
+                    <span style="font-weight: normal; color: #444; font-size: 0.75rem;">&bull; {{ format_teetime(group.tee_time) }}</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    {% for player in group.players %}
+                    <li style="display: flex; align-items: center; margin-bottom: 0.12rem; font-weight: normal; font-size: 0.75rem;">
+                        {% set flag_code = country_to_flag_iso(player['country']) %}
+                        {% if flag_code %}
+                            <img src="{{ url_for('static', filename='flags/' ~ flag_code ~ '.svg') }}" alt="{{ player['country'] }} flag" style="width: 16px; height: 11px; vertical-align: middle; margin-right: 4px;">
+                        {% endif %}
+                        <span>{{ player['name'] }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Course Information -->
+    <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
+        <h3 style="color: #2a5298; margin: 0 0 1rem 0;">Course Information</h3>
+        <p style="margin: 0; color: #666;">
+            <strong>{{ tournament['course_name'] }}</strong> - 
+            This championship venue will host the {{ tournament['name'] }}. 
+            Course details and characteristics can be viewed on the 
+            <a href="/courses" style="color: #2a5298;">Courses page</a>.
+        </p>
+    </div>
+
+    <!-- Navigation -->
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="/schedule" style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #2a5298, #1e3c72); color: white; text-decoration: none; border-radius: 10px; margin: 0 0.5rem;">
+            ← Back to Schedule
+        </a>
+    </div>
+
+    <script>
+    // Countdown timer logic
+    function updateCountdown() {
+        const startDate = new Date("{{ tournament['start_iso_ny'] }}"); // America/New_York (Boston time)
+        const now = new Date();
+        let diff = startDate - now;
+        let countdown = document.getElementById('countdown');
+        if (diff > 0) {
+            let seconds = Math.floor(diff / 1000);
+            let minutes = Math.floor(seconds / 60);
+            let hours = Math.floor(minutes / 60);
+            let days = Math.floor(hours / 24);
+            let weeks = Math.floor(days / 7);
+            let months = Math.floor(days / 30);
+            if (days >= 30) {
+                countdown.textContent = months + ' month' + (months > 1 ? 's' : '') + ', ' + (days % 30) + ' day' + ((days % 30) !== 1 ? 's' : '') + ' until tournament start';
+            } else if (days >= 7) {
+                countdown.textContent = weeks + ' week' + (weeks > 1 ? 's' : '') + ', ' + (days % 7) + ' day' + ((days % 7) !== 1 ? 's' : '') + ' until tournament start';
+            } else if (days >= 1) {
+                countdown.textContent = days + ' day' + (days > 1 ? 's' : '') + ', ' + (hours % 24) + ' hour' + ((hours % 24) !== 1 ? 's' : '') + ' until tournament start';
+            } else if (hours >= 1) {
+                countdown.textContent = hours + ' hour' + (hours > 1 ? 's' : '') + ', ' + (minutes % 60) + ' minute' + ((minutes % 60) !== 1 ? 's' : '') + ' until tournament start';
+            } else if (minutes >= 10) {
+                countdown.textContent = minutes + ' minute' + (minutes > 1 ? 's' : '') + ' until tournament start';
+            } else if (minutes >= 1) {
+                countdown.textContent = minutes + ' minute' + (minutes > 1 ? 's' : '') + ', ' + (seconds % 60) + ' second' + ((seconds % 60) !== 1 ? 's' : '') + ' until tournament start';
+            } else {
+                countdown.textContent = seconds + ' second' + (seconds !== 1 ? 's' : '') + ' until tournament start';
+            }
+        } else {
+            countdown.textContent = 'Tournament in progress or completed';
+        }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    </script>
+</div>
+{% endblock %} 

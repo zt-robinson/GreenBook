@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Players - Golf Universe{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Golf Players</h1>
+    <p class="page-subtitle">Professional golfers with detailed statistics and performance metrics</p>
+
+    <div class="table-container">
+        <table style="width: 100%; table-layout: fixed;">
+            <thead>
+                <tr>
+                    <th style="width: 8%; text-align: center;">TOUR RANK</th>
+                    <th style="width: 36%; text-align: left;">NAME</th>
+                    <th style="width: 8%; text-align: center;">EVENTS</th>
+                    <th style="width: 8%; text-align: center;">TOUR POINTS</th>
+                    <th style="width: 8%; text-align: center;">POINTS BACK</th>
+                    <th style="width: 8%; text-align: center;">WINS</th>
+                    <th style="width: 8%; text-align: center;">TOP 10S</th>
+                    <th style="width: 8%; text-align: center;">WINNINGS</th>
+                    <th style="width: 8%; text-align: center;">WORLD</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr class="player-row" data-player-id="{{ player['id'] }}" style="cursor: pointer;">
+                    <td style="text-align: center;">{{ player['tour_rank'] }}</td>
+                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                        {% set flag_code = country_to_flag_iso(player['country']) %}
+                        {% if flag_code %}
+                            <img src="{{ url_for('static', filename='flags/' ~ flag_code ~ '.svg') }}" alt="{{ player['country'] }} flag" style="width: 24px; height: 16px; vertical-align: middle; margin-right: 6px;">
+                        {% endif %}
+                        <strong>{{ player['name'] }}</strong>
+                    </td>
+                    <td style="text-align: center;">{{ player['events'] }}</td>
+                    <td style="text-align: center;">{{ player['tour_championship_points'] }}</td>
+                    <td style="text-align: center;">{{ player['points_behind_lead'] }}</td>
+                    <td style="text-align: center;">{{ player['wins'] }}</td>
+                    <td style="text-align: center;">{{ player['top_10s'] }}</td>
+                    <td style="text-align: center;">${{ '{:,.2f}'.format(player['season_money']) }}</td>
+                    <td style="text-align: center;">{{ player['world_rank'] }}</td>
+                </tr>
+                <tr class="player-details-row" id="details-{{ player['id'] }}" style="display: none;">
+                    <td colspan="9">
+                        <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px; margin: 0.5rem 0;">
+                            <h4 style="margin: 0 0 1rem 0; color: #495057;">Player Details</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                                <div>
+                                    <h5 style="margin: 0 0 0.5rem 0; color: #6c757d; font-size: 0.9rem;">Personal Info</h5>
+                                    <p style="margin: 0.25rem 0;"><strong>Age:</strong> {{ player['age'] }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Country:</strong> {{ player['country'] }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Status:</strong> 
+                                        {% if player['status'] == 'active' %}
+                                            <span style="padding: 2px 6px; border-radius: 8px; font-size: 0.75rem; background: #d4edda; color: #155724;">
+                                                {{ player['status'] }}
+                                            </span>
+                                        {% else %}
+                                            <span style="padding: 2px 6px; border-radius: 8px; font-size: 0.75rem; background: #f8d7da; color: #721c24;">
+                                                {{ player['status'] }}
+                                            </span>
+                                        {% endif %}
+                                    </p>
+                                    <p style="margin: 0.25rem 0;"><strong>Season Money:</strong> ${{ '{:,.2f}'.format(player['season_money']) }}</p>
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0 0 0.5rem 0; color: #6c757d; font-size: 0.9rem;">Skill Ratings</h5>
+                                    <p style="margin: 0.25rem 0;"><strong>Driving Power:</strong> {{ '%.1f'|format(player['driving_power']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Driving Accuracy:</strong> {{ '%.1f'|format(player['driving_accuracy']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Approach Long:</strong> {{ '%.1f'|format(player['approach_long']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Approach Short:</strong> {{ '%.1f'|format(player['approach_short']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Scrambling:</strong> {{ '%.1f'|format(player['scrambling']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Putting:</strong> {{ '%.1f'|format(player['putting']) }}</p>
+                                </div>
+                                <div>
+                                    <h5 style="margin: 0 0 0.5rem 0; color: #6c757d; font-size: 0.9rem;">Mental Game</h5>
+                                    <p style="margin: 0.25rem 0;"><strong>Consistency:</strong> {{ '%.1f'|format(player['consistency']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Composure:</strong> {{ '%.1f'|format(player['composure']) }}</p>
+                                    <p style="margin: 0.25rem 0;"><strong>Resilience:</strong> {{ '%.1f'|format(player['resilience']) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem; color: #666;">
+        <p>Showing {{ players|length }} players in the database</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Click on any player row to view detailed statistics</p>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.player-row').forEach(function(row) {
+            row.addEventListener('click', function() {
+                var playerId = row.getAttribute('data-player-id');
+                var detailsRow = document.getElementById('details-' + playerId);
+                if (detailsRow.style.display === 'none') {
+                    detailsRow.style.display = '';
+                    row.style.backgroundColor = '#e3f2fd';
+                } else {
+                    detailsRow.style.display = 'none';
+                    row.style.backgroundColor = '';
+                }
+            });
+        });
+    });
+    </script>
+{% endblock %} 

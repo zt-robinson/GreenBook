@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block title %}Courses - GreenBook{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1 class="page-title">Golf Courses</h1>
+    <p class="page-subtitle">Championship venues with detailed characteristics and course specifications</p>
+
+    <div class="table-container">
+        <table style="width: 100%; table-layout: fixed;">
+            <thead>
+                <tr>
+                    <th style="width: 35%; text-align: left;">COURSE NAME</th>
+                    <th style="width: 25%; text-align: left;">LOCATION</th>
+                    <th style="width: 8%; text-align: center;">PAR</th>
+                    <th style="width: 12%; text-align: center;">YARDAGE</th>
+                    <th style="width: 12%; text-align: center;">RATING / SLOPE</th>
+                    <th style="width: 8%; text-align: center;">FOUNDED</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr class="course-row" data-course-id="{{ course['id'] }}" style="cursor: pointer;">
+                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                        <strong>{{ course['name'] }}</strong>
+                    </td>
+                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                        {{ course['location'] }}
+                    </td>
+                    <td style="text-align: center;">
+                        {% if course['par'] is not none %}
+                            {{ course['par'] }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                        {% if course['yardage'] is not none %}
+                            {{ "{:,}".format(course['yardage']) }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                        {% if course['course_rating'] is not none and course['slope_rating'] is not none %}
+                            {{ '%.1f'|format(course['course_rating']) }} / {{ course['slope_rating'] }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                        {% if course['est_year'] is not none %}
+                            {{ course['est_year'] }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr class="course-details-row" id="details-{{ course['id'] }}" style="display: none;">
+                    <td colspan="6">
+                        <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px; margin: 0.5rem 0;">
+                            <h4 style="margin: 0 0 1rem 0; color: #495057;">Scorecard</h4>
+                            <div class="scorecard-container">
+                                <table class="scorecard-table" style="width: 100%; border-collapse: collapse; text-align: center;">
+                                    <tr>
+                                        <th style="text-align: center;">Hole</th>
+                                        {% for i in range(1, 10) %}<th style="text-align: center;">{{ i }}</th>{% endfor %}
+                                        <th style="text-align: center; background-color: #f0f0f0;">OUT</th>
+                                        {% for i in range(10, 19) %}<th style="text-align: center;">{{ i }}</th>{% endfor %}
+                                        <th style="text-align: center; background-color: #f0f0f0;">IN</th>
+                                        <th style="text-align: center; background-color: #d4d4d4;">TOTAL</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: center;">Yardage</th>
+                                        {% set front9_yard = course.holes[:9] | sum(attribute='yardage') %}
+                                        {% set back9_yard = course.holes[9:] | sum(attribute='yardage') %}
+                                        {% set total_yard = front9_yard + back9_yard %}
+                                        {% for hole in course.holes[:9] %}<td style="text-align: center;">{{ "{:,}".format(hole.yardage) }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ "{:,}".format(front9_yard) }}</strong></td>
+                                        {% for hole in course.holes[9:] %}<td style="text-align: center;">{{ "{:,}".format(hole.yardage) }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ "{:,}".format(back9_yard) }}</strong></td>
+                                        <td style="text-align: center; background-color: #d4d4d4;"><strong>{{ "{:,}".format(total_yard) }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: center;">Par</th>
+                                        {% set front9_par = course.holes[:9] | sum(attribute='par') %}
+                                        {% set back9_par = course.holes[9:] | sum(attribute='par') %}
+                                        {% set total_par = front9_par + back9_par %}
+                                        {% for hole in course.holes[:9] %}<td style="text-align: center;">{{ hole.par }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ front9_par }}</strong></td>
+                                        {% for hole in course.holes[9:] %}<td style="text-align: center;">{{ hole.par }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ back9_par }}</strong></td>
+                                        <td style="text-align: center; background-color: #d4d4d4;"><strong>{{ total_par }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: center;">HCP</th>
+                                        {% for hole in course.holes[:9] %}<td style="text-align: center;">{{ hole.handicap }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #f0f0f0;"></td>
+                                        {% for hole in course.holes[9:] %}<td style="text-align: center;">{{ hole.handicap }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #f0f0f0;"></td>
+                                        <td style="text-align: center; background-color: #d4d4d4;"></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="course-details" style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center;">
+                                <div style="display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 1rem;">
+                                    <div><strong>Terrain Type:</strong> {{ course.display_terrain }}</div>
+                                    <div><strong>Green Speed:</strong> {{ course.display_stimp }}</div>
+                                    <div><strong>Rough Height:</strong> {{ course.display_rough }}</div>
+                                    <div><strong>Turf Firmness:</strong> {{ course.display_firmness }}</div>
+                                    <div><strong>Avg. Wind Speed:</strong> {{ course.display_wind }}</div>
+                                </div>
+                                <div style="display: flex; justify-content: center; gap: 2.5rem;">
+                                    <div><strong>Avg. Temperature:</strong> {{ course.display_temp }}</div>
+                                    <div><strong>Avg. Humidity:</strong> {{ course.display_humidity }}</div>
+                                    <div><strong>Avg. Rainfall:</strong> {{ course.display_rain_days }}</div>
+                                    <div><strong>Elevation:</strong> {{ course.display_elevation }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem; color: #5B4636; font-style: italic;">
+        <p>Showing {{ courses|length }} courses in the database</p>
+        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Click on any course row to view detailed characteristics</p>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.course-row').forEach(function(row) {
+        row.addEventListener('click', function() {
+            var courseId = row.getAttribute('data-course-id');
+            var detailsRow = document.getElementById('details-' + courseId);
+            if (detailsRow.style.display === 'none') {
+                detailsRow.style.display = '';
+                row.style.backgroundColor = '#e3f2fd';
+            } else {
+                detailsRow.style.display = 'none';
+                row.style.backgroundColor = '';
+            }
+        });
+    });
+});
+</script>
+{% endblock %} 
