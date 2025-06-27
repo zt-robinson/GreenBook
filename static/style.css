@@ -1,130 +1,113 @@
-/* GreenBook Main Stylesheet */
+/* GreenBook Modern Functional UI */
 :root {
-  --greenbook-green: #1A3C2A; /* Sampled from mockup, deep Augusta green */
-  --greenbook-offwhite: #F8F6F0; /* Slightly warm off-white */
-  --greenbook-gold: #E9C46A; /* Sampled gold accent */
-  --greenbook-brown: #5B4636;
-  --greenbook-gray: #E0DED7;
-  --headline-serif: 'Playfair Display', 'Merriweather', Georgia, 'Times New Roman', serif;
-  --ui-sans: 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --primary-green: #25643a;
+  --accent-green: #174a2a;
+  --background: #f8fafc;
+  --card-bg: #fff;
+  --text-main: #222;
+  --text-light: #666;
+  --header-bg: var(--primary-green);
+  --header-text: #fff;
+  --table-header-bg: var(--primary-green);
+  --table-header-text: #fff;
+  --button-bg: var(--primary-green);
+  --button-text: #fff;
+  --button-hover-bg: #174a2a;
+  --border-radius: 8px;
+  --shadow: 0 2px 8px rgba(23, 74, 42, 0.08);
+  --font-sans: 'Segoe UI', 'Inter', 'Helvetica Neue', Arial, sans-serif;
 }
 
 body {
-  background: var(--greenbook-green);
-  color: var(--greenbook-offwhite);
-  font-family: var(--ui-sans);
-  font-size: 14px;
+  background: var(--background);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 15px;
   margin: 0;
 }
 
-.header, .billboard {
-  background: var(--greenbook-green);
-  color: var(--greenbook-gold);
-  border-radius: 0;
-  box-shadow: none;
-  padding: 1.5rem 2rem;
-  border-bottom: 2px solid var(--greenbook-gold);
+.header {
+  background: var(--header-bg);
+  color: var(--header-text);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-
-.logo, .page-title, h1, h2, h3, h4 {
-  font-family: var(--headline-serif);
-  color: var(--greenbook-gold);
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1rem 0;
+  max-width: 1100px;
+  margin: 0 auto;
 }
-
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  text-shadow: 0 1px 0 var(--greenbook-brown);
+  color: var(--header-text);
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-family: var(--font-sans);
 }
-
-nav.nav a {
-  color: var(--greenbook-gold);
-  background: transparent;
-  border: 1.5px solid var(--greenbook-gold);
-  border-radius: 25px;
+.nav {
+  display: flex;
+  gap: 0.5rem;
+}
+.nav a {
   padding: 0.5rem 1.2rem;
-  font-family: var(--ui-sans);
+  text-decoration: none;
+  color: var(--header-text);
+  border-radius: var(--border-radius);
+  background: transparent;
   font-weight: 500;
+  font-family: var(--font-sans);
   margin: 0 0.2rem;
   transition: background 0.2s, color 0.2s;
 }
-nav.nav a.active, nav.nav a:hover {
-  background: var(--greenbook-gold);
-  color: var(--greenbook-green);
+.nav a.active, .nav a:hover {
+  background: #fff2;
+  color: #fff;
 }
 
-.content-card, .main-content, .group-card, .provisional-columns table {
-  background: var(--greenbook-offwhite);
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(23,74,42,0.06);
-  border: 1.5px solid var(--greenbook-gold);
-  color: var(--greenbook-green);
+.main-container {
+  max-width: 1100px;
+  margin: 2.5rem auto 0 auto;
+  padding: 0 2rem;
 }
 
-.section-header, .page-title {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 1.2rem;
-  letter-spacing: 2px;
-}
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.2rem;
-  margin-bottom: 3rem;
-}
-
-.card {
-  background: transparent;
-  border: 2px solid var(--greenbook-gold);
-  border-radius: 4px;
-  color: var(--greenbook-gold);
-  text-align: center;
-  padding: 2.2rem 1.5rem 2.2rem 1.5rem;
-  box-shadow: none;
-  transition: border-color 0.2s;
-}
-.card:hover {
-  border-color: #FFD700;
-}
-
-.card .card-icon {
-  font-size: 3.2rem;
-  margin-bottom: 1.1rem;
-  display: block;
-}
-
-.card .card-title {
-  font-family: var(--headline-serif);
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--greenbook-gold);
-  margin-bottom: 0.5rem;
-  letter-spacing: 1.2px;
-}
-
-.card .card-subtitle {
+.page-title {
+  color: var(--primary-green);
   font-size: 2rem;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  font-family: var(--font-sans);
   font-weight: bold;
-  color: var(--greenbook-offwhite);
-  margin-bottom: 0.3rem;
+  letter-spacing: 1px;
+}
+.page-subtitle {
+  color: var(--text-light);
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
 }
 
-.card .card-desc {
-  color: var(--greenbook-offwhite);
-  font-size: 1rem;
-  opacity: 0.9;
+.card, .content-card, .group-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  color: var(--text-main);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  border: none;
 }
 
 .btn, button {
-  background: transparent;
-  color: var(--greenbook-gold);
-  border: 2px solid var(--greenbook-gold);
-  border-radius: 4px;
-  font-family: var(--ui-sans);
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: var(--font-sans);
   font-weight: 600;
   padding: 0.7em 2em;
   cursor: pointer;
@@ -136,72 +119,60 @@ nav.nav a.active, nav.nav a:hover {
   text-transform: uppercase;
 }
 .btn:hover, button:hover {
-  background: var(--greenbook-gold);
-  color: var(--greenbook-green);
+  background: var(--button-hover-bg);
 }
 
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  background: var(--card-bg);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  font-size: 0.98em;
+}
+th, td {
+  padding: 10px 12px;
+  text-align: left;
+}
 th {
-  background: var(--greenbook-green);
-  color: var(--greenbook-gold);
-  font-family: var(--headline-serif);
-  font-weight: 700;
-  font-size: 1em;
+  background: var(--table-header-bg);
+  color: var(--table-header-text);
+  font-weight: 600;
+  font-family: var(--font-sans);
 }
-td {
-  font-family: var(--ui-sans);
-  color: var(--greenbook-green);
+tr:nth-child(even) {
+  background: #f3f7f4;
 }
-
-.billboard h1, .billboard .page-title {
-  font-size: 2.3rem;
-  color: var(--greenbook-gold);
-  font-family: var(--headline-serif);
-  margin-bottom: 0.7rem;
-}
-
-/* Tactile/scorecard feel */
-.group-card, .provisional-columns table {
-  border: 1.5px solid var(--greenbook-gold);
-  box-shadow: 0 2px 8px rgba(91,70,54,0.07);
-}
-
-/* Accent lines */
-hr, .accent-line {
-  border: none;
-  border-top: 2px solid var(--greenbook-gold);
-  margin: 2.2rem 0;
-}
-
-/* Betting slip/country club details */
-.info-box, .main-info-box {
-  background: var(--greenbook-gray);
-  border-left: 6px solid var(--greenbook-gold);
-  padding: 1.2rem 1.5rem;
-  border-radius: 10px;
-  margin-bottom: 1.2rem;
-  color: var(--greenbook-green);
+tr:hover {
+  background-color: #e6f2ea;
 }
 
 @media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: 1fr;
+  .main-container, .header-content {
+    padding: 0 0.5rem;
   }
 }
-
 @media (max-width: 768px) {
-  .header, .billboard {
-    padding: 1rem 0.5rem;
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
   }
-  .content-card, .main-content {
-    padding: 1rem 0.5rem;
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  .section-header, .page-title {
-    font-size: 1.5rem;
+  .nav a {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
   }
-}
-
-.main-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
+  .page-title {
+    font-size: 1.3rem;
+  }
+  .main-container {
+    padding: 0 0.5rem;
+  }
 } 

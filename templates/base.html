@@ -6,183 +6,75 @@
     <title>{% block title %}GreenBook{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: var(--ui-sans);
-            font-size: 14px;
-            background: var(--greenbook-green);
-            min-height: 100vh;
-            color: var(--greenbook-offwhite);
+            background: var(--background);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            font-size: 15px;
+            margin: 0;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 10px;
-        }
-
-        /* Header */
         .header {
-            background: var(--greenbook-green);
-            color: var(--greenbook-gold);
-            border-radius: 0;
-            box-shadow: none;
+            background: var(--header-bg);
+            color: var(--header-text);
+            box-shadow: var(--shadow);
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 2.5px solid var(--greenbook-gold);
         }
-
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.1rem 0 1.1rem 0;
+            padding: 1.1rem 0;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            color: var(--greenbook-gold);
+            color: var(--header-text);
             text-decoration: none;
-            font-family: var(--headline-serif);
-            letter-spacing: 2px;
-            text-shadow: 0 1px 0 var(--greenbook-brown);
+            letter-spacing: 1px;
+            font-family: var(--font-sans);
         }
-
-        .logo:hover {
-            color: var(--greenbook-gold);
-        }
-
-        /* Navigation */
         .nav {
             display: flex;
             gap: 0.5rem;
         }
-
         .nav a {
             padding: 0.5rem 1.2rem;
             text-decoration: none;
-            color: var(--greenbook-gold);
-            border-radius: 25px;
-            border: 1.5px solid var(--greenbook-gold);
+            color: var(--header-text);
+            border-radius: 8px;
             background: transparent;
             font-weight: 500;
-            font-family: var(--ui-sans);
+            font-family: var(--font-sans);
             margin: 0 0.2rem;
             transition: background 0.2s, color 0.2s;
         }
-
         .nav a.active, .nav a:hover {
-            background: var(--greenbook-gold);
-            color: var(--greenbook-green);
+            background: #fff2;
+            color: #fff;
         }
-
-        /* Main Content */
-        .main-content, .main-container {
-            margin-top: 2.5rem;
+        .main-container {
+            max-width: 1100px;
+            margin: 2.5rem auto 0 auto;
+            padding: 0 2rem;
         }
-
-        .content-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 1.2rem;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-            margin-bottom: 1.2rem;
-        }
-
         .page-title {
-            color: var(--greenbook-gold);
-            font-size: 2.2rem;
+            color: var(--primary-green);
+            font-size: 2rem;
             margin-bottom: 0.7rem;
             text-align: center;
-            font-family: var(--headline-serif);
+            font-family: var(--font-sans);
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
-
         .page-subtitle {
-            color: #bfae7c;
+            color: var(--text-light);
             text-align: center;
             margin-bottom: 1.2rem;
             font-size: 1.1rem;
-        }
-
-        /* Tables */
-        .table-container {
-            overflow-x: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--greenbook-offwhite);
-            font-size: 0.92em;
-        }
-
-        th, td {
-            padding: 8px 10px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        th {
-            background: var(--greenbook-green);
-            color: var(--greenbook-gold);
-            font-family: var(--headline-serif);
-            font-weight: 700;
-            font-size: 1em;
-        }
-
-        tr:hover {
-            background-color: #f8f9fa;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .nav a {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-
-            .page-title {
-                font-size: 1.5rem;
-            }
-
-            .content-card {
-                padding: 1rem;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mb-2 {
-            margin-bottom: 1rem;
-        }
-
-        .mb-3 {
-            margin-bottom: 1.5rem;
         }
     </style>
 </head>
