@@ -1,135 +1,54 @@
-# Golf Universe: Flask Golf Simulation & Betting Platform
+# GreenBook
 
-## Project Vision & Goals
+GreenBook is a Flask-based golf simulation and analytics platform, inspired by the prestige and style of Augusta National. It features a modern, tactile UI, robust tournament and player systems, and a stat-focused, country club scorecard aesthetic.
 
-Golf Universe is a highly detailed, Flask-based golf simulation and sports betting web application. The goal is to create a living, evolving golf world that mirrors the drama, structure, and excitement of the PGA Tour—complete with:
-- Realistic player careers, tour card mechanics, and dynamic field qualification
-- A full season schedule of tournaments, including majors, invitationals, and opens
-- Real-time, granular simulation of tournament play (hole-by-hole, group-by-group)
-- A comprehensive betting platform with a wide variety of markets and live odds
-- Persistent player histories, career arcs, and a developmental tour system
-- A beautiful, modern, and user-friendly web interface
+## Features
+- **Augusta-inspired UI**: Dark green, gold, and off-white palette, classic serif headlines, and stately, flat containers.
+- **Tournament System**: Dynamic schedule, two-phase field display (provisional/finalized), strict tee time logic, and a professional "billboard" for each event.
+- **Player Careers**: Realistic simulation logic, dynamic player stats, and a detailed "Tour Card" system.
+- **Responsive Design**: Multi-column layouts, national flags, and compact, visually balanced tables.
+- **SQLite Databases**: For players, courses, and tournaments, with seed scripts and utilities in `greenbook/scripts/`.
+- **Local Virtual Environment**: All dependencies managed in `greenbook/venv` (not tracked by git).
 
-## Current Features (as of June 2025)
-
-### Data & Simulation
-- **Player Database:** 200+ generated players, each with realistic skill ratings, country, age, and career stats
-- **Tour Card System:** Each player has a `TourCardStatus` (Full, Exempt, Conditional, None, Lifetime) and an `Exempt_Thru` year, determining eligibility for events
-- **Course Database:** 30+ championship courses, each with detailed characteristics (yardage, par, weather, green speed, elevation, etc.)
-- **Tournament Database:** Robust structure for tournaments, fields, results, odds, schedule, and payout structure
-- **Developmental Tour:** Players who lose their card move to a separate dev league, with a chance to re-qualify each year
-
-### Web Application
-- **Home Page:** Modern, welcoming landing page with quick stats and navigation
-- **Players Page:** Table of all players, expandable for detailed stats and career info
-- **Courses Page:** Table of all courses, expandable for professional scorecards and real-world characteristics
-- **Schedule Page:** Table of all upcoming tournaments, with field size, purse, start date, and round times (in EST)
-- **Navigation:** Clean, modern navigation bar for all major sections
-
-### Tournament & Schedule System
-- **Tournament Types:** Regular Tour Events, Opens, Invitationals, Majors, and a future Tour Championship
-- **Field Sizes:** Vary by event type (e.g., 156 for regular, 90 for invitationals, 90-120 for majors)
-- **Qualification:** Full/Exempt/Lifetime status, then Conditional, then recent top performers, then former major winners, then players ranked 151-200
-- **Event Timing:** Each event is scheduled two days apart, with the first event set for July 4, 2025
-- **Round Structure:** 4 rounds per event, with staggered group starts and cut after round 2
-- **Payouts & Points:** Each event has a detailed payout and points structure
-
-## Technical Structure
-
-- **Flask** for backend and routing
-- **SQLite** for persistent storage (players, courses, tournaments, dev league)
-- **Jinja2** for templating and dynamic HTML
-- **Modern CSS** for a clean, responsive UI
-- **Seeding Scripts** for generating and resetting all data
-
-## Simulation & Game Mechanics
-
-### Tour Card & Career System
-- Players start with a tour card; status is re-evaluated each season
-- Top 125: Full card; 126-150: Conditional; 151-200: Lose card, move to dev league
-- Exemptions for wins, majors, and career achievements (tracked by `Exempt_Thru`)
-- Dev league simulates a season, top 30 rejoin the main tour, new players generated each year
-- Lifetime status for 20+ wins and 15+ seasons
-
-### Tournament Simulation
-- 4 rounds, 72-hole stroke play
-- Rounds 1-2: 3-man groups, random order; Rounds 3-4: 2-man groups, sorted by score
-- Cut after round 2 (top 65 and ties)
-- Each group plays a hole every 3 minutes, with rounds and breaks scheduled for real-time betting
-- Tournament schedule is persistent and visible on the web
-
-### Betting System (Planned)
-- Outright winner, top 5/10/20, make the cut, low round, group winner, round leader, 9-hole leader, bogey-free round, H2H matchups, over/under, birdie props, and more
-- Odds update after every hole, and multiple times between rounds
-- Odds calculation factors: player skill, current score, course/weather, pressure, momentum, history
-- Pre-tournament odds update weekly; live odds update in real time during events
-- Full betting UI for placing, tracking, and settling bets
-
-## Roadmap & Planned Features
-
-### Short-Term
-- Tournament field generation logic (based on qualification rules above)
-- Tournament simulation engine (group-by-group, hole-by-hole)
-- Live odds calculation and updating
-- Betting UI and bet settlement logic
-- Player career stats and history page
-- Dev league auto-simulation and player promotion
-
-### Long-Term
-- Tour Championship with special rules and points system
-- Player injury, fatigue, and form tracking
-- Sponsorships and pressure mechanics
-- User accounts and persistent bet tracking
-- Admin UI for adding/editing tournaments, courses, and players
-- API for external integrations (e.g., Discord bots, mobile apps)
-- More advanced betting markets and analytics
-
-## How Everything Fits Together
-
-- **Players** are the core of the sim, with evolving careers, stats, and eligibility
-- **Courses** provide unique challenges and realism for each event
-- **Tournaments** are scheduled, simulated, and bet on in real time
-- **Betting** is the main user interaction, with a wide variety of markets and live odds
-- **Dev League** ensures turnover and new talent, keeping the world dynamic
-- **UI** is designed for clarity, beauty, and ease of use, with all data calculated in the backend for fast rendering
-
-## How to Run
-
-1. Clone the repository
-2. Create and activate a virtual environment
-3. Install dependencies: `pip install -r requirements.txt`
-4. Generate the player and course databases
-5. Run the tournament and schedule seeding scripts
-6. Start the Flask app: `python app.py`
-7. Open your browser to [http://localhost:5000](http://localhost:5000)
-
-## Contributing & Feedback
-
-This project is a work in progress and open to ideas! If you have suggestions, want to contribute, or spot a bug, please open an issue or pull request.
-
----
-
-**Golf Universe** is designed to be the most realistic, dynamic, and fun golf simulation and betting platform on the web. Every detail is crafted to mirror the real world of professional golf, while giving users the tools to engage, bet, and follow the action in real time.
-
-## Project Structure
+## Directory Structure
 ```
 greenbook/
-  app.py
-  create_course.py
-  create_player.py
-  generate_players.sh
-  requirements.txt
-  static/
-    flags/   # SVG country flags
-  templates/
-    ...
+├── app.py                # Main Flask app
+├── static/               # CSS, icons, and static assets
+├── templates/            # Jinja2 HTML templates
+├── scripts/              # Utility and seed scripts
+├── data/                 # SQLite database files
+├── venv/                 # Local Python virtual environment (not in git)
+└── README.md             # This file
 ```
 
-## External Resources Used
-- **Country Flags:** [lipis/flag-icons](https://github.com/lipis/flag-icons) (MIT License)
-- **Faker:** For generating realistic player names and attributes
-- **Flask:** Web framework
+## Setup & Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/zt-robinson/GreenBook.git
+   cd GreenBook/greenbook
+   ```
+2. **Create and activate a virtual environment**
+   ```bash
+   python3 -m venv venv --upgrade-deps
+   source venv/bin/activate
+   ```
+3. **Install dependencies**
+   ```bash
+   pip install -r ../requirements.txt
+   ```
+4. **Set up the database**
+   - Use scripts in `greenbook/scripts/` to seed or update the database as needed.
 
----
+5. **Run the app**
+   ```bash
+   flask run
+   ```
+   The app will be available at [http://localhost:5000](http://localhost:5000)
 
-For questions or contributions, please open an issue or pull request! 
+## Contributing
+- Please open issues or pull requests for suggestions, bug fixes, or new features.
+- All code should follow the existing style and design guidelines.
+
+## License
+MIT License 
