@@ -175,4 +175,309 @@ tr:hover {
   .main-container {
     padding: 0 0.5rem;
   }
+}
+
+/* --- Tournament Billboard Styles --- */
+.billboard {
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+  color: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 0;
+  box-sizing: border-box;
+}
+.billboard-main-info {
+  background: none;
+  border-radius: 12px;
+  padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.15rem;
+  min-height: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+.billboard-title-box {
+  background: rgba(255,255,255,0.13);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: 0.3rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.billboard-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+.billboard-info-box {
+  background: rgba(255,255,255,0.13);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: 0.3rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  line-height: 1.32;
+  display: flex;
+  gap: 2rem;
+}
+.billboard-info-details {
+  font-size: inherit;
+  line-height: inherit;
+  margin-bottom: 0;
+}
+.billboard-info-flex {
+  display: flex;
+  gap: 2rem;
+}
+.billboard-weather {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+.billboard-weather-forecast, .billboard-betting {
+  background: rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 1.3rem 1.5rem 1.1rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.billboard-weather-forecast {
+  flex: 1 1 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.billboard-betting {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 0;
+  margin-bottom: 0;
+}
+.billboard-countdown {
+  font-size: 0.95rem;
+  font-weight: bold;
+  text-align: center;
+  background: rgba(255,255,255,0.13);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  margin: 0;
+}
+.billboard-rounds {
+  display: flex;
+  width: 100%;
+  gap: 0.4rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.billboard-round {
+  background: rgba(255,255,255,0.13);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: normal;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.billboard-round-label {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+.billboard-round-time {
+  font-size: 1em;
+}
+.billboard-weather-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.3rem 0;
+  opacity: 0.9;
+  align-self: flex-start;
+}
+.billboard-weather-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  width: 100%;
+}
+.billboard-weather-day {
+  text-align: center;
+  background: rgba(255,255,255,0.15);
+  padding: 0.7rem;
+  border-radius: 6px;
+  min-width: 0;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.billboard-weather-round {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+.billboard-weather-icon {
+  font-size: 1.3rem;
+  margin-bottom: 0.2rem;
+}
+.billboard-weather-temp {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.1rem;
+}
+.billboard-weather-detail {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+.billboard-betting-title {
+  font-size: 1.1rem;
+  margin: 0 0 0.1rem 0;
+  opacity: 0.9;
+}
+.billboard-betting-icon {
+  font-size: 1.3rem;
+  text-align: center;
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .billboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.2rem;
+    padding: 1.2rem;
+  }
+  .billboard-main-info, .billboard-weather-forecast, .billboard-betting {
+    padding: 1rem 0.7rem;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .billboard {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 1rem;
+    padding: 0.7rem;
+  }
+  .billboard-main-info, .billboard-weather-forecast, .billboard-betting {
+    padding: 0.7rem 0.3rem;
+    border-radius: 8px;
+  }
+}
+
+.main-container > .billboard:first-child {
+  min-height: 18rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.billboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+.billboard-right {
+  height: 100%;
+}
+.billboard-right > .billboard-card {
+  height: 100%;
+}
+.billboard-left > .billboard-card:nth-child(1) {
+  flex: 1;
+}
+.billboard-left > .billboard-card:nth-child(2) {
+  flex: 0.5;
+}
+.billboard-left > .billboard-card:nth-child(3) {
+  flex: 1.5;
+}
+.billboard-left > .billboard-card:nth-child(4) {
+  flex: 1;
+}
+
+.billboard-card {
+  background: rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(23,74,42,0.08);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.main-container > .billboard:first-child .billboard-card {
+  grid-column: 1 / -1;
+  width: auto;
+}
+
+.card-center {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.card-top-left {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
+}
+
+.card-bottom-left-placeholder {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.billboard-card-tall-split {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 0.5rem;
+}
+.billboard-card-half {
+  flex: 1;
+  background: rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 0.5rem;
+  box-shadow: 0 2px 8px rgba(23,74,42,0.08);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.card-center-vertical {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.card-center-horizontal-top {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
 } 
