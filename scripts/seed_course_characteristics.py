@@ -89,10 +89,11 @@ def main():
         group = get_climate_group(location)
         env = CLIMATE_GROUPS[group]
         # Environmental
-        avg_temperature = env['avg_temp']
-        humidity_level = env['humidity']
+        temp_factor = env['avg_temp']
+        humidity_factor = env['humidity']
         wind_factor = env['wind']
-        rain_probability = env['rain_prob']
+        rain_factor = env['rain_prob']
+        cloud_factor = 0
         elevation_factor = env['elevation']
         # Static
         design_strategy = rand(0.2, 0.9)
@@ -107,13 +108,13 @@ def main():
         # Insert or replace
         cursor.execute('''
             INSERT OR REPLACE INTO course_characteristics (
-                course_id, avg_temperature, humidity_level, wind_factor, rain_probability,
+                course_id, temp_factor, humidity_factor, wind_factor, rain_factor, cloud_factor,
                 design_strategy, narrowness_factor, hazard_density, green_speed,
                 turf_firmness, rough_length, prestige_level, crowd_factor,
                 elevation_factor, terrain_difficulty
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
-            course_id, avg_temperature, humidity_level, wind_factor, rain_probability,
+            course_id, temp_factor, humidity_factor, wind_factor, rain_factor, cloud_factor,
             design_strategy, narrowness_factor, hazard_density, green_speed,
             turf_firmness, rough_length, prestige_level, crowd_factor,
             elevation_factor, terrain_difficulty

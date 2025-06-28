@@ -5,6 +5,9 @@ from datetime import datetime, timedelta
 import sys
 sys.path.append(os.path.dirname(__file__))
 from scripts.generate_tournament_field import get_tournament_field
+import pytz
+import random
+import math
 
 app = Flask(__name__)
 
@@ -246,10 +249,12 @@ def schedule():
 
     for t in tournaments:
         t['course_name'] = courses.get(t['course_id'], 'Unknown')
+        print(f"DEBUG: tournament['start_date'] = {t['start_date']} (type: {type(t['start_date'])})")
         try:
             dt = datetime.strptime(t['start_date'], '%Y-%m-%d')
-            t['start_date_formatted'] = dt.strftime('%B %-d, %Y')
-        except Exception:
+            t['start_date_formatted'] = dt.strftime('%B %d, %Y').replace(' 0', ' ')
+        except Exception as e:
+            print(f"DEBUG: Exception in date formatting: {e}")
             t['start_date_formatted'] = t['start_date']
         # Format round times
         t['round_1_start_fmt'] = format_ampm(t['round_1_start'])
@@ -258,6 +263,19 @@ def schedule():
         t['round_4_start_fmt'] = format_ampm(t['round_4_start'])
 
     return render_template('schedule.html', tournaments=tournaments)
+
+def get_local_round_time(start_date, round_time_str, course_timezone):
+    """Convert round time to local timezone"""
+    try:
+        from zoneinfo import ZoneInfo  # Python 3.9+
+        tz = ZoneInfo(course_timezone)
+    except ImportError:
+        import pytz
+        tz = pytz.timezone(course_timezone)
+    
+    dt_naive = datetime.strptime(f"{start_date} {round_time_str}", '%Y-%m-%d %H:%M')
+    dt_local = tz.localize(dt_naive)
+    return dt_local
 
 @app.route('/tournament/<int:tournament_id>')
 def tournament_detail(tournament_id):
@@ -286,6 +304,22 @@ def tournament_detail(tournament_id):
     
     tournament = dict(tournament)
     
+    # Fetch course info from courses DB
+    cconn = sqlite3.connect(courses_db_path)
+    cconn.row_factory = sqlite3.Row
+    ccur = cconn.cursor()
+    ccur.execute('SELECT latitude, longitude, elevation FROM courses WHERE id = ?', (tournament['course_id'],))
+    course = ccur.fetchone()
+    cconn.close()
+    if course:
+        tournament['latitude'] = course['latitude']
+        tournament['longitude'] = course['longitude']
+        tournament['elevation'] = course['elevation']
+    else:
+        tournament['latitude'] = None
+        tournament['longitude'] = None
+        tournament['elevation'] = None
+
     # Map tournament_type to user-friendly string
     type_map = {
         'regular': 'Standard Tour Event',
@@ -294,17 +328,22 @@ def tournament_detail(tournament_id):
         'major': 'Major Championship',
     }
     tournament['type_display'] = type_map.get(tournament['tournament_type'], tournament['tournament_type'].title())
+
+    # Format purse amount for display
+    tournament['purse_amount_formatted'] = "{:,}".format(tournament.get('purse_amount', 0))
     
     # Format dates and times
+    print(f"DEBUG: tournament['start_date'] = {tournament['start_date']} (type: {type(tournament['start_date'])})")
     try:
         dt = datetime.strptime(tournament['start_date'], '%Y-%m-%d')
-        tournament['start_date_formatted'] = dt.strftime('%B %-d, %Y')
-    except Exception:
+        tournament['start_date_formatted'] = dt.strftime('%B %d, %Y').replace(' 0', ' ')
+    except Exception as e:
+        print(f"DEBUG: Exception in date formatting: {e}")
         tournament['start_date_formatted'] = tournament['start_date']
 
     # Compute timezone-aware ISO string for Boston (America/New_York)
     try:
-        from datetime import datetime
+        # from datetime import datetime  # <-- REMOVE THIS LINE
         try:
             from zoneinfo import ZoneInfo  # Python 3.9+
             ny_tz = ZoneInfo('America/New_York')
@@ -337,13 +376,18 @@ def tournament_detail(tournament_id):
     tournament['round_3_start_fmt'] = format_ampm(tournament['round_3_start'])
     tournament['round_4_start_fmt'] = format_ampm(tournament['round_4_start'])
     
-    # Get course name
+    # Get course name and location
     cconn = sqlite3.connect(courses_db_path)
     cconn.row_factory = sqlite3.Row
     ccur = cconn.cursor()
-    ccur.execute('SELECT name FROM courses WHERE id = ?', (tournament['course_id'],))
+    ccur.execute('SELECT name, location FROM courses WHERE id = ?', (tournament['course_id'],))
     course = ccur.fetchone()
-    tournament['course_name'] = course['name'] if course else 'Unknown'
+    if course:
+        tournament['course_name'] = course['name']
+        tournament['location'] = course['location']
+    else:
+        tournament['course_name'] = 'Unknown'
+        tournament['location'] = ''
     cconn.close()
     
     # PHASE LOGIC: Provisional vs Finalized
@@ -393,8 +437,114 @@ def tournament_detail(tournament_id):
     row = tcur.fetchone()
     winner_points = row['tour_points'] if row else 0
     tconn.close()
-    cut_line = 'Top 65 plus ties'
-    return render_template('tournament_detail.html', tournament=tournament, groups=sorted_groups if not show_provisional else [], provisional_qualifiers=provisional_qualifiers, qualifier_columns=qualifier_columns if show_provisional else None, country_to_flag_iso=country_to_flag_iso, winner_points=winner_points, cut_line=cut_line, show_provisional=show_provisional)
+    # Use cutline from DB if present, otherwise use logic
+    cut_line = tournament.get('cutline')
+    if not cut_line or not cut_line.strip():
+        if tournament['tournament_type'] == 'major':
+            cut_line = 'Top 50'
+        elif tournament['tournament_type'] in ('regular', 'open', 'invitational'):
+            cut_line = 'Top 65'
+        else:
+            cut_line = 'Top 65'  # Default fallback
+    print(f"DEBUG: tournament['start_date_formatted'] = {tournament['start_date_formatted']}")
+
+    # Generate weather forecast
+    weather_forecast = generate_weather_forecast(tournament['course_id'], tournament['start_date'], 4)
+
+    return render_template('tournament_detail.html', tournament=tournament, groups=sorted_groups if not show_provisional else [], provisional_qualifiers=provisional_qualifiers, qualifier_columns=qualifier_columns if show_provisional else None, country_to_flag_iso=country_to_flag_iso, winner_points=winner_points, cut_line=cut_line, show_provisional=show_provisional, weather_forecast=weather_forecast)
+
+def generate_weather_forecast(course_id, start_date, num_rounds=4):
+    """
+    Generate realistic weather forecast for tournament rounds based on course monthly averages.
+    If the tournament is more than 1 week away, use monthly averages with small unique random variations for each round (static per page load).
+    """
+    try:
+        courses_db_path = os.path.join(os.path.dirname(__file__), 'data/golf_courses.db')
+        conn = sqlite3.connect(courses_db_path)
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        
+        weather_forecast = []
+        start_dt = datetime.strptime(start_date, '%Y-%m-%d')
+        today = datetime.now()
+        days_until_start = (start_dt.date() - today.date()).days
+        
+        for round_num in range(num_rounds):
+            round_date = start_dt + timedelta(days=round_num)
+            month = round_date.month
+            cur.execute('''
+                SELECT cloud_cover, wind_speed, rain_probability, humidity, 
+                       min_temp, mean_temp, max_temp
+                FROM course_monthly_weather 
+                WHERE course_id = ? AND month = ?
+            ''', (course_id, month))
+            row = cur.fetchone()
+            if not row:
+                weather_forecast.append({
+                    'temp': 70,
+                    'humidity': 50,
+                    'wind': 10,
+                    'rain_prob': 20,
+                    'cloud_cover': 30,
+                    'icon': '☀️'
+                })
+                continue
+            if days_until_start > 7:
+                # Iterative static forecast: round 1 = monthly avg, rounds 2-4 drift from previous round
+                if round_num == 0:
+                    temp = max(32, min(100, row['mean_temp']))
+                    wind = max(0, row['wind_speed'])
+                    rain_prob = max(0, min(100, row['rain_probability']))
+                    humidity = max(20, min(100, row['humidity']))
+                    cloud_cover = max(0, min(100, row['cloud_cover']))
+                else:
+                    prev = weather_forecast[-1]
+                    temp = max(32, min(100, prev['temp'] + random.uniform(-2, 2)))
+                    wind = max(0, prev['wind'] + random.uniform(-1, 1))
+                    rain_prob = max(0, min(100, prev['rain_prob'] + random.uniform(-3, 3)))
+                    humidity = max(20, min(100, prev['humidity'] + random.uniform(-3, 3)))
+                    cloud_cover = max(0, min(100, prev['cloud_cover'] + random.uniform(-3, 3)))
+            else:
+                # Dynamic forecast: use larger variance as before
+                base_temp = row['mean_temp']
+                temp = max(32, min(100, base_temp + random.uniform(-5, 5)))
+                base_wind = row['wind_speed']
+                wind = max(0, base_wind + random.uniform(-2, 2))
+                base_rain = row['rain_probability']
+                rain_prob = max(0, min(100, base_rain + random.uniform(-10, 10)))
+                base_humidity = row['humidity']
+                humidity = max(20, min(100, base_humidity + random.uniform(-10, 10)))
+                base_cloud = row['cloud_cover']
+                cloud_cover = max(0, min(100, base_cloud + random.uniform(-15, 15)))
+            # Determine weather icon
+            if rain_prob > 60:
+                icon = '🌧️'
+            elif rain_prob > 30:
+                icon = '🌦️'
+            elif cloud_cover > 70:
+                icon = '☁️'
+            elif cloud_cover > 40:
+                icon = '⛅'
+            else:
+                icon = '☀️'
+            weather_forecast.append({
+                'temp': round(temp, 1),
+                'humidity': round(humidity, 0),
+                'wind': round(wind, 1),
+                'rain_prob': round(rain_prob, 0),
+                'cloud_cover': round(cloud_cover, 0),
+                'icon': icon
+            })
+        conn.close()
+        return weather_forecast
+    except Exception as e:
+        print(f"Error generating weather forecast: {e}")
+        return [
+            {'temp': 70, 'humidity': 50, 'wind': 10, 'rain_prob': 20, 'cloud_cover': 30, 'icon': '☀️'},
+            {'temp': 68, 'humidity': 55, 'wind': 12, 'rain_prob': 25, 'cloud_cover': 40, 'icon': '⛅'},
+            {'temp': 65, 'humidity': 75, 'wind': 15, 'rain_prob': 60, 'cloud_cover': 80, 'icon': '🌧️'},
+            {'temp': 72, 'humidity': 50, 'wind': 10, 'rain_prob': 15, 'cloud_cover': 25, 'icon': '☀️'}
+        ]
 
 if __name__ == '__main__':
     app.run(debug=True) 

@@ -371,7 +371,7 @@ def insert_course_to_db(course, characteristics, holes):
         course_id, avg_temperature, humidity_level, wind_factor, rain_probability, design_strategy, course_length, narrowness_factor, hazard_density, green_speed, turf_firmness, rough_length, prestige_level, course_age, crowd_factor, elevation_factor, terrain_difficulty
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
         (course_id,
-         characteristics['avg_temperature'], characteristics['humidity_level'], characteristics['wind_factor'], characteristics['rain_probability'],
+         characteristics['temp_factor'], characteristics['humidity_factor'], characteristics['wind_factor'], characteristics['rain_factor'],
          characteristics['design_strategy'], characteristics['course_length'], characteristics['narrowness_factor'], characteristics['hazard_density'],
          characteristics['green_speed'], characteristics['turf_firmness'], characteristics['rough_length'], characteristics['prestige_level'],
          characteristics['course_age'], characteristics['crowd_factor'], characteristics['elevation_factor'], characteristics['terrain_difficulty'])
@@ -602,10 +602,11 @@ def generate_course_characteristics():
     Generate realistic course characteristics using the correct keys for the DB schema.
     """
     characteristics = {
-        'avg_temperature': round(random.uniform(55, 90), 1),
-        'humidity_level': round(random.uniform(0.2, 0.9), 2),
+        'temp_factor': round(random.uniform(55, 90), 1),
+        'humidity_factor': round(random.uniform(0.2, 0.9), 2),
         'wind_factor': round(random.uniform(0.1, 0.7), 2),
-        'rain_probability': round(random.uniform(0.05, 0.6), 2),
+        'rain_factor': round(random.uniform(0.05, 0.6), 2),
+        'cloud_factor': 0,
         'design_strategy': round(random.uniform(0.2, 0.9), 2),
         'course_length': random.randint(6900, 7500),
         'narrowness_factor': round(random.uniform(0.2, 0.9), 2),
@@ -1025,10 +1026,10 @@ def main():
     print(f"Name:    {course_name}")
     print(f"Location: {location}")
     print(f"Prestige: {prestige}")
-    print(f"Avg Temperature     : {characteristics['avg_temperature']}\u00b0F")
-    print(f"Humidity Level      : {characteristics['humidity_level']}")
+    print(f"Avg Temperature     : {characteristics['temp_factor']}\u00b0F")
+    print(f"Humidity Level      : {characteristics['humidity_factor']}")
     print(f"Wind Factor         : {characteristics['wind_factor']}")
-    print(f"Rain Probability    : {characteristics['rain_probability']}")
+    print(f"Rain Probability    : {characteristics['rain_factor']}")
     print(f"Design Strategy     : {characteristics['design_strategy']}")
     print(f"Course Length       : {characteristics['course_length']}")
     print(f"Narrowness Factor   : {characteristics['narrowness_factor']}")
