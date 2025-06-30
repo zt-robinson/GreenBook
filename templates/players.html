@@ -1,25 +1,24 @@
 {% extends "base.html" %}
 
-{% block title %}Players - Golf Universe{% endblock %}
+{% block title %}Tour Standings - Golf Universe{% endblock %}
 
 {% block content %}
 <div class="main-container">
-    <h1 class="page-title">Golf Players</h1>
-    <p class="page-subtitle">Professional golfers with detailed statistics and performance metrics</p>
+    <h1 class="page-title">Tour Standings</h1>
+    <p class="page-subtitle">Current season standings with tour points, earnings, and performance statistics</p>
 
     <div class="table-container">
         <table style="width: 100%; table-layout: fixed;">
             <thead>
                 <tr>
                     <th style="width: 8%; text-align: center;">TOUR RANK</th>
-                    <th style="width: 36%; text-align: left;">NAME</th>
+                    <th style="width: 40%; text-align: left;">NAME</th>
                     <th style="width: 8%; text-align: center;">EVENTS</th>
                     <th style="width: 8%; text-align: center;">TOUR POINTS</th>
                     <th style="width: 8%; text-align: center;">POINTS BACK</th>
                     <th style="width: 8%; text-align: center;">WINS</th>
                     <th style="width: 8%; text-align: center;">TOP 10S</th>
-                    <th style="width: 8%; text-align: center;">WINNINGS</th>
-                    <th style="width: 8%; text-align: center;">WORLD</th>
+                    <th style="width: 12%; text-align: center;">WINNINGS</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +38,9 @@
                     <td style="text-align: center;">{{ player['wins'] }}</td>
                     <td style="text-align: center;">{{ player['top_10s'] }}</td>
                     <td style="text-align: center;">${{ '{:,.2f}'.format(player['season_money']) }}</td>
-                    <td style="text-align: center;">{{ player['world_rank'] }}</td>
                 </tr>
                 <tr class="player-details-row" id="details-{{ player['id'] }}" style="display: none;">
-                    <td colspan="9">
+                    <td colspan="8">
                         <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px; margin: 0.5rem 0;">
                             <h4 style="margin: 0 0 1rem 0; color: #495057;">Player Details</h4>
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
@@ -88,7 +86,7 @@
     </div>
 
     <div style="text-align: center; margin-top: 2rem; color: #666;">
-        <p>Showing {{ players|length }} players in the database</p>
+        <p>Showing {{ players|length }} players in the current standings</p>
         <p style="font-size: 0.9rem; margin-top: 0.5rem;">Click on any player row to view detailed statistics</p>
     </div>
 
