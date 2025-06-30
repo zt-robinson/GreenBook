@@ -14,149 +14,73 @@
 {% block content %}
 <div class="main-container">
     <!-- RESTORED BILLBOARD LAYOUT -->
-    <div class="billboard" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; align-items: stretch;">
-        <div class="billboard-left" style="display: flex; flex-direction: column; gap: 0.7rem;">
-            <div class="billboard-card" style="position: relative; display: flex; align-items: center; justify-content: center; height: 100%; padding: 0.5rem;">
-                <span style="font-weight: bold; font-size: 1.3rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; text-align: center;">{{ tournament['name'] }}</span>
-            </div>
-            <div class="billboard-card" style="position: relative; display: flex; align-items: center; justify-content: center; height: 100%; padding: 0.5rem;">
-                <span class="card-bottom-left-placeholder" style="font-weight: normal; font-size: 0.85rem; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; width: 100%;">{{ tournament['start_date_formatted'] }} | {{ tournament['course_name'] }}{% if tournament['location'] %} | {{ tournament['location'] }}{% elif tournament['city'] and tournament['state'] %} | {{ tournament['city'] }}, {{ tournament['state'] }}{% endif %}</span>
-            </div>
-            <div class="billboard-card" style="position: relative; padding: 0.5rem; display: flex; align-items: center; justify-content: center; height: 100%;">
-                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 0.7rem; color: #fff;">Purse</div>
-                        <div style="font-size: 1.1rem; color: #fff; font-weight: 500;">${{ tournament['purse_amount_formatted'] }}</div>
-                    </div>
-                    <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 0.7rem; color: #fff;">Points</div>
-                        <div style="font-size: 1.1rem; color: #fff; font-weight: 500;">{{ winner_points }}</div>
-                    </div>
-                    <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 0.7rem; color: #fff;">Field</div>
-                        <div style="font-size: 1.1rem; color: #fff; font-weight: 500;">{{ tournament['field_size'] }}</div>
-                    </div>
-                    <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
-                        <div style="font-size: 0.7rem; color: #fff;">Cut</div>
-                        <div style="font-size: 1.1rem; color: #fff; font-weight: 500;">{{ cut_line }}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="billboard-card" style="position: relative; padding: 0.5rem; display: flex; align-items: center; justify-content: center; height: 100%;">
-                <span id="tournament-countdown" style="font-size: 1rem; color: #fff; text-align: center;"></span>
-            </div>
+    <div class="billboard" style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto auto; gap: 0.8rem; align-items: stretch;">
+        <!-- Card 1: Title -->
+        <div class="billboard-card" style="grid-column: 1; grid-row: 1; position: relative; display: flex; align-items: center; justify-content: center; padding: 0.0rem 0.2rem; min-width: 350px;">
+            <span style="font-weight: bold; font-size: 2.0rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; text-align: center;">{{ tournament['name'] }}</span>
         </div>
-        <div class="billboard-right" style="display: flex; flex-direction: column; height: 100%;">
-            <div class="billboard-card" style="padding: 0.5rem; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+        <!-- Card 5: Weather (top right) -->
+        <div class="billboard-card" style="grid-column: 2; grid-row: 1 / span 3; padding: 0.5rem 0.7rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 350px; height: 100%; align-self: center;">
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
                 <div style="text-align: center; margin-bottom: 0.5rem;">
                     <span style="font-weight: bold; font-size: 1.1rem; color: #fff;">Weather Forecast</span>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: stretch; height: 100%;">
+                <div style="display: flex; justify-content: center; align-items: flex-start; gap: 0.5rem;">
                     {% for i in range(4) %}
-                    <div style="text-align: center; flex: 1 1 0; min-width: 0; padding: 0.5rem 0.2rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-start;">
+                    <div style="background: #4e7c5b; padding: 0.3rem 0.3rem; border-radius: 10px; margin: 0 0.05rem; box-shadow: 0 1px 4px rgba(30,60,114,0.04); min-width: 90px; display: flex; flex-direction: column; align-items: center; position: relative;">
                         <div style="font-size: 0.8rem; color: #fff; font-weight: bold; margin-bottom: 0.2rem;">Round {{ i+1 }}</div>
-                        <div style="display: flex; flex-direction: column; gap: 0.15em; align-items: center;">
-                            <span title="Temperature" style="font-size: 0.95rem;">🌡️ {{ weather_forecast[i]['temp']|int if weather_forecast and weather_forecast[i] else '70' }}°F</span>
-                            <span title="Wind" style="font-size: 0.95rem;">💨 {{ weather_forecast[i]['wind']|round|int if weather_forecast and weather_forecast[i] else '10' }} mph</span>
-                            <span title="Rain" style="font-size: 0.95rem;">🌧️ {{ ((weather_forecast[i]['rain_prob'] + 4) // 5 * 5)|int if weather_forecast and weather_forecast[i] else '20' }}%</span>
-                            <span title="Humidity" style="font-size: 0.95rem;">💧 {{ ((weather_forecast[i]['humidity'] + 4) // 5 * 5)|int if weather_forecast and weather_forecast[i] else '50' }}%</span>
+                        <div style="font-size: 0.8rem; color: #fff; margin-bottom: 0.2rem;">
+                            {% if i == 0 %}{{ tournament['round_1_start_fmt'] }}{% elif i == 1 %}{{ tournament['round_2_start_fmt'] }}{% elif i == 2 %}{{ tournament['round_3_start_fmt'] }}{% else %}{{ tournament['round_4_start_fmt'] }}{% endif %} EST
+                        </div>
+                        <div class="weather-main-icon" style="font-size: 2.0rem; margin-bottom: 0.2rem; cursor: pointer;">{{ weather_forecast[i]['icon'] if weather_forecast and weather_forecast[i] else '☀️' }}</div>
+                        <div style="font-size: 0.9rem; color: #fff;">🌡️ {{ weather_forecast[i]['temp']|int if weather_forecast and weather_forecast[i] else '70' }}°F</div>
+                        <div class="weather-tooltip" style="display: none; position: absolute; left: 50%; top: 110%; transform: translateX(-50%); background: #234; color: #fff; border-radius: 8px; padding: 0.5em 1em; font-size: 0.8rem; z-index: 10; box-shadow: 0 2px 8px rgba(0,0,0,0.18); min-width: 120px;">
+                            <div style="margin-bottom: 0.2em;"><span style='font-size:1em;'>💨</span> {{ weather_forecast[i]['wind']|round|int if weather_forecast and weather_forecast[i] else '10' }} mph</div>
+                            <div style="margin-bottom: 0.2em;"><span style='font-size:1em;'>🌧️</span> {{ ((weather_forecast[i]['rain_prob'] + 4) // 5 * 5)|int if weather_forecast and weather_forecast[i] else '20' }}%</div>
+                            <div><span style='font-size:1em;'>💧</span> {{ ((weather_forecast[i]['humidity'] + 4) // 5 * 5)|int if weather_forecast and weather_forecast[i] else '50' }}%</div>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
+        <!-- Card 2: Date/Course -->
+        <div class="billboard-card" style="grid-column: 1; grid-row: 2; position: relative; display: flex; align-items: center; justify-content: center; padding: 0.8rem 0.7rem; min-width: 350px;">
+            <span class="card-bottom-left-placeholder" style="font-weight: normal; font-size: 0.9rem; text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; width: 100%;">{{ tournament['start_date_formatted'] }} | {{ tournament['course_name'] }}{% if tournament['location'] %} | {{ tournament['location'] }}{% elif tournament['city'] and tournament['state'] %} | {{ tournament['city'] }}, {{ tournament['state'] }}{% endif %}</span>
+        </div>
+        <!-- Card 3: Stats -->
+        <div class="billboard-card" style="grid-column: 1; grid-row: 3; position: relative; padding: 0.5rem 2rem; display: flex; align-items: center; justify-content: center; min-width: 350px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="font-size: 0.75rem; color: #fff;">Total Event Purse</div>
+                    <div style="font-size: 1.4rem; color: #fff; font-weight: 500;">${{ tournament['purse_amount_formatted'] }}</div>
+                </div>
+                <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="font-size: 0.75rem; color: #fff;">Points to Winner</div>
+                    <div style="font-size: 1.4rem; color: #fff; font-weight: 500;">{{ winner_points }}</div>
+                </div>
+                <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="font-size: 0.75rem; color: #fff;">Tournament Field</div>
+                    <div style="font-size: 1.4rem; color: #fff; font-weight: 500;">{{ tournament['field_size'] }}</div>
+                </div>
+                <div style="text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="font-size: 0.75rem; color: #fff;">Cut Line</div>
+                    <div style="font-size: 1.4rem; color: #fff; font-weight: 500;">{{ cut_line }}</div>
+                </div>
+            </div>
+        </div>
+        <!-- Card 4: Countdown (stretched across bottom) -->
+        <div class="billboard-card" style="grid-column: 1 / span 2; grid-row: 4; position: relative; padding: 1.5rem 0.7rem; display: flex; align-items: center; justify-content: center; width: 100%; min-width: 700px;">
+            <span id="tournament-countdown" style="font-size: 1rem; color: #fff; text-align: center;"></span>
+        </div>
     </div>
     
-    <!-- Tournament Billboard (COMMENTED OUT FOR NOW) -->
-    <!--
-    <div class="billboard">
-        <!-- LEFT SIDE: Main Info Container (spans full height) -->
-        <div id="main-info-box" class="billboard-main-info">
-            <div class="billboard-title-box">
-                <h1 class="billboard-title">{{ tournament['name'] }}</h1>
-            </div>
-            <div class="billboard-info-box billboard-info-details billboard-info-flex">
-                <div class="billboard-info-col">
-                    <div><strong>Date:</strong> {{ tournament['start_date_formatted'] }}</div>
-                    <div><strong>Course:</strong> {{ tournament['course_name'] }}</div>
-                    <div><strong>Field Size:</strong> {{ tournament['field_size'] }} players</div>
-                    <div><strong>Type:</strong> {{ tournament['type_display'] }}</div>
-                </div>
-                <div class="billboard-info-col">
-                    <div><strong>Purse:</strong> ${{ tournament['purse_amount_formatted'] }}</div>
-                    <div><strong>Tour Points to Winner:</strong> {{ winner_points }}</div>
-                    <div><strong>Cut Line:</strong> {{ cut_line }}</div>
-                </div>
-            </div>
-            <div id="countdown" class="billboard-countdown"></div>
-            <div class="billboard-rounds">
-                <div class="billboard-round">
-                    <span class="billboard-round-label">Round 1</span>
-                    <span class="billboard-round-time">{{ tournament['round_1_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
-                </div>
-                <div class="billboard-round">
-                    <span class="billboard-round-label">Round 2</span>
-                    <span class="billboard-round-time">{{ tournament['round_2_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
-                </div>
-                <div class="billboard-round">
-                    <span class="billboard-round-label">Round 3</span>
-                    <span class="billboard-round-time">{{ tournament['round_3_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
-                </div>
-                <div class="billboard-round">
-                    <span class="billboard-round-label">Round 4</span>
-                    <span class="billboard-round-time">{{ tournament['round_4_start_fmt'].replace('a',' am').replace('p',' pm') }}</span>
-                </div>
-            </div>
-        </div>
-        <!-- TOP RIGHT: Weather Container -->
-        <div id="weather-betting-col" class="billboard-weather">
-            <div class="billboard-weather-forecast">
-                <h3 class="billboard-weather-title">Weather Forecast</h3>
-                <div class="billboard-weather-grid">
-                    <div class="billboard-weather-day">
-                        <div class="billboard-weather-round">Round 1</div>
-                        <div class="billboard-weather-icon">☀️</div>
-                        <div class="billboard-weather-temp">72°F</div>
-                        <div class="billboard-weather-detail">Humidity: 45%</div>
-                        <div class="billboard-weather-detail">Rain: 10%</div>
-                    </div>
-                    <div class="billboard-weather-day">
-                        <div class="billboard-weather-round">Round 2</div>
-                        <div class="billboard-weather-icon">⛅</div>
-                        <div class="billboard-weather-temp">68°F</div>
-                        <div class="billboard-weather-detail">Humidity: 55%</div>
-                        <div class="billboard-weather-detail">Rain: 25%</div>
-                    </div>
-                    <div class="billboard-weather-day">
-                        <div class="billboard-weather-round">Round 3</div>
-                        <div class="billboard-weather-icon">🌧️</div>
-                        <div class="billboard-weather-temp">65°F</div>
-                        <div class="billboard-weather-detail">Humidity: 75%</div>
-                        <div class="billboard-weather-detail">Rain: 60%</div>
-                    </div>
-                    <div class="billboard-weather-day">
-                        <div class="billboard-weather-round">Round 4</div>
-                        <div class="billboard-weather-icon">☀️</div>
-                        <div class="billboard-weather-temp">70°F</div>
-                        <div class="billboard-weather-detail">Humidity: 50%</div>
-                        <div class="billboard-weather-detail">Rain: 15%</div>
-                    </div>
-                </div>
-            </div>
-            <div class="billboard-betting">
-                <h3 class="billboard-betting-title">Betting Favorites</h3>
-                <div class="billboard-betting-icon">🎯</div>
-            </div>
-        </div>
-    </div>
-    -->
-
+    <!-- Remove all holdover data and commented-out code here -->
     <style>
         @media (max-width: 768px) {
             .billboard {
                 grid-template-columns: 1fr !important;
-                grid-template-rows: auto auto auto !important;
+                grid-template-rows: auto auto auto auto !important;
             }
             
             .billboard > div:nth-child(1) {
@@ -173,6 +97,11 @@
                 grid-column: 1 !important;
                 grid-row: 3 !important;
             }
+            
+            .billboard > div:nth-child(4) {
+                grid-column: 1 !important;
+                grid-row: 4 !important;
+            }
         }
         .main-info-table {
             font-size: 12px;
@@ -187,12 +116,9 @@
 
     <!-- Leaderboard/Field (Pre-Tournament) -->
     <div style="margin-bottom: 2rem;">
-        <h2 class="page-title">Tournament Field</h2>
         {% if show_provisional %}
-        <div style="background: #f5f6fa; border-radius: 8px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; color: #1e3c72; font-weight: bold;">
-            Field not yet finalized. Additional players may qualify as more events are played.
-        </div>
-        <div style="max-width: 1100px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 2px 12px rgba(30,60,114,0.07); padding: 1.2rem 1.5rem; display: block;">
+        <div style="max-width: 1100px; margin: 0 auto; background: white; border-radius: 10px; box-shadow: 0 2px 12px rgba(30,60,114,0.07); padding: 0.3rem 1.5rem 1.2rem 1.5rem; display: block; margin-top: 0.1rem;">
+            <h2 class="page-title" style="font-size: 1.1rem; font-weight: bold; margin-top: 0; margin-bottom: 0.3rem;">Provisional Field</h2>
             <div class="provisional-columns" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem; width: 100%; max-width: 100%;">
                 {% for column in qualifier_columns %}
                 <table class="main-info-table" style="width: 100%; background: transparent; border-radius: 7px; border-collapse: separate; border-spacing: 0; margin: 0;">
@@ -202,7 +128,6 @@
                             <th style="text-align: center; padding: 0.13em 0.2em; min-width: 2.5em; font-weight: 700;">Rank</th>
                             <th style="text-align: center; padding: 0.13em 0.2em; min-width: 2.5em; font-weight: 700;">Events</th>
                             <th style="text-align: center; padding: 0.13em 0.2em; min-width: 7.5em; font-weight: 700;">Winnings</th>
-                            <th style="text-align: center; padding: 0.13em 0.2em; min-width: 2.5em; font-weight: 700;">World</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -218,7 +143,6 @@
                             <td style="text-align: center; padding: 0.09em 0.2em; min-width: 2.5em;">{{ player['tour_rank'] or '-' }}</td>
                             <td style="text-align: center; padding: 0.09em 0.2em; min-width: 2.5em;">{{ player['events'] or '-' }}</td>
                             <td style="text-align: center; padding: 0.09em 0.2em; min-width: 7.5em;">${{ '{:,.0f}'.format(player['season_money'] or 0) }}</td>
-                            <td style="text-align: center; padding: 0.09em 0.2em; min-width: 2.5em;">{{ player['world_rank'] or '-' }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -250,23 +174,24 @@
         </div>
         {% endif %}
     </div>
-
-    <!-- Course Information -->
-    <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.2);">
-        <h3 style="color: #2a5298; margin: 0 0 1rem 0;">Course Information</h3>
-        <p style="margin: 0; color: #666;">
-            <strong>{{ tournament['course_name'] }}</strong> - 
-            This championship venue will host the {{ tournament['name'] }}. 
-            Course details and characteristics can be viewed on the 
-            <a href="/courses" style="color: #2a5298;">Courses page</a>.
-        </p>
-    </div>
-
-    <!-- Navigation -->
-    <div style="text-align: center; margin-top: 2rem;">
-        <a href="/schedule" style="display: inline-block; padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #2a5298, #1e3c72); color: white; text-decoration: none; border-radius: 10px; margin: 0 0.5rem;">
-            ← Back to Schedule
-        </a>
-    </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.weather-main-icon').forEach(function(icon) {
+        let tooltipTimeout;
+        icon.addEventListener('mouseenter', function() {
+            tooltipTimeout = setTimeout(function() {
+                var tooltip = icon.parentElement.querySelector('.weather-tooltip');
+                if (tooltip) tooltip.style.display = 'block';
+            }, 200);
+        });
+        icon.addEventListener('mouseleave', function() {
+            clearTimeout(tooltipTimeout);
+            var tooltip = icon.parentElement.querySelector('.weather-tooltip');
+            if (tooltip) tooltip.style.display = 'none';
+        });
+    });
+});
+</script>
 {% endblock %} 
