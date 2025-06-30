@@ -200,27 +200,28 @@ def create_database():
             composure REAL,
             resilience REAL,
             created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-            world_ranking INTEGER
+            world_ranking INTEGER,
+            tour_rank INTEGER
         )
     ''')
     conn.commit()
     conn.close()
     print("✅ Database created successfully")
 
-def save_player_to_db(player_data, world_ranking=None):
+def save_player_to_db(player_data, world_ranking=None, tour_rank=None):
     """Save a player to the database"""
     conn = sqlite3.connect('golf_players.db')
     cursor = conn.cursor()
     
     cursor.execute('''
-        INSERT INTO players (name, age, country, status, career_wins, season_money, driving_power, driving_accuracy, approach_long, approach_short, scrambling, putting, consistency, composure, resilience, world_ranking)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO players (name, age, country, status, career_wins, season_money, driving_power, driving_accuracy, approach_long, approach_short, scrambling, putting, consistency, composure, resilience, world_ranking, tour_rank)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ''', (
         player_data['name'], player_data['age'], player_data['country'], player_data['status'],
         player_data['career_wins'], player_data['season_money'], player_data['driving_power'],
         player_data['driving_accuracy'], player_data['approach_long'], player_data['approach_short'],
         player_data['scrambling'], player_data['putting'], player_data['consistency'],
-        player_data['composure'], player_data['resilience'], world_ranking
+        player_data['composure'], player_data['resilience'], world_ranking, tour_rank
     ))
     
     conn.commit()
@@ -230,7 +231,7 @@ def save_player_to_db(player_data, world_ranking=None):
     print(f"✅ Player saved to database with ID: {player_id}")
     return player_id
 
-def generate_single_player(world_ranking=None):
+def generate_single_player(world_ranking=None, tour_rank=None):
     """Generate a single player with all attributes"""
     country = random.choices(list(COUNTRY_WEIGHTS.keys()), weights=list(COUNTRY_WEIGHTS.values()))[0]
     
@@ -253,7 +254,7 @@ def generate_single_player(world_ranking=None):
         'season_money': player['season_money'],
         **player['skills']
     }
-    player_id = save_player_to_db(player_data, world_ranking=world_ranking)
+    player_id = save_player_to_db(player_data, world_ranking=world_ranking, tour_rank=tour_rank)
     return player_id, player_data
 
 def display_player(player):
@@ -278,15 +279,19 @@ def main():
     print("\nCreating database...")
     create_database()
     print("✅ Database created successfully\n")
-    # Find the next available world ranking
+    # Find the next available world ranking and tour rank
     conn = sqlite3.connect('golf_players.db')
     cur = conn.cursor()
     cur.execute('SELECT MAX(world_ranking) FROM players')
     row = cur.fetchone()
     next_ranking = (row[0] or 0) + 1
+    
+    cur.execute('SELECT MAX(tour_rank) FROM players')
+    row = cur.fetchone()
+    next_tour_rank = (row[0] or 0) + 1
     conn.close()
-    print(f"\nGenerating player {next_ranking}...")
-    player_id, player_data = generate_single_player(world_ranking=next_ranking)
+    print(f"\nGenerating player {next_ranking} (Tour Rank: {next_tour_rank})...")
+    player_id, player_data = generate_single_player(world_ranking=next_ranking, tour_rank=next_tour_rank)
     print(f"Player saved with ID: {player_id}")
 
 if __name__ == "__main__":
