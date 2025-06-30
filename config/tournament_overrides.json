@@ -1,0 +1,451 @@
+{
+  "tournament_overrides": {
+    "The Memorial Tournament": {
+      "event_type": "invitational",
+      "purse_override": 12000000,
+      "field_size_override": 78,
+      "prestige_override": 6.5,
+      "description": "The Memorial with specific field size"
+    },
+    "Arnold Palmer Invitational": {
+      "event_type": "invitational",
+      "purse_override": 12500000,
+      "field_size_override": 120,
+      "prestige_override": 6.0,
+      "description": "Arnold Palmer Invitational with larger field"
+    }
+  },
+  "majors": {
+    "The Sovereign Tournament": {
+      "event_type": "major",
+      "field_size": {
+        "type": "random",
+        "min": 90,
+        "max": 114,
+        "multiple": 3,
+        "description": "Random multiple of 3 between 90 and 114"
+      },
+      "cut_line": {
+        "type": "position",
+        "value": 53,
+        "description": "Top 53 and ties advance to weekend"
+      },
+      "purse_base": {
+        "type": "random",
+        "min": 21000000,
+        "max": 25000000,
+        "round_to": 1000000,
+        "description": "Random amount between $21M and $25M, rounded to nearest $1M"
+      },
+      "prestige": {
+        "type": "fixed",
+        "value": 1.0,
+        "description": "Maximum prestige for major championship (0-1 scale)"
+      },
+      "points_structure": {
+        "winner": 750
+      },
+      "qualification_methods": [
+        "tour_points_standings"
+      ]
+    },
+    "The Royal Open": {
+      "event_type": "major",
+      "field_size": 156,
+      "cut_line": {
+        "type": "position",
+        "value": 70,
+        "description": "Top 70 and ties advance to weekend"
+      },
+      "purse_base": {
+        "type": "random",
+        "min": 21000000,
+        "max": 25000000,
+        "round_to": 1000000,
+        "description": "Random amount between $21M and $25M, rounded to nearest $1M"
+      },
+      "prestige": {
+        "type": "fixed",
+        "value": 1.0,
+        "description": "Maximum prestige for major championship (0-1 scale)"
+      },
+      "points_structure": {
+        "winner": 750
+      },
+      "qualification_methods": [
+        "tour_points_standings"
+      ]
+    },
+    "AGA Championship": {
+      "event_type": "major",
+      "field_size": 156,
+      "cut_line": {
+        "type": "position",
+        "value": 70,
+        "description": "Top 70 and ties advance to weekend"
+      },
+      "purse_base": {
+        "type": "random",
+        "min": 21000000,
+        "max": 25000000,
+        "round_to": 1000000,
+        "description": "Random amount between $21M and $25M, rounded to nearest $1M"
+      },
+      "prestige": {
+        "type": "fixed",
+        "value": 1.0,
+        "description": "Maximum prestige for major championship (0-1 scale)"
+      },
+      "points_structure": {
+        "winner": 750,
+        "runner_up": 500,
+        "top_3": 350,
+        "top_4": 325,
+        "top_5": 300,
+        "top_6": 270,
+        "top_7": 250,
+        "top_8": 225,
+        "top_9": 200,
+        "top_10": 175,
+        "top_11": 150,
+        "top_12": 125,
+        "top_13": 100,
+        "top_14": 75,
+        "top_15": 50,
+        "top_16": 40,
+        "top_17": 35,
+        "top_18": 30,
+        "top_19": 25,
+        "top_20": 20,
+        "top_21": 15,
+        "top_22": 10,
+        "top_23": 8,
+        "top_24": 6,
+        "top_25": 4,
+        "top_26": 3,
+        "top_27": 2.5,
+        "top_28": 2.5,
+        "top_29": 2.5,
+        "top_30": 2.5,
+        "top_31": 2.5,
+        "top_32": 2.5,
+        "top_33": 2.5,
+        "top_34": 2.5,
+        "top_35": 2.5,
+        "top_36": 2.5,
+        "top_37": 2.5,
+        "top_38": 2.5,
+        "top_39": 2.5,
+        "top_40": 2.5,
+        "top_41": 2.5,
+        "top_42": 2.5,
+        "top_43": 2.5,
+        "top_44": 2.5,
+        "top_45": 2.5,
+        "top_46": 2.5,
+        "top_47": 2.5,
+        "top_48": 2.5,
+        "top_49": 2.5,
+        "top_50": 2.5,
+        "top_51": 2.5,
+        "top_52": 2.5,
+        "top_53": 2.5,
+        "top_54": 2.5,
+        "top_55": 2.5,
+        "top_56": 2.5,
+        "top_57": 2.5,
+        "top_58": 2.5,
+        "top_59": 2.5,
+        "top_60": 2.5,
+        "top_61": 2.5,
+        "top_62": 2.5,
+        "top_63": 2.5,
+        "top_64": 2.5,
+        "top_65": 2.5,
+        "top_66": 2.5,
+        "top_67": 2.5,
+        "top_68": 2.5,
+        "top_69": 2.5,
+        "top_70": 2.5,
+        "top_71": 2.5,
+        "top_72": 2.5,
+        "top_73": 2.5,
+        "top_74": 2.5,
+        "top_75": 2.5,
+        "top_76": 2.5,
+        "top_77": 2.5,
+        "top_78": 2.5,
+        "top_79": 2.5,
+        "top_80": 2.5,
+        "top_81": 2.5,
+        "top_82": 2.5,
+        "top_83": 2.5,
+        "top_84": 2.5,
+        "top_85": 2.5,
+        "made_cut": 2.5
+      },
+      "qualification_methods": [
+        "tour_points_standings"
+      ]
+    },
+    "The American Open": {
+      "event_type": "major",
+      "field_size": 156,
+      "cut_line": {
+        "type": "position",
+        "value": 67,
+        "description": "Top 67 and ties advance to weekend"
+      },
+      "purse_base": {
+        "type": "random",
+        "min": 21000000,
+        "max": 25000000,
+        "round_to": 1000000,
+        "description": "Random amount between $21M and $25M, rounded to nearest $1M"
+      },
+      "prestige": {
+        "type": "fixed",
+        "value": 1.0,
+        "description": "Maximum prestige for major championship (0-1 scale)"
+      },
+      "points_structure": {
+        "winner": 750
+      },
+      "qualification_methods": [
+        "tour_points_standings"
+      ]
+    },
+    "Royal Open Championship": {
+      "event_type": "major",
+      "field_size": 156,
+      "cut_line": {
+        "type": "position",
+        "value": 70,
+        "description": "Top 70 and ties advance to weekend"
+      },
+      "purse_base": {
+        "type": "random",
+        "min": 21000000,
+        "max": 25000000,
+        "round_to": 1000000,
+        "description": "Random amount between $21M and $25M, rounded to nearest $1M"
+      },
+      "prestige": {
+        "type": "fixed",
+        "value": 1.0,
+        "description": "Maximum prestige for major championship (0-1 scale)"
+      },
+      "points_structure": {
+        "winner": 750,
+        "runner_up": 500,
+        "top_3": 350,
+        "top_4": 325,
+        "top_5": 300,
+        "top_6": 270,
+        "top_7": 250,
+        "top_8": 225,
+        "top_9": 200,
+        "top_10": 175,
+        "top_11": 150,
+        "top_12": 125,
+        "top_13": 100,
+        "top_14": 75,
+        "top_15": 50,
+        "top_16": 40,
+        "top_17": 35,
+        "top_18": 30,
+        "top_19": 25,
+        "top_20": 20,
+        "top_21": 15,
+        "top_22": 10,
+        "top_23": 8,
+        "top_24": 6,
+        "top_25": 4,
+        "top_26": 3,
+        "top_27": 2.5,
+        "top_28": 2.5,
+        "top_29": 2.5,
+        "top_30": 2.5,
+        "top_31": 2.5,
+        "top_32": 2.5,
+        "top_33": 2.5,
+        "top_34": 2.5,
+        "top_35": 2.5,
+        "top_36": 2.5,
+        "top_37": 2.5,
+        "top_38": 2.5,
+        "top_39": 2.5,
+        "top_40": 2.5,
+        "top_41": 2.5,
+        "top_42": 2.5,
+        "top_43": 2.5,
+        "top_44": 2.5,
+        "top_45": 2.5,
+        "top_46": 2.5,
+        "top_47": 2.5,
+        "top_48": 2.5,
+        "top_49": 2.5,
+        "top_50": 2.5,
+        "top_51": 2.5,
+        "top_52": 2.5,
+        "top_53": 2.5,
+        "top_54": 2.5,
+        "top_55": 2.5,
+        "top_56": 2.5,
+        "top_57": 2.5,
+        "top_58": 2.5,
+        "top_59": 2.5,
+        "top_60": 2.5,
+        "top_61": 2.5,
+        "top_62": 2.5,
+        "top_63": 2.5,
+        "top_64": 2.5,
+        "top_65": 2.5,
+        "top_66": 2.5,
+        "top_67": 2.5,
+        "top_68": 2.5,
+        "top_69": 2.5,
+        "top_70": 2.5,
+        "top_71": 2.5,
+        "top_72": 2.5,
+        "top_73": 2.5,
+        "top_74": 2.5,
+        "top_75": 2.5,
+        "top_76": 2.5,
+        "top_77": 2.5,
+        "top_78": 2.5,
+        "top_79": 2.5,
+        "top_80": 2.5,
+        "top_81": 2.5,
+        "top_82": 2.5,
+        "top_83": 2.5,
+        "top_84": 2.5,
+        "top_85": 2.5,
+        "made_cut": 2.5
+      },
+      "qualification_methods": [
+        "tour_points_standings"
+      ]
+    }
+  },
+  "special_events": {
+    "The Continental Championship": {
+      "event_type": "standard",
+      "field_size": {
+        "type": "random",
+        "min": 144,
+        "max": 165,
+        "multiple": 3,
+        "description": "Random multiple of 3 between 144 and 165"
+      },
+      "cut_line": {
+        "type": "position",
+        "value": 65,
+        "description": "Top 65 and ties advance to weekend"
+      },
+      "purse_base": {
+        "type": "fixed",
+        "value": 30000000,
+        "description": "Fixed purse of $30M"
+      },
+      "prestige": {
+        "type": "fixed",
+        "value": 0.95,
+        "description": "High prestige for mini major (0-1 scale)"
+      },
+      "points_structure": {
+        "winner": 750,
+        "runner_up": 500,
+        "top_3": 350,
+        "top_4": 325,
+        "top_5": 300,
+        "top_6": 270,
+        "top_7": 250,
+        "top_8": 225,
+        "top_9": 200,
+        "top_10": 175,
+        "top_11": 150,
+        "top_12": 125,
+        "top_13": 100,
+        "top_14": 75,
+        "top_15": 50,
+        "top_16": 40,
+        "top_17": 35,
+        "top_18": 30,
+        "top_19": 25,
+        "top_20": 20,
+        "top_21": 15,
+        "top_22": 10,
+        "top_23": 8,
+        "top_24": 6,
+        "top_25": 4,
+        "top_26": 3,
+        "top_27": 2.5,
+        "top_28": 2.5,
+        "top_29": 2.5,
+        "top_30": 2.5,
+        "top_31": 2.5,
+        "top_32": 2.5,
+        "top_33": 2.5,
+        "top_34": 2.5,
+        "top_35": 2.5,
+        "top_36": 2.5,
+        "top_37": 2.5,
+        "top_38": 2.5,
+        "top_39": 2.5,
+        "top_40": 2.5,
+        "top_41": 2.5,
+        "top_42": 2.5,
+        "top_43": 2.5,
+        "top_44": 2.5,
+        "top_45": 2.5,
+        "top_46": 2.5,
+        "top_47": 2.5,
+        "top_48": 2.5,
+        "top_49": 2.5,
+        "top_50": 2.5,
+        "top_51": 2.5,
+        "top_52": 2.5,
+        "top_53": 2.5,
+        "top_54": 2.5,
+        "top_55": 2.5,
+        "top_56": 2.5,
+        "top_57": 2.5,
+        "top_58": 2.5,
+        "top_59": 2.5,
+        "top_60": 2.5,
+        "top_61": 2.5,
+        "top_62": 2.5,
+        "top_63": 2.5,
+        "top_64": 2.5,
+        "top_65": 2.5,
+        "top_66": 2.5,
+        "top_67": 2.5,
+        "top_68": 2.5,
+        "top_69": 2.5,
+        "top_70": 2.5,
+        "top_71": 2.5,
+        "top_72": 2.5,
+        "top_73": 2.5,
+        "top_74": 2.5,
+        "top_75": 2.5,
+        "top_76": 2.5,
+        "top_77": 2.5,
+        "top_78": 2.5,
+        "top_79": 2.5,
+        "top_80": 2.5,
+        "top_81": 2.5,
+        "top_82": 2.5,
+        "top_83": 2.5,
+        "top_84": 2.5,
+        "top_85": 2.5,
+        "made_cut": 2.5
+      },
+      "qualification_methods": [
+        "tour_points_standings"
+      ]
+    }
+  },
+  "invitationals": {
+  }
+} 
