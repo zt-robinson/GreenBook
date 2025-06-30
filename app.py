@@ -23,7 +23,7 @@ def get_all_players():
     conn = sqlite3.connect(PLAYER_DB_PATH)
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    cur.execute('SELECT * FROM players ORDER BY name ASC')
+    cur.execute('SELECT id, name, age, country, status, career_wins, season_money, driving_power, driving_accuracy, approach_long, approach_short, scrambling, putting, consistency, composure, resilience, created_at, world_ranking, tour_rank FROM players ORDER BY tour_rank ASC NULLS LAST')
     players = cur.fetchall()
     conn.close()
     return players
@@ -126,13 +126,12 @@ def players():
     players = [dict(player) for player in players]  # Convert to dicts for mutability
     # Add the new public fields to each player
     for player in players:
-        player['tour_rank'] = 0
+        # tour_rank is already set from database
         player['events'] = 0  # Will be calculated from tournament participation later
         player['tour_championship_points'] = 0
         player['points_behind_lead'] = 0
         player['wins'] = player.get('career_wins', 0)  # Use existing career_wins for now
         player['top_10s'] = 0  # Will be calculated from tournament results later
-        player['world_rank'] = 0  # Set all world ranks to 0 for now
     return render_template('players.html', players=players, country_to_flag_iso=country_to_flag_iso)
 
 @app.route('/courses')
@@ -213,7 +212,7 @@ def schedule():
     tournaments_db_path = os.path.join(os.path.dirname(__file__), 'data/golf_tournaments.db')
     courses_db_path = os.path.join(os.path.dirname(__file__), 'data/golf_courses.db')
 
-    # Fetch tournaments and schedule
+    # Fetch tournaments and schedule with new columns
     tconn = sqlite3.connect(tournaments_db_path)
     tconn.row_factory = sqlite3.Row
     tcur = tconn.cursor()
@@ -249,13 +248,15 @@ def schedule():
 
     for t in tournaments:
         t['course_name'] = courses.get(t['course_id'], 'Unknown')
-        print(f"DEBUG: tournament['start_date'] = {t['start_date']} (type: {type(t['start_date'])})")
-        try:
-            dt = datetime.strptime(t['start_date'], '%Y-%m-%d')
-            t['start_date_formatted'] = dt.strftime('%B %d, %Y').replace(' 0', ' ')
-        except Exception as e:
-            print(f"DEBUG: Exception in date formatting: {e}")
-            t['start_date_formatted'] = t['start_date']
+        # Defensive: handle missing or None start_date
+        if t['start_date']:
+            try:
+                dt = datetime.strptime(t['start_date'], '%Y-%m-%d')
+                t['start_date_formatted'] = dt.strftime('%B %d, %Y').replace(' 0', ' ')
+            except Exception as e:
+                t['start_date_formatted'] = t['start_date']
+        else:
+            t['start_date_formatted'] = 'None'
         # Format round times
         t['round_1_start_fmt'] = format_ampm(t['round_1_start'])
         t['round_2_start_fmt'] = format_ampm(t['round_2_start'])
@@ -333,13 +334,15 @@ def tournament_detail(tournament_id):
     tournament['purse_amount_formatted'] = "{:,}".format(tournament.get('purse_amount', 0))
     
     # Format dates and times
-    print(f"DEBUG: tournament['start_date'] = {tournament['start_date']} (type: {type(tournament['start_date'])})")
-    try:
-        dt = datetime.strptime(tournament['start_date'], '%Y-%m-%d')
-        tournament['start_date_formatted'] = dt.strftime('%B %d, %Y').replace(' 0', ' ')
-    except Exception as e:
-        print(f"DEBUG: Exception in date formatting: {e}")
-        tournament['start_date_formatted'] = tournament['start_date']
+    # Defensive: handle missing or None start_date
+    if tournament['start_date']:
+        try:
+            dt = datetime.strptime(tournament['start_date'], '%Y-%m-%d')
+            tournament['start_date_formatted'] = dt.strftime('%B %d, %Y').replace(' 0', ' ')
+        except Exception as e:
+            tournament['start_date_formatted'] = tournament['start_date']
+    else:
+        tournament['start_date_formatted'] = 'None'
 
     # Compute timezone-aware ISO string for Boston (America/New_York)
     try:
@@ -347,12 +350,12 @@ def tournament_detail(tournament_id):
         try:
             from zoneinfo import ZoneInfo  # Python 3.9+
             ny_tz = ZoneInfo('America/New_York')
-            dt_naive = datetime.strptime(tournament['start_date'] + ' ' + tournament['round_1_start'], '%Y-%m-%d %H:%M')
+            dt_naive = datetime.strptime((tournament['start_date'] or '2025-01-01') + ' ' + tournament['round_1_start'], '%Y-%m-%d %H:%M')
             dt_ny = dt_naive.replace(tzinfo=ny_tz)
         except ImportError:
             import pytz
             ny_tz = pytz.timezone('America/New_York')
-            dt_naive = datetime.strptime(tournament['start_date'] + ' ' + tournament['round_1_start'], '%Y-%m-%d %H:%M')
+            dt_naive = datetime.strptime((tournament['start_date'] or '2025-01-01') + ' ' + tournament['round_1_start'], '%Y-%m-%d %H:%M')
             dt_ny = ny_tz.localize(dt_naive)
         tournament['start_iso_ny'] = dt_ny.isoformat()
     except Exception as e:
@@ -435,17 +438,20 @@ def tournament_detail(tournament_id):
     tcur = tconn.cursor()
     tcur.execute('SELECT tour_points FROM payout_structure WHERE tournament_id = ? AND finish_position = 1', (tournament_id,))
     row = tcur.fetchone()
-    winner_points = row['tour_points'] if row else 0
+    winner_points = row['tour_points'] if row else tournament.get('points_to_winner', 0)
     tconn.close()
-    # Use cutline from DB if present, otherwise use logic
-    cut_line = tournament.get('cutline')
-    if not cut_line or not cut_line.strip():
-        if tournament['tournament_type'] == 'major':
-            cut_line = 'Top 50'
-        elif tournament['tournament_type'] in ('regular', 'open', 'invitational'):
-            cut_line = 'Top 65'
-        else:
-            cut_line = 'Top 65'  # Default fallback
+    
+    # Use cut line from new database columns
+    cut_line_type = tournament.get('cut_line_type', 'position')
+    cut_line_value = tournament.get('cut_line_value', 65)
+    
+    if cut_line_type == 'none':
+        cut_line = 'No Cut'
+    elif cut_line_type == 'position':
+        cut_line = str(cut_line_value) if cut_line_value is not None else 'Unknown'
+    else:
+        cut_line = 'Standard'
+    
     print(f"DEBUG: tournament['start_date_formatted'] = {tournament['start_date_formatted']}")
 
     # Generate weather forecast
