@@ -141,7 +141,7 @@ def courses():
     cur = conn.cursor()
     cur.execute('''
         SELECT c.id, c.name, c.location, c.total_yardage as yardage, c.total_par as par, c.prestige_level as prestige, c.est_year,
-               cc.avg_temperature, cc.humidity_level, cc.wind_factor, cc.rain_probability,
+               cc.temp_factor AS avg_temperature, cc.humidity_factor AS humidity_level, cc.wind_factor, cc.rain_factor AS rain_probability,
                cc.green_speed, cc.hazard_density, cc.rough_length, cc.narrowness_factor,
                cc.elevation_factor
         FROM courses c
