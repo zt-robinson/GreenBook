@@ -4,7 +4,7 @@ import os
 from datetime import datetime, timedelta
 import sys
 sys.path.append(os.path.dirname(__file__))
-from scripts.generate_tournament_field import get_tournament_field
+from scripts.tournaments.utilities.generate_tournament_field import get_tournament_field
 import pytz
 import random
 import math
