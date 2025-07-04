@@ -132,6 +132,14 @@ This project is a work in progress and **open to ideas**! If you have suggestion
 
 *Stay tuned for updates by watching the repo. As GreenBook evolves, we'd love to have a community of golf and coding enthusiasts involved!* 👥⛳
 
+## Data Sources
+
+[![Weather Data Provided by Visual Crossing](data/visual_crossing_logo_small.png)](https://www.visualcrossing.com/)
+
+GreenBook incorporates historical weather data for 610 US cities throughout 2024, collected via the Visual Crossing Weather API. This data includes monthly averages for temperature, wind speed, precipitation, humidity, and cloud cover, which are used to simulate realistic course conditions and weather effects on tournament play.
+
+For detailed information about the weather data structure and processing, see the [Weather Data Dictionary](data/WEATHER_DATA_DICTIONARY.md).
+
 ## License
 
 GreenBook is an open-source project, released under the **MIT License**. This means you're free to use, modify, and distribute the code, as long as you include the original license notice. (See the `LICENSE` file for the full text of the license.) Enjoy!
