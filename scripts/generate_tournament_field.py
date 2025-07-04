@@ -152,12 +152,12 @@ def get_tournament_field(tournament_id):
     return field_rows
 
 if __name__ == "__main__":
-    # Generate field for Sony Open in Hawaii (tournament ID 25)
-    success = generate_tournament_field(25, 156)
+    # Generate field for Standard tournament (tournament ID 28)
+    success = generate_tournament_field(28, 156)
     
     if success:
         print("\n📋 Current field:")
-        field = get_tournament_field(25)
+        field = get_tournament_field(28)
         for i, player in enumerate(field[:10]):  # Show first 10 players
             print(f"   {i+1:3d}. {player['name']} ({player['country']}) - Group {player['group_number']}, Tee: {player['tee_time']}")
         if len(field) > 10:

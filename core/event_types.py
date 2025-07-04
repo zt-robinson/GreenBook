@@ -122,7 +122,6 @@ class EventTypeManager:
     def __init__(self):
         self.config_dir = os.path.join(os.path.dirname(__file__), '..', 'config')
         self.event_types = {}
-        self.tournament_overrides = {}
         self._load_configurations()
     
     def _load_configurations(self):
@@ -134,26 +133,6 @@ class EventTypeManager:
         
         for event_type_key, data in event_types_data.items():
             self.event_types[event_type_key] = self._create_event_type(data)
-        
-        # Load tournament overrides
-        overrides_path = os.path.join(os.path.dirname(__file__), '..', 'config', 'tournament_overrides.json')
-        with open(overrides_path, 'r') as f:
-            overrides_data = json.load(f)
-        
-        # Load majors
-        if 'majors' in overrides_data:
-            for tournament_name, override_data in overrides_data['majors'].items():
-                self.tournament_overrides[tournament_name] = override_data
-        
-        # Load special events
-        if 'special_events' in overrides_data:
-            for tournament_name, override_data in overrides_data['special_events'].items():
-                self.tournament_overrides[tournament_name] = override_data
-        
-        # Load invitationals
-        if 'invitationals' in overrides_data:
-            for tournament_name, override_data in overrides_data['invitationals'].items():
-                self.tournament_overrides[tournament_name] = override_data
     
     def _generate_random_field_size(self, config: Dict[str, Any]) -> int:
         """Generate random field size based on configuration"""
@@ -323,61 +302,43 @@ class EventTypeManager:
     
     def get_tournament_config(self, tournament_name: str) -> Dict[str, Any]:
         """Get tournament configuration with overrides applied and random values generated"""
-        # Check if tournament has specific overrides
-        if tournament_name in self.tournament_overrides:
-            override = self.tournament_overrides[tournament_name]
-            event_type_key = override['event_type']
-            base_config = self.event_types[event_type_key]
+        # Check if this is a custom major from the "majors" section
+        custom_majors = self.tournament_overrides.get('majors', {})
+        if tournament_name in custom_majors:
+            major_config = custom_majors[tournament_name]
+            base_config = self.event_types['major']
             
-            # Apply overrides or generate random values
-            # Handle field_size override (check both field_size_override and field_size)
-            field_size = override.get('field_size_override') or override.get('field_size')
-            if field_size is None:
-                field_size = self._generate_random_field_size(base_config.field_size)
-            elif isinstance(field_size, dict):
+            # Use custom major configuration
+            field_size = major_config.get('field_size', 156)
+            if isinstance(field_size, dict):
                 field_size = self._generate_random_field_size(field_size)
             
-            # Handle purse override (check both purse_override and purse_base)
-            purse_base = override.get('purse_override') or override.get('purse_base')
-            if purse_base is None:
-                purse_base = self._generate_random_purse(base_config.purse_base)
-            elif isinstance(purse_base, dict):
-                if purse_base.get('type') == 'fixed':
-                    purse_base = purse_base['value']
-                else:
-                    purse_base = self._generate_random_purse(purse_base)
+            purse_base = major_config.get('purse_base', 20000000)
+            if isinstance(purse_base, dict):
+                purse_base = self._generate_random_purse(purse_base)
             
-            # Handle prestige override
-            prestige = override.get('prestige_override') or override.get('prestige')
-            if prestige is None:
-                prestige = self._generate_random_prestige(base_config.prestige)
-            elif isinstance(prestige, dict):
-                if prestige.get('type') == 'fixed':
-                    prestige = prestige['value']
-                else:
-                    prestige = self._generate_random_prestige(prestige)
+            prestige = major_config.get('prestige', 9.5)
+            if isinstance(prestige, dict):
+                prestige = self._generate_random_prestige(prestige)
             
-            # Handle cut line override
-            cut_line = override.get('cut_line_override') or override.get('cut_line')
-            if cut_line is None:
-                cut_line = {
-                    'type': base_config.cut_line.type,
-                    'value': base_config.cut_line.value,
-                    'description': base_config.cut_line.description
-                }
+            cut_line = major_config.get('cut_line', {
+                'type': 'position',
+                'value': 70,
+                'description': 'Top 70 and ties advance to weekend'
+            })
             
-            # Handle qualification methods override
-            qualification_methods = override.get('qualification_methods', base_config.qualification_methods)
+            qualification_methods = major_config.get('qualification_methods', [
+                'world_rank_top_50',
+                'past_champions',
+                'fedex_rank_top_30',
+                'special_invitation'
+            ])
             
-            # Handle points structure override
-            points_structure = override.get('points_structure', self._get_points_structure_dict(base_config.points_structure))
+            points_structure = major_config.get('points_structure', self._get_points_structure_dict(base_config.points_structure))
+            payout_percentages = major_config.get('payout_percentages', base_config.payout_percentages)
             
-            # Handle payout percentages override
-            payout_percentages = override.get('payout_percentages', base_config.payout_percentages)
-            
-            # Create merged configuration
             config = {
-                'event_type': event_type_key,
+                'event_type': 'major',
                 'name': base_config.name,
                 'field_size': field_size,
                 'cut_line': cut_line,
@@ -387,104 +348,55 @@ class EventTypeManager:
                 'prestige': prestige,
                 'qualification_methods': qualification_methods,
                 'rounds': base_config.rounds,
-                'description': override.get('description', base_config.description)
+                'description': major_config.get('description', base_config.description)
             }
         else:
-            # Check if this is a custom major from the "majors" section
-            custom_majors = self.tournament_overrides.get('majors', {})
-            if tournament_name in custom_majors:
-                major_config = custom_majors[tournament_name]
-                base_config = self.event_types['major']
-                
-                # Use custom major configuration
-                field_size = major_config.get('field_size', 156)
-                if isinstance(field_size, dict):
-                    field_size = self._generate_random_field_size(field_size)
-                
-                purse_base = major_config.get('purse_base', 20000000)
-                if isinstance(purse_base, dict):
-                    purse_base = self._generate_random_purse(purse_base)
-                
-                prestige = major_config.get('prestige', 9.5)
-                if isinstance(prestige, dict):
-                    prestige = self._generate_random_prestige(prestige)
-                
-                cut_line = major_config.get('cut_line', {
+            # Determine event type from tournament name or use standard
+            event_type_key = self._determine_event_type_from_name(tournament_name)
+            base_config = self.event_types[event_type_key]
+            
+            # For majors, use better default values if no specific override exists
+            if event_type_key == 'major':
+                # Use more realistic major defaults
+                field_size = 156  # Standard major field size
+                purse_base = 20000000  # $20M default purse for majors
+                prestige = 9.5  # High prestige for majors
+                cut_line = {
                     'type': 'position',
                     'value': 70,
                     'description': 'Top 70 and ties advance to weekend'
-                })
-                
-                qualification_methods = major_config.get('qualification_methods', [
+                }
+                qualification_methods = [
                     'world_rank_top_50',
                     'past_champions',
                     'fedex_rank_top_30',
                     'special_invitation'
-                ])
-                
-                points_structure = major_config.get('points_structure', self._get_points_structure_dict(base_config.points_structure))
-                payout_percentages = major_config.get('payout_percentages', base_config.payout_percentages)
-                
-                config = {
-                    'event_type': 'major',
-                    'name': base_config.name,
-                    'field_size': field_size,
-                    'cut_line': cut_line,
-                    'purse_base': purse_base,
-                    'points_structure': points_structure,
-                    'payout_percentages': payout_percentages,
-                    'prestige': prestige,
-                    'qualification_methods': qualification_methods,
-                    'rounds': base_config.rounds,
-                    'description': major_config.get('description', base_config.description)
-                }
+                ]
             else:
-                # Determine event type from tournament name or use standard
-                event_type_key = self._determine_event_type_from_name(tournament_name)
-                base_config = self.event_types[event_type_key]
-                
-                # For majors, use better default values if no specific override exists
-                if event_type_key == 'major':
-                    # Use more realistic major defaults
-                    field_size = 156  # Standard major field size
-                    purse_base = 20000000  # $20M default purse for majors
-                    prestige = 9.5  # High prestige for majors
-                    cut_line = {
-                        'type': 'position',
-                        'value': 70,
-                        'description': 'Top 70 and ties advance to weekend'
-                    }
-                    qualification_methods = [
-                        'world_rank_top_50',
-                        'past_champions',
-                        'fedex_rank_top_30',
-                        'special_invitation'
-                    ]
-                else:
-                    # Generate random values for this tournament
-                    field_size = self._generate_random_field_size(base_config.field_size)
-                    purse_base = self._generate_random_purse(base_config.purse_base)
-                    prestige = self._generate_random_prestige(base_config.prestige)
-                    cut_line = {
-                        'type': base_config.cut_line.type,
-                        'value': base_config.cut_line.value,
-                        'description': base_config.cut_line.description
-                    }
-                    qualification_methods = base_config.qualification_methods
-                
-                config = {
-                    'event_type': event_type_key,
-                    'name': base_config.name,
-                    'field_size': field_size,
-                    'cut_line': cut_line,
-                    'purse_base': purse_base,
-                    'points_structure': self._get_points_structure_dict(base_config.points_structure),
-                    'payout_percentages': base_config.payout_percentages,
-                    'prestige': prestige,
-                    'qualification_methods': qualification_methods,
-                    'rounds': base_config.rounds,
-                    'description': base_config.description
+                # Generate random values for this tournament
+                field_size = self._generate_random_field_size(base_config.field_size)
+                purse_base = self._generate_random_purse(base_config.purse_base)
+                prestige = self._generate_random_prestige(base_config.prestige)
+                cut_line = {
+                    'type': base_config.cut_line.type,
+                    'value': base_config.cut_line.value,
+                    'description': base_config.cut_line.description
                 }
+                qualification_methods = base_config.qualification_methods
+            
+            config = {
+                'event_type': event_type_key,
+                'name': base_config.name,
+                'field_size': field_size,
+                'cut_line': cut_line,
+                'purse_base': purse_base,
+                'points_structure': self._get_points_structure_dict(base_config.points_structure),
+                'payout_percentages': base_config.payout_percentages,
+                'prestige': prestige,
+                'qualification_methods': qualification_methods,
+                'rounds': base_config.rounds,
+                'description': base_config.description
+            }
         
         return config
     
@@ -655,10 +567,6 @@ class EventTypeManager:
     def list_event_types(self) -> List[str]:
         """List all available event types"""
         return list(self.event_types.keys())
-    
-    def list_tournament_overrides(self) -> List[str]:
-        """List all tournaments with specific overrides"""
-        return list(self.tournament_overrides.keys())
 
 # Global instance for easy access
 event_type_manager = EventTypeManager() 

@@ -32,27 +32,24 @@ class TournamentLogic:
         Returns:
             Tournament ID
         """
-        # Get tournament configuration
-        if event_type:
-            config = event_type_manager.get_event_type(event_type)
-            if not config:
-                raise ValueError(f"Invalid event type: {event_type}")
-            
-            # Resolve configuration objects into actual values
-            field_size = event_type_manager._generate_random_field_size(config.field_size)
-            purse_base = event_type_manager._generate_random_purse(config.purse_base)
-            prestige = event_type_manager._generate_random_prestige(config.prestige)
-            
-            config_data = {
-                'event_type': event_type,
-                'field_size': field_size,
-                'purse_base': purse_base,
-                'prestige': prestige
-            }
-        else:
-            # Determine event type from tournament name or use standard
-            config_data = event_type_manager.get_tournament_config(tournament_name)
-            event_type = config_data['event_type']
+        # Always use the provided event_type, default to 'standard' if not provided
+        if not event_type:
+            event_type = 'standard'
+        config = event_type_manager.get_event_type(event_type)
+        if not config:
+            raise ValueError(f"Invalid event type: {event_type}")
+        
+        # Resolve configuration objects into actual values
+        field_size = event_type_manager._generate_random_field_size(config.field_size)
+        purse_base = event_type_manager._generate_random_purse(config.purse_base)
+        prestige = event_type_manager._generate_random_prestige(config.prestige)
+        
+        config_data = {
+            'event_type': event_type,
+            'field_size': field_size,
+            'purse_base': purse_base,
+            'prestige': prestige
+        }
         
         # Apply any runtime overrides
         if overrides:
@@ -61,16 +58,21 @@ class TournamentLogic:
                     config_data[key] = value
         
         # Get complete tournament configuration for new columns
-        full_config = event_type_manager.get_tournament_config(tournament_name)
+        full_config = event_type_manager.get_event_type(event_type)
         
         # Extract cut line information
-        cut_line_config = full_config.get('cut_line', {})
-        cut_line_type = cut_line_config.get('type', 'position')
-        cut_line_value = cut_line_config.get('value', 65) if cut_line_type == 'position' else None
+        # Use cut_line override if present
+        if overrides and 'cut_line' in overrides:
+            cut_line_type = overrides['cut_line'].get('type', 'position')
+            cut_line_value = overrides['cut_line'].get('value', 65)
+        else:
+            cut_line_config = full_config.cut_line if hasattr(full_config, 'cut_line') else full_config.get('cut_line', {})
+            cut_line_type = getattr(cut_line_config, 'type', None) or cut_line_config.get('type', 'position')
+            cut_line_value = getattr(cut_line_config, 'value', None) or (cut_line_config.get('value', 65) if cut_line_type == 'position' else None)
         
         # Get points to winner
-        points_structure = full_config.get('points_structure', {})
-        points_to_winner = points_structure.get('winner', 500)
+        points_structure = full_config.points_structure if hasattr(full_config, 'points_structure') else full_config.get('points_structure', {})
+        points_to_winner = getattr(points_structure, 'winner', None) or points_structure.get('winner', 500)
         
         # Convert prestige to 0-1 scale if needed
         prestige_0_1 = config_data['prestige']
@@ -86,8 +88,8 @@ class TournamentLogic:
             'cut_line_type': cut_line_type,
             'cut_line_value': cut_line_value,
             'points_to_winner': points_to_winner,
-            'qualification_methods': full_config.get('qualification_methods', []),
-            'rounds': full_config.get('rounds', 4)
+            'qualification_methods': getattr(full_config, 'qualification_methods', []) or full_config.get('qualification_methods', []),
+            'rounds': getattr(full_config, 'rounds', 4) or full_config.get('rounds', 4)
         })
         
         # Connect to database
@@ -123,6 +125,9 @@ class TournamentLogic:
             # All tournaments now use dynamic payouts calculated after the cut
             print(f"   Dynamic payouts will be calculated after cut for {tournament_name}")
             
+            # Defensive: Remove any existing schedule row for this tournament
+            cur.execute('DELETE FROM tournament_schedule WHERE tournament_id = ?', (tournament_id,))
+
             # Insert schedule
             cur.execute('''
                 INSERT INTO tournament_schedule (tournament_id, start_date, start_time,

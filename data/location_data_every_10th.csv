@@ -1,0 +1,99 @@
+state,state_code,city,latitude,longitude
+Alabama,AL,Birmingham,33.5206824,-86.8024326
+Alabama,AL,Florence,34.79981,-87.677251
+Arizona,AZ,Phoenix,33.4484367,-112.074141
+Arizona,AZ,Yuma,32.723268,-114.6179954
+Arkansas,AR,Little Rock,34.7465071,-92.2896267
+Arkansas,AR,Hot Springs,34.5038393,-93.0552437
+California,CA,Los Angeles,34.0536909,-118.242766
+California,CA,Santa Ana,33.7494951,-117.873221
+Colorado,CO,Denver,39.7392364,-104.984862
+Colorado,CO,Boulder,40.0149856,-105.270545
+Connecticut,CT,Bridgeport,41.1779095,-73.1867391
+Connecticut,CT,Hamden,41.3836233,-72.9020069
+Delaware,DE,Wilmington,39.7459468,-75.546589
+Delaware,DE,Millsboro,38.5915023,-75.2913018
+Florida,FL,Jacksonville,30.3321838,-81.655651
+Florida,FL,Pembroke Pines,26.0061943,-80.2872086
+Georgia,GA,Atlanta,33.7544657,-84.3898151
+Georgia,GA,Warner Robins,32.6200973,-83.606568
+Hawaii,HI,Honolulu,21.304547,-157.855676
+Hawaii,HI,Mililani Town,21.4508308,-158.0095783
+Idaho,ID,Boise,43.6166163,-116.200886
+Idaho,ID,Rexburg,43.8235163,-111.787022
+Illinois,IL,Chicago,41.8755616,-87.6244212
+Illinois,IL,Cicero,41.8455398,-87.7540199
+Indiana,IN,Indianapolis,39.7683331,-86.1583502
+Indiana,IN,Lafayette,40.4191229,-86.8919011
+Iowa,IA,Des Moines,41.5868654,-93.6249494
+Iowa,IA,Ankeny,41.7320796,-93.605092
+Kansas,KS,Wichita,37.6922361,-97.3375448
+Kansas,KS,Hutchinson,38.0608444,-97.9297743
+Kentucky,KY,Louisville,38.2542376,-85.759407
+Kentucky,KY,Elizabethtown,37.693952,-85.8591285
+Louisiana,LA,New Orleans,29.9759983,-90.0782127
+Louisiana,LA,Houma,29.5957696,-90.7195348
+Maine,ME,Portland,43.6573605,-70.2586618
+Maine,ME,Saco,43.5007555,-70.4429451
+Maryland,MD,Baltimore,39.2908816,-76.610759
+Maryland,MD,Greenbelt,39.004607,-76.8756838
+Massachusetts,MA,Boston,42.3554334,-71.060511
+Massachusetts,MA,Newton,42.3370414,-71.2092214
+Michigan,MI,Detroit,42.3315509,-83.0466403
+Michigan,MI,Canton,42.7269261,-84.6433146
+Minnesota,MN,Minneapolis,44.9772995,-93.2654692
+Minnesota,MN,Eden Prairie,44.8546856,-93.470786
+Mississippi,MS,Jackson,32.2998686,-90.1830408
+Mississippi,MS,Clinton,32.3410552,-90.3215983
+Missouri,MO,Kansas City,39.100105,-94.5781416
+Missouri,MO,Blue Springs,39.017316,-94.282265
+Montana,MT,Billings,45.7874957,-108.49607
+Montana,MT,Miles City,46.4070219,-105.847843
+Nebraska,NE,Omaha,41.2587459,-95.9383758
+Nebraska,NE,Papillion,41.1544433,-96.0422378
+Nevada,NV,Las Vegas,36.1716997,-115.146357
+Nevada,NV,Fallon,39.4745166,-118.777895
+New Hampshire,NH,Manchester,42.9956397,-71.4547891
+New Hampshire,NH,Somersworth,43.2625585,-70.8645872
+New Jersey,NJ,Newark,40.735657,-74.1723667
+New Jersey,NJ,Clifton,40.8584328,-74.1637553
+New Mexico,NM,Albuquerque,35.0841034,-106.650985
+New Mexico,NM,Carlsbad,32.4257456,-104.237612
+New York,NY,New York City,40.7127281,-74.0060152
+New York,NY,White Plains,41.0339862,-73.7629097
+North Carolina,NC,Charlotte,35.2272086,-80.8430827
+North Carolina,NC,Asheville,35.595363,-82.5508407
+North Dakota,ND,Fargo,46.877229,-96.789821
+North Dakota,ND,Devils Lake,48.112779,-98.86512
+Ohio,OH,Columbus,39.9622601,-83.0007065
+Ohio,OH,Hamilton,39.2085354,-84.5501874
+Oklahoma,OK,Oklahoma City,35.4729886,-97.5170536
+Oklahoma,OK,Muskogee,35.6630196,-95.3927706
+Oregon,OR,Portland,45.5202471,-122.674194
+Oregon,OR,Albany,44.6365071,-123.1059324
+Pennsylvania,PA,Philadelphia,39.9527237,-75.1635262
+Pennsylvania,PA,York,39.962493,-76.7276989
+Rhode Island,RI,Providence,41.8239891,-71.4128343
+Rhode Island,RI,North Providence,41.8500997,-71.4661703
+South Carolina,SC,Columbia,34.000754,-81.0352313
+South Carolina,SC,Spartanburg,34.9498007,-81.9320157
+South Dakota,SD,Sioux Falls,43.5476008,-96.7293629
+South Dakota,SD,Brandon,43.5909294,-96.5874544
+Tennessee,TN,Nashville,36.1622767,-86.7742984
+Tennessee,TN,Hendersonville,36.3049177,-86.621443
+Texas,TX,Houston,29.7589382,-95.3676974
+Texas,TX,Lubbock,33.5855677,-101.8470215
+Utah,UT,Salt Lake City,40.7596198,-111.886797
+Utah,UT,Lehi,40.3881114,-111.8486019
+Vermont,VT,Burlington,44.4761601,-73.212906
+Vermont,VT,Barre,44.1969042,-72.5007458
+Virginia,VA,Virginia Beach,36.8496579,-75.9760751
+Virginia,VA,Lynchburg,37.4137536,-79.1422464
+Washington,WA,Seattle,47.6038321,-122.330062
+Washington,WA,Spokane Valley,47.6571104,-117.2613936
+West Virginia,WV,Charleston,38.3505995,-81.6332812
+West Virginia,WV,South Charleston,38.368429,-81.69957
+Wisconsin,WI,Milwaukee,43.0386475,-87.9090751
+Wisconsin,WI,West Allis,43.0166806,-88.0070315
+Wyoming,WY,Cheyenne,41.139981,-104.820246
+Wyoming,WY,Jackson,43.479965,-110.761815

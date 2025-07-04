@@ -54,22 +54,34 @@ def clear_all_tournaments():
         conn.close()
 
 def list_tournaments():
-    """List all tournaments with ID, name, date, and course."""
+    """List all tournaments with ID, name, date, and course name (from golf_courses.db)."""
     tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
     if not os.path.exists(tournaments_db_path):
         print("❌ Tournament database not found.")
         return []
+    # Build course_id to name mapping
+    course_map = {}
+    if os.path.exists(courses_db_path):
+        conn_courses = sqlite3.connect(courses_db_path)
+        cur_courses = conn_courses.cursor()
+        try:
+            cur_courses.execute('SELECT id, name FROM courses')
+            for cid, cname in cur_courses.fetchall():
+                course_map[cid] = cname
+        finally:
+            conn_courses.close()
+    # Fetch tournaments
     conn = sqlite3.connect(tournaments_db_path)
     cur = conn.cursor()
     try:
         cur.execute('''
-            SELECT t.id, t.name, s.start_date, c.name as course_name
-            FROM tournaments t
-            LEFT JOIN tournament_schedule s ON t.id = s.tournament_id
-            LEFT JOIN courses c ON t.course_id = c.id
-            ORDER BY s.start_date, t.name
+            SELECT id, name, start_date, course_id FROM tournaments ORDER BY start_date, name
         ''')
-        tournaments = cur.fetchall()
+        tournaments = []
+        for tid, tname, tdate, course_id in cur.fetchall():
+            course_name = course_map.get(course_id, 'Unknown')
+            tournaments.append((tid, tname, tdate, course_name))
         return tournaments
     finally:
         conn.close()

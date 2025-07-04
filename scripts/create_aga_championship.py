@@ -6,7 +6,8 @@ Create and store The AGA Championship major
 import sqlite3
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
+import random
 
 # Add the parent directory to the path so we can import from core
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
@@ -14,26 +15,29 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from core.tournament_logic import tournament_logic
 from core.event_types import event_type_manager
 
-def get_last_event_date(season_number):
-    """Get the start date of the last event in the season"""
+def get_last_event_date_and_week(season_number):
+    """Get the start date of the last event in the season and its week number"""
     tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
     
     if not os.path.exists(tournaments_db_path):
-        return None
+        return None, 0
     
     conn = sqlite3.connect(tournaments_db_path)
     cur = conn.cursor()
     
     try:
-        cur.execute('SELECT start_date FROM tournaments WHERE season_number = ? ORDER BY start_date DESC LIMIT 1', (season_number,))
+        cur.execute('SELECT start_date, week_number FROM tournaments WHERE season_number = ? ORDER BY start_date DESC LIMIT 1', (season_number,))
         result = cur.fetchone()
-        return result[0] if result else None
+        if result:
+            return result[0], result[1]
+        else:
+            return None, 0
     finally:
         conn.close()
 
-def get_next_event_date(season_number):
-    """Get the next event date - either prompt user or auto-schedule 2 days after last event"""
-    last_date = get_last_event_date(season_number)
+def get_next_event_date_and_week(season_number):
+    """Get the next event date and week number - either prompt user or auto-schedule 2 days after last event"""
+    last_date, last_week = get_last_event_date_and_week(season_number)
     
     if last_date is None:
         # First event in season - prompt for start date
@@ -42,20 +46,19 @@ def get_next_event_date(season_number):
                 start_date = input("Enter start date for this event (YYYY-MM-DD): ").strip()
                 # Basic validation
                 datetime.strptime(start_date, '%Y-%m-%d')
-                return start_date
+                return start_date, 1
             except ValueError:
                 print("❌ Please enter a valid date in YYYY-MM-DD format")
             except KeyboardInterrupt:
                 print("\n\n❌ Date selection cancelled")
-                return None
+                return None, None
     else:
         # Subsequent event - auto-schedule 2 days after last event
-        from datetime import datetime, timedelta
         last_datetime = datetime.strptime(last_date, '%Y-%m-%d')
         next_datetime = last_datetime + timedelta(days=2)
         next_date = next_datetime.strftime('%Y-%m-%d')
         print(f"📅 Auto-scheduled for {next_date} (2 days after last event)")
-        return next_date
+        return next_date, last_week + 1
 
 def get_available_courses_for_season(season_number):
     """Get list of available US courses for the season (exclude already used)"""
@@ -115,14 +118,27 @@ def create_aga_championship(course_id: int, start_date: str, season_number: int,
     print("=" * 50)
     
     try:
-        # Create the tournament using the tournament logic
+        # Generate random purse ($21M–$25M, rounded to $1M)
+        purse_base = random.choice([x for x in range(21000000, 25000001, 1000000)])
+        overrides = {
+            'field_size': 156,
+            'cut_line': {
+                'type': 'position',
+                'value': 70,
+                'description': 'Top 70 and ties advance to weekend'
+            },
+            'purse_base': purse_base,
+            'prestige': 1.0,
+            'points_to_winner': 750
+        }
         tournament_id = tournament_logic.create_tournament(
             tournament_name="The AGA Championship",
             course_id=course_id,
             start_date=start_date,
             season_number=season_number,
             week_number=week_number,
-            event_type="major"
+            event_type="major",
+            overrides=overrides
         )
         
         print(f"\n✅ The AGA Championship created successfully!")
@@ -170,13 +186,10 @@ def main():
     
     course_id, course_name, state_country = selected_course
     
-    # Get the next event date
-    start_date = get_next_event_date(season_number)
+    # Get the next event date and week
+    start_date, week_number = get_next_event_date_and_week(season_number)
     if start_date is None:
         return
-    
-    # Example major creation
-    week_number = 1
     
     print(f"\n📝 Creating The AGA Championship with parameters:")
     print(f"   Name: The AGA Championship")
