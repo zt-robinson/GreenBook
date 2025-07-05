@@ -11,10 +11,11 @@
 8. [Hole Difficulty Calculation](#hole-difficulty-calculation)
 9. [Course Factors & Weather Integration](#course-factors--weather-integration)
 10. [Founding Year System](#founding-year-system)
-11. [Complete Course Generation Process](#complete-course-generation-process)
-12. [Output Format](#output-format)
-13. [Usage Examples](#usage-examples)
-14. [Technical Implementation Details](#technical-implementation-details)
+11. [USGA Course Rating & Slope Rating System](#usga-course-rating--slope-rating-system)
+12. [Complete Course Generation Process](#complete-course-generation-process)
+13. [Output Format](#output-format)
+14. [Usage Examples](#usage-examples)
+15. [Technical Implementation Details](#technical-implementation-details)
 
 ---
 
@@ -29,6 +30,7 @@ The Complete Course Generation System creates realistic golf courses with compre
 - **Weather-integrated course factors** affecting playability
 - **Historical founding years** based on region, naming type, and prestige
 - **Comprehensive difficulty calculations** combining multiple factors
+- **USGA Course Rating and Slope Rating** for professional tour standards
 
 ---
 
@@ -45,6 +47,7 @@ generate_complete_course.py
 ├── Hole Difficulty Calculation
 ├── Course Factors & Weather Integration
 ├── Founding Year System
+├── USGA Course Rating & Slope Rating System
 └── Complete Course Assembly
 ```
 
@@ -58,7 +61,8 @@ generate_complete_course.py
 7. **Difficulty Calculation**: Compute hole difficulties using multiple factors
 8. **Course Factors**: Generate weather-influenced course characteristics
 9. **Founding Year**: Determine historically accurate founding date
-10. **Output**: Complete course data structure
+10. **USGA Ratings**: Calculate Course Rating and Slope Rating for professional standards
+11. **Output**: Complete course data structure
 
 ---
 
@@ -525,6 +529,174 @@ target_year = (min_year + max_year) / 2 + prestige_adjustment
 
 ---
 
+## USGA Course Rating & Slope Rating System
+
+The system generates realistic USGA Course Rating and Slope Rating values for all courses, ensuring they meet professional tour standards. All courses are designed to be PGA Tour-level facilities with appropriate difficulty ratings.
+
+### Rating System Overview
+
+#### Course Rating
+- **Definition**: Expected score for a scratch golfer (Handicap Index 0.0) under normal conditions
+- **Range**: 74.0-78.0 (PGA Tour standards)
+- **Calculation**: Based on par, yardage, course factors, and weather conditions
+
+#### Slope Rating
+- **Definition**: Relative difficulty for bogey golfers compared to scratch golfers
+- **Range**: 145-150 (PGA Tour standards)
+- **Formula**: `Slope Rating = (Bogey Rating - Course Rating) × 5.381`
+
+#### Bogey Rating
+- **Definition**: Expected score for a bogey golfer (Handicap Index 20.0 for men)
+- **Range**: 95.0-105.0 (PGA Tour standards)
+- **Calculation**: More aggressive adjustments for course factors affecting higher-handicap players
+
+### Professional Tour Standards
+
+All generated courses meet PGA Tour-level difficulty standards:
+
+- **Course Rating**: 74.0-78.0 (challenging for scratch golfers)
+- **Slope Rating**: 145-150 (high relative difficulty for bogey golfers)
+- **Bogey Rating**: 95.0-105.0 (very challenging for bogey golfers)
+- **Minimum Differential**: 20+ strokes between bogey and course rating
+
+### Calculation Algorithm
+
+#### Course Rating Calculation
+```python
+def calculate_course_rating(course_data):
+    # Base: start with par
+    course_rating = par
+    
+    # Yardage adjustment: 0.15 strokes per 100 yards over 6500
+    yardage_adj = max(0, (yardage - 6500) / 100) * 0.15
+    
+    # Strategic/Penal index: up to +3.0 strokes for most penal
+    spi_adj = spi * 3.0
+    
+    # Other factors: each can add up to 0.6 strokes
+    green_adj = green_speed * 0.6
+    rough_adj = rough_length * 0.6
+    hazard_adj = hazard_density * 0.6
+    terrain_adj = terrain_difficulty * 0.6
+    
+    # Prestige adjustment
+    prestige_adj = (0.5 - prestige) * 0.2
+    
+    course_rating += yardage_adj + spi_adj + green_adj + rough_adj + hazard_adj + terrain_adj + prestige_adj
+    
+    # Clamp to PGA Tour range
+    course_rating = max(74.0, min(78.0, course_rating))
+```
+
+#### Bogey Rating Calculation
+```python
+def calculate_bogey_rating(course_data):
+    # Start with par + 22 (tour courses are harder for bogey golfers)
+    bogey_base = par + 22
+    
+    # More aggressive adjustments for bogey golfers
+    yardage_adj_bogey = max(0, (yardage - 6000) / 100) * 0.3
+    spi_adj_bogey = spi * 6.0
+    green_adj_bogey = green_speed * 1.2
+    rough_adj_bogey = rough_length * 1.2
+    hazard_adj_bogey = hazard_density * 1.2
+    terrain_adj_bogey = terrain_difficulty * 1.2
+    
+    bogey_rating = bogey_base + yardage_adj_bogey + spi_adj_bogey + green_adj_bogey + rough_adj_bogey + hazard_adj_bogey + terrain_adj_bogey
+    
+    # Ensure minimum 20-stroke differential
+    bogey_rating = max(course_rating + 20, bogey_rating)
+    
+    # Clamp to PGA Tour range
+    bogey_rating = max(95.0, min(105.0, bogey_rating))
+```
+
+#### Slope Rating Calculation
+```python
+def calculate_slope_rating(bogey_rating, course_rating):
+    # USGA formula
+    slope_rating = int(round((bogey_rating - course_rating) * 5.381))
+    
+    # Clamp to PGA Tour range
+    slope_rating = max(145, min(150, slope_rating))
+```
+
+### Factor Impact Analysis
+
+#### Course Rating Factors (Scratch Golfer Impact)
+- **Yardage**: 0.15 strokes per 100 yards over 6500
+- **Strategic/Penal Index**: Up to +3.0 strokes
+- **Green Speed**: Up to +0.6 strokes
+- **Rough Length**: Up to +0.6 strokes
+- **Hazard Density**: Up to +0.6 strokes
+- **Terrain Difficulty**: Up to +0.6 strokes
+- **Prestige**: ±0.2 strokes (higher prestige = better conditioning)
+
+#### Bogey Rating Factors (Bogey Golfer Impact)
+- **Yardage**: 0.3 strokes per 100 yards over 6000 (2x impact)
+- **Strategic/Penal Index**: Up to +6.0 strokes (2x impact)
+- **Green Speed**: Up to +1.2 strokes (2x impact)
+- **Rough Length**: Up to +1.2 strokes (2x impact)
+- **Hazard Density**: Up to +1.2 strokes (2x impact)
+- **Terrain Difficulty**: Up to +1.2 strokes (2x impact)
+- **Prestige**: ±0.4 strokes (2x impact)
+
+### Weather Integration
+
+Course factors influenced by weather data directly impact rating calculations:
+
+- **Temperature**: Higher temps = firmer turf, faster greens = higher ratings
+- **Humidity**: Higher humidity = softer turf, slower greens = lower ratings
+- **Precipitation**: Higher precipitation = longer rough, softer turf = higher ratings
+- **Wind**: Higher wind = higher terrain difficulty = higher ratings
+
+### Example Ratings
+
+#### Typical PGA Tour Course
+```
+Course Rating: 76.5
+Slope Rating: 147
+Bogey Rating: 103.8
+```
+
+#### Challenging PGA Tour Course
+```
+Course Rating: 77.8
+Slope Rating: 150
+Bogey Rating: 105.0
+```
+
+#### Easier PGA Tour Course
+```
+Course Rating: 74.2
+Slope Rating: 145
+Bogey Rating: 95.0
+```
+
+### Professional Tour Validation
+
+All generated courses meet professional tour standards:
+
+- **Minimum Course Rating**: 74.0 (challenging for professionals)
+- **Maximum Course Rating**: 78.0 (very challenging for professionals)
+- **Minimum Slope Rating**: 145 (high relative difficulty)
+- **Maximum Slope Rating**: 150 (very high relative difficulty)
+- **Minimum Bogey Rating**: 95.0 (very challenging for bogey golfers)
+- **Maximum Bogey Rating**: 105.0 (extremely challenging for bogey golfers)
+
+### Integration with Course Generation
+
+The USGA rating system is fully integrated into the course generation pipeline:
+
+1. **Course factors** are generated with weather integration
+2. **Course Rating** is calculated using all course characteristics
+3. **Bogey Rating** is calculated with enhanced difficulty for higher-handicap players
+4. **Slope Rating** is calculated using the USGA formula
+5. **All ratings** are clamped to PGA Tour standards
+6. **Ratings** are included in the complete course data structure
+
+---
+
 ## Complete Course Generation Process
 
 ### Main Function Flow
@@ -590,6 +762,11 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
         **factors
     }
     
+    # 13. Calculate USGA Course Rating and Slope Rating
+    course_rating, slope_rating = calculate_course_rating_and_slope(course_data)
+    course_data['course_rating'] = course_rating
+    course_data['slope_rating'] = slope_rating
+    
     return course_data
 ```
 
@@ -646,7 +823,11 @@ course_data = {
     'rough_length': float,          # 0.0-1.0 (short to long rough)
     'crowd_factor': float,          # 0.0-1.0 (low to high crowds)
     'terrain_difficulty': float,    # 0.0-1.0 (easy to difficult terrain)
-    'prestige': float               # 0.0-1.0 (low to high prestige)
+    'prestige': float,              # 0.0-1.0 (low to high prestige)
+    
+    # USGA Ratings
+    'course_rating': float,         # Course Rating (74.0-78.0)
+    'slope_rating': int             # Slope Rating (145-150)
 }
 ```
 
@@ -684,7 +865,9 @@ course_data = {
     'rough_length': 0.582,
     'crowd_factor': 0.546,
     'terrain_difficulty': 0.097,
-    'prestige': 0.737
+    'prestige': 0.737,
+    'course_rating': 76.5,
+    'slope_rating': 147
 }
 ```
 
