@@ -14,11 +14,12 @@ import random
 import pandas as pd
 import os
 import numpy as np
+import sqlite3
 from datetime import datetime
 
 # Data paths
-CITIES_DATA_PATH = os.path.join(os.path.dirname(__file__), '../../data/cities_with_weather.csv')
-WEATHER_DATA_PATH = os.path.join(os.path.dirname(__file__), '../../data/visual_crossing_monthly_2024_complete.csv')
+CITIES_DATA_PATH = os.path.join(os.path.dirname(__file__), '../../data/cities_with_elevation.csv')
+DB_PATH = os.path.join(os.path.dirname(__file__), '../../data/golf_courses.db')
 
 # Family names and naming conventions
 FAMILY_NAMES = {
@@ -66,14 +67,13 @@ MOUNTAIN_STATES = ['MT', 'ID', 'WY', 'CO', 'UT', 'NV', 'AZ', 'NM']
 SOUTHWEST_STATES = ['TX', 'OK', 'LA']
 
 def load_data():
-    """Load cities and weather data"""
+    """Load cities data"""
     try:
         cities_df = pd.read_csv(CITIES_DATA_PATH)
-        weather_df = pd.read_csv(WEATHER_DATA_PATH)
-        return cities_df, weather_df
+        return cities_df
     except FileNotFoundError as e:
         print(f"❌ Data file not found: {e}")
-        return None, None
+        return None
 
 def generate_founding_year(naming_type, state_code, prestige):
     """Generate founding year based on historical patterns, naming type, region, and prestige"""
@@ -244,21 +244,7 @@ def generate_course_name(city_name, state_code, naming_type='random'):
         suffix = random.choice(CLUB_SUFFIXES)
         return f"{family_name} {geo_term} {suffix}", 'family'
 
-def get_city_weather_data(city_name, state_code, weather_df):
-    """Get weather data for a specific city"""
-    city_data = weather_df[(weather_df['city'] == city_name) & (weather_df['state'] == state_code)]
-    if city_data.empty:
-        return None
-    
-    # Calculate annual averages
-    annual_data = {
-        'avg_temperature': city_data['temperature_2m_mean'].mean(),
-        'avg_humidity': city_data['relative_humidity_2m_mean'].mean(),
-        'avg_precipitation': city_data['precipitation_sum'].sum() / 12,  # Monthly average
-        'avg_wind': city_data['windspeed_10m_mean'].mean(),
-        'avg_cloud_cover': city_data['cloudcover_mean'].mean()
-    }
-    return annual_data
+
 
 def generate_holes():
     """Generate 18 holes with par distribution and placement rules"""
@@ -266,7 +252,7 @@ def generate_holes():
     
     for attempt in range(max_attempts):
         # Generate par distribution
-        par_4s = random.randint(10, 12)
+        par_4s = random.randint(8, 12)
         remaining_holes = 18 - par_4s
         
         # Ensure equal-ish split of par 3s and 5s
@@ -615,9 +601,8 @@ def generate_hole_difficulties(holes, yardages, handicap_indexes):
     
     return difficulties
 
-def generate_course_factors(naming_type, weather_data):
-    """Generate course factors based on naming type and weather"""
-    
+def generate_course_factors(naming_type):
+    """Generate course factors based on naming type only."""
     # Generate base factors with some randomness
     factors = {
         'width_index': np.random.beta(4, 2),  # Slightly wider fairways
@@ -625,10 +610,9 @@ def generate_course_factors(naming_type, weather_data):
         'green_speed': np.random.beta(3, 2),
         'turf_firmness': np.random.beta(2, 3),
         'rough_length': np.random.beta(2, 3),
-        'crowd_factor': np.random.beta(2, 4),
         'terrain_difficulty': np.random.beta(2, 4)
     }
-    
+
     # Prestige based on naming type
     if naming_type == 'pcc':
         factors['prestige'] = np.random.beta(3, 2)  # Higher prestige for PCC
@@ -636,57 +620,23 @@ def generate_course_factors(naming_type, weather_data):
         factors['prestige'] = np.random.beta(4, 2)  # Highest prestige for family clubs
     else:
         factors['prestige'] = np.random.beta(2, 3)  # Lower prestige for location-based
-    
+
     # Prestige correlations
-    # Higher prestige = faster greens, firmer turf
     prestige_factor = factors['prestige']
+    # Higher prestige = faster greens, firmer turf, longer rough
     factors['green_speed'] = min(1.0, factors['green_speed'] * (1 + prestige_factor * 0.2))
     factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * (1 + prestige_factor * 0.2))
-    
-    # Adjust factors based on weather
-    if weather_data:
-        # Temperature effects
-        temp_factor = (weather_data['avg_temperature'] - 32) / 50.0  # Normalize to 0-1 (32-82°F)
-        temp_factor = max(0.0, min(1.0, temp_factor))
-        
-        # Higher temperature = firmer turf, faster greens
-        factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * (1 + temp_factor * 0.4))
-        factors['green_speed'] = min(1.0, factors['green_speed'] * (1 + temp_factor * 0.3))
-        
-        # Humidity effects
-        humidity_factor = weather_data['avg_humidity'] / 100.0
-        # Higher humidity = slower greens, softer turf
-        factors['green_speed'] = max(0.0, factors['green_speed'] * (1 - humidity_factor * 0.3))
-        factors['turf_firmness'] = max(0.0, factors['turf_firmness'] * (1 - humidity_factor * 0.4))
-        
-        # Precipitation effects
-        precip_factor = min(1.0, weather_data['avg_precipitation'] / 10.0)  # Normalize to 0-1
-        # Higher precipitation = longer rough, softer turf
-        factors['rough_length'] = min(1.0, factors['rough_length'] * (1 + precip_factor * 0.5))
-        factors['turf_firmness'] = max(0.0, factors['turf_firmness'] * (1 - precip_factor * 0.3))
-        
-        # Wind effects
-        wind_factor = min(1.0, weather_data['avg_wind'] / 20.0)  # Normalize to 0-1
-        # Higher wind = higher terrain difficulty
-        factors['terrain_difficulty'] = min(1.0, factors['terrain_difficulty'] * (1 + wind_factor * 0.4))
-        # We'll apply wind to strategic_penal_index after calculation
-    
+    factors['rough_length'] = min(1.0, factors['rough_length'] * (1 + prestige_factor * 0.2))
+
     # Calculate strategic_penal_index based on other factors
-    # Formula: (hazard_density + green_speed + turf_firmness + rough_length + terrain_difficulty) / 5 + (1 - width_index) * 0.5
-    penal_elements = (factors['hazard_density'] + factors['green_speed'] + 
-                     factors['turf_firmness'] + factors['rough_length'] + factors['terrain_difficulty']) / 5
+    penal_elements = (
+        factors['hazard_density'] + factors['green_speed'] +
+        factors['turf_firmness'] + factors['rough_length'] + factors['terrain_difficulty']
+    ) / 5
     strategic_elements = (1 - factors['width_index']) * 0.5
-    
     factors['strategic_penal_index'] = penal_elements + strategic_elements
-    
-    # Apply weather wind factor to strategic_penal_index
-    if weather_data:
-        wind_factor = min(1.0, weather_data['avg_wind'] / 20.0)
-        factors['strategic_penal_index'] = min(1.0, factors['strategic_penal_index'] * (1 + wind_factor * 0.3))
-    
-    # Clamp strategic_penal_index to 0-1 range
+    # Clamp to 0-1
     factors['strategic_penal_index'] = max(0.0, min(1.0, factors['strategic_penal_index']))
-    
     return factors
 
 def calculate_course_rating_and_slope(course_data):
@@ -768,21 +718,26 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     """Generate a complete course with all components"""
     
     # Load data
-    cities_df, weather_df = load_data()
-    if cities_df is None or weather_df is None:
+    cities_df = load_data()
+    if cities_df is None:
         return None
     
     # Select city if not provided
     if city_name is None or state_code is None:
         city_row = cities_df.sample(n=1).iloc[0]
         city_name = city_row['city']
-        state_code = city_row['state_id']
+        state_code = city_row['state']
+    
+    # Get elevation data for the selected city
+    city_data = cities_df[(cities_df['city'] == city_name) & (cities_df['state'] == state_code)]
+    if city_data.empty:
+        print(f"❌ No data found for {city_name}, {state_code}")
+        return None
+    
+    elevation_ft = city_data.iloc[0]['elevation_ft']
     
     # Generate course name
     course_name, naming_type = generate_course_name(city_name, state_code, naming_type)
-    
-    # Get weather data
-    weather_data = get_city_weather_data(city_name, state_code, weather_df)
     
     # Generate holes
     holes = generate_holes()
@@ -803,7 +758,7 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     difficulties = generate_hole_difficulties(holes, yardages, handicap_indexes)
     
     # Generate course factors
-    factors = generate_course_factors(naming_type, weather_data)
+    factors = generate_course_factors(naming_type)
     
     # Calculate summary totals
     total_par = sum(holes)
@@ -824,7 +779,7 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
         'location': f"{city_name}, {state_code} (US)",
         'founding_year': founding_year,
         'naming_type': naming_type,
-        'weather_data': weather_data,
+        'elevation_ft': elevation_ft,
         'holes': holes,
         'yardages': yardages,
         'handicap_indexes': handicap_indexes,
@@ -845,6 +800,66 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     
     return course_data
 
+def insert_course_to_database(course_data):
+    """Insert a course and its characteristics into the database."""
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    try:
+        # Insert main course record
+        cursor.execute('''
+            INSERT INTO courses (
+                name, city, state_country, location, total_par, total_yardage,
+                slope_rating, course_rating, prestige_level, est_year, created_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            course_data['name'],
+            course_data['city'],
+            course_data['state'],
+            course_data['location'],
+            course_data['total_par'],
+            course_data['total_yardage'],
+            course_data['slope_rating'],
+            course_data['course_rating'],
+            int(course_data['prestige'] * 100),  # Convert to 0-100 scale
+            course_data['founding_year'],
+            datetime.now().isoformat()
+        ))
+        course_id = cursor.lastrowid
+        # Insert characteristics
+        cursor.execute('''
+            INSERT INTO course_characteristics (
+                course_id, design_strategy, narrowness_factor, hazard_density, green_speed,
+                turf_firmness, rough_length, elevation, terrain_difficulty
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ''', (
+            course_id,
+            course_data['strategic_penal_index'],
+            1 - course_data['width_index'],  # narrowness_factor is inverse of width_index
+            course_data['hazard_density'],
+            course_data['green_speed'],
+            course_data['turf_firmness'],
+            course_data['rough_length'],
+            course_data['elevation_ft'],  # Use real elevation data
+            course_data['terrain_difficulty']
+        ))
+        # Insert holes
+        for i, (par, yardage, handicap) in enumerate(zip(course_data['holes'], course_data['yardages'], course_data['handicap_indexes']), 1):
+            cursor.execute('''
+                INSERT INTO holes (course_id, hole_number, par, yardage, handicap, difficulty_modifier)
+                VALUES (?, ?, ?, ?, ?, ?)
+            ''', (course_id, i, par, yardage, handicap, 1.0))
+        conn.commit()
+        print(f"✅ Inserted course: {course_data['name']} (ID: {course_id})")
+        return course_id
+    except sqlite3.IntegrityError as e:
+        if "UNIQUE constraint failed" in str(e):
+            print(f"⚠️  Course '{course_data['name']}' already exists, skipping...")
+            return None
+        else:
+            raise e
+    finally:
+        conn.close()
+
 def print_complete_course(course_data):
     """Print complete course information"""
     print(f"\n🏌️  {course_data['name']}")
@@ -852,10 +867,7 @@ def print_complete_course(course_data):
     print(f"📍 Location: {course_data['location']}")
     print(f"🏗️  Founded: {course_data['founding_year']}")
     print(f"📋 Naming Type: {course_data['naming_type'].title()}")
-    
-    if course_data['weather_data']:
-        weather = course_data['weather_data']
-        print(f"🌡️  Weather: {weather['avg_temperature']:.1f}°F, {weather['avg_humidity']:.1f}% humidity")
+    print(f"🏔️  Elevation: {course_data['elevation_ft']:.0f} feet")
     
     print(f"\n📊 Course Summary:")
     print(f"Total Par: {course_data['total_par']} | Total Yardage: {course_data['total_yardage']:,}")
@@ -870,7 +882,6 @@ def print_complete_course(course_data):
     print(f"Green Speed:           {course_data['green_speed']:.3f}")
     print(f"Turf Firmness:         {course_data['turf_firmness']:.3f}")
     print(f"Rough Length:          {course_data['rough_length']:.3f}")
-    print(f"Crowd Factor:          {course_data['crowd_factor']:.3f}")
     print(f"Terrain Difficulty:    {course_data['terrain_difficulty']:.3f}")
     print(f"Prestige:              {course_data['prestige']:.3f}")
     
@@ -919,7 +930,7 @@ def print_complete_course(course_data):
     print(f"Easiest hole: {course_data['difficulties'].index(min_difficulty) + 1} (Index {course_data['handicap_indexes'][course_data['difficulties'].index(min_difficulty)]})")
 
 def main():
-    """Generate a sample complete course"""
+    """Generate a sample complete course and insert it into the database"""
     print("🏌️  Complete Course Generation")
     print("=" * 100)
     
@@ -928,6 +939,14 @@ def main():
     
     if course:
         print_complete_course(course)
+        
+        # Insert into database
+        course_id = insert_course_to_database(course)
+        if course_id:
+            print(f"🎉 Successfully created and inserted course with ID: {course_id}")
+        else:
+            print("❌ Failed to insert course into database")
+        
         return course
     else:
         print("❌ Failed to generate complete course")
