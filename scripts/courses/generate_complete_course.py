@@ -689,6 +689,81 @@ def generate_course_factors(naming_type, weather_data):
     
     return factors
 
+def calculate_course_rating_and_slope(course_data):
+    """
+    Calculate Course Rating and Slope Rating for PGA Tour-level courses.
+    All courses are designed to be professional tour quality.
+    """
+    # Extract course variables
+    par = course_data['total_par']
+    yardage = course_data['total_yardage']
+    spi = course_data['strategic_penal_index']
+    green_speed = course_data['green_speed']
+    rough_length = course_data['rough_length']
+    hazard_density = course_data['hazard_density']
+    terrain_difficulty = course_data['terrain_difficulty']
+    prestige = course_data['prestige']
+    
+    # --- Course Rating (Scratch Golfer) ---
+    # Base: start with par
+    course_rating = par
+    
+    # Yardage adjustment: 0.15 strokes per 100 yards over 6500 (more aggressive for tour courses)
+    yardage_adj = max(0, (yardage - 6500) / 100) * 0.15
+    
+    # Strategic/Penal index: up to +3.0 strokes for most penal (more aggressive)
+    spi_adj = spi * 3.0
+    
+    # Other factors: each can add up to 0.6 strokes (more aggressive)
+    green_adj = green_speed * 0.6
+    rough_adj = rough_length * 0.6
+    hazard_adj = hazard_density * 0.6
+    terrain_adj = terrain_difficulty * 0.6
+    
+    # Prestige: higher prestige = slightly lower rating (better conditioning)
+    prestige_adj = (0.5 - prestige) * 0.2
+    
+    course_rating += yardage_adj + spi_adj + green_adj + rough_adj + hazard_adj + terrain_adj + prestige_adj
+    
+    # All courses are PGA Tour level: 74-78 range
+    course_rating = max(74.0, min(78.0, course_rating))
+    
+    # --- Bogey Rating (Bogey Golfer) ---
+    # Start with par + 22 (tour courses are harder for bogey golfers)
+    bogey_base = par + 22
+    
+    # Yardage: 0.3 strokes per 100 yards over 6000 (bigger effect on bogey golfers)
+    yardage_adj_bogey = max(0, (yardage - 6000) / 100) * 0.3
+    
+    # Strategic/Penal index: up to +6 strokes for most penal (bigger effect)
+    spi_adj_bogey = spi * 6.0
+    
+    # Other factors: each can add up to 1.2 strokes (bigger effect)
+    green_adj_bogey = green_speed * 1.2
+    rough_adj_bogey = rough_length * 1.2
+    hazard_adj_bogey = hazard_density * 1.2
+    terrain_adj_bogey = terrain_difficulty * 1.2
+    
+    # Prestige: higher prestige = slightly lower rating
+    prestige_adj_bogey = (0.5 - prestige) * 0.4
+    
+    bogey_rating = bogey_base + yardage_adj_bogey + spi_adj_bogey + green_adj_bogey + rough_adj_bogey + hazard_adj_bogey + terrain_adj_bogey + prestige_adj_bogey
+    
+    # Ensure bogey rating is at least 20 strokes higher than course rating (tour courses are harder)
+    bogey_rating = max(course_rating + 20, bogey_rating)
+    
+    # All courses are PGA Tour level: bogey rating should be 95-105 range
+    bogey_rating = max(95.0, min(105.0, bogey_rating))
+    
+    # --- Slope Rating ---
+    # USGA formula: Slope Rating = (Bogey Rating - Course Rating) × 5.381
+    slope_rating = int(round((bogey_rating - course_rating) * 5.381))
+    
+    # All courses are PGA Tour level: 145-150 range
+    slope_rating = max(145, min(150, slope_rating))
+    
+    return round(course_rating, 1), slope_rating
+
 def generate_complete_course(city_name=None, state_code=None, naming_type='random'):
     """Generate a complete course with all components"""
     
@@ -763,6 +838,11 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
         **factors
     }
     
+    # Calculate Course Rating and Slope Rating
+    course_rating, slope_rating = calculate_course_rating_and_slope(course_data)
+    course_data['course_rating'] = course_rating
+    course_data['slope_rating'] = slope_rating
+    
     return course_data
 
 def print_complete_course(course_data):
@@ -793,6 +873,10 @@ def print_complete_course(course_data):
     print(f"Crowd Factor:          {course_data['crowd_factor']:.3f}")
     print(f"Terrain Difficulty:    {course_data['terrain_difficulty']:.3f}")
     print(f"Prestige:              {course_data['prestige']:.3f}")
+    
+    print(f"\n🏆 USGA Ratings:")
+    print(f"Course Rating:         {course_data['course_rating']}")
+    print(f"Slope Rating:          {course_data['slope_rating']}")
     
     # Interpret strategic/penal index
     spi = course_data['strategic_penal_index']
