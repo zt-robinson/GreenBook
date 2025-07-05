@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Dev Standings - GreenBook{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1 class="page-title">Dev Tour Standings (All Variables)</h1>
+    <p class="page-subtitle">Current season standings with all player variables (dev view)</p>
+    <div class="table-container" style="overflow-x: auto;">
+        <table style="min-width: 2200px; width: max-content; table-layout: auto; font-size: 0.75em; white-space: nowrap;">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Nationality</th>
+                    <th>Career Wins</th>
+                    <th>Season Money</th>
+                    <th>Driving Power</th>
+                    <th>Driving Accuracy</th>
+                    <th>Approach Accuracy</th>
+                    <th>Short Game</th>
+                    <th>Putting</th>
+                    <th>Consistency</th>
+                    <th>Composure</th>
+                    <th>Confidence</th>
+                    <th>Focus</th>
+                    <th>Risk Tolerance</th>
+                    <th>Mental Fatigue</th>
+                    <th>Resilience</th>
+                    <th>Force Retirement</th>
+                    <th>Peak Adder</th>
+                    <th>Peak Age</th>
+                    <th>Peak Duration</th>
+                    <th>Peak Start</th>
+                    <th>Peak Stop</th>
+                    <th>World Ranking</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td style="text-align: center;">{{ player['tour_rank'] }}</td>
+                    <td style="text-align: left;">
+                        {% set flag_code = country_to_flag_iso(player['nationality']) %}
+                        {% if flag_code %}
+                            <img src="{{ url_for('static', filename='flags/' ~ flag_code ~ '.svg') }}" alt="{{ player['nationality'] }} flag" style="width: 18px; height: 12px; vertical-align: middle; margin-right: 4px;">
+                        {% endif %}
+                        <strong>{{ player['name'] }}</strong>
+                    </td>
+                    <td style="text-align: center;">{{ player['age'] }}</td>
+                    <td style="text-align: center;">{{ player['nationality'] }}</td>
+                    <td style="text-align: center;">{{ player['career_wins'] }}</td>
+                    <td style="text-align: center;">${{ '{:,.2f}'.format(player['season_money']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['driving_power']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['driving_accuracy']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['approach_accuracy']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['short_game']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['putting']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['consistency']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['composure']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['confidence']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['focus']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['risk_tolerance']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['mental_fatigue']) }}</td>
+                    <td style="text-align: center;">{{ '%.1f'|format(player['resilience']) }}</td>
+                    <td style="text-align: center;">{{ player['force_retirement'] }}</td>
+                    <td style="text-align: center;">{{ '%.2f'|format(player['peak_adder']) }}</td>
+                    <td style="text-align: center;">{{ player['peak_age'] }}</td>
+                    <td style="text-align: center;">{{ player['peak_duration'] }}</td>
+                    <td style="text-align: center;">{{ player['peak_start'] }}</td>
+                    <td style="text-align: center;">{{ player['peak_stop'] }}</td>
+                    <td style="text-align: center;">{{ player['world_ranking'] }}</td>
+                    <td style="text-align: center;">{{ player['status'] }}</td>
+                    <td style="text-align: center;">{{ player['created_at'] }}</td>
+                    <td style="text-align: center;">{{ player['id'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <h2 style="margin-top:2rem;">All Player Variables (Debug)</h2>
+    <div style="overflow-x:auto;">
+        <table style="width:100%; font-size:0.92em; background:#f8f9fa;">
+            <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Variables</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in players %}
+                <tr>
+                    <td><strong>{{ player['name'] }}</strong></td>
+                    <td>
+                        <pre style="white-space:pre-wrap; word-break:break-all; margin:0;">{{ player | tojson(indent=2) }}</pre>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} 

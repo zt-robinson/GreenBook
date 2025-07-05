@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Dev Courses - GreenBook{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <h1 class="page-title">Dev Golf Courses</h1>
+    <p class="page-subtitle">All course variables and characteristics (debug view)</p>
+    {% include 'courses.html' %}
+    <h2 style="margin-top:2rem;">All Course Variables (Debug)</h2>
+    <div style="overflow-x:auto;">
+        <table style="width:100%; font-size:0.95em; background:#f8f9fa;">
+            <thead>
+                <tr>
+                    <th>Course Name</th>
+                    <th>Variables</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td><strong>{{ course['name'] }}</strong></td>
+                    <td>
+                        <pre style="white-space:pre-wrap; word-break:break-all; margin:0;">{{ course | tojson(indent=2) }}</pre>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %} 

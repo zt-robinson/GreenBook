@@ -71,9 +71,8 @@ body {
 }
 
 .main-container {
-  max-width: 1100px;
   margin: 2.5rem auto 0 auto;
-  padding: 0 2rem;
+  padding: 0 0.5rem;
 }
 
 .page-title {
