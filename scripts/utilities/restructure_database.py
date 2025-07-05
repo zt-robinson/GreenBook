@@ -8,8 +8,10 @@ import sqlite3
 import os
 import math
 
-DB_PATH = os.path.join(os.path.dirname(__file__), 'golf_players.db')
-BACKUP_PATH = os.path.join(os.path.dirname(__file__), 'golf_players_backup.db')
+import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+from config import PLAYER_DB_PATH as DB_PATH
+BACKUP_PATH = os.path.join(os.path.dirname(DB_PATH), 'golf_players_backup.db')
 
 def backup_database():
     """Create a backup of the current database."""

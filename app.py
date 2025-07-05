@@ -8,13 +8,9 @@ from scripts.tournaments.utilities.generate_tournament_field import get_tourname
 import pytz
 import random
 import math
+from config import PLAYER_DB_PATH, COURSE_DB_PATH
 
 app = Flask(__name__)
-
-PLAYER_DB_PATH = os.path.join(os.path.dirname(__file__), 'data/golf_players.db')
-COURSE_DB_PATH = os.path.join(os.path.dirname(__file__), 'data/golf_courses.db')
-print('DEBUG: PLAYER_DB_PATH is', PLAYER_DB_PATH)
-print('DEBUG: COURSE_DB_PATH is', COURSE_DB_PATH)
 
 # In-memory simulation state (for demo; will move to persistent storage later)
 sim_state = {}
@@ -23,7 +19,7 @@ def get_all_players():
     conn = sqlite3.connect(PLAYER_DB_PATH)
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    cur.execute('SELECT id, name, age, country, status, career_wins, season_money, driving_power, driving_accuracy, approach_long, approach_short, scrambling, putting, consistency, composure, resilience, created_at, world_ranking, tour_rank FROM players ORDER BY tour_rank ASC NULLS LAST')
+    cur.execute('SELECT * FROM players ORDER BY tour_rank ASC')
     players = cur.fetchall()
     conn.close()
     return players
@@ -551,6 +547,72 @@ def generate_weather_forecast(course_id, start_date, num_rounds=4):
             {'temp': 65, 'humidity': 75, 'wind': 15, 'rain_prob': 60, 'cloud_cover': 80, 'icon': '🌧️'},
             {'temp': 72, 'humidity': 50, 'wind': 10, 'rain_prob': 15, 'cloud_cover': 25, 'icon': '☀️'}
         ]
+
+@app.route('/devStandings')
+def dev_standings():
+    players = get_all_players()
+    players = [dict(player) for player in players]
+    # Add the new public fields to each player
+    for player in players:
+        player['events'] = 0
+        player['tour_championship_points'] = 0
+        player['points_behind_lead'] = 0
+        player['wins'] = player.get('career_wins', 0)
+        player['top_10s'] = 0
+    return render_template('devPlayers.html', players=players, country_to_flag_iso=country_to_flag_iso)
+
+@app.route('/devCourses')
+def dev_courses():
+    conn = sqlite3.connect(COURSE_DB_PATH)
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute('''
+        SELECT c.*, cc.*
+        FROM courses c
+        LEFT JOIN course_characteristics cc ON c.id = cc.course_id
+        ORDER BY c.name
+    ''')
+    courses = cur.fetchall()
+    courses = [dict(row) for row in courses]
+    for course in courses:
+        cur.execute('''
+            SELECT hole_number, par, handicap, yardage
+            FROM holes 
+            WHERE course_id = ? 
+            ORDER BY hole_number
+        ''', (course['id'],))
+        holes = cur.fetchall()
+        course['holes'] = [dict(hole) for hole in holes]
+        course['total_par'] = sum(hole['par'] for hole in course['holes'])
+    conn.close()
+    return render_template('devCourses.html', courses=courses)
+
+@app.route('/devSchedule')
+def dev_schedule():
+    import sqlite3
+    import os
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), 'data/golf_tournaments.db')
+    courses_db_path = os.path.join(os.path.dirname(__file__), 'data/golf_courses.db')
+    tconn = sqlite3.connect(tournaments_db_path)
+    tconn.row_factory = sqlite3.Row
+    tcur = tconn.cursor()
+    tcur.execute('''
+        SELECT t.*, s.start_date, s.round_1_start, s.round_2_start, s.round_3_start, s.round_4_start
+        FROM tournaments t
+        JOIN tournament_schedule s ON t.id = s.tournament_id
+        ORDER BY t.season_number, t.week_number
+    ''')
+    tournaments = [dict(row) for row in tcur.fetchall()]
+    tconn.close()
+    cconn = sqlite3.connect(courses_db_path)
+    cconn.row_factory = sqlite3.Row
+    ccur = cconn.cursor()
+    ccur.execute('SELECT * FROM courses')
+    courses = {row['id']: dict(row) for row in ccur.fetchall()}
+    cconn.close()
+    for t in tournaments:
+        t['course'] = courses.get(t['course_id'], {})
+    return render_template('devSchedule.html', tournaments=tournaments)
 
 if __name__ == '__main__':
     app.run(debug=True) 
