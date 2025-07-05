@@ -7,8 +7,9 @@ def generate_tournament_field(tournament_id, field_size):
     """Generate a tournament field based on qualification rules"""
     
     # Database paths
-    players_db_path = os.path.join(os.path.dirname(__file__), '../../data/golf_players.db')
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '../../data/golf_tournaments.db')
+    import sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+    from config import PLAYER_DB_PATH as players_db_path, TOURNAMENT_DB_PATH as tournaments_db_path
     
     # Connect to databases
     players_conn = sqlite3.connect(players_db_path)
@@ -109,8 +110,9 @@ def generate_tournament_field(tournament_id, field_size):
 def get_tournament_field(tournament_id):
     """Get the current field for a tournament"""
     
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '../../data/golf_tournaments.db')
-    players_db_path = os.path.join(os.path.dirname(__file__), '../../data/golf_players.db')
+    import sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+    from config import TOURNAMENT_DB_PATH as tournaments_db_path, PLAYER_DB_PATH as players_db_path
     
     tournaments_conn = sqlite3.connect(tournaments_db_path)
     tournaments_conn.row_factory = sqlite3.Row

@@ -10,9 +10,12 @@ class TournamentLogic:
     """Handles tournament creation and management logic"""
     
     def __init__(self):
-        self.tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
-        self.players_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_players.db')
-        self.courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
+        import sys
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+        from config import TOURNAMENT_DB_PATH as tournaments_db_path, PLAYER_DB_PATH as players_db_path, COURSE_DB_PATH as courses_db_path
+        self.tournaments_db_path = tournaments_db_path
+        self.players_db_path = players_db_path
+        self.courses_db_path = courses_db_path
     
     def create_tournament(self, tournament_name: str, course_id: int, start_date: str, 
                          season_number: int, week_number: int, event_type: str = None,

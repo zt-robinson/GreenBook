@@ -99,7 +99,9 @@ def select_course(courses):
             return None
 
 def get_last_event_date_and_week(season_number):
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    import sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
+    from config import TOURNAMENT_DB_PATH as tournaments_db_path
     if not os.path.exists(tournaments_db_path):
         return None, 0
     conn = sqlite3.connect(tournaments_db_path)
