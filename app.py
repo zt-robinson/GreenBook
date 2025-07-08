@@ -9,6 +9,7 @@ import pytz
 import random
 import math
 from config import PLAYER_DB_PATH, COURSE_DB_PATH
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -135,11 +136,13 @@ def courses():
     conn = sqlite3.connect(COURSE_DB_PATH)
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
+    # Load elevation data
+    elev_df = pd.read_csv('data/cities_with_weather_and_elevation.csv')
     cur.execute('''
-        SELECT c.id, c.name, c.location, c.total_yardage as yardage, c.total_par as par, c.prestige_level as prestige, c.est_year,
-               cc.temp_factor AS avg_temperature, cc.humidity_factor AS humidity_level, cc.wind_factor, cc.rain_factor AS rain_probability,
+        SELECT c.id, c.name, c.location, c.city, c.state_country, c.total_yardage as yardage, c.total_par as par, c.prestige_level as prestige, c.est_year,
+               c.slope_rating, c.course_rating,
                cc.green_speed, cc.hazard_density, cc.rough_length, cc.narrowness_factor,
-               cc.elevation_factor
+               cc.elevation, cc.terrain_difficulty, cc.turf_firmness, cc.design_strategy
         FROM courses c
         LEFT JOIN course_characteristics cc ON c.id = cc.course_id
         ORDER BY c.name
@@ -159,29 +162,30 @@ def courses():
         holes = cur.fetchall()
         course['holes'] = [dict(hole) for hole in holes]
         course['total_par'] = sum(hole['par'] for hole in course['holes'])
-        course['slope_rating'] = 120 + int(course['prestige'] * 10) if course['prestige'] else 120
-        course['course_rating'] = 70.0 + (course['prestige'] * 0.5) if course['prestige'] else 70.0
-        # User-facing conversions
-        course['display_temp'] = f"{int(round(course.get('avg_temperature', 0)))}°F"
-        course['display_humidity'] = f"{int(round((course.get('humidity_level') or 0) * 100))}%"
-        # Elevation: 0.0 = 0 ft, 1.0 = 7724 ft
-        elevation_factor = course.get('elevation_factor') or 0
-        course['display_elevation'] = f"{int(elevation_factor * 7724)} ft"
-        # Print Colorado course elevation for review
-        if 'Colorado' in (course.get('location') or '') or 'CO' in (course.get('location') or ''):
-            print(f"DEBUG: {course['name']} (Colorado) elevation_factor={elevation_factor}, elevation={int(elevation_factor * 7724)} ft")
+        course['slope_rating'] = course.get('slope_rating')
+        course['course_rating'] = course.get('course_rating')
+        # Elevation lookup
+        city = course.get('city')
+        state = course.get('state_country')
+        elev_row = elev_df[(elev_df['city'] == city) & (elev_df['state'] == state)]
+        if not elev_row.empty:
+            elev_ft = elev_row.iloc[0]['elevation_ft']
+            try:
+                elev_ft = int(round(float(elev_ft)))
+                elev_ft = max(0, elev_ft)  # Clamp negative to zero
+                course['display_elevation'] = f"{elev_ft:,} ft"
+            except Exception:
+                print(f"DEBUG: Could not parse elevation for {city}, {state}: {elev_row.iloc[0]['elevation_ft']}")
+                course['display_elevation'] = 'N/A'
+        else:
+            print(f"DEBUG: No elevation found for {city}, {state}")
+            course['display_elevation'] = 'N/A'
         # Rough length: 2 to 4.5 inches
         rough_length = course.get('rough_length') or 0.2
         course['display_rough'] = f"{round(2 + (rough_length - 0.2) / 0.7 * 2.5, 1)} in"
         # Green speed: 10.5 to 13.5 ft
         green_speed = course.get('green_speed') or 0.3
         course['display_stimp'] = f"{round(10.5 + (green_speed - 0.3) / 0.7 * 3, 1)} ft"
-        # Rain days: 20 to 180
-        rain_prob = course.get('rain_probability') or 0.05
-        course['display_rain_days'] = f"{int(20 + (rain_prob - 0.05) / 0.55 * 160)} days/year"
-        # Wind speed: 5 to 20 mph
-        wind_factor = course.get('wind_factor') or 0.2
-        course['display_wind'] = f"{round(5 + (wind_factor - 0.2) / 0.3 * 15, 1)} mph"
         # Turf firmness: thresholds
         turf_firmness = course.get('turf_firmness') or 0.3
         if turf_firmness < 0.5:
@@ -305,17 +309,15 @@ def tournament_detail(tournament_id):
     cconn = sqlite3.connect(courses_db_path)
     cconn.row_factory = sqlite3.Row
     ccur = cconn.cursor()
-    ccur.execute('SELECT latitude, longitude, elevation FROM courses WHERE id = ?', (tournament['course_id'],))
+    ccur.execute('SELECT name, location FROM courses WHERE id = ?', (tournament['course_id'],))
     course = ccur.fetchone()
     cconn.close()
     if course:
-        tournament['latitude'] = course['latitude']
-        tournament['longitude'] = course['longitude']
-        tournament['elevation'] = course['elevation']
+        tournament['course_name'] = course['name']
+        tournament['course_location'] = course['location']
     else:
-        tournament['latitude'] = None
-        tournament['longitude'] = None
-        tournament['elevation'] = None
+        tournament['course_name'] = 'Unknown'
+        tournament['course_location'] = 'Unknown'
 
     # Map tournament_type to user-friendly string
     type_map = {
