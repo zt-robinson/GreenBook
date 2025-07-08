@@ -67,3 +67,5 @@ venv.bak/
 # Ignore SQLite database files in the data directory
 data/*.db
 greenbook/data/golf_players.db
+greenbook/data/golf_courses.db
+greenbook/data/golf_tournaments.db
