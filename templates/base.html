@@ -76,57 +76,7 @@
             margin-bottom: 1.2rem;
             font-size: 1.1rem;
         }
-        .dev-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dev-btn {
-            padding: 0.5rem 1.2rem;
-            text-decoration: none;
-            color: var(--header-text);
-            border-radius: 8px;
-            background: transparent;
-            font-weight: 500;
-            font-family: var(--font-sans);
-            margin: 0 0.2rem;
-            transition: background 0.2s, color 0.2s;
-            cursor: pointer;
-            display: inline-block;
-        }
-        .dev-btn.active, .dev-btn:hover {
-            background: #fff2;
-            color: #fff;
-        }
-        .dev-dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background: var(--header-bg);
-            min-width: 180px;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            z-index: 1001;
-            flex-direction: column;
-            padding: 0.3rem 0;
-        }
-        .dev-dropdown-content a {
-            padding: 0.6rem 1.2rem;
-            display: block;
-            color: var(--header-text);
-            text-decoration: none;
-            border-radius: 0;
-            font-weight: 500;
-            font-family: var(--font-sans);
-            transition: background 0.2s, color 0.2s;
-        }
-        .dev-dropdown-content a:hover {
-            background: #fff2;
-            color: #fff;
-        }
-        .dev-dropdown:hover .dev-dropdown-content,
-        .dev-dropdown:focus-within .dev-dropdown-content {
-            display: flex;
-        }
+
     </style>
 </head>
 <body>
@@ -138,14 +88,6 @@
                 <a href="/players" {% if request.path == '/players' %}class="active"{% endif %}>Standings</a>
                 <a href="/courses" {% if request.path == '/courses' %}class="active"{% endif %}>Courses</a>
                 <a href="/schedule" {% if request.path == '/schedule' %}class="active"{% endif %}>Schedule</a>
-                <div class="dev-dropdown">
-                    <a href="#" class="dev-btn" id="devBtn">Development ▼</a>
-                    <div class="dev-dropdown-content">
-                        <a href="/devStandings">Dev Standings</a>
-                        <a href="/devCourses">Dev Courses</a>
-                        <a href="/devSchedule">Dev Schedule</a>
-                    </div>
-                </div>
             </nav>
         </div>
     </header>
