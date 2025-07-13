@@ -1,0 +1,151 @@
+final_rank,player,player_age,nationality,season_points,wins
+1,Jesse West,33,USA,3784,1
+2,Patrick Schmitz,32,Belgium,3761,2
+3,Eric Welch S8,23,USA,3740,0
+4,Conor Lee S5,24,Scotland,3719,2
+5,Mark Estrada,32,USA,3666,0
+6,Darius Grimes,32,USA,3618,0
+7,Manuel Manning,31,Philippines,3563,0
+8,Peter Steiger S5,27,Switzerland,3547,0
+9,Constantin Albu S2,28,Romania,3509,0
+10,Kevin Kent S2,30,USA,3503,2
+11,Danny Taylor S9,20,Scotland,3493,0
+12,Juan Bird S8,23,USA,3484,0
+13,Shane Harris S7,24,USA,3480,0
+14,Joe Heath,32,Scotland,3462,0
+15,Aidan Reardon,32,Ireland,3458,0
+16,Vasile Tomescu,32,Romania,3416,0
+17,Joe Hayes S10,20,Scotland,3408,1
+18,Ryan Hubbard,30,USA,3394,0
+19,Kyle Morales,33,USA,3368,0
+20,Bryan Lennon S10,19,Ireland,3336,0
+21,Stephen Schwartz S8,24,Australia,3331,0
+22,Karoly Molnár,32,Hungary,3306,0
+23,Sean Taylor S1,29,England,3290,1
+24,Michael Davis,30,Canada,3286,1
+25,Pavel Čermák S4,25,Czech Republic,3280,1
+26,Martin Simmons,33,England,3248,0
+27,Ethan Cox S1,29,USA,3246,1
+28,Brandon Baker S5,25,USA,3243,0
+29,Craig Smith S3,26,Australia,3240,0
+30,Luke Clark,33,USA,3231,0
+31,Charles Leonard,32,USA,3217,1
+32,Francisco Guajardo S1,31,Mexico,3206,0
+33,Leslie Moore S2,29,South Africa,3198,1
+34,William Ortega,32,USA,3196,0
+35,Randall Miller,30,USA,3189,0
+36,Travis Callahan S1,31,USA,3177,0
+37,Jeffery Williams,32,USA,3150,0
+38,Damon Peterson,33,Australia,3150,1
+39,Timo Varis,30,Finland,3136,0
+40,Andreas Weinhage S8,21,Germany,3125,1
+41,Mariusz Machowicz S8,24,Poland,3124,1
+42,Oliver Smith S8,24,England,3121,0
+43,Philip Hall S6,24,USA,3118,0
+44,Harry Miles,31,England,3109,0
+45,Kevin Thomas S10,22,USA,3094,0
+46,Diogo Freitas,32,Portugal,3089,0
+47,Nathaniel Dunn S10,20,USA,3076,2
+48,Bjorn Kjóisdóttir S2,30,Iceland,3063,0
+49,Zachary Patel,32,USA,3057,0
+50,Christian Henry S4,28,Belgium,3050,1
+51,Tyler Maughan,33,Ireland,3046,0
+52,Luis Arranz,31,Spain,3044,0
+53,Adam Milmo,32,Ireland,3032,0
+54,Kevin Hensley S4,26,USA,3029,0
+55,Michael Russell S7,24,USA,3023,0
+56,Milan Paľovčík,31,Slovakia,3022,0
+57,Nathan Banks,31,USA,3015,0
+58,Michael Jäkel S7,24,Germany,3014,1
+59,David Morris S6,23,USA,3008,0
+60,John Krause S8,23,USA,2995,0
+61,David Munoz S1,30,USA,2995,1
+62,Chad Jones S2,29,South Africa,2987,0
+63,Michael Carrillo S10,21,Canada,2979,0
+64,Terry Nguyen S7,24,USA,2967,0
+65,Dennis Lyons,33,USA,2961,1
+66,Kaur Tamm,30,Estonia,2957,0
+67,Andrew Collins,31,USA,2945,1
+68,Dale Howell S9,23,USA,2940,1
+69,Anders Thomsen S5,26,Denmark,2927,0
+70,Mark Perry S2,27,USA,2927,1
+71,Christian Henry S6,24,Belgium,2910,0
+72,Duncan Wood,33,Scotland,2905,0
+73,Josh Boyce,31,Ireland,2905,1
+74,Steven Keller,32,USA,2890,0
+75,Adam Franco,33,USA,2887,1
+76,Russell Warner S5,24,USA,2875,2
+77,Antanas Žukauskas S6,24,Lithuania,2872,0
+78,Bryan Washington S8,24,USA,2871,0
+79,Jeremy Freeman,33,Canada,2868,0
+80,David Garcia S8,24,USA,2867,0
+81,Daniel Whitaker,33,USA,2865,1
+82,Jose Lucero,31,Argentina,2846,0
+83,Ronald Wilcox S9,21,USA,2843,0
+84,Michael Gordon,33,USA,2842,0
+85,Daniel Wilson S10,21,England,2834,0
+86,Michael Johnson,30,USA,2827,0
+87,Tomas Brožová,33,Czech Republic,2822,0
+88,Kelly Ward S10,22,USA,2817,0
+89,James Dennis S2,29,USA,2805,0
+90,Anthony Reid,31,Scotland,2764,0
+91,Callum Davison,31,Scotland,2756,1
+92,Aaron Doyle S2,27,England,2744,1
+93,Billy Williams S1,30,England,2738,0
+94,Darrell Baker S4,27,USA,2698,0
+95,Shaun Wilson S10,22,England,2692,0
+96,Elliott Phillips,31,Scotland,2686,0
+97,Michael Crawford,33,USA,2667,0
+98,Owen Taylor S10,20,England,2652,1
+99,Joshua Church S9,23,USA,2636,0
+100,Michael Sorgatz S9,22,Germany,2628,1
+101,James Jennings,33,USA,2597,0
+102,Abdul Shaw S7,25,England,2588,0
+103,Stephen Johnson S7,23,Australia,2567,0
+104,Terence Heaney S2,29,Ireland,2541,0
+105,Miguel Loyola S10,22,Chile,2528,0
+106,Macauley McCluskey S8,22,Ireland,2508,0
+107,Huynh Phạm S9,21,Vietnam,2500,0
+108,Jason Clark S4,25,Australia,2492,0
+109,Evan Dasey S9,21,Ireland,2436,0
+110,Bruce Ramirez S10,20,Australia,2433,0
+111,Jon Steinþórsson S10,22,Iceland,2379,0
+112,Dominic Wong S10,22,England,2348,0
+113,Daniel Carter S10,20,USA,2333,0
+114,Brian Mccullough S10,21,USA,2279,0
+115,Pavel Marošová S10,22,Slovakia,2248,0
+116,Magnus Kristoffersen S10,22,Denmark,2210,0
+117,George Leblanc S10,21,USA,2194,0
+118,Daniel Cruz S10,20,Canada,2189,0
+119,Constantin Stănescu S6,26,Romania,2119,0
+120,Andrew Garrett S10,20,USA,1990,0
+121,Jeffrey Alexander S10,20,USA,1925,0
+122,Jorge Daniels S10,19,USA,1916,0
+123,Nicolae Cristea S10,21,Romania,1872,0
+124,Scott Watson S10,22,England,1794,0
+125,Jonathan Walters S10,19,USA,1790,0
+126,Ferenc Nagy S10,19,Hungary,1786,0
+127,William Hernandez S10,22,USA,1777,0
+128,Vaclav Urban S10,22,Czech Republic,1770,0
+129,Arthur Carter S10,21,South Africa,1738,0
+130,Kyle Cole S10,22,USA,1691,0
+131,Stanley Harrison S10,22,England,1603,0
+132,Bernard Dubois S10,21,Belgium,1587,0
+133,Budi Mansur S10,21,Indonesia,1584,0
+134,Andrea Casarin S10,20,Italy,1477,0
+135,Adam Martinez S10,22,USA,1442,0
+136,John Duke S10,20,USA,1440,0
+137,Ronald Lambrechts S10,21,Belgium (Dutch),1389,0
+138,Wolfgang Misicher S10,22,Germany,1182,0
+139,Kristjan Sillisdóttir S10,20,Iceland,1155,0
+140,Steven King S10,19,USA,1101,0
+141,Gustav Pedersen S10,22,Norway,998,0
+142,Antonio Tanzini S10,19,Italy,959,0
+143,Joe Ross S10,19,Scotland,753,0
+144,Magnus Svavarsson S10,19,Iceland,742,0
+145,Dylan Dickinson S10,22,Scotland,713,0
+146,Finbar McKelvey S10,21,Ireland,701,0
+147,Callum Jones S10,21,Scotland,693,0
+148,Dieter Kruschwitz S10,21,Germany,644,0
+149,Matthew Kim S10,21,USA,482,0
+150,William McNeely S10,21,Ireland,312,0

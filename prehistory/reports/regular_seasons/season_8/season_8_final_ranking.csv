@@ -1,0 +1,151 @@
+final_rank,player,player_age,nationality,season_points,wins
+1,Eric Welch S8,21,USA,4038,1
+2,Peter Steiger S5,25,Switzerland,3989,1
+3,Mark Estrada,30,USA,3976,1
+4,Kevin Kent S2,28,USA,3902,4
+5,Jesse West,31,USA,3897,2
+6,Manuel Manning,29,Philippines,3692,1
+7,Aidan Reardon,30,Ireland,3672,1
+8,Conor Lee S5,22,Scotland,3651,3
+9,Patrick Schmitz,30,Belgium,3638,1
+10,Leslie Moore S2,27,South Africa,3629,0
+11,Darius Grimes,30,USA,3592,0
+12,Diogo Freitas,30,Portugal,3559,0
+13,Martin Simmons,31,England,3556,0
+14,Randall Miller,28,USA,3544,1
+15,Juan Bird S8,21,USA,3541,0
+16,Michael Davis,28,Canada,3515,2
+17,Karoly Molnár,30,Hungary,3461,1
+18,Joe Heath,30,Scotland,3433,1
+19,David Morris S6,21,USA,3405,0
+20,Bjorn Kjóisdóttir S2,28,Iceland,3384,0
+21,Christian Henry S4,26,Belgium,3383,1
+22,Ethan Cox S1,27,USA,3380,0
+23,Mariusz Machowicz S8,22,Poland,3367,1
+24,Michael Jäkel S7,22,Germany,3343,0
+25,Adam Milmo,30,Ireland,3325,1
+26,Kaur Tamm,28,Estonia,3305,0
+27,Constantin Albu S2,26,Romania,3299,0
+28,Anthony Reid,29,Scotland,3262,0
+29,Jose Lucero,29,Argentina,3259,0
+30,Jeffery Williams,30,USA,3248,0
+31,Elliott Phillips,29,Scotland,3204,0
+32,Philip Hall S6,22,USA,3201,0
+33,Craig Smith S3,24,Australia,3198,0
+34,Russell Warner S5,22,USA,3173,1
+35,Charles Leonard,30,USA,3167,0
+36,Stephen Schwartz S8,22,Australia,3151,1
+37,Ryan Hubbard,28,USA,3149,0
+38,Sean Taylor S1,27,England,3134,1
+39,John Krause S8,21,USA,3123,1
+40,Travis Callahan S1,29,USA,3119,1
+41,Mark Perry S2,25,USA,3113,0
+42,Kevin Hensley S4,24,USA,3098,0
+43,Aaron Doyle S2,25,England,3068,0
+44,Vasile Tomescu,30,Romania,3053,0
+45,Zachary Patel,30,USA,3046,0
+46,Brandon Baker S5,23,USA,3019,0
+47,Anders Thomsen S5,24,Denmark,3016,1
+48,Andreas Weinhage S8,19,Germany,3013,0
+49,James Jennings,31,USA,3006,1
+50,Constantin Stănescu S6,24,Romania,2991,0
+51,Shane Harris S7,22,USA,2991,0
+52,Michael Crawford,31,USA,2990,0
+53,Milan Paľovčík,29,Slovakia,2981,0
+54,Christian Henry S6,22,Belgium,2969,0
+55,Darrell Baker S4,25,USA,2958,1
+56,David Johnston,30,Australia,2953,0
+57,Pavel Čermák S4,23,Czech Republic,2952,0
+58,Adam Franco,31,USA,2950,0
+59,Timothy Hamilton,31,USA,2946,0
+60,Tyler Maughan,31,Ireland,2937,0
+61,Michael Gordon,31,USA,2922,0
+62,Francisco Guajardo S1,29,Mexico,2918,0
+63,Oliver Smith S8,22,England,2914,0
+64,Jeremy Freeman,31,Canada,2912,0
+65,Daniel Whitaker,31,USA,2901,0
+66,Kyle Morales,31,USA,2894,0
+67,Andrew Collins,29,USA,2884,0
+68,Luis Arranz,29,Spain,2883,1
+69,David Munoz S1,28,USA,2876,0
+70,William Ortega,30,USA,2869,0
+71,David Garcia S8,22,USA,2868,0
+72,Michael Russell S7,22,USA,2868,1
+73,Bryan Washington S8,22,USA,2856,0
+74,Steven Keller,30,USA,2845,0
+75,Tomas Brožová,31,Czech Republic,2835,0
+76,Josh Boyce,29,Ireland,2829,0
+77,Harry Miles,29,England,2826,0
+78,Abdul Shaw S7,23,England,2826,1
+79,Dennis Lyons,31,USA,2822,0
+80,Juan Gaytán S4,26,Mexico,2794,0
+81,Damon Peterson,31,Australia,2790,0
+82,Anthony Gaines S4,26,USA,2776,0
+83,Terry Nguyen S7,22,USA,2764,0
+84,Craig Jackson,28,Scotland,2760,0
+85,Billy Williams S1,28,England,2742,0
+86,Chad Jones S2,27,South Africa,2728,1
+87,Callum Davison,29,Scotland,2723,0
+88,Luke Clark,31,USA,2719,0
+89,Macauley McCluskey S8,20,Ireland,2716,0
+90,Trevor Booker S2,28,USA,2715,0
+91,Antanas Žukauskas S6,22,Lithuania,2701,0
+92,Nathan Banks,29,USA,2694,0
+93,Michael Johnson,28,USA,2675,0
+94,James Dennis S2,27,USA,2674,0
+95,Jason Clark S4,23,Australia,2671,0
+96,Terence Heaney S2,27,Ireland,2661,0
+97,Stephen Johnson S7,21,Australia,2655,0
+98,Frank Miller S8,22,Australia,2652,0
+99,Timo Varis,28,Finland,2640,0
+100,Duncan Wood,31,Scotland,2618,0
+101,Dillon Stanley S2,26,Canada,2581,0
+102,Ante Jerič,30,Slovenia,2533,0
+103,Patrick Bennett S6,21,Scotland,2529,0
+104,Cody McGahey S7,22,Ireland,2509,0
+105,Joshua Lee S8,22,USA,2457,0
+106,Christopher Dudley S2,25,Australia,2394,0
+107,Colton Hammond S8,20,USA,2381,0
+108,Jozsef Horváth,28,Hungary,2312,0
+109,Daniel Rios S6,23,Canada,2311,0
+110,Elliot Holmes S5,25,England,2297,0
+111,Brandon Morales S8,22,USA,2241,0
+112,Johnny Hanna S8,19,Ireland,2213,0
+113,Mikael Ekholm S6,21,Sweden,2142,0
+114,Cristian Salazar S7,23,USA,2084,0
+115,Anthony Barnes S8,20,New Zealand,2066,0
+116,Derek Jones S8,22,South Africa,2037,0
+117,Allen Freeman S8,22,USA,2032,0
+118,Michael Wells S8,22,USA,2026,0
+119,Vu Trần S7,21,Vietnam,1993,0
+120,Dieter Losekann S8,19,Germany,1958,0
+121,Shota Suzuki S8,19,Japan,1940,0
+122,Robin Abbott S8,20,England,1918,0
+123,Clive Smith S8,22,England,1917,0
+124,Anthony Cruz S8,21,USA,1900,0
+125,Eric Hardy S8,21,USA,1886,0
+126,Bruce Thomas S8,21,USA,1886,0
+127,Jermaine Montgomery S8,21,USA,1882,0
+128,Richard Young S8,19,USA,1739,0
+129,Ivan Kumer S8,19,Slovenia,1717,0
+130,Kaito Ito S8,22,Japan,1695,0
+131,Kari Lehtimäki S8,22,Finland,1666,0
+132,Steven Gore S8,22,New Zealand,1653,0
+133,Luke Jensen S8,22,USA,1653,0
+134,Brian Mendoza S8,22,USA,1511,0
+135,Jason Roberson S8,21,USA,1487,0
+136,Richard Lindsey S8,19,USA,1485,0
+137,Andre Carson S8,20,USA,1336,0
+138,Simon Kemp S8,20,England,1279,0
+139,Stjepan Kuhar S8,20,Slovenia,1264,0
+140,Casey Bryant S8,21,USA,1238,0
+141,Roberto Pedrero S8,22,Spain,1191,0
+142,Colin Williams S8,21,USA,1177,0
+143,Peter Campbell S8,21,England,1124,0
+144,Jermaine Hodges S8,19,USA,1109,0
+145,Roberto Harris S8,21,Philippines,1023,0
+146,Erik Persson S8,20,Sweden,928,0
+147,Raymond Cline S8,20,USA,815,0
+148,Frank Fellner S8,21,Austria,716,0
+149,Lee Smith S8,19,USA,556,0
+150,Michael Hunter S8,19,USA,258,0
