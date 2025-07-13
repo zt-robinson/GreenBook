@@ -1,51 +1,51 @@
 final_rank,player,player_age,nationality,season_points,wins
-101,Alexander Campbell S4,24,USA,2443,0
+101,Alexander Campbell,24,USA,2443,0
 102,Kevin Roberts,27,USA,2412,0
-103,John Case S4,23,USA,2354,0
-104,Simon Wilson S3,26,Scotland,2333,0
-105,Derrick Robinson S6,23,USA,2311,0
-106,Brandon Silva S3,26,Australia,2272,0
-107,Rory Sheerin S7,19,Ireland,2264,0
-108,Ibrahim Şama S7,19,Turkey,2252,0
-109,Christian Leblanc S6,20,USA,2204,0
-110,Austin Love S1,27,USA,2161,0
-111,Christian Jacques S7,19,France,2151,0
-112,Michael Nette S7,19,Germany,2144,0
-113,James Baker S5,24,USA,2140,0
-114,Petar Vodopivec S7,21,Slovenia,2066,0
-115,Scott Diaz S7,22,USA,2058,0
-116,Martin Kazík S7,22,Slovakia,2040,0
-117,Wim Postma S7,21,Netherlands,2001,0
-118,Nicholas Byrd S7,19,USA,1997,0
-119,Bruce Owens S7,19,England,1969,0
-120,Dumitru Stoica S7,21,Romania,1949,0
-121,Krzysztof Ochab S7,20,Poland,1920,0
-122,Richard Roy S7,21,Australia,1872,0
-123,Eric Ryan S7,22,USA,1863,0
-124,Laszlo Szabó S7,22,Hungary,1847,0
-125,Andreas Jungfer S7,19,Germany,1842,0
-126,Fredrik Thorén S7,22,Sweden,1821,0
-127,Conall Horgan S7,21,Ireland,1809,0
-128,Adam Jensen S7,19,USA,1807,0
-129,John Brown S7,21,South Africa,1739,0
-130,Greg Stevens S7,20,USA,1658,0
-131,Dominic Kilgallen S7,22,Ireland,1618,0
-132,Keith Robinson S7,21,England,1597,0
-133,Joshua Clark S7,19,USA,1511,0
-134,Rian Doorty S7,20,Ireland,1491,0
-135,Tomislav Sakač S7,20,Croatia,1445,0
-136,Kevin Cole S7,19,USA,1398,0
-137,Raymond Lane S7,21,USA,1276,0
-138,Scott Torres S7,21,USA,1133,0
-139,Cody Ramirez S7,22,Australia,1100,0
-140,Diogo Castro S7,21,Portugal,1069,0
-141,Kenneth Charles S7,21,USA,1026,0
-142,Ren Sasaki S7,20,Japan,953,0
-143,Allen Smith S7,19,USA,856,0
-144,Petr Navrátil S7,21,Czech Republic,817,0
-145,Angel Lara S7,22,USA,798,0
-146,Rihards Siliņš S7,19,Latvia,789,0
-147,Kelvin Cohen S7,21,Ireland,765,0
-148,Andrea Terragni S7,19,Italy,755,0
-149,Ethan Hoffman S7,20,Australia,488,0
-150,Christopher Norris S7,20,USA,326,0
+103,John Case,23,USA,2354,0
+104,Simon Wilson,26,Scotland,2333,0
+105,Derrick Robinson,23,USA,2311,0
+106,Brandon Silva,26,Australia,2272,0
+107,Rory Sheerin,19,Ireland,2264,0
+108,Ibrahim Şama,19,Turkey,2252,0
+109,Christian Leblanc,20,USA,2204,0
+110,Austin Love,27,USA,2161,0
+111,Christian Jacques,19,France,2151,0
+112,Michael Nette,19,Germany,2144,0
+113,James Baker,24,USA,2140,0
+114,Petar Vodopivec,21,Slovenia,2066,0
+115,Scott Diaz,22,USA,2058,0
+116,Martin Kazík,22,Slovakia,2040,0
+117,Wim Postma,21,Netherlands,2001,0
+118,Nicholas Byrd,19,USA,1997,0
+119,Bruce Owens,19,England,1969,0
+120,Dumitru Stoica,21,Romania,1949,0
+121,Krzysztof Ochab,20,Poland,1920,0
+122,Richard Roy,21,Australia,1872,0
+123,Eric Ryan,22,USA,1863,0
+124,Laszlo Szabó,22,Hungary,1847,0
+125,Andreas Jungfer,19,Germany,1842,0
+126,Fredrik Thorén,22,Sweden,1821,0
+127,Conall Horgan,21,Ireland,1809,0
+128,Adam Jensen,19,USA,1807,0
+129,John Brown,21,South Africa,1739,0
+130,Greg Stevens,20,USA,1658,0
+131,Dominic Kilgallen,22,Ireland,1618,0
+132,Keith Robinson,21,England,1597,0
+133,Joshua Clark,19,USA,1511,0
+134,Rian Doorty,20,Ireland,1491,0
+135,Tomislav Sakač,20,Croatia,1445,0
+136,Kevin Cole,19,USA,1398,0
+137,Raymond Lane,21,USA,1276,0
+138,Scott Torres,21,USA,1133,0
+139,Cody Ramirez,22,Australia,1100,0
+140,Diogo Castro,21,Portugal,1069,0
+141,Kenneth Charles,21,USA,1026,0
+142,Ren Sasaki,20,Japan,953,0
+143,Allen Smith,19,USA,856,0
+144,Petr Navrátil,21,Czech Republic,817,0
+145,Angel Lara,22,USA,798,0
+146,Rihards Siliņš,19,Latvia,789,0
+147,Kelvin Cohen,21,Ireland,765,0
+148,Andrea Terragni,19,Italy,755,0
+149,Ethan Hoffman,20,Australia,488,0
+150,Christopher Norris,20,USA,326,0

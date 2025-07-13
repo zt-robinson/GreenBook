@@ -1,51 +1,51 @@
 final_rank,player,player_age,nationality,season_points,wins
-101,Ruari Magee S4,23,Ireland,2533,0
-102,Jacob Williams S5,22,USA,2518,0
-103,Piet De Coninck S5,19,Belgium (Dutch),2515,0
-104,Joseph Black S3,23,England,2514,0
-105,Peter Sanders S5,19,USA,2502,0
-106,Robert Lee S2,25,USA,2502,0
+101,Ruari Magee,23,Ireland,2533,0
+102,Jacob Williams,22,USA,2518,0
+103,Piet De Coninck,19,Belgium (Dutch),2515,0
+104,Joseph Black,23,England,2514,0
+105,Peter Sanders,19,USA,2502,0
+106,Robert Lee,25,USA,2502,0
 107,Deaglan Brannelly,25,Ireland,2501,0
 108,Gareth Saunders,25,England,2490,1
-109,Nuno Antunes S2,23,Portugal,2474,0
-110,Leonard Hamilton S5,22,Scotland,2469,0
-111,Frank Cole S2,24,USA,2451,0
-112,Gary Bryant S5,21,USA,2365,0
-113,Gerard Cross S5,21,England,2358,0
-114,Peter Cook S2,25,Scotland,2338,0
-115,Benjamin Taylor S5,22,England,2329,0
-116,John Johnson S5,22,England,2285,0
-117,Darren Jensen S5,19,USA,2238,0
-118,Colm Summerville S5,22,Ireland,2229,0
-119,Brian Bush S4,21,Australia,2221,0
-120,Cory Knight S5,20,Ireland,2162,0
-121,Daniel Brown S4,21,USA,2125,0
-122,Ashley Ahern S5,21,Ireland,2007,0
-123,Reece Skinner S5,20,Scotland,1978,0
-124,Piotr Stanisławek S5,21,Poland,1953,0
-125,Tim Smith S5,21,USA,1952,0
-126,James Cooper S5,19,USA,1796,0
-127,Travis Johnson S5,22,USA,1785,0
-128,Daniel Smith S5,21,Canada,1770,0
-129,Jimmy Coleman S5,21,USA,1716,0
-130,Ricardo Antunes S5,22,Portugal,1668,0
-131,Christopher Huerta S5,19,USA,1630,0
-132,Allan Turner S5,19,England,1567,0
-133,Roberto Henríquez S5,22,Chile,1490,0
-134,Damian Wright S5,20,England,1434,0
-135,Brian Buck S5,22,USA,1328,0
-136,Magnus Hanssen S5,21,Norway,1254,0
-137,Manfred Neuschäfer S5,21,Germany,1196,0
-138,John Lopez S5,22,USA,994,0
-139,Clinton Warner S5,20,Australia,968,0
-140,Tomas Tůmová S5,21,Czech Republic,918,0
-141,Dennis Bridges S5,22,USA,911,0
-142,Ronald Hughes S5,19,USA,768,0
-143,Graeme Miles S5,22,England,745,0
-144,Brett Greenwood S5,19,England,712,0
-145,Randy Macias S5,19,USA,686,0
-146,Henk Bruggeman S5,19,Netherlands,628,0
-147,Pedro Rodrigues S5,20,Brazil,623,0
-148,John Johnson S5,22,USA,450,0
-149,James Cain S5,21,USA,348,0
-150,Clifford Austin S5,22,England,304,0
+109,Nuno Antunes,23,Portugal,2474,0
+110,Leonard Hamilton,22,Scotland,2469,0
+111,Frank Cole,24,USA,2451,0
+112,John Johnson,22,England,2376,0
+113,Gary Bryant,21,USA,2365,0
+114,Gerard Cross,21,England,2358,0
+115,Peter Cook,25,Scotland,2338,0
+116,Benjamin Taylor,22,England,2329,0
+117,Darren Jensen,19,USA,2238,0
+118,Colm Summerville,22,Ireland,2229,0
+119,Brian Bush,21,Australia,2221,0
+120,Cory Knight,20,Ireland,2162,0
+121,Daniel Brown,21,USA,2125,0
+122,Ashley Ahern,21,Ireland,2007,0
+123,Reece Skinner,20,Scotland,1978,0
+124,Piotr Stanisławek,21,Poland,1953,0
+125,Tim Smith,21,USA,1952,0
+126,James Cooper,19,USA,1796,0
+127,Travis Johnson,22,USA,1785,0
+128,Daniel Smith,21,Canada,1770,0
+129,Jimmy Coleman,21,USA,1716,0
+130,Ricardo Antunes,22,Portugal,1668,0
+131,Christopher Huerta,19,USA,1630,0
+132,Allan Turner,19,England,1567,0
+133,Roberto Henríquez,22,Chile,1490,0
+134,Damian Wright,20,England,1434,0
+135,Brian Buck,22,USA,1328,0
+136,Magnus Hanssen,21,Norway,1254,0
+137,Manfred Neuschäfer,21,Germany,1196,0
+138,John Lopez,22,USA,994,0
+139,Clinton Warner,20,Australia,968,0
+140,Tomas Tůmová,21,Czech Republic,918,0
+141,Dennis Bridges,22,USA,911,0
+142,Ronald Hughes,19,USA,768,0
+143,Graeme Miles,22,England,745,0
+144,Brett Greenwood,19,England,712,0
+145,Randy Macias,19,USA,686,0
+146,Henk Bruggeman,19,Netherlands,628,0
+147,Pedro Rodrigues,20,Brazil,623,0
+148,Matthew Wilson,22,USA,359,0
+149,James Cain,21,USA,348,0
+150,Clifford Austin,22,England,304,0

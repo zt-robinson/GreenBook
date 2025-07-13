@@ -1,151 +1,151 @@
 final_rank,player,player_age,nationality,season_points,wins
-1,Conor Lee S5,19,Scotland,4373,4
-2,Kevin Kent S2,25,USA,4053,0
+1,Conor Lee,19,Scotland,4373,4
+2,Kevin Kent,25,USA,4053,0
 3,Mark Estrada,27,USA,4033,1
 4,Jesse West,28,USA,3919,1
 5,Aidan Reardon,27,Ireland,3779,1
 6,Manuel Manning,26,Philippines,3767,0
-7,Pavel Čermák S4,20,Czech Republic,3760,2
+7,Pavel Čermák,20,Czech Republic,3760,2
 8,Martin Simmons,28,England,3714,0
-9,Leslie Moore S2,24,South Africa,3706,0
+9,Leslie Moore,24,South Africa,3706,0
 10,Kyle Morales,28,USA,3680,2
 11,Jeffery Williams,27,USA,3639,1
 12,Patrick Schmitz,27,Belgium,3624,3
-13,Travis Callahan S1,26,USA,3604,2
+13,Travis Callahan,26,USA,3604,2
 14,Zachary Patel,27,USA,3528,0
 15,Diogo Freitas,27,Portugal,3509,1
-16,Bjorn Kjóisdóttir S2,25,Iceland,3476,0
+16,Bjorn Kjóisdóttir,25,Iceland,3476,0
 17,Karoly Molnár,27,Hungary,3473,1
-18,Sean Taylor S1,24,England,3454,1
-19,Peter Steiger S5,22,Switzerland,3452,1
+18,Sean Taylor,24,England,3454,1
+19,Peter Steiger,22,Switzerland,3452,1
 20,Vasile Tomescu,27,Romania,3417,0
 21,Ryan Hubbard,25,USA,3403,2
 22,Luis Arranz,26,Spain,3375,0
-23,Constantin Albu S2,23,Romania,3365,1
+23,Constantin Albu,23,Romania,3365,1
 24,Randall Miller,25,USA,3361,0
 25,Adam Milmo,27,Ireland,3357,1
 26,Joe Heath,27,Scotland,3343,0
 27,William Ortega,27,USA,3311,1
 28,Luke Clark,28,USA,3305,1
-29,Ethan Cox S1,24,USA,3299,0
-30,Francisco Guajardo S1,26,Mexico,3294,0
+29,Ethan Cox,24,USA,3299,0
+30,Francisco Guajardo,26,Mexico,3294,0
 31,Michael Davis,25,Canada,3275,0
 32,James Jennings,28,USA,3266,0
 33,Dennis Lyons,28,USA,3255,0
 34,Kaur Tamm,25,Estonia,3241,0
-35,Juan Gaytán S4,23,Mexico,3195,0
-36,Kevin Hensley S4,21,USA,3191,0
+35,Juan Gaytán,23,Mexico,3195,0
+36,Kevin Hensley,21,USA,3191,0
 37,Darius Grimes,27,USA,3187,1
 38,Charles Leonard,27,USA,3179,0
 39,Elliott Phillips,26,Scotland,3176,1
 40,Josh Boyce,26,Ireland,3174,0
 41,Andrew Collins,26,USA,3168,0
-42,Russell Warner S5,19,USA,3160,0
+42,Russell Warner,19,USA,3160,0
 43,Daniel Whitaker,28,USA,3155,0
-44,James Dennis S2,24,USA,3154,0
+44,James Dennis,24,USA,3154,0
 45,Adam Franco,28,USA,3145,0
-46,Billy Williams S1,25,England,3137,0
+46,Billy Williams,25,England,3137,0
 47,Milan Paľovčík,26,Slovakia,3099,1
 48,Anthony Reid,26,Scotland,3088,0
-49,Elliot Holmes S5,22,England,3086,0
+49,Elliot Holmes,22,England,3086,0
 50,Tomas Brožová,28,Czech Republic,3069,0
 51,Damon Peterson,28,Australia,3057,0
-52,Anders Thomsen S5,21,Denmark,3021,1
-53,Christian Henry S4,23,Belgium,3013,0
+52,Anders Thomsen,21,Denmark,3021,1
+53,Christian Henry,23,Belgium,3013,0
 54,Tyler Maughan,28,Ireland,3008,0
-55,Mark Perry S2,22,USA,2995,0
+55,Mark Perry,22,USA,2995,0
 56,Jozsef Horváth,25,Hungary,2994,0
 57,Steven Keller,27,USA,2988,0
-58,Aaron Doyle S2,22,England,2961,0
-59,Chad Jones S2,24,South Africa,2951,0
+58,Aaron Doyle,22,England,2961,0
+59,Chad Jones,24,South Africa,2951,0
 60,Jose Lucero,26,Argentina,2951,1
-61,Brandon Baker S5,20,USA,2949,0
-62,Jason Clark S4,20,Australia,2919,0
+61,Brandon Baker,20,USA,2949,0
+62,Jason Clark,20,Australia,2919,0
 63,Timo Varis,25,Finland,2888,0
 64,Jeremy Freeman,28,Canada,2879,0
-65,Adam Williams S4,23,USA,2864,0
+65,Adam Williams,23,USA,2864,0
 66,Michael Johnson,25,USA,2859,0
 67,Craig Jackson,25,Scotland,2857,1
-68,Carlos Smith S5,20,Philippines,2832,0
+68,Carlos Smith,20,Philippines,2832,0
 69,Kevin Roberts,25,USA,2832,1
 70,Nathan Banks,26,USA,2818,0
-71,Darrell Baker S4,22,USA,2814,0
-72,Krzysztof Kaszkowiak S5,21,Poland,2798,0
-73,Craig Smith S3,21,Australia,2796,0
-74,Simon Wilson S3,24,Scotland,2792,0
+71,Darrell Baker,22,USA,2814,0
+72,Krzysztof Kaszkowiak,21,Poland,2798,0
+73,Craig Smith,21,Australia,2796,0
+74,Simon Wilson,24,Scotland,2792,0
 75,Michael Gordon,28,USA,2784,0
-76,Austin Love S1,25,USA,2783,0
+76,Austin Love,25,USA,2783,0
 77,Michael Crawford,28,USA,2782,0
 78,David Johnston,27,Australia,2781,0
 79,Timothy Hamilton,28,USA,2771,0
-80,David Munoz S1,25,USA,2764,0
+80,David Munoz,25,USA,2764,0
 81,Samuel Gates,27,USA,2763,0
-82,Christopher Dudley S2,22,Australia,2760,0
+82,Christopher Dudley,22,Australia,2760,0
 83,David Ruiz,25,USA,2757,0
-84,Terence Heaney S2,24,Ireland,2745,0
+84,Terence Heaney,24,Ireland,2745,0
 85,Callum Davison,26,Scotland,2739,0
 86,Harry Miles,26,England,2715,0
-87,James Baker S5,22,USA,2693,0
-88,Trevor Booker S2,25,USA,2672,0
-89,Christopher Ward S4,21,Australia,2671,0
-90,Dillon Stanley S2,23,Canada,2669,0
-91,Brandon Silva S3,24,Australia,2660,0
-92,Anthony Gaines S4,23,USA,2646,0
-93,Thomas Rogers S2,23,USA,2643,0
-94,Wesley Cole S5,21,Australia,2642,0
+87,James Baker,22,USA,2693,0
+88,Trevor Booker,25,USA,2672,0
+89,Christopher Ward,21,Australia,2671,0
+90,Dillon Stanley,23,Canada,2669,0
+91,Brandon Silva,24,Australia,2660,0
+92,Anthony Gaines,23,USA,2646,0
+93,Thomas Rogers,23,USA,2643,0
+94,Wesley Cole,21,Australia,2642,0
 95,Duncan Wood,28,Scotland,2631,0
 96,Ante Jerič,27,Slovenia,2629,0
-97,John Case S4,21,USA,2621,0
-98,Alexander Campbell S4,22,USA,2601,0
-99,Scott Young S4,20,USA,2595,0
-100,Wolfgang Marte S4,20,Austria,2551,0
-101,Ruari Magee S4,23,Ireland,2533,0
-102,Jacob Williams S5,22,USA,2518,0
-103,Piet De Coninck S5,19,Belgium (Dutch),2515,0
-104,Joseph Black S3,23,England,2514,0
-105,Peter Sanders S5,19,USA,2502,0
-106,Robert Lee S2,25,USA,2502,0
+97,John Case,21,USA,2621,0
+98,Alexander Campbell,22,USA,2601,0
+99,Scott Young,20,USA,2595,0
+100,Wolfgang Marte,20,Austria,2551,0
+101,Ruari Magee,23,Ireland,2533,0
+102,Jacob Williams,22,USA,2518,0
+103,Piet De Coninck,19,Belgium (Dutch),2515,0
+104,Joseph Black,23,England,2514,0
+105,Peter Sanders,19,USA,2502,0
+106,Robert Lee,25,USA,2502,0
 107,Deaglan Brannelly,25,Ireland,2501,0
 108,Gareth Saunders,25,England,2490,1
-109,Nuno Antunes S2,23,Portugal,2474,0
-110,Leonard Hamilton S5,22,Scotland,2469,0
-111,Frank Cole S2,24,USA,2451,0
-112,Gary Bryant S5,21,USA,2365,0
-113,Gerard Cross S5,21,England,2358,0
-114,Peter Cook S2,25,Scotland,2338,0
-115,Benjamin Taylor S5,22,England,2329,0
-116,John Johnson S5,22,England,2285,0
-117,Darren Jensen S5,19,USA,2238,0
-118,Colm Summerville S5,22,Ireland,2229,0
-119,Brian Bush S4,21,Australia,2221,0
-120,Cory Knight S5,20,Ireland,2162,0
-121,Daniel Brown S4,21,USA,2125,0
-122,Ashley Ahern S5,21,Ireland,2007,0
-123,Reece Skinner S5,20,Scotland,1978,0
-124,Piotr Stanisławek S5,21,Poland,1953,0
-125,Tim Smith S5,21,USA,1952,0
-126,James Cooper S5,19,USA,1796,0
-127,Travis Johnson S5,22,USA,1785,0
-128,Daniel Smith S5,21,Canada,1770,0
-129,Jimmy Coleman S5,21,USA,1716,0
-130,Ricardo Antunes S5,22,Portugal,1668,0
-131,Christopher Huerta S5,19,USA,1630,0
-132,Allan Turner S5,19,England,1567,0
-133,Roberto Henríquez S5,22,Chile,1490,0
-134,Damian Wright S5,20,England,1434,0
-135,Brian Buck S5,22,USA,1328,0
-136,Magnus Hanssen S5,21,Norway,1254,0
-137,Manfred Neuschäfer S5,21,Germany,1196,0
-138,John Lopez S5,22,USA,994,0
-139,Clinton Warner S5,20,Australia,968,0
-140,Tomas Tůmová S5,21,Czech Republic,918,0
-141,Dennis Bridges S5,22,USA,911,0
-142,Ronald Hughes S5,19,USA,768,0
-143,Graeme Miles S5,22,England,745,0
-144,Brett Greenwood S5,19,England,712,0
-145,Randy Macias S5,19,USA,686,0
-146,Henk Bruggeman S5,19,Netherlands,628,0
-147,Pedro Rodrigues S5,20,Brazil,623,0
-148,John Johnson S5,22,USA,450,0
-149,James Cain S5,21,USA,348,0
-150,Clifford Austin S5,22,England,304,0
+109,Nuno Antunes,23,Portugal,2474,0
+110,Leonard Hamilton,22,Scotland,2469,0
+111,Frank Cole,24,USA,2451,0
+112,Gary Bryant,21,USA,2365,0
+113,John Johnson,22,England,2376,0
+114,Gerard Cross,21,England,2358,0
+115,Peter Cook,25,Scotland,2338,0
+116,Benjamin Taylor,22,England,2329,0
+117,Darren Jensen,19,USA,2238,0
+118,Colm Summerville,22,Ireland,2229,0
+119,Brian Bush,21,Australia,2221,0
+120,Cory Knight,20,Ireland,2162,0
+121,Daniel Brown,21,USA,2125,0
+122,Ashley Ahern,21,Ireland,2007,0
+123,Reece Skinner,20,Scotland,1978,0
+124,Piotr Stanisławek,21,Poland,1953,0
+125,Tim Smith,21,USA,1952,0
+126,James Cooper,19,USA,1796,0
+127,Travis Johnson,22,USA,1785,0
+128,Daniel Smith,21,Canada,1770,0
+129,Jimmy Coleman,21,USA,1716,0
+130,Ricardo Antunes,22,Portugal,1668,0
+131,Christopher Huerta,19,USA,1630,0
+132,Allan Turner,19,England,1567,0
+133,Roberto Henríquez,22,Chile,1490,0
+134,Damian Wright,20,England,1434,0
+135,Brian Buck,22,USA,1328,0
+136,Magnus Hanssen,21,Norway,1254,0
+137,Manfred Neuschäfer,21,Germany,1196,0
+138,John Lopez,22,USA,994,0
+139,Clinton Warner,20,Australia,968,0
+140,Tomas Tůmová,21,Czech Republic,918,0
+141,Dennis Bridges,22,USA,911,0
+142,Ronald Hughes,19,USA,768,0
+143,Graeme Miles,22,England,745,0
+144,Brett Greenwood,19,England,712,0
+145,Randy Macias,19,USA,686,0
+146,Henk Bruggeman,19,Netherlands,628,0
+147,Pedro Rodrigues,20,Brazil,623,0
+148,Matthew Wilson,22,USA,359,0
+149,James Cain,21,USA,348,0
+150,Clifford Austin,22,England,304,0

@@ -1,51 +1,51 @@
 final_rank,player,player_age,nationality,season_points,wins
-101,Juan Gaytán S4,27,Mexico,2530,0
+101,Juan Gaytán,27,Mexico,2530,0
 102,David Johnston,31,Australia,2529,0
-103,Joseph Brady S9,20,USA,2454,0
-104,Marc Marks S9,21,USA,2441,1
-105,Frank Miller S8,23,Australia,2417,0
-106,Juan Prieto S9,19,Spain,2417,0
-107,Charlie Renehan S9,21,Ireland,2388,0
-108,Trevor Booker S2,29,USA,2356,0
+103,Joseph Brady,20,USA,2454,0
+104,Marc Marks,21,USA,2441,1
+105,Frank Miller,23,Australia,2417,0
+106,Juan Prieto,19,Spain,2417,0
+107,Charlie Renehan,21,Ireland,2388,0
+108,Trevor Booker,29,USA,2356,0
 109,Craig Jackson,29,Scotland,2342,0
-110,Kevin Rowe S9,19,Australia,2298,0
-111,Gary Allison S9,21,USA,2292,0
-112,Lewis Glazier S9,19,Ireland,2274,0
+110,Kevin Rowe,19,Australia,2298,0
+111,Gary Allison,21,USA,2292,0
+112,Lewis Glazier,19,Ireland,2274,0
 113,Timothy Hamilton,32,USA,2256,0
-114,Giuseppe Bernardini S9,22,Italy,2227,0
-115,Glen Day S9,19,England,2178,0
-116,Derek Wade S9,21,England,2164,0
-117,Peter Miller S9,21,Canada,2115,0
-118,Anthony Gaines S4,27,USA,2062,0
-119,Seth Stephens S9,21,South Africa,1898,0
-120,Kenneth Stokes S9,22,Ireland,1893,0
-121,Edward Riley S9,22,USA,1882,0
-122,Priit Nõmmik S9,19,Estonia,1864,0
-123,Michael Hall S9,20,USA,1854,0
-124,Keith Williams S9,22,Australia,1845,0
-125,Henry Kelly S9,20,USA,1839,0
-126,Daniel Jordan S9,22,USA,1795,0
-127,Dieter Köster S9,20,Germany,1773,0
-128,Brian Robertson S9,20,USA,1760,0
-129,John Strickland S9,20,South Africa,1725,0
-130,Tyrone Payne S9,22,USA,1702,0
-131,Cory Davis S9,19,USA,1677,0
-132,Daniel Rosario S9,20,USA,1656,0
-133,Victor Jennings S9,22,Scotland,1638,0
-134,Max Cartwright S9,21,England,1626,0
-135,Aaron Thompson S9,21,Scotland,1392,0
-136,Simon Taylor S9,22,England,1377,0
-137,Derrick Snyder S9,19,USA,1369,0
-138,Patrick Watts S9,20,USA,1367,0
-139,Mikael Selin S9,21,Sweden,1324,0
-140,Jonathan Flores S9,21,USA,1192,0
-141,Michel Auger S9,21,France,1145,0
-142,Joshua Stokes S9,20,USA,1069,0
-143,Shaun Burns S9,19,England,1060,0
-144,Jorge Barnes S9,21,USA,866,0
-145,Eric Blake S9,21,Australia,824,0
-146,Tony Olson S9,21,USA,741,0
-147,Johnny Neal S9,19,Australia,681,0
-148,Yuto Matsumoto S9,22,Japan,592,0
-149,Matthew Parks S9,19,USA,580,0
-150,Hugh Middleton S9,21,England,97,0
+114,Giuseppe Bernardini,22,Italy,2227,0
+115,Glen Day,19,England,2178,0
+116,Derek Wade,21,England,2164,0
+117,Peter Miller,21,Canada,2115,0
+118,Anthony Gaines,27,USA,2062,0
+119,Seth Stephens,21,South Africa,1898,0
+120,Kenneth Stokes,22,Ireland,1893,0
+121,Edward Riley,22,USA,1882,0
+122,Priit Nõmmik,19,Estonia,1864,0
+123,Michael Hall,20,USA,1854,0
+124,Keith Williams,22,Australia,1845,0
+125,Henry Kelly,20,USA,1839,0
+126,Daniel Jordan,22,USA,1795,0
+127,Dieter Köster,20,Germany,1773,0
+128,Brian Robertson,20,USA,1760,0
+129,John Strickland,20,South Africa,1725,0
+130,Tyrone Payne,22,USA,1702,0
+131,Cory Davis,19,USA,1677,0
+132,Daniel Rosario,20,USA,1656,0
+133,Victor Jennings,22,Scotland,1638,0
+134,Max Cartwright,21,England,1626,0
+135,Aaron Thompson,21,Scotland,1392,0
+136,Simon Taylor,22,England,1377,0
+137,Derrick Snyder,19,USA,1369,0
+138,Patrick Watts,20,USA,1367,0
+139,Mikael Selin,21,Sweden,1324,0
+140,Jonathan Flores,21,USA,1192,0
+141,Michel Auger,21,France,1145,0
+142,Joshua Stokes,20,USA,1069,0
+143,Shaun Burns,19,England,1060,0
+144,Jorge Barnes,21,USA,866,0
+145,Eric Blake,21,Australia,824,0
+146,Tony Olson,21,USA,741,0
+147,Johnny Neal,19,Australia,681,0
+148,Yuto Matsumoto,22,Japan,592,0
+149,Matthew Parks,19,USA,580,0
+150,Hugh Middleton,21,England,97,0
