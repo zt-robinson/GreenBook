@@ -27,61 +27,61 @@
 
 ### Standard Events
 
-- Winner of the AGA Championship for any of the last four seasons + current season
-- Winner of the American Open for any of the last four seasons + current season
-- Winner of the Sovereign Tournament for any of the last four seasons + current season
-- Winner of the Royal Open for any of the last four seasons + current season
-- Winner of the Continental Championship for any of the last four seasons + current season
-- Winner of any Sigature Events over the last three seasons + current season
-- Winner of the Tour Championship over last five seasons
-- Winner of all other Tour events over last two seasons + current season
-- Winner of previous instances of this specific event over last four seasons
+- Previous 5 winners of the AGA Championship
+- Previous 5 winners of the American Open
+- Previous 5 winners of the Royal Open
+- Previous 5 winners of the Sovereign Tournament
+- Previous 5 winners of the Continental Championship
+- Winner of any Signature Events over the last three seasons + current season
+- Previous 5 winners of the Tour Championship
+- Winners of all other Tour events over last two seasons
+- Previous 4 winners of previous instances of this specific event
 - Top four finishers of a Monday Qualifying tournament (single 18 round tournament)
 - Top 20 finishers on the Development Tour from the previous season, in order of their positions on the list
 - Top 5 finishers on the Q School Tournament from the previous season, in order of their positions on the list
 - Top 10 finishers from the Tour event specifically preceding this event
 - Top 30 finishers on the Tour Championship Points List from the previous two seasons, in order of their total number of Tour Championship Points
-- Top 100 finishers on the Tour Championship Points List from the previous season, in order of their positions on the list
-- Top 100 players on the current season’s Tour Championship Points List
+- Top 100 players on the Tour Championship Points List from the previous season, in order of their positions on the list
+- Top 100 players on the current season’s Tour Championship Points List as of the day prior to the event
 - Remaining positions and alternates filled from conditionally-exempt players
 
 ### Standard Invitationals
 
-- The 50 current leaders on the Tour Championship Points List as of the day prior to the event
+- Winners of any current year Tour event
 - Most recent winners of all four majors plus the Continental Championship
+- Top five Tour Championship Points earners since previous Signature Event
+- The 50 current leaders on the Tour Championship Points List as of the day prior to the event
+- Top 25 finishers on the Tour Championship Points List from the previous season
 - Top 5 finishers on the Development Tour from the previous season, in order of their positions on the list
 - Top 3 finishers on the Q School Tournament from the previous season, in order of their positions on the list
-- Winners of any current year Tour event
-- Top five Tour Championship Points earners since previous Signature Event
-- Top 25 finishers on the Tour Championship Points List from the previous season
 
 ### Signature Events
 
+- Most recent winners of all four majors plus the Continental Championship
+- The final 5 players, including ties, in the previous year’s iteration of the same Signature Event
+- Winners of any current year Tour event
+- Remaining winners of the AGA Championship over the 5 years immediately preceding the current year
+- Remaining winners of the American Open over the 5 years immediately preceding the current year
+- Remaining winners of the Royal Open over the 5 years immediately preceding the current year
+- Remaining winners of the Sovereign Tournament over the 5 years immediately preceding the current year
+- Remaining winners of the Continental Championship over the 5 years immediately preceding the current year
+- Top 5 Tour Championship Points earners since previous Signature Event
 - Top 25 finishers on the Tour Championship Points List from the previous season
 - The 50 current leaders on the Tour Championship Points List as of the day prior to the event
-- Most recent winners of all four majors plus the Continental Championship
-- The final five players, including ties, in the previous year’s iteration of a given Signature Event
 - Top 5 finishers on the Development Tour from the previous season, in order of their positions on the list
 - Top 3 finishers on the Q School Tournament from the previous season, in order of their positions on the list
-- Winners of any current year Tour event
-- Top five Tour Championship Points earners since previous Signature Event
-- Winners of the AGA Championship for the last five seasons
-- Winners of the American Open for the last five seasons
-- Winners of the Sovereign Tournament for the last five seasons
-- Winners of the Royal Open for the last five seasons
-- Winners of the Continental Championship for the last five seasons
 
 ### Continental Championship
 
 - Individual winners of any Tour events from previous Continental Championship to current Continental Championship
 - Top 125 finishers on the Tour Points List from the previous season, in order of their positions on the list
-- Winners of the Sovereign Tournament for the last five seasons
-- Winners of the American Open for the last five seasons
-- Winners of the Royal Open for the last five seasons
-- Winners of the AGA Championship for the last five seasons
-- Winners of the Continental Championship for the last five seasons
+- Previous 5 winners of the Sovereign Tournament
+- Previous 5 winners of the American Open
+- Previous 5 winners of the Royal Open
+- Previous 5 winners of the AGA Championship
+- Previous 5 winners of the Continental Championship
 - Winners of the Tour Championship for the last five seasons
-- Winners of all Signature Events for the last three seasons
+- Winners of all Signature Events over past 3 seasons + the current season
 - Top 10 finishers on the Development Tour from the previous season, in order of their positions on the list
 - Top 5 finishers on the Q School Tournament from the previous season, in order of their positions on the list
 - Top 100 players on the current season’s Tour Championship Points List
@@ -90,10 +90,10 @@
 ### Sovereign Tournament
 
 - Previous champions (lifetime entry)
-- Winner of the American Open for any of the last five seasons
-- Winner of the Royal Open for any of the last five seasons
-- Winner of the AGA Championship for any of the last five seasons
-- Winner of the Continental Championship for any of the last three seasons + current season
+- Previous 5 winners of the American Open
+- Previous 5 winners of the Royal Open
+- Previous 5 winners of the AGA Championship
+- Previous 4 winners of the Continental Championship
 - The first 12 players, including ties, in the previous year’s Sovereign Tournament
 - The first four players, including ties, in the previous year’s American Open
 - The first four players, including ties, in the previous year’s Royal Open
@@ -104,11 +104,11 @@
 
 ### AGA Championship
 
-- Winners of the AGA Championship for the last five seasons
-- Winners of the American Open for the last five seasons
-- Winners of the Sovereign Tournament for the last five seasons
-- Winners of the Royal Open for the last five seasons
-- Winners of the Continental Championship for the last five seasons
+- Previous 5 winners of the AGA Championship
+- Previous 5 winners of the Sovereign Tournament
+- Previous 5 winners of the American Open
+- Previous 5 winners of the Royal Open
+- Previous 5 winners of the Continental Championship
 - The first 15 players, including ties, in the previous year’s AGA Championship
 - Individual winners of any Tour events from previous AGA Championship to current AGA Championship
 - Top 10 finishers on the Development Tour from the previous season, in order of their positions on the list
@@ -119,11 +119,11 @@
 
 ### American Open
 
-- Winners of the American Open for the last ten seasons
-- Winners of the Sovereign Tournament for the last five seasons
-- Winners of the Royal Open for the last five seasons
-- Winners of the AGA Championship for the last five seasons
-- Winners of the Continental Championship for the last three seasons
+- Previous 10 winners of the American Open
+- Previous 5 winners of the Sovereign Tournament
+- Previous 5 winners of the Royal Open
+- Previous 5 winners of the AGA Championship
+- Previous 4 winners of the Continental Championship
 - Individual winners of multiple Tour events from previous American Open to current American Open
 - The first 10 players, including ties, in the previous year’s American Open
 - The 50 current leaders on the Tour Championship Points List as of the day prior to the current American Open
@@ -134,11 +134,10 @@
 ### Royal Open
 
 - Previous Royal Open champions aged 55 or under
-- Winners of the Royal Open for the last ten seasons
-- Winners of the Sovereign Tournament for the last five seasons
-- Winners of the AGA Championship for the last five seasons
-- Winners of the American Open for the last five seasons
-- Winners of the Continental Championship for the last three seasons
+- Previous 5 winners of the American Open
+- Previous 5 winners of the Sovereign Tournament
+- Previous 5 winners of the AGA Championship
+- Previous 4 winners of the Continental Championship
 - The first 10 players, including ties, in the previous year’s Royal Open
 - The 50 current leaders on the Tour Championship Points List as of the day prior to the current Royal Open
 - Top 30 finishers on the Tour Championship Points List for previous season
