@@ -1,32 +1,32 @@
 # GreenBook
 
-**GreenBook** is a sophisticated Flask-based golf simulation platform that creates an entire professional golf tour ecosystem – complete with realistic tournament simulation, dynamic player progression, and comprehensive betting systems using **play money only**. Think of it as a combination of PGA Tour simulation, fantasy sports, and sports betting analytics, all wrapped in an elegant Augusta National-inspired interface.
+**GreenBook** is a Flask-based golf simulation platform that creates a professional golf tour ecosystem – complete with tournament simulation, player progression, and betting systems using **play money only**. Think of it as a combination of PGA Tour simulation, fantasy sports, and sports betting analytics in a safe, simulated environment.
 
 ## 🎯 Project Vision
 
-GreenBook aims to be the most realistic and comprehensive golf simulation platform available, featuring:
+GreenBook aims to be a realistic and comprehensive golf simulation platform, featuring:
 
 - **35-Event Professional Season**: Complete tour schedule with majors, signature events, and standard tournaments
-- **Realistic Player Modeling**: 200+ virtual golfers with detailed skill attributes, mental game mechanics, and career progression
+- **Realistic Player Modeling**: 600+ virtual golfers with detailed skill attributes and mental game mechanics
 - **Dynamic Tour Card System**: Promotion/relegation system with developmental tour integration
 - **Live Tournament Simulation**: Hole-by-hole, round-by-round simulation with real-world entropy
 - **Comprehensive Betting Platform**: Multiple betting markets with dynamic odds and play money wagering
 - **Historical Data Archive**: Complete career tracking and tournament history
 
-The project draws inspiration from the prestige and classic style of Augusta National, featuring a sophisticated green-and-gold theme and country club aesthetic. Our goal is to mirror the drama, structure, and excitement of a real PGA Tour season while providing a **safe sandbox for sports betting** enthusiasts to test their instincts without financial risk.
+Our goal is to mirror the drama, structure, and excitement of a real PGA Tour season while providing a **safe sandbox for sports betting** enthusiasts to test their instincts without financial risk.
 
 ## 🏆 Current Implementation Status
 
 ### ✅ Completed Features
 
 #### **Core Data Infrastructure**
-- **Player Database**: 500+ unique virtual golfers with realistic skill ratings (driving power, accuracy, approach, short game, putting) and mental attributes (composure, confidence, focus, risk tolerance)
-- **Course Library**: 30+ championship courses with detailed attributes (yardage, par, difficulty, weather patterns, elevation)
+- **Player Database**: 600+ unique virtual golfers with realistic skill ratings (driving power, accuracy, approach, short game, putting) and mental attributes (composure, confidence, focus, risk tolerance)
+- **Basic Course Data**: Initial course database structure with detailed attributes
 - **Tournament Structure**: Complete 35-event season schedule with proper event types and field sizes
 - **Database Architecture**: SQLite-based data storage with comprehensive schema for players, courses, tournaments, and results
 
 #### **Web Application Interface**
-- **Modern Augusta-Inspired UI**: Classy dark-green, gold, and off-white color scheme with classic serif typography
+- **Modern Functional UI**: Clean, responsive design with green color scheme and professional layout
 - **Responsive Design**: Accessible on various devices with flexible layouts and balanced tables
 - **Multi-Page Experience**:
   - **Home Page**: Landing page with season overview and quick stats

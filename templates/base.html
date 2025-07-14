@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}GreenBook{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tablesort-indicator.css') }}">
     <style>
         body {
             background: var(--background);
@@ -85,7 +86,7 @@
             <a href="/" class="logo">GREENBOOK</a>
             <nav class="nav" style="position: relative;">
                 <a href="/" {% if request.path == '/' %}class="active"{% endif %}>Home</a>
-                <a href="/players" {% if request.path == '/players' %}class="active"{% endif %}>Standings</a>
+                <a href="/player-history" {% if request.path == '/player-history' %}class="active"{% endif %}>Player History</a>
                 <a href="/courses" {% if request.path == '/courses' %}class="active"{% endif %}>Courses</a>
                 <a href="/schedule" {% if request.path == '/schedule' %}class="active"{% endif %}>Schedule</a>
             </nav>
