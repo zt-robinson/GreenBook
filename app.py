@@ -117,19 +117,25 @@ def home():
     player_count, course_count = get_counts()
     return render_template('home.html', player_count=player_count, course_count=course_count)
 
-@app.route('/players')
-def players():
+@app.route('/player-history')
+def player_history():
+    # Pagination logic
+    page = request.args.get('page', 1, type=int)
+    per_page = 25
     players = get_all_players()
     players = [dict(player) for player in players]  # Convert to dicts for mutability
+    total_players = len(players)
+    total_pages = (total_players + per_page - 1) // per_page
+    start = (page - 1) * per_page
+    end = start + per_page
+    players_page = players[start:end]
     # Add the new public fields to each player
-    for player in players:
-        # tour_rank is already set from database
+    for player in players_page:
         player['events'] = 0  # Will be calculated from tournament participation later
         player['tour_championship_points'] = 0
         player['points_behind_lead'] = 0
         player['wins'] = player.get('career_wins', 0)  # Use existing career_wins for now
-        player['top_10s'] = 0  # Will be calculated from tournament results later
-    return render_template('players.html', players=players, country_to_flag_iso=country_to_flag_iso)
+    return render_template('players.html', players=players_page, country_to_flag_iso=country_to_flag_iso, page=page, total_pages=total_pages)
 
 @app.route('/courses')
 def courses():
