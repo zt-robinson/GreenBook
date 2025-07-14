@@ -1,138 +1,243 @@
 # GreenBook
 
-**GreenBook** is a Flask-based web application that simulates an entire professional golf tour – complete with tournaments, players, stats, and leaderboards – and lets you experience the thrill of betting on the outcomes **using fake money on fake events**. In other words, it's like fantasy sports betting meets a golf simulator. All events and currency are simulated, so *no real money is involved* – it's just for fun and practice in a data-rich golf universe.
+**GreenBook** is a sophisticated Flask-based golf simulation platform that creates an entire professional golf tour ecosystem – complete with realistic tournament simulation, dynamic player progression, and comprehensive betting systems using **play money only**. Think of it as a combination of PGA Tour simulation, fantasy sports, and sports betting analytics, all wrapped in an elegant Augusta National-inspired interface.
 
-This project draws inspiration from the prestige and classic style of Augusta National, featuring a classy green-and-gold theme and a focus on detailed stats presented in a country club aesthetic. Our goal is to mirror the drama, structure, and excitement of a real PGA Tour season (from weekly tournaments to player career progression), while providing a **safe sandbox for sports betting** enthusiasts to test their instincts with play money.
+## 🎯 Project Vision
 
-## Current Features
+GreenBook aims to be the most realistic and comprehensive golf simulation platform available, featuring:
 
-Even at this early stage, **GreenBook** already boasts an impressive range of features and content:
+- **35-Event Professional Season**: Complete tour schedule with majors, signature events, and standard tournaments
+- **Realistic Player Modeling**: 200+ virtual golfers with detailed skill attributes, mental game mechanics, and career progression
+- **Dynamic Tour Card System**: Promotion/relegation system with developmental tour integration
+- **Live Tournament Simulation**: Hole-by-hole, round-by-round simulation with real-world entropy
+- **Comprehensive Betting Platform**: Multiple betting markets with dynamic odds and play money wagering
+- **Historical Data Archive**: Complete career tracking and tournament history
 
-* **Fictional Pro Players:** Over 200 unique virtual golfers are generated, each with realistic skill ratings, nationalities, ages, and career stats. This diverse player database forms the backbone of the simulation, ensuring every tournament has a competitive field with varied talent.
+The project draws inspiration from the prestige and classic style of Augusta National, featuring a sophisticated green-and-gold theme and country club aesthetic. Our goal is to mirror the drama, structure, and excitement of a real PGA Tour season while providing a **safe sandbox for sports betting** enthusiasts to test their instincts without financial risk.
 
-* **Career & Tour Card System:** Each player carries a PGA Tour–like status (`TourCardStatus`) that gets updated based on their performance. For example, the top players retain full tour cards, lower-ranked players might have conditional status, and those who lose their status are sent to a *developmental tour* to play their way back onto the main tour. This means the league is dynamic – at season's end, the bottom-ranked pros drop to the dev league, while the dev league's top performers get promoted, mimicking real-life promotion and relegation.
+## 🏆 Current Implementation Status
 
-* **Extensive Course Library:** The app includes 30+ championship golf courses, each modeled with detailed attributes like yardage, par, typical weather, green speed, elevation, etc.. These varied course profiles add realism and ensure that tournaments feel different week to week (a links course by the coast will play differently than a tight tree-lined course, for example).
+### ✅ Completed Features
 
-* **Season Schedule & Tournaments:** GreenBook comes with a full season schedule of tournaments, including majors, invitationals, and open events. Each tournament has an appropriate field size and entry criteria to mirror the real tour (e.g. invitationals have smaller fields, majors allow certain qualifiers, etc.). Events are structured as authentic 72-hole competitions (four rounds of stroke play) with a **cut** after round 2 (only the top 65 or so make the cut, similar to real golf). Each event also has a set purse (prize money) and a points distribution, so players are competing for both winnings and ranking points throughout the season.
+#### **Core Data Infrastructure**
+- **Player Database**: 500+ unique virtual golfers with realistic skill ratings (driving power, accuracy, approach, short game, putting) and mental attributes (composure, confidence, focus, risk tolerance)
+- **Course Library**: 30+ championship courses with detailed attributes (yardage, par, difficulty, weather patterns, elevation)
+- **Tournament Structure**: Complete 35-event season schedule with proper event types and field sizes
+- **Database Architecture**: SQLite-based data storage with comprehensive schema for players, courses, tournaments, and results
 
-* **Modern Augusta-Inspired UI:** The user interface sports a classy dark-green, gold, and off-white color scheme with classic serif typography – a nod to Augusta National's timeless look. The layout uses flat, stately design elements (think of a digital scorecard at an exclusive country club) to present information in a visually pleasing way. The result is a modern web app that feels both premium and welcoming.
+#### **Web Application Interface**
+- **Modern Augusta-Inspired UI**: Classy dark-green, gold, and off-white color scheme with classic serif typography
+- **Responsive Design**: Accessible on various devices with flexible layouts and balanced tables
+- **Multi-Page Experience**:
+  - **Home Page**: Landing page with season overview and quick stats
+  - **Players Page**: Searchable table with expandable player profiles and career stats
+  - **Courses Page**: Course listings with professional scorecards and characteristics
+  - **Schedule Page**: Chronological tournament list with event details and results
 
-* **Responsive Design:** GreenBook is built to be accessible on various devices and screen sizes. The design includes flexible multi-column layouts and compact, balanced tables so that pages remain readable and attractive whether you're on a large desktop monitor or a mobile phone. Key information (like leaderboards or player stats) is displayed in a clear, concise format without overwhelming the user.
+#### **Tour Card & Priority System**
+- **Tour Card Status**: Fully exempt, conditionally exempt, and non-exempt player categories
+- **Priority Lists**: Dynamic calculation system for tournament field invitations
+- **Exemption Rules**: Automatic exemptions based on victories and tour status
 
-* **Full Web App Experience:** The application includes multiple pages to explore all aspects of the simulated tour:
+### 🔄 In Development
 
-  * **Home Page:** A friendly landing page with a welcome message and some quick stats/summary of the current season.
-  * **Players Page:** A searchable table listing all the players. You can expand a player's entry to see detailed stats and career info (wins, rankings, etc.), giving you a deep look at each golfer in the universe.
-  * **Courses Page:** A list of all courses in the game, each expandable to show a professional scorecard and the course's real-world characteristics. It's great for scouting the week's venue and understanding its challenges (length, difficulty, typical conditions, etc.).
-  * **Schedule Page:** A chronological list of all upcoming (and past) tournaments with key details like the start date, event type, location, field size, purse, and round timing (all events are scheduled in Eastern Time). This lets you see what's coming up on the tour and results of completed events.
-  * All these pages are tied together with a clean navigation bar at the top of the app, making it easy to jump between the home, players, courses, and schedule sections. Overall, the web interface is designed to be intuitive so users can browse the rich data without feeling lost.
+#### **Tournament Simulation Engine**
+- **Hole-by-Hole Simulation**: Realistic shot-by-shot simulation with skill weighting by hole type
+- **Weather Integration**: Real-world weather data affecting course conditions and player performance
+- **Mental Game Mechanics**: Confidence fluctuation, pressure situations, and mental fatigue
+- **Real-World Entropy**: Seeded randomness using live data sources for authentic unpredictability
 
-*(Under the hood, GreenBook uses a Flask backend with SQLite databases to store all this data – players, courses, tournaments, etc. – and Jinja2 templates to render the pages. Utility scripts in the `scripts/` folder help generate or reset data as needed. This technical foundation ensures the app runs smoothly and can be expanded over time.)*
+#### **Betting System Foundation**
+- **Payout Structures**: Comprehensive payout systems for different event types
+- **Points Distribution**: FedExCup-style points system with proper distribution tables
+- **Tie Handling**: Proper resolution of tied positions and earnings
 
-## Planned Features
+### 📋 Planned Features (Next Phase)
 
-GreenBook is an ambitious project, and there's a lot more in store. Here's a look at what's on the roadmap – both in the near term and farther down the line:
+#### **Live Tournament Experience**
+- **Real-Time Simulation**: Watch tournaments unfold hole-by-hole with live leaderboards
+- **Dynamic Field Generation**: Automated tournament field selection based on qualification rules
+- **Round-by-Round Progression**: Authentic 72-hole competitions with proper cut lines
+- **Live Betting Interface**: Real-time odds updates and wagering during tournaments
 
-### Short-Term Plans (Next Steps)
+#### **Enhanced Player System**
+- **Career Progression**: Player aging, peak performance periods, and retirement mechanics
+- **Development Tour**: Full simulation of secondary tour with promotion/relegation
+- **Advanced Statistics**: Comprehensive career tracking and performance analytics
+- **Player Profiles**: Detailed individual player pages with historical data
 
-* **Live Tournament Simulation:** Implementing the real-time simulation engine is a top priority. This will allow tournaments to play out shot-by-shot (or hole-by-hole) in a group-by-group fashion, rather than deciding results instantly. Along with this, we plan to add automated tournament field generation logic so that each event's player field is selected according to the qualification rules (tour status, recent performance, etc.). In short, you'll be able to watch a virtual tournament unfold in real time, with pairings and tee times just like on TV.
+#### **Season & Championship Systems**
+- **Tour Championship**: Season-ending playoff system with staggered starting scores
+- **Standings Tracking**: Real-time FedExCup points race with qualification scenarios
+- **Historical Archive**: Complete tournament and career history preservation
 
-* **Dynamic Odds & Betting Interface:** Since betting is the cornerstone of GreenBook, we're working on a comprehensive betting system. This will include a full **betting UI** where users can place a variety of wager types – outright winners, top-5/10/20 finishes, make/miss the cut, head-to-head matchups, round leaders, even fun props like "bogey-free round" or over/under on birdies. Odds for these bets will update live as the tournament progresses (after each hole, and between rounds) based on the unfolding results. We'll implement realistic odds calculation factors (player skill, current form, course difficulty, etc.) so that the odds react in a believable way to on-course action. All betting will use **play money** (an in-app virtual currency), and the system will track your bets, show potential payouts, and settle wagers once results are in. The end result: you can sweat the tournament as both a fan and a **(virtual) bettor**, without risking a dime of real money.
+## 🎲 Betting & Gaming Features
 
-* **Enhanced Player Profiles & Stats:** We plan to introduce a dedicated player profile page or dialog that goes deeper into each golfer's career. This could include a full season log, career earnings, win count, performance in majors, and other advanced stats or charts. Essentially, you'll be able to drill down into how a player's season is going or see their all-time accomplishments, adding more depth for those who love stats. (This feature will complement the current Players page by providing more historical context and interesting trivia for each golfer.)
+GreenBook's betting system is designed to be comprehensive and realistic while maintaining the play-money safety net:
 
-* **Development Tour Simulation:** The "dev tour" (developmental tour) will be more fully simulated. Right now, we have the concept of a secondary tour where relegated players go; upcoming improvements will simulate an entire season for that dev tour as well. We'll track which players are dominating the lower circuit and ensure that at season's end, the top X players from the dev league earn (or *re*-earn) their Tour cards for the next year. This will keep the world of GreenBook dynamic, with fresh talent coming in and underperforming players having to fight their way back – just like the real Korn Ferry Tour feeding into the PGA Tour.
+### **Betting Markets**
+- **Outright Winners**: Tournament champion predictions
+- **Position Betting**: Top-5, top-10, top-20 finishes
+- **Cut Line Betting**: Make/miss the cut predictions
+- **Head-to-Head**: Player matchup comparisons
+- **Round Leaders**: Individual round performance
+- **Prop Bets**: Bogey-free rounds, birdie counts, etc.
 
-* **Tour Championship & Season Standings:** We're implementing a comprehensive season-long points race that culminates in a Tour Championship event. The system will track FedExCup-style points throughout the season, with standings updated after each tournament. The Tour Championship will feature only the top qualifiers with staggered starting scores based on their season performance, creating a dramatic season finale. This will include a dedicated standings page showing current points leaders, recent movers, and qualification scenarios as the season progresses.
+### **Dynamic Odds System**
+- **Live Updates**: Odds change based on tournament progress
+- **Skill-Based Calculation**: Player attributes, current form, course difficulty
+- **Weather Factors**: Environmental conditions affecting performance
+- **Mental Game Impact**: Confidence and pressure situations
 
-* **Real-Time Timing Mechanism:** GreenBook will feature a sophisticated timing system where events occur as time actually passes. Tournaments will automatically start and progress based on real calendar dates and times, with rounds completing at scheduled intervals. This creates a living, breathing tour that operates on its own timeline – you can check in throughout the day to see how tournaments are progressing, just like following a real golf tournament. The system will handle timezone conversions and ensure events feel authentic to their scheduled timing.
+### **Play Money Economy**
+- **Virtual Bankroll**: Safe wagering with no real financial risk
+- **Bet Tracking**: Complete history of wagers and outcomes
+- **Performance Analytics**: Track betting success over time
+- **Community Features**: Leaderboards and friendly competitions
 
-### Long-Term Plans (Future Ideas)
+## 🏌️ Tournament System
 
-* **Player Aging & Peak Performance System:** One of our most ambitious features will be a realistic player development and decline system. Each player will be assigned a "peak age" (randomly between 28-35) and a peak duration (1-5 years). Performance metrics will be multiplied by a peak value that increases as players approach their prime, maxes out during their peak years, then gradually declines afterward. This creates natural career arcs – young players improve, veterans maintain excellence during their prime, and older players gracefully decline. The system updates once per season, ensuring long-term career progression feels authentic and creates compelling narratives around rising stars and fading legends.
+### **Event Types & Structure**
 
-* **Player Retirement System:** To maintain roster freshness and realism, we'll implement a retirement mechanism that triggers annually for players above a certain age. The system will evaluate recent performance, career achievements, and random factors to determine if a player decides to retire. Retired players will be removed from active tour lists but have their stats archived and accessible on the site, creating a rich history of past champions and tour legends. This ensures the player pool stays dynamic while preserving the legacy of great players who have moved on.
+| Event Type | Field Size | Cut Line | Winner Points | Purse Range | Prestige |
+|------------|------------|----------|---------------|-------------|----------|
+| Standard Events | 144-165 | Top 65 + ties | 500 | $7.9M-$9.5M | Variable |
+| Standard Invitationals | 72 | None | 600 | $10M-$12M | Variable |
+| Signature Events | 72 | None | 700 | $18M-$20M | Variable |
+| Continental Championship | 123-144 | Top 65 + ties | 750 | $30M | 0.95 |
+| Major Championships | 90-156 | Variable | 750 | $22M-$25M | 1.0 |
 
-* **Season-Ending Championship & Playoffs:** Introduce a FedExCup-style playoff system or a Tour Championship event at the end of the season. This could mean a special points race throughout the year leading to a final event with only the top qualifiers, maybe even with staggered starting scores or other twists to mirror how the real Tour does its Championship. The goal is to have a dramatic season finale to crown the year's champion.
+### **Season Schedule**
+- **35 Regular Season Events**: Mix of standard, invitational, signature, and major tournaments
+- **4 Major Championships**: Sovereign Tournament, AGA Championship, American Open, Royal Open
+- **Playoff System**: 3 playoff events + Tour Championship
+- **Real-Time Progression**: Events scheduled with authentic timing and progression
 
-* **Player Form, Injuries, and Morale:** To increase realism, we want to add factors like player injuries, fatigue, and hot/cold streaks. For example, a golfer might have a form rating that affects their performance (someone "in form" plays above their usual skill level, while a slump or a minor injury might hurt a player's stats temporarily). This would add another layer of depth – you might think twice about betting on a star player who's dealing with a virtual wrist injury or who has missed three cuts in a row.
+## 👤 Player Modeling System
 
-* **Sponsorships & Pressure Mechanics:** This is a bit experimental, but we'd love to simulate the off-course aspects of pro golf too. This could include sponsorship deals (imaginary endorsements that players earn with success) and pressure scenarios (e.g. a player going for a milestone or trying to keep their card might "feel the pressure" in the sim). These factors could subtly influence performance and make the narrative more engaging – for instance, a rookie with a big sponsor contract might choke in a high-stakes moment, or a veteran might find an extra gear knowing a record is on the line.
+### **Physical Skills (0-100 scale)**
+- `driving_power`: Distance off the tee
+- `driving_accuracy`: Fairway finding ability  
+- `approach_accuracy`: Iron play and approach shots
+- `short_game`: Chipping, pitching, bunker play
+- `putting`: Green reading and putting skill
 
-* **User Accounts & Persistent Profiles:** Currently, GreenBook is a single-player experience. In the future, we plan to add user accounts/logins so that multiple people can use the app and keep their own *virtual bankrolls* and betting history. This way, you can track how your fake-money betting performance changes over time, and perhaps even have friendly competitions with other users (e.g. leaderboards for best bettors, longest streak of winning bets, etc.). Persistent accounts also open the door to things like achievements or saved preferences.
+### **Mental Attributes (0-100 scale)**
+- `composure`: Pressure handling, final round performance
+- `confidence`: Current self-belief, fluctuates during tournaments
+- `focus`: Concentration maintenance, mental fatigue resistance
+- `risk_tolerance`: Aggressive vs conservative decision making
+- `mental_fatigue`: Tournament endurance, performance decline
+- `consistency`: Low variance in performance, steady play
+- `resilience`: Bounce-back ability from poor holes/rounds
 
-* **Admin Tools & Editing:** As the simulation grows, we'll need internal tools to manage it. We plan to build an admin interface for the maintainers (and power users) to easily add or edit content – for example, creating a new tournament, editing a course's data, or tweaking a player's profile. This would make it easier to update the app without diving directly into the database or code, and could even allow community contributions like custom tournaments or user-created courses down the road.
+### **Career Progression**
+- **Aging System**: Players age 1 year at season end
+- **Peak Performance**: Random peak age (29-33) with 2-3 year duration
+- **Performance Factor**: Ramps up/down around peak age
+- **Retirement**: Force retirement (45-50) or early retirement based on performance
 
-* **Public API & Integrations:** Down the line, we envision providing an API so that external applications or services can tap into GreenBook's data. Imagine a Discord bot that posts updates on tournament leaders, or a mobile companion app that lets you place bets from your phone – with a robust API, these kinds of integrations become possible. This could make the GreenBook ecosystem more open and interactive.
+## 🛠️ Technical Architecture
 
-* **More Betting Markets & Analytics:** We'll continuously expand the betting aspect with new markets and better stats. This might include advanced prop bets, detailed analytics pages (for the real data nerds), live probability graphs during tournaments, etc.. The aim is to keep the experience fresh and engaging, offering both casual fun bets and deep analytical content for those who want to dive in. We want GreenBook to scratch the itch for both sports bettors and golf fans who love stats.
+### **Backend Stack**
+- **Flask Framework**: Python-based web application
+- **SQLite Database**: Lightweight, file-based data storage
+- **Jinja2 Templates**: Server-side rendering for dynamic content
+- **Utility Scripts**: Data generation and management tools
 
-As development progresses, this roadmap may evolve. We're prioritizing core simulation and betting features first, then moving into these enhancements to enrich the experience even further.
+### **Data Management**
+- **Player Generation**: Scripts for creating realistic player profiles
+- **Course Creation**: Tools for building course databases
+- **Tournament Results**: Comprehensive result storage and retrieval
+- **Historical Archive**: Complete tournament and career history
 
-## Getting Started
+### **Development Phases**
 
-Ready to try out GreenBook? Here's how you can get it up and running on your local machine:
+| Phase | Objective | Status |
+|-------|-----------|--------|
+| 1 | Data Pipeline | ✅ Complete |
+| 2 | Tournament Engine | 🔄 In Progress |
+| 3 | Entropy System | 🔄 In Progress |
+| 4 | Result Storage | 🔄 In Progress |
+| 5 | Standings + Tour Card Logic | 📋 Planned |
+| 6 | Year-End Processing | 📋 Planned |
+| 7 | Visualization | 📋 Planned |
+| 8 | Betting Layer | 📋 Planned |
 
-1. **Clone the repository.** In a terminal, run:
+## 🚀 Getting Started
 
+Ready to explore the GreenBook universe? Here's how to get started:
+
+### **Prerequisites**
+- Python 3.7+
+- Git
+- Web browser
+
+### **Installation Steps**
+
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/zt-robinson/GreenBook.git  
+   git clone https://github.com/zt-robinson/GreenBook.git
    cd GreenBook
    ```
 
-   This will download the project to a folder named `GreenBook` and navigate into it.
-
-2. **Create a virtual environment (recommended).**
-   Make sure you have Python 3 installed, then set up a venv and activate it:
-
+2. **Create virtual environment**
    ```bash
-   python3 -m venv venv  
-   source venv/bin/activate
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-   This will isolate the project's Python dependencies from your system.
-
-3. **Install dependencies.**
-   With your virtual environment active, install the required Python packages:
-
+3. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-   This will download and install Flask and any other libraries the app needs.
-
-4. **Set up the database.**
-   The repo comes with some pre-generated data in the `data/` directory (SQLite databases for players, courses, etc.). If you want to reset or regenerate data, you can use the scripts in the `scripts/` folder. For example:
-
+4. **Set up database (optional)**
    ```bash
-   python scripts/create_player.py    # regenerate the players database  
-   python scripts/create_course.py   # regenerate the courses database
+   python scripts/create_player.py    # Regenerate player database
+   python scripts/create_course.py   # Regenerate course database
    ```
 
-   Running these will refresh the data with new random players or courses. (This step is optional since the repository likely includes an initial dataset. You can skip it if you just want to use the default data.)
-
-5. **Run the application.**
-   Start the Flask development server by running:
-
+5. **Run the application**
    ```bash
    flask run
    ```
 
-   *(Make sure your virtual env is activated, and you're in the project directory. Alternatively, you can do `python app.py` to run the app.)*
+6. **Open in browser**
+   Navigate to [http://localhost:5000](http://localhost:5000)
 
-6. **Open the app in your browser.**
-   Once the server is running, go to [http://localhost:5000](http://localhost:5000) in your web browser. You should see the GreenBook web app's home page. From there, you can navigate to the Players, Courses, and Schedule pages using the top menu, and get started exploring the GreenBook world!
+### **Current Limitations**
+- Tournament simulation is currently stubbed/placeholder
+- Betting interface not yet implemented
+- Real-time features in development
+- Some advanced features planned for future releases
 
-*(Note: GreenBook is currently in development, so some features described above may be in-progress. The interface is live, but the actual tournament simulation might be stubbed or running in a simplified way until the full logic is implemented. Feel free to play around with the data and interface.)*
+## 🤝 Contributing
 
-## Contributing
+GreenBook is an ambitious project and we welcome contributions! Here's how you can help:
 
-This project is a work in progress and **open to ideas**! If you have suggestions for improvement, encounter a bug, or want to contribute in any way, please don't hesitate to reach out. The best way to contribute is to open an issue on GitHub to discuss your idea, or directly create a pull request with your changes. Whether it's adding new features, tweaking the simulation, or improving the UI, any help is welcome. We just ask that you maintain the spirit of the project – making it fun, accessible, and realistic for users.
+### **Ways to Contribute**
+- **Bug Reports**: Open issues for any problems you encounter
+- **Feature Requests**: Suggest new features or improvements
+- **Code Contributions**: Submit pull requests for enhancements
+- **Documentation**: Help improve documentation and guides
+- **Testing**: Test features and provide feedback
 
-*Stay tuned for updates by watching the repo. As GreenBook evolves, we'd love to have a community of golf and coding enthusiasts involved!* 👥⛳
+### **Development Guidelines**
+- Maintain the project's focus on realism and accessibility
+- Follow the established code style and architecture
+- Test thoroughly before submitting changes
+- Update documentation for new features
 
-## Data Sources
+### **Getting Involved**
+- Watch the repository for updates
+- Join discussions in issues and pull requests
+- Share ideas for new features or improvements
+- Help build the community around the project
+
+*We're building something special here – a comprehensive golf simulation that combines the thrill of sports betting with the depth of professional golf analytics. Join us in creating the ultimate virtual golf experience!* ⛳🏆
+
+## 📊 Data Sources
 
 [![Weather Data Provided by Visual Crossing](data/visual_crossing_logo_small.png)](https://www.visualcrossing.com/)
 
@@ -140,6 +245,10 @@ GreenBook incorporates historical weather data for 610 US cities throughout 2024
 
 For detailed information about the weather data structure and processing, see the [Weather Data Dictionary](data/WEATHER_DATA_DICTIONARY.md).
 
-## License
+## 📄 License
 
 GreenBook is an open-source project, released under the **MIT License**. This means you're free to use, modify, and distribute the code, as long as you include the original license notice. (See the `LICENSE` file for the full text of the license.) Enjoy!
+
+---
+
+*GreenBook: Where golf simulation meets sports betting analytics in a safe, sophisticated environment.* 🏌️‍♂️💰
