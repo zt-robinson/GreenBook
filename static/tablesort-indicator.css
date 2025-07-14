@@ -1,0 +1,15 @@
+/* Inline sort arrow styles */
+.sort-arrow {
+    display: inline-block;
+    color: #fff;
+    font-size: 0.85em; /* Slightly smaller arrow */
+    margin-left: 4px;
+    vertical-align: middle;
+    position: relative;
+    top: -1.5px; /* Nudge up for better centering */
+    transition: color 0.2s;
+}
+
+th[data-sort-method]:hover .sort-arrow {
+    color: #ffd700;
+} 
