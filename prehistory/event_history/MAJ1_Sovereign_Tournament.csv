@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-MAJ1,1,Kaur Tamm,Mark Estrada,Tomas Brožová,Randall Miller,Nicholas Taylor,David Johnston,Kyle Morales,Kevin Roberts,James Dyer,Dennis Lyons
-MAJ1,2,Kevin Kent,Luis Arranz,Constantin Albu,Aaron Doyle,Leslie Moore,James Dennis,Vasile Tomescu,Mark Perry,Nicholas Taylor,Luke Clark
-MAJ1,3,Karoly Molnár,Mark Estrada,Travis Callahan,Sean Taylor,Kevin Kent,William Ortega,Austin Love,Ryan Hubbard,Kyle Morales,Adam Franco
-MAJ1,4,Austin Love,Christian Henry,Timo Varis,Vasile Tomescu,Brian Bush,Peter Cook,Sean Taylor,Randall Miller,Diogo Freitas,David Ruiz
-MAJ1,5,Sean Taylor,Ryan Hubbard,Daniel Whitaker,Vasile Tomescu,James Dennis,Pavel Čermák,Adam Milmo,David Munoz,Charles Leonard,Christopher Ward
-MAJ1,6,Martin Simmons,Michael Crawford,Jesse West,Pavel Čermák,James Baker,Luis Arranz,Anders Thomsen,Kevin Kent,Peter Steiger,Russell Warner
-MAJ1,7,Kyle Morales,Constantin Albu,Abdul Shaw,Bjorn Kjóisdóttir,David Morris,Randall Miller,Terry Nguyen,Chad Jones,Rory Sheerin,Adam Franco
-MAJ1,8,Jesse West,Kevin Kent,Mark Estrada,Jeffery Williams,Craig Jackson,Bryan Washington,Dillon Stanley,Bjorn Kjóisdóttir,Daniel Whitaker,Luke Clark
-MAJ1,9,Dale Howell,Darrell Baker,Mark Estrada,Eric Welch,Philip Hall,David Garcia,Jesse West,Tomas Brožová,Pavel Čermák,Adam Milmo
-MAJ1,10,Kevin Kent,Sean Taylor,Constantin Albu,Diogo Freitas,Luis Arranz,Danny Taylor,Pavel Čermák,Darius Grimes,Karoly Molnár,Chad Jones
+MAJ_1,1,Kaur Tamm,Mark Estrada,Tomas Brožová,Randall Miller,Nicholas Taylor,David Johnston,Kyle Morales,Kevin Roberts,James Dyer,Dennis Lyons
+MAJ_1,2,Kevin Kent,Luis Arranz,Constantin Albu,Aaron Doyle,Leslie Moore,James Dennis,Vasile Tomescu,Mark Perry,Nicholas Taylor,Luke Clark
+MAJ_1,3,Karoly Molnár,Mark Estrada,Travis Callahan,Sean Taylor,Kevin Kent,William Ortega,Austin Love,Ryan Hubbard,Kyle Morales,Adam Franco
+MAJ_1,4,Austin Love,Christian Henry,Timo Varis,Vasile Tomescu,Brian Bush,Peter Cook,Sean Taylor,Randall Miller,Diogo Freitas,David Ruiz
+MAJ_1,5,Sean Taylor,Ryan Hubbard,Daniel Whitaker,Vasile Tomescu,James Dennis,Pavel Čermák,Adam Milmo,David Munoz,Charles Leonard,Christopher Ward
+MAJ_1,6,Martin Simmons,Michael Crawford,Jesse West,Pavel Čermák,James Baker,Luis Arranz,Anders Thomsen,Kevin Kent,Peter Steiger,Russell Warner
+MAJ_1,7,Kyle Morales,Constantin Albu,Abdul Shaw,Bjorn Kjóisdóttir,David Morris,Randall Miller,Terry Nguyen,Chad Jones,Rory Sheerin,Adam Franco
+MAJ_1,8,Jesse West,Kevin Kent,Mark Estrada,Jeffery Williams,Craig Jackson,Bryan Washington,Dillon Stanley,Bjorn Kjóisdóttir,Daniel Whitaker,Luke Clark
+MAJ_1,9,Dale Howell,Darrell Baker,Mark Estrada,Eric Welch,Philip Hall,David Garcia,Jesse West,Tomas Brožová,Pavel Čermák,Adam Milmo
+MAJ_1,10,Kevin Kent,Sean Taylor,Constantin Albu,Diogo Freitas,Luis Arranz,Danny Taylor,Pavel Čermák,Darius Grimes,Karoly Molnár,Chad Jones

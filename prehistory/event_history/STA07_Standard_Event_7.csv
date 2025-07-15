@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-STA07,1,Randall Miller,Kaur Tamm,Zachary Patel,Patrick Schmitz,David Ruiz,Nicholas Taylor,Austin Love,David Munoz,Kyle Morales,James Dyer
-STA07,2,Darius Grimes,Andrew Collins,Constantin Albu,Kevin Kent,Aaron Doyle,Diogo Freitas,Luis Arranz,Manuel Manning,Leslie Moore,Christopher Dudley
-STA07,3,Mark Estrada,Karoly Molnár,Bjorn Kjóisdóttir,Luke Clark,Josh Boyce,Francisco Guajardo,Travis Callahan,Kevin Kent,Billy Williams,Duncan Wood
-STA07,4,Kevin Kent,Mark Estrada,Duncan Wood,Klaus Frühwirth,Joseph Black,Diogo Freitas,Anthony Reid,Francisco Guajardo,Craig Smith,David Munoz
-STA07,5,Kyle Morales,Leslie Moore,Dennis Lyons,Tomas Brožová,James Jennings,Charles Leonard,Kaur Tamm,Luke Clark,Jeffery Williams,Mark Estrada
-STA07,6,Anthony Reid,Sean Taylor,Antanas Žukauskas,Adam Milmo,Jeffery Williams,David Morris,Pavel Čermák,Aidan Reardon,Karoly Molnár,Philip Hall
-STA07,7,Jesse West,Terence Heaney,Dennis Lyons,Christian Henry,Manuel Manning,Luis Arranz,Steven Keller,Timo Varis,Mark Estrada,Jose Lucero
-STA07,8,Kevin Kent,Karoly Molnár,Craig Jackson,Juan Bird,Bjorn Kjóisdóttir,Michael Russell,Adam Milmo,Darius Grimes,Philip Hall,Jesse West
-STA07,9,Jesse West,Leslie Moore,Luke Clark,Joe Heath,Darius Grimes,Daniel Whitaker,David Johnston,James Dennis,Francisco Guajardo,Eric Welch
-STA07,10,Andrew Collins,Patrick Schmitz,Ryan Hubbard,Philip Hall,Macauley McCluskey,Bjorn Kjóisdóttir,Duncan Wood,Stephen Schwartz,Craig Smith,Jesse West
+STA_7,1,Randall Miller,Kaur Tamm,Zachary Patel,Patrick Schmitz,David Ruiz,Nicholas Taylor,Austin Love,David Munoz,Kyle Morales,James Dyer
+STA_7,2,Darius Grimes,Andrew Collins,Constantin Albu,Kevin Kent,Aaron Doyle,Diogo Freitas,Luis Arranz,Manuel Manning,Leslie Moore,Christopher Dudley
+STA_7,3,Mark Estrada,Karoly Molnár,Bjorn Kjóisdóttir,Luke Clark,Josh Boyce,Francisco Guajardo,Travis Callahan,Kevin Kent,Billy Williams,Duncan Wood
+STA_7,4,Kevin Kent,Mark Estrada,Duncan Wood,Klaus Frühwirth,Joseph Black,Diogo Freitas,Anthony Reid,Francisco Guajardo,Craig Smith,David Munoz
+STA_7,5,Kyle Morales,Leslie Moore,Dennis Lyons,Tomas Brožová,James Jennings,Charles Leonard,Kaur Tamm,Luke Clark,Jeffery Williams,Mark Estrada
+STA_7,6,Anthony Reid,Sean Taylor,Antanas Žukauskas,Adam Milmo,Jeffery Williams,David Morris,Pavel Čermák,Aidan Reardon,Karoly Molnár,Philip Hall
+STA_7,7,Jesse West,Terence Heaney,Dennis Lyons,Christian Henry,Manuel Manning,Luis Arranz,Steven Keller,Timo Varis,Mark Estrada,Jose Lucero
+STA_7,8,Kevin Kent,Karoly Molnár,Craig Jackson,Juan Bird,Bjorn Kjóisdóttir,Michael Russell,Adam Milmo,Darius Grimes,Philip Hall,Jesse West
+STA_7,9,Jesse West,Leslie Moore,Luke Clark,Joe Heath,Darius Grimes,Daniel Whitaker,David Johnston,James Dennis,Francisco Guajardo,Eric Welch
+STA_7,10,Andrew Collins,Patrick Schmitz,Ryan Hubbard,Philip Hall,Macauley McCluskey,Bjorn Kjóisdóttir,Duncan Wood,Stephen Schwartz,Craig Smith,Jesse West

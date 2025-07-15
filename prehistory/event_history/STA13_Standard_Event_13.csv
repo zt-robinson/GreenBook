@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-STA13,1,Sean Taylor,Kaur Tamm,Mark Estrada,Francisco Guajardo,Patrick Schmitz,Nicholas Taylor,Karoly Molnár,Travis Callahan,Martin Simmons,Josh Boyce
-STA13,2,Bjorn Kjóisdóttir,Patrick Schmitz,Andrew Collins,Constantin Albu,Elliott Phillips,Michael Davis,Kevin Kent,Mark Perry,Nicholas Taylor,Chad Jones
-STA13,3,Ethan Cox,Kevin Kent,Bjorn Kjóisdóttir,Darius Grimes,Patrick Schmitz,Nathan Banks,Billy Williams,Callum Davison,Steven Keller,William Ortega
-STA13,4,Kevin Roberts,Luis Arranz,Anthony Reid,Anthony Gaines,Jose Lucero,Craig Jackson,Manuel Manning,Francisco Guajardo,Daniel Brown,Robert Jones
-STA13,5,Patrick Schmitz,Christian Henry,Conor Lee,David Ruiz,Callum Davison,David Munoz,Ryan Hubbard,Billy Williams,Luis Arranz,Manuel Manning
-STA13,6,Darius Grimes,Duncan Wood,Anthony Gaines,James Jennings,Patrick Schmitz,David Morris,Antanas Žukauskas,Austin Love,Ryan Hubbard,Tomas Brožová
-STA13,7,Pavel Čermák,Dillon Stanley,Constantin Albu,Sean Taylor,Brandon Baker,David Morris,Michael Davis,Travis Callahan,Chad Jones,Vasile Tomescu
-STA13,8,Michael Russell,Andreas Weinhage,David Morris,Randall Miller,Aidan Reardon,Mark Estrada,Pavel Čermák,Callum Davison,Michael Davis,Damon Peterson
-STA13,9,Manuel Manning,Brandon Baker,Russell Warner,David Garcia,Timo Varis,Anders Thomsen,Juan Bird,Conor Lee,Diogo Freitas,Dale Howell
-STA13,10,Dale Howell,Jesse West,Vasile Tomescu,Chad Jones,Anders Thomsen,Michael Carrillo,Brandon Baker,Danny Taylor,Travis Callahan,Harry Miles
+STA_13,1,Sean Taylor,Kaur Tamm,Mark Estrada,Francisco Guajardo,Patrick Schmitz,Nicholas Taylor,Karoly Molnár,Travis Callahan,Martin Simmons,Josh Boyce
+STA_13,2,Bjorn Kjóisdóttir,Patrick Schmitz,Andrew Collins,Constantin Albu,Elliott Phillips,Michael Davis,Kevin Kent,Mark Perry,Nicholas Taylor,Chad Jones
+STA_13,3,Ethan Cox,Kevin Kent,Bjorn Kjóisdóttir,Darius Grimes,Patrick Schmitz,Nathan Banks,Billy Williams,Callum Davison,Steven Keller,William Ortega
+STA_13,4,Kevin Roberts,Luis Arranz,Anthony Reid,Anthony Gaines,Jose Lucero,Craig Jackson,Manuel Manning,Francisco Guajardo,Daniel Brown,Robert Jones
+STA_13,5,Patrick Schmitz,Christian Henry,Conor Lee,David Ruiz,Callum Davison,David Munoz,Ryan Hubbard,Billy Williams,Luis Arranz,Manuel Manning
+STA_13,6,Darius Grimes,Duncan Wood,Anthony Gaines,James Jennings,Patrick Schmitz,David Morris,Antanas Žukauskas,Austin Love,Ryan Hubbard,Tomas Brožová
+STA_13,7,Pavel Čermák,Dillon Stanley,Constantin Albu,Sean Taylor,Brandon Baker,David Morris,Michael Davis,Travis Callahan,Chad Jones,Vasile Tomescu
+STA_13,8,Michael Russell,Andreas Weinhage,David Morris,Randall Miller,Aidan Reardon,Mark Estrada,Pavel Čermák,Callum Davison,Michael Davis,Damon Peterson
+STA_13,9,Manuel Manning,Brandon Baker,Russell Warner,David Garcia,Timo Varis,Anders Thomsen,Juan Bird,Conor Lee,Diogo Freitas,Dale Howell
+STA_13,10,Dale Howell,Jesse West,Vasile Tomescu,Chad Jones,Anders Thomsen,Michael Carrillo,Brandon Baker,Danny Taylor,Travis Callahan,Harry Miles

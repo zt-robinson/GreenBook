@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-SIG2,1,Jozsef Horváth,Elliott Phillips,Dennis Lyons,Jesse West,Patrick Schmitz,Cole Smith,William Ortega,Joe Heath,Duane Wood,Harry Miles
-SIG2,2,Darius Grimes,Leslie Moore,Aaron Doyle,Randall Miller,Kevin Kent,Constantin Albu,Samuel Gates,Vasile Tomescu,Michael Davis,Kyle Morales
-SIG2,3,Vasile Tomescu,Luke Clark,Darius Grimes,Constantin Albu,Jesse West,Chad Jones,Manuel Manning,Jeremy Freeman,Michael Davis,Aaron Doyle
-SIG2,4,Constantin Albu,Milan Paľovčík,Aidan Reardon,Billy Williams,Manuel Manning,Mark Perry,Jose Lucero,Karoly Molnár,Dieter Gieß,David Johnston
-SIG2,5,Jeffery Williams,Vasile Tomescu,James Baker,Carlos Smith,Jozsef Horváth,Kaur Tamm,Kevin Kent,Randall Miller,Bjorn Kjóisdóttir,Anthony Gaines
-SIG2,6,Elliott Phillips,Karoly Molnár,Patrick Schmitz,Joe Heath,Diogo Freitas,Pavel Čermák,Dillon Stanley,Manuel Manning,Kevin Hensley,Mark Perry
-SIG2,7,Mark Perry,Damon Peterson,Duncan Wood,Tomas Brožová,Patrick Bennett,Mark Estrada,Aidan Reardon,Aaron Doyle,Andrew Collins,Terry Nguyen
-SIG2,8,Michael Davis,Peter Steiger,Ryan Hubbard,James Jennings,Luis Arranz,Oliver Smith,Mariusz Machowicz,Chad Jones,Frank Miller,Martin Simmons
-SIG2,9,Anders Thomsen,Duncan Wood,Diogo Freitas,Kevin Hensley,Steven Keller,Brandon Baker,Eric Welch,Callum Davison,John Krause,Leslie Moore
-SIG2,10,Christian Henry,Peter Steiger,John Krause,Michael Johnson,Kaur Tamm,Elliott Phillips,Stephen Schwartz,Mariusz Machowicz,Mark Estrada,Michael Carrillo
+SIG_2,1,Jozsef Horváth,Elliott Phillips,Dennis Lyons,Jesse West,Patrick Schmitz,Cole Smith,William Ortega,Joe Heath,Duane Wood,Harry Miles
+SIG_2,2,Darius Grimes,Leslie Moore,Aaron Doyle,Randall Miller,Kevin Kent,Constantin Albu,Samuel Gates,Vasile Tomescu,Michael Davis,Kyle Morales
+SIG_2,3,Vasile Tomescu,Luke Clark,Darius Grimes,Constantin Albu,Jesse West,Chad Jones,Manuel Manning,Jeremy Freeman,Michael Davis,Aaron Doyle
+SIG_2,4,Constantin Albu,Milan Paľovčík,Aidan Reardon,Billy Williams,Manuel Manning,Mark Perry,Jose Lucero,Karoly Molnár,Dieter Gieß,David Johnston
+SIG_2,5,Jeffery Williams,Vasile Tomescu,James Baker,Carlos Smith,Jozsef Horváth,Kaur Tamm,Kevin Kent,Randall Miller,Bjorn Kjóisdóttir,Anthony Gaines
+SIG_2,6,Elliott Phillips,Karoly Molnár,Patrick Schmitz,Joe Heath,Diogo Freitas,Pavel Čermák,Dillon Stanley,Manuel Manning,Kevin Hensley,Mark Perry
+SIG_2,7,Mark Perry,Damon Peterson,Duncan Wood,Tomas Brožová,Patrick Bennett,Mark Estrada,Aidan Reardon,Aaron Doyle,Andrew Collins,Terry Nguyen
+SIG_2,8,Michael Davis,Peter Steiger,Ryan Hubbard,James Jennings,Luis Arranz,Oliver Smith,Mariusz Machowicz,Chad Jones,Frank Miller,Martin Simmons
+SIG_2,9,Anders Thomsen,Duncan Wood,Diogo Freitas,Kevin Hensley,Steven Keller,Brandon Baker,Eric Welch,Callum Davison,John Krause,Leslie Moore
+SIG_2,10,Christian Henry,Peter Steiger,John Krause,Michael Johnson,Kaur Tamm,Elliott Phillips,Stephen Schwartz,Mariusz Machowicz,Mark Estrada,Michael Carrillo

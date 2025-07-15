@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-SIG6,1,Ethan Cox,Sean Taylor,Francisco Guajardo,Karoly Molnár,Mark Estrada,Martin Simmons,Gareth Saunders,Zachary Patel,Jeffery Williams,Austin Love
-SIG6,2,Patrick Schmitz,Bjorn Kjóisdóttir,Elliott Phillips,Constantin Albu,Aaron Doyle,Mark Perry,Kaur Tamm,Kevin Kent,Martin Simmons,Tomas Brožová
-SIG6,3,Kevin Kent,Travis Callahan,Vasile Tomescu,Aidan Reardon,Ethan Cox,Francisco Guajardo,Milan Paľovčík,Joe Heath,Josh Boyce,Constantin Albu
-SIG6,4,Sean Taylor,Jesse West,Michael Davis,Karoly Molnár,Aidan Reardon,Brian Bush,Robert Jones,Bjorn Kjóisdóttir,Patrick Schmitz,Darius Grimes
-SIG6,5,Kevin Roberts,Jesse West,Zachary Patel,Juan Gaytán,Peter Steiger,Leslie Moore,Kaur Tamm,Patrick Schmitz,Kevin Hensley,Anthony Reid
-SIG6,6,Patrick Schmitz,Constantin Albu,Christopher Ward,Callum Davison,Christian Henry,Juan Gaytán,Daniel Rios,Karoly Molnár,Darius Grimes,Elliott Phillips
-SIG6,7,Karoly Molnár,Ryan Hubbard,Aidan Reardon,Terry Nguyen,Zachary Patel,Anthony Gaines,Randall Miller,Michael Jäkel,Kevin Hensley,Manuel Manning
-SIG6,8,Sean Taylor,Christian Henry,Constantin Albu,Anthony Reid,Ethan Cox,Brandon Morales,Constantin Stănescu,Terry Nguyen,James Jennings,Shane Harris
-SIG6,9,Conor Lee,Mark Estrada,Manuel Manning,Michael Russell,Elliott Phillips,William Ortega,Travis Callahan,Kyle Morales,Anders Thomsen,Adam Milmo
-SIG6,10,Russell Warner,Brandon Baker,William Ortega,Jeffery Williams,Adam Franco,Ethan Cox,Martin Simmons,Patrick Schmitz,Miguel Loyola,Luke Clark
+SIG_6,1,Ethan Cox,Sean Taylor,Francisco Guajardo,Karoly Molnár,Mark Estrada,Martin Simmons,Gareth Saunders,Zachary Patel,Jeffery Williams,Austin Love
+SIG_6,2,Patrick Schmitz,Bjorn Kjóisdóttir,Elliott Phillips,Constantin Albu,Aaron Doyle,Mark Perry,Kaur Tamm,Kevin Kent,Martin Simmons,Tomas Brožová
+SIG_6,3,Kevin Kent,Travis Callahan,Vasile Tomescu,Aidan Reardon,Ethan Cox,Francisco Guajardo,Milan Paľovčík,Joe Heath,Josh Boyce,Constantin Albu
+SIG_6,4,Sean Taylor,Jesse West,Michael Davis,Karoly Molnár,Aidan Reardon,Brian Bush,Robert Jones,Bjorn Kjóisdóttir,Patrick Schmitz,Darius Grimes
+SIG_6,5,Kevin Roberts,Jesse West,Zachary Patel,Juan Gaytán,Peter Steiger,Leslie Moore,Kaur Tamm,Patrick Schmitz,Kevin Hensley,Anthony Reid
+SIG_6,6,Patrick Schmitz,Constantin Albu,Christopher Ward,Callum Davison,Christian Henry,Juan Gaytán,Daniel Rios,Karoly Molnár,Darius Grimes,Elliott Phillips
+SIG_6,7,Karoly Molnár,Ryan Hubbard,Aidan Reardon,Terry Nguyen,Zachary Patel,Anthony Gaines,Randall Miller,Michael Jäkel,Kevin Hensley,Manuel Manning
+SIG_6,8,Sean Taylor,Christian Henry,Constantin Albu,Anthony Reid,Ethan Cox,Brandon Morales,Constantin Stănescu,Terry Nguyen,James Jennings,Shane Harris
+SIG_6,9,Conor Lee,Mark Estrada,Manuel Manning,Michael Russell,Elliott Phillips,William Ortega,Travis Callahan,Kyle Morales,Anders Thomsen,Adam Milmo
+SIG_6,10,Russell Warner,Brandon Baker,William Ortega,Jeffery Williams,Adam Franco,Ethan Cox,Martin Simmons,Patrick Schmitz,Miguel Loyola,Luke Clark

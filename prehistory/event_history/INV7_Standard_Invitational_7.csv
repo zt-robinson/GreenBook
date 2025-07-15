@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-INV7,1,Ethan Cox,Mark Estrada,Travis Callahan,Austin Love,Michael Johnson,Jesse West,Jay Montoya,Diogo Freitas,Timo Varis,Patrick Schmitz
-INV7,2,Constantin Albu,Elliott Phillips,Leslie Moore,Joe Heath,Sean Taylor,Randall Miller,Milan Paľovčík,Aidan Reardon,Darius Grimes,Patrick Schmitz
-INV7,3,Darius Grimes,Mark Estrada,Karoly Molnár,William Ortega,Patrick Schmitz,Kaur Tamm,Charles Leonard,Ethan Cox,Milan Paľovčík,Luke Clark
-INV7,4,Michael Gordon,Karoly Molnár,Aidan Reardon,Billy Williams,Francisco Guajardo,Kevin Kent,Dennis Lyons,Christopher Dudley,Diogo Freitas,Jeffery Williams
-INV7,5,Constantin Albu,Peter Cook,Josh Boyce,Vasile Tomescu,Ryan Hubbard,Diogo Freitas,Karoly Molnár,Jesse West,Kevin Kent,Russell Warner
-INV7,6,Michael Crawford,Peter Steiger,Sean Taylor,Manuel Manning,Anthony Reid,Kevin Hensley,Bjorn Kjóisdóttir,Kyle Morales,Jason Clark,Vasile Tomescu
-INV7,7,Diogo Freitas,Aidan Reardon,Michael Crawford,Mark Estrada,Kevin Kent,Christian Henry,Tomas Brožová,Harry Miles,Leslie Moore,Randall Miller
-INV7,8,Darrell Baker,Leslie Moore,Juan Bird,Conor Lee,Christian Henry,Tomas Brožová,Jesse West,Ethan Cox,Patrick Schmitz,Zachary Patel
-INV7,9,Danny Taylor,David Munoz,Lewis Glazier,Vasile Tomescu,David Morris,Kevin Hensley,Marc Marks,Kevin Kent,Callum Davison,Jeffery Williams
-INV7,10,Nathaniel Dunn,Sean Taylor,Pavel Čermák,Macauley McCluskey,Owen Taylor,Joe Heath,Dominic Wong,Michael Johnson,Kaur Tamm,Dale Howell
+INV_7,1,Ethan Cox,Mark Estrada,Travis Callahan,Austin Love,Michael Johnson,Jesse West,Jay Montoya,Diogo Freitas,Timo Varis,Patrick Schmitz
+INV_7,2,Constantin Albu,Elliott Phillips,Leslie Moore,Joe Heath,Sean Taylor,Randall Miller,Milan Paľovčík,Aidan Reardon,Darius Grimes,Patrick Schmitz
+INV_7,3,Darius Grimes,Mark Estrada,Karoly Molnár,William Ortega,Patrick Schmitz,Kaur Tamm,Charles Leonard,Ethan Cox,Milan Paľovčík,Luke Clark
+INV_7,4,Michael Gordon,Karoly Molnár,Aidan Reardon,Billy Williams,Francisco Guajardo,Kevin Kent,Dennis Lyons,Christopher Dudley,Diogo Freitas,Jeffery Williams
+INV_7,5,Constantin Albu,Peter Cook,Josh Boyce,Vasile Tomescu,Ryan Hubbard,Diogo Freitas,Karoly Molnár,Jesse West,Kevin Kent,Russell Warner
+INV_7,6,Michael Crawford,Peter Steiger,Sean Taylor,Manuel Manning,Anthony Reid,Kevin Hensley,Bjorn Kjóisdóttir,Kyle Morales,Jason Clark,Vasile Tomescu
+INV_7,7,Diogo Freitas,Aidan Reardon,Michael Crawford,Mark Estrada,Kevin Kent,Christian Henry,Tomas Brožová,Harry Miles,Leslie Moore,Randall Miller
+INV_7,8,Darrell Baker,Leslie Moore,Juan Bird,Conor Lee,Christian Henry,Tomas Brožová,Jesse West,Ethan Cox,Patrick Schmitz,Zachary Patel
+INV_7,9,Danny Taylor,David Munoz,Lewis Glazier,Vasile Tomescu,David Morris,Kevin Hensley,Marc Marks,Kevin Kent,Callum Davison,Jeffery Williams
+INV_7,10,Nathaniel Dunn,Sean Taylor,Pavel Čermák,Macauley McCluskey,Owen Taylor,Joe Heath,Dominic Wong,Michael Johnson,Kaur Tamm,Dale Howell

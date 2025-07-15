@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-MAJ3,1,Sean Taylor,Kaur Tamm,Mark Estrada,Tomas Brožová,Ethan Cox,David Ruiz,Joe Heath,Kevin Roberts,Jeremy Freeman,Andrew Collins
-MAJ3,2,Kevin Kent,Elliott Phillips,Jeffery Williams,Vasile Tomescu,Constantin Albu,Luis Arranz,Harry Miles,Jozsef Horváth,Luke Clark,Frank Cole
-MAJ3,3,Sean Taylor,Diogo Freitas,Travis Callahan,Josh Boyce,Widodo Ramadan,Francisco Guajardo,William Ortega,Jesse West,Aidan Reardon,Malcolm Chambers
-MAJ3,4,Michael Davis,Kevin Kent,Tyler Maughan,Ante Jerič,Damon Peterson,William Ortega,Luke Clark,James Dennis,Austin Love,Anthony Reid
-MAJ3,5,Patrick Schmitz,Vasile Tomescu,Michael Davis,Kevin Kent,Charles Leonard,Jesse West,Mark Estrada,Aidan Reardon,Joseph Black,Callum Davison
-MAJ3,6,Luis Arranz,Travis Callahan,Patrick Schmitz,Zachary Patel,Jose Lucero,Leslie Moore,David Munoz,Jesse West,Jozsef Horváth,Juan Gaytán
-MAJ3,7,Patrick Schmitz,Francisco Guajardo,Mark Estrada,Elliot Holmes,William Ortega,Constantin Albu,Darius Grimes,Billy Williams,Jozsef Horváth,Daniel Rios
-MAJ3,8,Conor Lee,Mark Estrada,Duncan Wood,Darius Grimes,Anthony Gaines,David Garcia,James Jennings,John Krause,Zachary Patel,Adam Franco
-MAJ3,9,Pavel Čermák,Michael Davis,Sean Taylor,Anthony Reid,Macauley McCluskey,Darrell Baker,Nathan Banks,Tomas Brožová,Christian Henry,Zachary Patel
-MAJ3,10,Andreas Weinhage,Jason Clark,Milan Paľovčík,Mark Perry,Anders Thomsen,Diogo Freitas,Shane Harris,Tyler Maughan,Karoly Molnár,Callum Davison
+MAJ_3,1,Sean Taylor,Kaur Tamm,Mark Estrada,Tomas Brožová,Ethan Cox,David Ruiz,Joe Heath,Kevin Roberts,Jeremy Freeman,Andrew Collins
+MAJ_3,2,Kevin Kent,Elliott Phillips,Jeffery Williams,Vasile Tomescu,Constantin Albu,Luis Arranz,Harry Miles,Jozsef Horváth,Luke Clark,Frank Cole
+MAJ_3,3,Sean Taylor,Diogo Freitas,Travis Callahan,Josh Boyce,Widodo Ramadan,Francisco Guajardo,William Ortega,Jesse West,Aidan Reardon,Malcolm Chambers
+MAJ_3,4,Michael Davis,Kevin Kent,Tyler Maughan,Ante Jerič,Damon Peterson,William Ortega,Luke Clark,James Dennis,Austin Love,Anthony Reid
+MAJ_3,5,Patrick Schmitz,Vasile Tomescu,Michael Davis,Kevin Kent,Charles Leonard,Jesse West,Mark Estrada,Aidan Reardon,Joseph Black,Callum Davison
+MAJ_3,6,Luis Arranz,Travis Callahan,Patrick Schmitz,Zachary Patel,Jose Lucero,Leslie Moore,David Munoz,Jesse West,Jozsef Horváth,Juan Gaytán
+MAJ_3,7,Patrick Schmitz,Francisco Guajardo,Mark Estrada,Elliot Holmes,William Ortega,Constantin Albu,Darius Grimes,Billy Williams,Jozsef Horváth,Daniel Rios
+MAJ_3,8,Conor Lee,Mark Estrada,Duncan Wood,Darius Grimes,Anthony Gaines,David Garcia,James Jennings,John Krause,Zachary Patel,Adam Franco
+MAJ_3,9,Pavel Čermák,Michael Davis,Sean Taylor,Anthony Reid,Macauley McCluskey,Darrell Baker,Nathan Banks,Tomas Brožová,Christian Henry,Zachary Patel
+MAJ_3,10,Andreas Weinhage,Jason Clark,Milan Paľovčík,Mark Perry,Anders Thomsen,Diogo Freitas,Shane Harris,Tyler Maughan,Karoly Molnár,Callum Davison

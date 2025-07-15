@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-INV2,1,Andrew Collins,Patrick Schmitz,David Munoz,Elliott Phillips,Zachary Patel,Darius Grimes,Dennis Lyons,Luis Arranz,Luke Clark,Ethan Cox
-INV2,2,Kevin Kent,Kyle Morales,Diogo Freitas,Leslie Moore,Mark Perry,Chad Jones,Adam Franco,Darius Grimes,Samuel Gates,Trevor Booker
-INV2,3,Ethan Cox,Vasile Tomescu,Sean Taylor,Jesse West,Kevin Kent,Josh Boyce,Francisco Guajardo,Constantin Albu,David Munoz,Adam Franco
-INV2,4,Christian Henry,John Case,Bjorn Kjóisdóttir,Aidan Reardon,Joseph Black,Jason Clark,Zachary Patel,Kevin Kent,Kaur Tamm,Daniel Brown
-INV2,5,Conor Lee,Bjorn Kjóisdóttir,Diogo Freitas,Dennis Lyons,Jesse West,Kevin Hensley,Aidan Reardon,Karoly Molnár,Travis Callahan,Luke Clark
-INV2,6,Tyler Maughan,Manuel Manning,Luke Clark,Sean Taylor,Diogo Freitas,Dillon Stanley,Martin Simmons,Joe Heath,Samuel Gates,Leslie Moore
-INV2,7,Milan Paľovčík,Kevin Kent,Constantin Albu,Derrick Robinson,Manuel Manning,Zachary Patel,Kevin Hensley,Nathan Banks,Michael Davis,Peter Steiger
-INV2,8,Kevin Kent,Mark Estrada,Jeffery Williams,Oliver Smith,Michael Davis,Milan Paľovčík,Dennis Lyons,Jozsef Horváth,Conor Lee,Francisco Guajardo
-INV2,9,Karoly Molnár,Patrick Schmitz,Michael Davis,Leslie Moore,Christian Henry,Craig Smith,Mark Estrada,Elliott Phillips,Ethan Cox,John Krause
-INV2,10,Daniel Whitaker,Mark Perry,Conor Lee,Adam Franco,Michael Carrillo,Bryan Lennon,Jesse West,Martin Simmons,Constantin Albu,Shane Harris
+INV_2,1,Andrew Collins,Patrick Schmitz,David Munoz,Elliott Phillips,Zachary Patel,Darius Grimes,Dennis Lyons,Luis Arranz,Luke Clark,Ethan Cox
+INV_2,2,Kevin Kent,Kyle Morales,Diogo Freitas,Leslie Moore,Mark Perry,Chad Jones,Adam Franco,Darius Grimes,Samuel Gates,Trevor Booker
+INV_2,3,Ethan Cox,Vasile Tomescu,Sean Taylor,Jesse West,Kevin Kent,Josh Boyce,Francisco Guajardo,Constantin Albu,David Munoz,Adam Franco
+INV_2,4,Christian Henry,John Case,Bjorn Kjóisdóttir,Aidan Reardon,Joseph Black,Jason Clark,Zachary Patel,Kevin Kent,Kaur Tamm,Daniel Brown
+INV_2,5,Conor Lee,Bjorn Kjóisdóttir,Diogo Freitas,Dennis Lyons,Jesse West,Kevin Hensley,Aidan Reardon,Karoly Molnár,Travis Callahan,Luke Clark
+INV_2,6,Tyler Maughan,Manuel Manning,Luke Clark,Sean Taylor,Diogo Freitas,Dillon Stanley,Martin Simmons,Joe Heath,Samuel Gates,Leslie Moore
+INV_2,7,Milan Paľovčík,Kevin Kent,Constantin Albu,Derrick Robinson,Manuel Manning,Zachary Patel,Kevin Hensley,Nathan Banks,Michael Davis,Peter Steiger
+INV_2,8,Kevin Kent,Mark Estrada,Jeffery Williams,Oliver Smith,Michael Davis,Milan Paľovčík,Dennis Lyons,Jozsef Horváth,Conor Lee,Francisco Guajardo
+INV_2,9,Karoly Molnár,Patrick Schmitz,Michael Davis,Leslie Moore,Christian Henry,Craig Smith,Mark Estrada,Elliott Phillips,Ethan Cox,John Krause
+INV_2,10,Daniel Whitaker,Mark Perry,Conor Lee,Adam Franco,Michael Carrillo,Bryan Lennon,Jesse West,Martin Simmons,Constantin Albu,Shane Harris

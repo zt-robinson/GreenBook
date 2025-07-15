@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-MNI,1,Jozsef Horváth,Nicholas Taylor,David Ruiz,Milan Paľovčík,Jeffery Williams,Manuel Manning,Billy Williams,Martin Simmons,Andrew Collins,Jay Montoya
-MNI,2,Patrick Schmitz,Leslie Moore,Elliott Phillips,Luis Arranz,Constantin Albu,Ethan Cox,Christopher Dudley,Charles Leonard,Kaur Tamm,Dillon Stanley
-MNI,3,Sean Taylor,Travis Callahan,Mark Estrada,Ethan Cox,Harry Miles,Vasile Tomescu,Jose Lucero,Jeffery Williams,Leslie Moore,Bjorn Kjóisdóttir
-MNI,4,Jesse West,Simon Wilson,Anthony Gaines,Vasile Tomescu,Kevin Roberts,Martin Simmons,Milan Paľovčík,Jose Lucero,Kaur Tamm,Peter Cook
-MNI,5,Elliott Phillips,Manuel Manning,James Dennis,Leslie Moore,Christian Henry,Andrew Collins,Kevin Kent,Jesse West,John Case,Chad Jones
-MNI,6,Daniel Whitaker,Conor Lee,Constantin Albu,Sean Taylor,Andrew Collins,Tomas Brožová,Patrick Bennett,Duncan Wood,Vasile Tomescu,Christian Henry
-MNI,7,Zachary Patel,Ryan Hubbard,Daniel Whitaker,Peter Steiger,Aaron Doyle,Michael Russell,Steven Keller,Terence Heaney,Craig Smith,Leslie Moore
-MNI,8,Kevin Kent,Anders Thomsen,David Munoz,Jesse West,Eric Welch,Peter Steiger,Manuel Manning,Kevin Hensley,Josh Boyce,Tyler Maughan
-MNI,9,Peter Steiger,Vasile Tomescu,Constantin Albu,Joseph Brady,Kyle Morales,Philip Hall,Michael Johnson,Mariusz Machowicz,Damon Peterson,Darius Grimes
-MNI,10,Michael Sorgatz,John Krause,Craig Smith,Anthony Reid,Dale Howell,Antanas Žukauskas,Darius Grimes,Bryan Washington,Andrew Collins,Diogo Freitas
+CON_1,1,Jozsef Horváth,Nicholas Taylor,David Ruiz,Milan Paľovčík,Jeffery Williams,Manuel Manning,Billy Williams,Martin Simmons,Andrew Collins,Jay Montoya
+CON_1,2,Patrick Schmitz,Leslie Moore,Elliott Phillips,Luis Arranz,Constantin Albu,Ethan Cox,Christopher Dudley,Charles Leonard,Kaur Tamm,Dillon Stanley
+CON_1,3,Sean Taylor,Travis Callahan,Mark Estrada,Ethan Cox,Harry Miles,Vasile Tomescu,Jose Lucero,Jeffery Williams,Leslie Moore,Bjorn Kjóisdóttir
+CON_1,4,Jesse West,Simon Wilson,Anthony Gaines,Vasile Tomescu,Kevin Roberts,Martin Simmons,Milan Paľovčík,Jose Lucero,Kaur Tamm,Peter Cook
+CON_1,5,Elliott Phillips,Manuel Manning,James Dennis,Leslie Moore,Christian Henry,Andrew Collins,Kevin Kent,Jesse West,John Case,Chad Jones
+CON_1,6,Daniel Whitaker,Conor Lee,Constantin Albu,Sean Taylor,Andrew Collins,Tomas Brožová,Patrick Bennett,Duncan Wood,Vasile Tomescu,Christian Henry
+CON_1,7,Zachary Patel,Ryan Hubbard,Daniel Whitaker,Peter Steiger,Aaron Doyle,Michael Russell,Steven Keller,Terence Heaney,Craig Smith,Leslie Moore
+CON_1,8,Kevin Kent,Anders Thomsen,David Munoz,Jesse West,Eric Welch,Peter Steiger,Manuel Manning,Kevin Hensley,Josh Boyce,Tyler Maughan
+CON_1,9,Peter Steiger,Vasile Tomescu,Constantin Albu,Joseph Brady,Kyle Morales,Philip Hall,Michael Johnson,Mariusz Machowicz,Damon Peterson,Darius Grimes
+CON_1,10,Michael Sorgatz,John Krause,Craig Smith,Anthony Reid,Dale Howell,Antanas Žukauskas,Darius Grimes,Bryan Washington,Andrew Collins,Diogo Freitas

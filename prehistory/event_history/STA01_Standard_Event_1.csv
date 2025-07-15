@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-STA01,1,Patrick Schmitz,Milan Paľovčík,Jozsef Horváth,Joe Heath,Jesse West,Darius Grimes,Nicholas Taylor,Jeffery Williams,Travis Callahan,Karoly Molnár
-STA01,2,Kevin Kent,Constantin Albu,Andrew Collins,Randall Miller,Vasile Tomescu,Charles Leonard,Samuel Gates,Chad Jones,Ethan Cox,Kyle Morales
-STA01,3,Austin Love,Luke Clark,Constantin Albu,David Munoz,Mark Perry,Mark Estrada,Darius Grimes,Karoly Molnár,Michael Johnson,Jeffery Williams
-STA01,4,Travis Callahan,Josh Boyce,Sean Taylor,Jeffery Williams,Darius Grimes,Michael Davis,Mark Perry,Austin Love,Pavel Čermák,Martin Simmons
-STA01,5,Conor Lee,Timothy Hamilton,Kevin Roberts,David Johnston,James Jennings,James Dennis,Joe Heath,Scott Young,Darius Grimes,Jeffery Williams
-STA01,6,Anders Thomsen,Kevin Kent,Christopher Ward,Michael Gordon,Aidan Reardon,Patrick Bennett,Brandon Keith,Patrick Schmitz,Elliott Phillips,Daniel Rios
-STA01,7,Juan Gaytán,Mark Estrada,Michael Davis,Zachary Patel,Michael Johnson,Russell Warner,Martin Simmons,Patrick Bennett,Luke Clark,Christian Jacques
-STA01,8,Christian Henry,Aidan Reardon,Kaur Tamm,Kevin Kent,Juan Bird,David Munoz,Luis Arranz,Elliot Holmes,Randall Miller,Eric Welch
-STA01,9,Diogo Freitas,Luke Clark,Mark Estrada,Eric Welch,Michael Gordon,Brandon Baker,Jesse West,Leslie Moore,Conor Lee,Charles Leonard
-STA01,10,Charles Leonard,Luis Arranz,Bjorn Kjóisdóttir,Michael Russell,Mariusz Machowicz,Huynh Phạm,Luke Clark,Sean Taylor,Danny Taylor,Michael Davis
+STA_1,1,Patrick Schmitz,Milan Paľovčík,Jozsef Horváth,Joe Heath,Jesse West,Darius Grimes,Nicholas Taylor,Jeffery Williams,Travis Callahan,Karoly Molnár
+STA_1,2,Kevin Kent,Constantin Albu,Andrew Collins,Randall Miller,Vasile Tomescu,Charles Leonard,Samuel Gates,Chad Jones,Ethan Cox,Kyle Morales
+STA_1,3,Austin Love,Luke Clark,Constantin Albu,David Munoz,Mark Perry,Mark Estrada,Darius Grimes,Karoly Molnár,Michael Johnson,Jeffery Williams
+STA_1,4,Travis Callahan,Josh Boyce,Sean Taylor,Jeffery Williams,Darius Grimes,Michael Davis,Mark Perry,Austin Love,Pavel Čermák,Martin Simmons
+STA_1,5,Conor Lee,Timothy Hamilton,Kevin Roberts,David Johnston,James Jennings,James Dennis,Joe Heath,Scott Young,Darius Grimes,Jeffery Williams
+STA_1,6,Anders Thomsen,Kevin Kent,Christopher Ward,Michael Gordon,Aidan Reardon,Patrick Bennett,Brandon Keith,Patrick Schmitz,Elliott Phillips,Daniel Rios
+STA_1,7,Juan Gaytán,Mark Estrada,Michael Davis,Zachary Patel,Michael Johnson,Russell Warner,Martin Simmons,Patrick Bennett,Luke Clark,Christian Jacques
+STA_1,8,Christian Henry,Aidan Reardon,Kaur Tamm,Kevin Kent,Juan Bird,David Munoz,Luis Arranz,Elliot Holmes,Randall Miller,Eric Welch
+STA_1,9,Diogo Freitas,Luke Clark,Mark Estrada,Eric Welch,Michael Gordon,Brandon Baker,Jesse West,Leslie Moore,Conor Lee,Charles Leonard
+STA_1,10,Charles Leonard,Luis Arranz,Bjorn Kjóisdóttir,Michael Russell,Mariusz Machowicz,Huynh Phạm,Luke Clark,Sean Taylor,Danny Taylor,Michael Davis

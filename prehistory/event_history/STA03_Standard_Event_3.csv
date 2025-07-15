@@ -1,11 +1,11 @@
 event_code,season,first_place,second_place,third_place,fourth_place,fifth_place,sixth_place,seventh_place,eighth_place,ninth_place,tenth_place
-STA03,1,Andrew Collins,Patrick Schmitz,Karoly Molnár,Elliott Phillips,Manuel Manning,David Ruiz,Kyle Morales,Jozsef Horváth,Michael Nash,Cole Smith
-STA03,2,Darius Grimes,Adam Franco,Kyle Morales,Patrick Schmitz,Mark Perry,Chad Jones,Adam Milmo,Kevin Kent,Travis Callahan,Vasile Tomescu
-STA03,3,Sean Taylor,Constantin Albu,Travis Callahan,Harry Miles,Josh Boyce,David Munoz,Francisco Guajardo,Mark Perry,Austin Love,Patrick Schmitz
-STA03,4,Callum Davison,Patrick Schmitz,Kyle Morales,Pavel Čermák,Juan Gaytán,Constantin Albu,Kaur Tamm,Christian Henry,Gareth Saunders,Luke Clark
-STA03,5,Conor Lee,Zachary Patel,Martin Simmons,Kevin Kent,Peter Sanders,Charles Leonard,David Munoz,Anthony Reid,Patrick Schmitz,Jozsef Horváth
-STA03,6,Mark Estrada,Luke Clark,Billy Williams,Andre Bright,Adam Milmo,Anthony Reid,Michael Gordon,Vasile Tomescu,Patrick Bennett,Travis Callahan
-STA03,7,Michael Davis,Chad Jones,Tyler Maughan,Francisco Guajardo,Kevin Roberts,Jesse West,Luis Arranz,Patrick Schmitz,Brandon Silva,Kevin Hensley
-STA03,8,Aidan Reardon,Damon Peterson,Anthony Reid,Bjorn Kjóisdóttir,Milan Paľovčík,Conor Lee,Peter Steiger,Kevin Kent,Travis Callahan,Patrick Bennett
-STA03,9,Jesse West,Mark Estrada,Joe Heath,Pavel Čermák,Kevin Kent,Jeffery Williams,Martin Simmons,Danny Taylor,Adam Milmo,Anthony Reid
-STA03,10,Leslie Moore,Patrick Schmitz,Andrew Collins,Conor Lee,Mark Estrada,Juan Bird,Kaur Tamm,Diogo Freitas,Charles Leonard,John Krause
+STA_3,1,Andrew Collins,Patrick Schmitz,Karoly Molnár,Elliott Phillips,Manuel Manning,David Ruiz,Kyle Morales,Jozsef Horváth,Michael Nash,Cole Smith
+STA_3,2,Darius Grimes,Adam Franco,Kyle Morales,Patrick Schmitz,Mark Perry,Chad Jones,Adam Milmo,Kevin Kent,Travis Callahan,Vasile Tomescu
+STA_3,3,Sean Taylor,Constantin Albu,Travis Callahan,Harry Miles,Josh Boyce,David Munoz,Francisco Guajardo,Mark Perry,Austin Love,Patrick Schmitz
+STA_3,4,Callum Davison,Patrick Schmitz,Kyle Morales,Pavel Čermák,Juan Gaytán,Constantin Albu,Kaur Tamm,Christian Henry,Gareth Saunders,Luke Clark
+STA_3,5,Conor Lee,Zachary Patel,Martin Simmons,Kevin Kent,Peter Sanders,Charles Leonard,David Munoz,Anthony Reid,Patrick Schmitz,Jozsef Horváth
+STA_3,6,Mark Estrada,Luke Clark,Billy Williams,Andre Bright,Adam Milmo,Anthony Reid,Michael Gordon,Vasile Tomescu,Patrick Bennett,Travis Callahan
+STA_3,7,Michael Davis,Chad Jones,Tyler Maughan,Francisco Guajardo,Kevin Roberts,Jesse West,Luis Arranz,Patrick Schmitz,Brandon Silva,Kevin Hensley
+STA_3,8,Aidan Reardon,Damon Peterson,Anthony Reid,Bjorn Kjóisdóttir,Milan Paľovčík,Conor Lee,Peter Steiger,Kevin Kent,Travis Callahan,Patrick Bennett
+STA_3,9,Jesse West,Mark Estrada,Joe Heath,Pavel Čermák,Kevin Kent,Jeffery Williams,Martin Simmons,Danny Taylor,Adam Milmo,Anthony Reid
+STA_3,10,Leslie Moore,Patrick Schmitz,Andrew Collins,Conor Lee,Mark Estrada,Juan Bird,Kaur Tamm,Diogo Freitas,Charles Leonard,John Krause
