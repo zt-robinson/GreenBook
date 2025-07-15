@@ -47,6 +47,16 @@ def generate_invitational_event_name():
     
     return f"{company} {suffix}"
 
+def generate_signature_event_name():
+    """Generate a random signature event name"""
+    companies = load_company_names()
+    suffixes = load_event_suffixes()
+    
+    company = random.choice(companies)
+    suffix = random.choice(suffixes)
+    
+    return f"{company} {suffix}"
+
 def get_major_names():
     """Return the fixed names for majors"""
     return {
