@@ -8,7 +8,7 @@ from scripts.tournaments.utilities.generate_tournament_field import get_tourname
 import pytz
 import random
 import math
-from config import PLAYER_DB_PATH, COURSE_DB_PATH
+from config import PLAYER_DB_PATH, COURSE_DB_PATH, TOURNAMENT_DB_PATH
 import pandas as pd
 
 app = Flask(__name__)
@@ -284,6 +284,125 @@ def get_local_round_time(start_date, round_time_str, course_timezone):
     dt_local = tz.localize(dt_naive)
     return dt_local
 
+def get_signature_event_1_field():
+    """
+    Custom field logic for Signature Event #1 provisional field.
+    Uses the new events database structure.
+    """
+    import sqlite3
+    import os
+    from pathlib import Path
+    
+    # Use the new events database
+    db_path = Path(__file__).parent / "data" / "events.db"
+    if not db_path.exists():
+        print(f"[ERROR] Events database not found at {db_path}")
+        return []
+    
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    field = set()  # Use set to avoid duplicates
+    FIELD_SIZE = 75  # Cap at 75 players
+    
+    print("Generating Signature Event #1 field...")
+    
+    # Priority 1: Winners of all events from Season 10
+    print("Priority 1: Season 10 event winners")
+    cursor.execute("""
+        SELECT event_name, "1" as winner 
+        FROM events 
+        WHERE season = 10 
+        ORDER BY season_event
+    """)
+    season_10_winners = cursor.fetchall()
+    print(f"Found {len(season_10_winners)} Season 10 events")
+    
+    for event_name, winner in season_10_winners:
+        field.add(winner)
+        print(f"  {event_name}: {winner}")
+    
+    print(f"Priority 1 total: {len(field)} players")
+    
+    # Priority 2: Top 5 from Season 10 final standings
+    print("Priority 2: Season 10 final standings top 5")
+    cursor.execute("""
+        SELECT "1", "2", "3", "4", "5" 
+        FROM season_standings 
+        WHERE season = 10
+    """)
+    season_10_top5 = cursor.fetchone()
+    
+    if season_10_top5:
+        for player in season_10_top5:
+            field.add(player)
+        print(f"Season 10 top 5: {season_10_top5}")
+        print(f"Priority 2 total: {len(field)} players")
+    
+    # Priority 3: Winners of majors and continental championships from seasons 6-9
+    print("Priority 3: Major and Continental winners from seasons 6-9")
+    cursor.execute("""
+        SELECT season, event_name, "1" as winner 
+        FROM events 
+        WHERE (type = 'Major' OR type = 'Mini Major') 
+        AND season BETWEEN 6 AND 9
+        ORDER BY season, season_event
+    """)
+    major_continental_winners = cursor.fetchall()
+    
+    for season, event_name, winner in major_continental_winners:
+        field.add(winner)
+        print(f"  Season {season} {event_name}: {winner}")
+    
+    print(f"Priority 3 total: {len(field)} players")
+    
+    # Priority 4: Past Signature Event #1 winners (seasons 1-9)
+    print("Priority 4: Past Signature Event #1 winners")
+    cursor.execute("""
+        SELECT season, "1" as winner 
+        FROM events 
+        WHERE event_code = 'SIG_1' AND season BETWEEN 1 AND 9
+        ORDER BY season
+    """)
+    past_signature_winners = cursor.fetchall()
+    
+    for season, winner in past_signature_winners:
+        field.add(winner)
+        print(f"  Season {season}: {winner}")
+    
+    print(f"Priority 4 total: {len(field)} players")
+    
+    # Priority 5: Top players from Season 10 standings (fill remaining spots)
+    print("Priority 5: Top players from Season 10 standings")
+    cursor.execute("""
+        SELECT "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+               "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+               "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+               "31", "32", "33", "34", "35", "36", "37", "38", "39", "40",
+               "41", "42", "43", "44", "45", "46", "47", "48", "49", "50",
+               "51", "52", "53", "54", "55", "56", "57", "58", "59", "60",
+               "61", "62", "63", "64", "65", "66", "67", "68", "69", "70",
+               "71", "72", "73", "74", "75"
+        FROM season_standings 
+        WHERE season = 10
+    """)
+    season_10_top75 = cursor.fetchone()
+    
+    if season_10_top75:
+        for player in season_10_top75:
+            if len(field) >= FIELD_SIZE:  # Cap at 75 players
+                break
+            field.add(player)
+    
+    print(f"Final field size: {len(field)} players")
+    
+    # Convert to sorted list of player dicts (sorted by last name)
+    field_list = sorted(list(field), key=lambda name: name.split()[-1] if name else '')
+    field_dicts = [{'name': name} for name in field_list]
+    
+    conn.close()
+    return field_dicts
+
 @app.route('/tournament/<int:tournament_id>')
 def tournament_detail(tournament_id):
     """Show tournament details, field, and leaderboard"""
@@ -335,7 +454,7 @@ def tournament_detail(tournament_id):
     tournament['type_display'] = type_map.get(tournament['tournament_type'], tournament['tournament_type'].title())
 
     # Format purse amount for display
-    tournament['purse_amount_formatted'] = "{:,}".format(tournament.get('purse_amount', 0))
+    tournament['purse_amount_formatted'] = "{:,}".format(int(round(tournament.get('purse_amount', 0))))
     
     # Format dates and times
     # Defensive: handle missing or None start_date
@@ -404,12 +523,15 @@ def tournament_detail(tournament_id):
     show_provisional = days_until_start > 1
     provisional_qualifiers = []
     if show_provisional:
-        # Get all players who would currently qualify (simulate field logic)
-        all_players = get_all_players()
-        # Sort all players alphabetically by last name (case-insensitive)
-        sorted_players = sorted(all_players, key=lambda p: p['name'].split()[-1].lower())
-        field_size = tournament.get('field_size', 156)
-        provisional_qualifiers = sorted_players[:field_size]
+        if tournament['name'] == "Signature Event #1":
+            # Use custom logic for Signature Event #1
+            provisional_qualifiers = get_signature_event_1_field()
+        else:
+            # Existing logic for other events
+            all_players = get_all_players()
+            sorted_players = sorted(all_players, key=lambda p: p['name'].split()[-1].lower())
+            field_size = tournament.get('field_size', 156)
+            provisional_qualifiers = sorted_players[:field_size]
         # Split into 2 columns for better spacing
         col_count = 2
         col_length = (len(provisional_qualifiers) + col_count - 1) // col_count
@@ -436,14 +558,8 @@ def tournament_detail(tournament_id):
         print("DEBUG: Groups passed to template:")
         for g in sorted_groups:
             print(f"  Group {g['group_number']}: {g['tee_time']}")
-    # Get winner's tour points from payout_structure
-    tconn = sqlite3.connect(tournaments_db_path)
-    tconn.row_factory = sqlite3.Row
-    tcur = tconn.cursor()
-    tcur.execute('SELECT tour_points FROM payout_structure WHERE tournament_id = ? AND finish_position = 1', (tournament_id,))
-    row = tcur.fetchone()
-    winner_points = row['tour_points'] if row else tournament.get('points_to_winner', 0)
-    tconn.close()
+    # Remove the payout_structure query and use points_to_winner from the tournament record
+    winner_points = tournament.get('points_to_winner', 0)
     
     # Use cut line from new database columns
     cut_line_type = tournament.get('cut_line_type', 'position')
@@ -462,6 +578,58 @@ def tournament_detail(tournament_id):
     weather_forecast = generate_weather_forecast(tournament['course_id'], tournament['start_date'], 4)
 
     return render_template('tournament_detail.html', tournament=tournament, groups=sorted_groups if not show_provisional else [], provisional_qualifiers=provisional_qualifiers, qualifier_columns=qualifier_columns if show_provisional else None, country_to_flag_iso=country_to_flag_iso, winner_points=winner_points, cut_line=cut_line, show_provisional=show_provisional, weather_forecast=weather_forecast)
+
+@app.route('/standings')
+def standings():
+    """Display real Season 10 final standings from the database"""
+    # Connect to both databases
+    seasons_db_path = os.path.join(os.path.dirname(__file__), 'data/golf_seasons.db')
+    seasons_conn = sqlite3.connect(seasons_db_path)
+    players_conn = sqlite3.connect(PLAYER_DB_PATH)
+    
+    seasons_conn.row_factory = sqlite3.Row
+    players_conn.row_factory = sqlite3.Row
+    
+    try:
+        # Get Season 10 standings
+        seasons_cur = seasons_conn.cursor()
+        seasons_cur.execute('''
+            SELECT rank as final_rank, tour_points as total_season_points, 
+                   events_played, wins, top_10s, money_earned, player_id
+            FROM season_standings
+            WHERE season_number = 10
+            ORDER BY rank ASC
+            LIMIT 100
+        ''')
+        
+        standings_data = [dict(row) for row in seasons_cur.fetchall()]
+        
+        # Get player details from players database
+        if standings_data:
+            player_ids = [row['player_id'] for row in standings_data]
+            q_marks = ','.join(['?'] * len(player_ids))
+            
+            players_cur = players_conn.cursor()
+            players_cur.execute(f'''
+                SELECT id, name, nationality
+                FROM players 
+                WHERE id IN ({q_marks})
+            ''', player_ids)
+            
+            player_details = {row[0]: {'name': row[1], 'nationality': row[2]} 
+                            for row in players_cur.fetchall()}
+            
+            # Merge player details into standings data
+            for row in standings_data:
+                player_info = player_details.get(row['player_id'], {})
+                row['name'] = player_info.get('name', 'Unknown')
+                row['nationality'] = player_info.get('nationality', 'Unknown')
+        
+        return render_template('standings.html', standings=standings_data)
+        
+    finally:
+        seasons_conn.close()
+        players_conn.close()
 
 def generate_weather_forecast(course_id, start_date, num_rounds=4):
     """
