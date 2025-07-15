@@ -1,6 +1,6 @@
 # GreenBook
 
-**GreenBook** is a Flask-based golf simulation platform that creates a professional golf tour ecosystem – complete with tournament simulation, player progression, and betting systems using **play money only**. Think of it as a combination of PGA Tour simulation, fantasy sports, and sports betting analytics in a safe, simulated environment.
+**GreenBook** is a Flask-based golf simulation platform that creates a professional golf tour ecosystem – complete with tournament simulation, player progression, and betting systems using **virtual money only**. Think of it as a combination of PGA Tour simulation, fantasy sports, and sports betting analytics in a safe, simulated environment.
 
 ## 🎯 Project Vision
 
@@ -10,7 +10,7 @@ GreenBook aims to be a realistic and comprehensive golf simulation platform, fea
 - **Realistic Player Modeling**: 600+ virtual golfers with detailed skill attributes and mental game mechanics
 - **Dynamic Tour Card System**: Promotion/relegation system with developmental tour integration
 - **Live Tournament Simulation**: Hole-by-hole, round-by-round simulation with real-world entropy
-- **Comprehensive Betting Platform**: Multiple betting markets with dynamic odds and play money wagering
+- **Comprehensive Betting Platform**: Multiple betting markets with dynamic odds and virtual money wagering
 - **Historical Data Archive**: Complete career tracking and tournament history
 
 Our goal is to mirror the drama, structure, and excitement of a real PGA Tour season while providing a **safe sandbox for sports betting** enthusiasts to test their instincts without financial risk.
