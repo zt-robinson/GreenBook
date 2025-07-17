@@ -9,15 +9,16 @@ import sys
 from datetime import datetime, timedelta
 import random
 
-# Add the parent directory to the path so we can import from core
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# Add the project root directory to the path so we can import from core
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+sys.path.append(PROJECT_ROOT)
 
 from core.tournament_logic import tournament_logic
 from core.event_types import event_type_manager
 
 def get_last_event_date_and_week(season_number):
     """Get the start date of the last event in the season and its week number"""
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    tournaments_db_path = os.path.join(PROJECT_ROOT, 'data', 'golf_tournaments.db')
     
     if not os.path.exists(tournaments_db_path):
         return None, 0
@@ -62,8 +63,8 @@ def get_next_event_date_and_week(season_number):
 
 def get_available_courses_for_season(season_number):
     """Get list of available US courses for the season (exclude already used)"""
-    courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    courses_db_path = os.path.join(PROJECT_ROOT, 'data', 'golf_courses.db')
+    tournaments_db_path = os.path.join(PROJECT_ROOT, 'data', 'golf_tournaments.db')
     
     if not os.path.exists(courses_db_path):
         print("❌ Courses database not found.")

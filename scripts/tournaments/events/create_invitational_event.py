@@ -8,8 +8,8 @@ import os
 import sys
 from datetime import datetime, timedelta
 
-# Add the parent directory to the path so we can import from core
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# Add the greenbook directory to the path so we can import from core
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 
 from core.tournament_logic import tournament_logic
 from core.event_types import event_type_manager
@@ -17,7 +17,7 @@ from core.tournament_naming import generate_invitational_event_name
 
 def get_current_season_number():
     """Get the current season number - either the highest existing season or the next season if current is empty"""
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_tournaments.db')
     
     if not os.path.exists(tournaments_db_path):
         # If no tournaments database exists, start with season 1
@@ -50,9 +50,13 @@ def get_current_season_number():
 
 def get_available_courses_for_season(season_number):
     """Get list of available courses for the season (exclude already used)"""
-    courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
-    
+    courses_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_courses.db')
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_tournaments.db')
+
+    print(f"[DEBUG] courses_db_path: {courses_db_path}")
+    print(f"[DEBUG] tournaments_db_path: {tournaments_db_path}")
+    print(f"[DEBUG] courses_db_path exists: {os.path.exists(courses_db_path)}")
+    print(f"[DEBUG] tournaments_db_path exists: {os.path.exists(tournaments_db_path)}")
     if not os.path.exists(courses_db_path):
         print("❌ Courses database not found.")
         return []
@@ -61,15 +65,19 @@ def get_available_courses_for_season(season_number):
     cur = conn.cursor()
     cur.execute('SELECT id, name, state_country FROM courses ORDER BY name')
     all_courses = cur.fetchall()
+    print(f"[DEBUG] Number of courses found: {len(all_courses)}")
     conn.close()
 
     conn = sqlite3.connect(tournaments_db_path)
     cur = conn.cursor()
     cur.execute('SELECT course_id FROM tournaments WHERE season_number = ?', (season_number,))
     used_course_ids = set(row[0] for row in cur.fetchall())
+    print(f"[DEBUG] used_course_ids: {used_course_ids}")
     conn.close()
 
-    return [c for c in all_courses if c[0] not in used_course_ids]
+    available_courses = [c for c in all_courses if c[0] not in used_course_ids]
+    print(f"[DEBUG] Number of available courses: {len(available_courses)}")
+    return available_courses
 
 def select_course(courses):
     """Let user select a course from the available options"""
@@ -140,30 +148,38 @@ def get_next_event_date_and_week(season_number):
 def create_invitational_event(tournament_name: str, course_id: int, start_date: str, 
                             season_number: int, week_number: int):
     """Create a single invitational event"""
-    
     print(f"🎯 Creating Invitational Event: {tournament_name}")
     print("=" * 50)
-    
     try:
-        # Create the tournament using the tournament logic
+        # Create the tournament using the tournament logic with invitational event overrides
+        overrides = {
+            'field_size': 72,  # Fixed field size for invitational events
+            'cut_line': {
+                'type': 'none',
+                'value': None,
+                'description': 'No cut - all players play all rounds'
+            },
+            'points_to_winner': 600
+        }
         tournament_id = tournament_logic.create_tournament(
             tournament_name=tournament_name,
             course_id=course_id,
             start_date=start_date,
             season_number=season_number,
             week_number=week_number,
-            event_type="invitational"
+            event_type="invitational",
+            overrides=overrides
         )
-        
         print(f"\n✅ Invitational event '{tournament_name}' created successfully!")
         print(f"   Tournament ID: {tournament_id}")
         print(f"   Event Type: invitational")
         print(f"   Course ID: {course_id}")
         print(f"   Start Date: {start_date}")
         print(f"   Season: {season_number}, Week: {week_number}")
-        
+        print(f"   Field Size: 72 players (fixed)")
+        print(f"   Cut Line: No cut - all players play all rounds")
+        print(f"   Winner Points: 600")
         return tournament_id
-        
     except Exception as e:
         print(f"❌ Error creating invitational event: {e}")
         return None
@@ -179,6 +195,10 @@ def get_tournament_name():
         print(f"\n📋 Tournament Preview:")
         print(f"   Name: {tournament_name}")
         print(f"   Type: Invitational Event")
+        print(f"   Field Size: 72 players (fixed)")
+        print(f"   Cut Line: No cut - all players play all rounds")
+        print(f"   Winner Points: 600")
+        print(f"   Purse: $10M-$12M (random)")
         
         confirm = input("\nConfirm this tournament? (y/n): ").strip().lower()
         if confirm in ['y', 'yes']:

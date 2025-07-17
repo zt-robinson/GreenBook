@@ -8,8 +8,8 @@ import os
 import sys
 from datetime import datetime, timedelta
 
-# Add the parent directory to the path so we can import from core
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# Add the greenbook directory to the path so we can import from core
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 
 from core.tournament_logic import tournament_logic
 from core.event_types import event_type_manager
@@ -50,8 +50,13 @@ def get_current_season_number():
 
 def get_available_courses_for_season(season_number):
     """Get list of available courses for the season (exclude already used)"""
-    courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    courses_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_courses.db')
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_tournaments.db')
+
+    print(f"[DEBUG] courses_db_path: {courses_db_path}")
+    print(f"[DEBUG] tournaments_db_path: {tournaments_db_path}")
+    print(f"[DEBUG] courses_db_path exists: {os.path.exists(courses_db_path)}")
+    print(f"[DEBUG] tournaments_db_path exists: {os.path.exists(tournaments_db_path)}")
     
     if not os.path.exists(courses_db_path):
         print("❌ Courses database not found.")
@@ -61,15 +66,19 @@ def get_available_courses_for_season(season_number):
     cur = conn.cursor()
     cur.execute('SELECT id, name, state_country FROM courses ORDER BY name')
     all_courses = cur.fetchall()
+    print(f"[DEBUG] Number of courses found: {len(all_courses)}")
     conn.close()
 
     conn = sqlite3.connect(tournaments_db_path)
     cur = conn.cursor()
     cur.execute('SELECT course_id FROM tournaments WHERE season_number = ?', (season_number,))
     used_course_ids = set(row[0] for row in cur.fetchall())
+    print(f"[DEBUG] used_course_ids: {used_course_ids}")
     conn.close()
 
-    return [c for c in all_courses if c[0] not in used_course_ids]
+    available_courses = [c for c in all_courses if c[0] not in used_course_ids]
+    print(f"[DEBUG] Number of available courses: {len(available_courses)}")
+    return available_courses
 
 def select_course(courses):
     """Let user select a course from the available options"""

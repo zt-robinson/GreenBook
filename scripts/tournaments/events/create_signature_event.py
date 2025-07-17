@@ -8,8 +8,8 @@ import os
 import sys
 from datetime import datetime, timedelta
 
-# Add the parent directory to the path so we can import from core
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# Add the greenbook directory to the path so we can import from core
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 
 from core.tournament_logic import tournament_logic
 from core.event_types import event_type_manager
