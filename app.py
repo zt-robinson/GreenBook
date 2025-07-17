@@ -231,12 +231,12 @@ def schedule():
     tournaments = [dict(row) for row in tcur.fetchall()]
     tconn.close()
 
-    # Fetch courses
+    # Fetch courses with location data
     cconn = sqlite3.connect(courses_db_path)
     cconn.row_factory = sqlite3.Row
     ccur = cconn.cursor()
-    ccur.execute('SELECT id, name FROM courses')
-    courses = {row['id']: row['name'] for row in ccur.fetchall()}
+    ccur.execute('SELECT id, name, location FROM courses')
+    courses = {row['id']: {'name': row['name'], 'location': row['location']} for row in ccur.fetchall()}
     cconn.close()
 
     def format_ampm(timestr):
@@ -253,7 +253,9 @@ def schedule():
             return timestr
 
     for t in tournaments:
-        t['course_name'] = courses.get(t['course_id'], 'Unknown')
+        course_info = courses.get(t['course_id'], {'name': 'Unknown', 'location': ''})
+        t['course_name'] = course_info['name']
+        t['course_location'] = course_info['location']
         # Defensive: handle missing or None start_date
         if t['start_date']:
             try:
