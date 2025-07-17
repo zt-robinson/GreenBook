@@ -10,7 +10,7 @@ import sys
 def clear_all_tournaments():
     """Clear all existing tournaments and related data"""
     
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_tournaments.db')
     
     if not os.path.exists(tournaments_db_path):
         print("❌ Tournament database not found. Please run create_tournaments_db.py first.")
@@ -55,8 +55,8 @@ def clear_all_tournaments():
 
 def list_tournaments():
     """List all tournaments with ID, name, date, and course name (from golf_courses.db)."""
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
-    courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_tournaments.db')
+    courses_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_courses.db')
     if not os.path.exists(tournaments_db_path):
         print("❌ Tournament database not found.")
         return []
@@ -86,17 +86,27 @@ def list_tournaments():
     finally:
         conn.close()
 
+def table_exists(conn, table_name):
+    cur = conn.cursor()
+    cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name=?", (table_name,))
+    return cur.fetchone() is not None
+
 def delete_tournament_by_id(tournament_id):
     """Delete a single tournament and all related data by ID."""
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', '..', '..', 'data', 'golf_tournaments.db')
     conn = sqlite3.connect(tournaments_db_path)
     cur = conn.cursor()
     try:
-        cur.execute('DELETE FROM tournament_schedule WHERE tournament_id = ?', (tournament_id,))
-        cur.execute('DELETE FROM payout_structure WHERE tournament_id = ?', (tournament_id,))
-        cur.execute('DELETE FROM tournament_fields WHERE tournament_id = ?', (tournament_id,))
-        cur.execute('DELETE FROM tournament_results WHERE tournament_id = ?', (tournament_id,))
-        cur.execute('DELETE FROM tournament_odds WHERE tournament_id = ?', (tournament_id,))
+        # Only delete from tables that exist
+        for table, col in [
+            ("tournament_schedule", "tournament_id"),
+            ("payout_structure", "tournament_id"),
+            ("tournament_fields", "tournament_id"),
+            ("tournament_results", "tournament_id"),
+            ("tournament_odds", "tournament_id")
+        ]:
+            if table_exists(conn, table):
+                cur.execute(f'DELETE FROM {table} WHERE {col} = ?', (tournament_id,))
         cur.execute('DELETE FROM tournaments WHERE id = ?', (tournament_id,))
         conn.commit()
         print(f"\n✅ Tournament ID {tournament_id} and all related data deleted.")
