@@ -1,0 +1,160 @@
+Lahinch,Ireland
+Ballybunion,Ireland
+Tralee,Ireland
+Waterville,Ireland
+Dingle,Ireland
+Clifden,Ireland
+Westport,Ireland
+Enniscrone,Ireland
+Sligo,Ireland
+Donegal,Ireland
+Bundoran,Ireland
+Rosslare,Ireland
+Wexford,Ireland
+Dublin,Ireland
+Howth,Ireland
+Skerries,Ireland
+Drogheda,Ireland
+Bray,Ireland
+Greystones,Ireland
+Arklow,Ireland
+Cobh,Ireland
+Kinsale,Ireland
+Youghal,Ireland
+Kilkee,Ireland
+Belmullet,Ireland
+Moville,Ireland
+Buncrana,Ireland
+Portsalon,Ireland
+Rathmullan,Ireland
+Dungloe,Ireland
+Glencolumbkille,Ireland
+Kilcar,Ireland
+Burtonport,Ireland
+Downings,Ireland
+Fanore,Ireland
+Spanish Point,Ireland
+Kilrush,Ireland
+Baltimore,Ireland
+Union Hall,Ireland
+Courtmacsherry,Ireland
+Dunmore East,Ireland
+Annestown,Ireland
+Ardmore,Ireland
+Brittas Bay,Ireland
+Courtown,Ireland
+Balbriggan,Ireland
+Laytown,Ireland
+Bettystown,Ireland
+Carlingford,Ireland
+Greenore,Ireland
+Eyemouth,Scotland
+St Abbs,Scotland
+Dunbar,Scotland
+North Berwick,Scotland
+Gullane,Scotland
+Aberlady,Scotland
+Crail,Scotland
+Anstruther,Scotland
+Pittenweem,Scotland
+Elie,Scotland
+Largo,Scotland
+Leven,Scotland
+Methil,Scotland
+Montrose,Scotland
+Stonehaven,Scotland
+Cullen,Scotland
+Portsoy,Scotland
+Buckie,Scotland
+Lossiemouth,Scotland
+Hopeman,Scotland
+Burghead,Scotland
+Nairn,Scotland
+Avoch,Scotland
+Rosemarkie,Scotland
+Golspie,Scotland
+Brora,Scotland
+Helmsdale,Scotland
+Lybster,Scotland
+Thurso,Scotland
+Castletown,Scotland
+Tywyn,Wales
+Borth,Wales
+Fairbourne,Wales
+Aberdaron,Wales
+Abersoch,Wales
+Pwllheli,Wales
+Criccieth,Wales
+Trefor,Wales
+Nefyn,Wales
+Porthmadog,Wales
+Barmouth,Wales
+Llanbedr,Wales
+Talybont,Wales
+New Quay,Wales
+Aberaeron,Wales
+Llangrannog,Wales
+Tresaith,Wales
+Aberporth,Wales
+Goodwick,Wales
+Fishguard,Wales
+Newport,Wales
+Poppit Sands,Wales
+Saundersfoot,Wales
+Tenby,Wales
+Pendine,Wales
+Laugharne,Wales
+Amroth,Wales
+Porthcawl,Wales
+Barry,Wales
+Penarth,Wales
+Berwick-upon-Tweed,England
+Seahouses,England
+Amble,England
+Blyth,England
+Seaton Sluice,England
+Whitley Bay,England
+Tynemouth,England
+Sunderland,England
+Seaham,England
+Hartlepool,England
+Saltburn-by-the-Sea,England
+Redcar,England
+Staithes,England
+Whitby,England
+Robin Hood’s Bay,England
+Scarborough,England
+Filey,England
+Bridlington,England
+Withernsea,England
+Cleethorpes,England
+Skegness,England
+Mablethorpe,England
+Chapel St Leonards,England
+Hunstanton,England
+Wells-next-the-Sea,England
+Sheringham,England
+Cromer,England
+Mundesley,England
+Great Yarmouth,England
+Lowestoft,England
+Southwold,England
+Aldeburgh,England
+Felixstowe,England
+Clacton-on-Sea,England
+Walton-on-the-Naze,England
+Frinton-on-Sea,England
+Deal,England
+Hythe,England
+Dymchurch,England
+Rye,England
+Pevensey Bay,England
+Seaford,England
+Shoreham-by-Sea,England
+Selsey,England
+Bracklesham Bay,England
+Hayling Island,England
+Lee-on-the-Solent,England
+Milford on Sea,England
+Charmouth,England
+Budleigh Salterton,England
