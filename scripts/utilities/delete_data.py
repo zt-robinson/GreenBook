@@ -17,7 +17,7 @@ def get_course_list():
     """Get list of all courses with IDs"""
     conn = sqlite3.connect(COURSE_DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("SELECT id, name, city, state_country FROM courses ORDER BY id")
+    cursor.execute("SELECT id, name, city, location FROM courses ORDER BY id")
     courses = cursor.fetchall()
     conn.close()
     return courses
@@ -244,8 +244,8 @@ def handle_course_deletion():
         return
     
     print("\n📋 Available courses:")
-    for course_id, name, city, state in courses:
-        print(f"  {course_id}: {name} ({city}, {state})")
+    for course_id, name, city, location in courses:
+        print(f"  {course_id}: {name} ({location})")
     
     try:
         choice = input("\nEnter course ID to delete (or 'all' for all courses): ").strip()
