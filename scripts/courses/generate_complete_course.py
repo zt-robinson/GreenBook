@@ -140,6 +140,22 @@ CLUB_SUFFIXES = [
     'Polo Club', 'Hunt & Country Club'
 ]
 
+# Weighted club suffixes for US courses (40% Golf Club, 40% Country Club, 20% others)
+US_CLUB_SUFFIXES_WEIGHTED = [
+    ('Golf Club', 0.40),
+    ('Country Club', 0.40),
+    ('Hunt Club', 0.05),
+    ('Golf & Country Club', 0.05),
+    ('Cricket Club', 0.02),
+    ('Athletic Club', 0.02),
+    ('Club', 0.02),
+    ('National Golf Club', 0.02),
+    ('Golf & Hunt Club', 0.01),
+    ('Golf & Tennis Club', 0.01),
+    ('Polo Club', 0.01),
+    ('Hunt & Country Club', 0.01)
+]
+
 NORTHEAST_STATES = ['ME', 'NH', 'VT', 'MA', 'RI', 'CT', 'NY', 'NJ', 'PA']
 SOUTHERN_STATES = ['MD', 'DE', 'VA', 'WV', 'KY', 'TN', 'NC', 'SC', 'GA', 'FL', 'AL', 'MS', 'AR', 'LA']
 WEST_COAST_STATES = ['WA', 'OR', 'CA']
@@ -155,6 +171,19 @@ def load_data():
     except FileNotFoundError as e:
         print(f"❌ Data file not found: {e}")
         return None
+
+def select_weighted_club_suffix():
+    """Select a club suffix using weighted probabilities for US courses"""
+    rand = random.random()
+    cumulative_prob = 0
+    
+    for suffix, probability in US_CLUB_SUFFIXES_WEIGHTED:
+        cumulative_prob += probability
+        if rand <= cumulative_prob:
+            return suffix
+    
+    # Fallback to first option if something goes wrong
+    return US_CLUB_SUFFIXES_WEIGHTED[0][0]
 
 def generate_founding_year(naming_type, state_code, prestige, country='United States'):
     """Generate founding year based on historical patterns, naming type, region, and prestige"""
@@ -602,10 +631,10 @@ def generate_course_name_us(city_name, state_code, naming_type='random'):
     elif naming_type == 'location':
         if random.random() < 0.3:
             geo_term = random.choice(GEOGRAPHIC_TERMS)
-            suffix = random.choice(CLUB_SUFFIXES)
+            suffix = select_weighted_club_suffix()
             return f"{city_name} {geo_term} {suffix}", 'location'
         else:
-            suffix = random.choice(CLUB_SUFFIXES)
+            suffix = select_weighted_club_suffix()
             return f"{city_name} {suffix}", 'location'
     elif naming_type == 'family':
         if state_code in NORTHEAST_STATES:
@@ -617,7 +646,7 @@ def generate_course_name_us(city_name, state_code, naming_type='random'):
         
         family_name = random.choice(family_pool)
         geo_term = random.choice(GEOGRAPHIC_TERMS)
-        suffix = random.choice(CLUB_SUFFIXES)
+        suffix = select_weighted_club_suffix()
         return f"{family_name} {geo_term} {suffix}", 'family'
 
 def generate_course_name(city_name, state_or_region, naming_type='random', country='United States'):
