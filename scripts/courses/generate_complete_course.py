@@ -1303,7 +1303,7 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     
     # Create complete course data
     # Format location based on country
-    if country == 'United States':
+    if country in ['United States', 'USA']:
         location = f"{city_name}, {state_code} (US)"
     else:
         location = f"{city_name}, {country}"
