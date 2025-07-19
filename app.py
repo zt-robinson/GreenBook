@@ -143,7 +143,7 @@ def courses():
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
     # Load elevation data
-    elev_df = pd.read_csv('data/cities_with_elevation.csv')
+    elev_df = pd.read_csv('data/unified_cities_with_elevation.csv')
     cur.execute('''
         SELECT c.id, c.name, c.location, c.city, c.state_country, c.total_yardage as yardage, c.total_par as par, c.prestige_level as prestige, c.est_year,
                c.slope_rating, c.course_rating,
@@ -173,7 +173,31 @@ def courses():
         # Elevation lookup
         city = course.get('city')
         state = course.get('state_country')
-        elev_row = elev_df[(elev_df['city'] == city) & (elev_df['state'] == state)]
+        
+        # For GB&I courses, state_country is empty, so we need to extract country from location
+        if not state and course.get('location'):
+            # Extract country from location (e.g., "Aldeburgh, England" -> "England")
+            location_parts = course.get('location').split(', ')
+            if len(location_parts) > 1:
+                country = location_parts[-1]
+                # Map country names to match CSV format
+                country_mapping = {
+                    'England': 'England',
+                    'Scotland': 'Scotland', 
+                    'Wales': 'Wales',
+                    'Ireland': 'Ireland'
+                }
+                if country in country_mapping:
+                    # Look up by city and country for GB&I courses
+                    elev_row = elev_df[(elev_df['city'] == city) & (elev_df['country'] == country_mapping[country])]
+                else:
+                    elev_row = pd.DataFrame()  # Empty DataFrame
+            else:
+                elev_row = pd.DataFrame()  # Empty DataFrame
+        else:
+            # For US courses, use city and state
+            elev_row = elev_df[(elev_df['city'] == city) & (elev_df['state'] == state)]
+        
         if not elev_row.empty:
             elev_ft = elev_row.iloc[0]['elevation_ft']
             try:
