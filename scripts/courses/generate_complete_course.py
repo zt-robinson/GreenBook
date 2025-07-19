@@ -18,7 +18,7 @@ import sqlite3
 from datetime import datetime
 
 # Data paths
-CITIES_DATA_PATH = os.path.join(os.path.dirname(__file__), '../../data/cities_with_elevation.csv')
+CITIES_DATA_PATH = os.path.join(os.path.dirname(__file__), '../../data/unified_cities_with_elevation.csv')
 DB_PATH = os.path.join(os.path.dirname(__file__), '../../data/golf_courses.db')
 
 # Family names and naming conventions
@@ -46,6 +46,87 @@ FAMILY_NAMES = {
         'Williams', 'Winslow'
     ]
 }
+
+# Fictional geographic terms for GB&I-style names - organized by region
+GEO_TERMS_SCOTLAND = [
+    'Invercraig', 'Glenbruar', 'Balquhanan', 'Kilnairn', 'Stronmhor',
+    'Lochderry', 'Auchtriemore', 'Carrickbrae', 'Kinlochden', 'Drumbeggan',
+    'Eilanbost', 'Dalcreith', 'Torranbrae', 'Monachyle', 'Braemorebridge',
+    'Kilmorie', 'Dunbervie', 'Tarvain', 'Lethanrigg', 'Auchglen',
+    'Blairshiel', 'Lochduie', 'Craigtay', 'Cullenbrae', 'Gartcraigie',
+    'Benholmie', 'Torvalen', 'Stronachin', 'Kincraigie', 'Durnanhead',
+    'Inverfearn', 'Clachderry', 'Tighmuir', 'Ardcalder', 'Kilbrachan',
+    'Drummarnock', 'Beinloch', 'Craiganish', 'Abernish', 'Dalmairn',
+    'Glensallaich', 'Morlaig', 'Torbreckie', 'Kinfauldie', 'Balrannan',
+    'Achnacree', 'Lochanvey', 'Strathlorn', 'Craigdenach', 'Echtmuir',
+    'Brackendale', 'Elderglen', 'Coldwick', 'East Drummore', 'Thornhillby',
+    'Ravenslea', 'Kelswick Moor', 'Stonebrae', 'North Corran', 'Westrigg',
+    'Kinmarsh', 'Rednockfield', 'Dunlea', 'Burnhaven', 'Lochanford',
+    'Gransmoor', 'Ashbrae', 'Lochwood', 'Glenvale', 'Falkenrigg',
+    'Craighurst', 'Kelderby', 'Greythwaite', 'Windrick', 'Broomhill Cross',
+    'Dalbraxton', 'Morwick', 'Cranford Hill', 'Tarnaby', 'Roxenby',
+    'Inverleithan', 'Hatherwick', 'Claysburn', 'Barlennan', 'Whitford Glen',
+    'Beckside', 'Tarrick', 'Glenholm', 'Keldmoor', 'Ashmarsh',
+    'Tollhaven', 'Netherton Brae', 'Langcraig', 'Thistlefirth', 'Orrinfield',
+    'Braxtenhead', 'Ferncliff', 'Lochmere', 'Warrenbrae', 'Carrickford'
+]
+
+GEO_TERMS_ENGLAND = [
+    'Westmere', 'Little Harrowden', 'Thistledown', 'Bransley Heath', 'Elderton',
+    'Crowleigh', 'Ashcombe', 'Whistonbury', 'Denwick Vale', 'Caldmere',
+    'Farnfold', 'Hollowmere', 'New Chalford', 'Kentonby', 'Orleton Marsh',
+    'Langmere', 'Oxton Parva', 'Brayford Hill', 'Aldringham', 'Foxhollow',
+    'Redmarsh', 'Millthwaite', 'Winfrith Edge', 'Elmleigh Cross', 'Woldenbury',
+    'Halverley', 'Beckstone', 'Draycombe', 'Kingswarren', 'North Gresley',
+    'East Rindleton', 'Pendale', 'Wetherbrook', 'Colverby', 'Shefford-on-Wye',
+    'Chartham Wells', 'Mossley End', 'Dunleigh Park', 'Ravenscombe', 'Thornwick Hollow',
+    'Tansmere', 'Haverditch', 'Bletherby', 'Larkstone', 'Eppleton Magna',
+    'New Aberfield', 'Croftbourne', 'Suttonmarsh', 'Gildenbridge', 'Barcombe Underhill',
+    'Avenford', 'Coldham Staithe', 'North Withering', 'Elmsgate', 'Brantleigh',
+    'Kelsmere', 'Barton Lacy', 'Weldon Fen', 'Hindmarch', 'Gravesby Cross',
+    'Old Breckley', 'Langston Row', 'Ashenfield', 'Croftley Bank', 'South Draywick',
+    'Holberton Green', 'Foxwell Heath', 'Tilney Broad', 'Millgate Hollow', 'Upper Hatherfield',
+    'Chiswick Down', 'Brickleby', 'Fenmarsh-on-Hale', 'Wrenleigh End', 'Doverick',
+    'Wylcombe', 'Shillingham', 'Greymarsh', 'Ormswell', 'Hadleigh Vale',
+    'Meadowrynge', 'Thrumfield', 'Cotsmere Abbey', 'Tollbridge Hill', 'New Edbrook',
+    'Frayling St. Peter', 'Wickensmere', 'Southmere Bay', 'Baldric Hollow', 'Windreth Chase',
+    'Oakminster', 'Tannerford', 'Hobcross', 'Sedgewick Vale', 'Norleigh Beacon',
+    'Chatterbourne', 'Merriton Heath', 'Brindleford', 'Quenby Grange', 'Haverscombe'
+]
+
+GEO_TERMS_WALES = [
+    'Llanberin', 'Cwmceirw', 'Abermelyn', 'Pontfaelog', 'Trefgarth',
+    'Nantgwyllt', 'Penrhiew', 'Garnedd Uchaf', 'Llyswenog', 'Brynawel',
+    'Dolhendre', 'Cefncaer', 'Fferm-y-Bryn', 'Abergwynan', 'Maesrudd',
+    'Cwmnantdu', 'Llanystwyth', 'Treddwy', 'Blaenllyd', 'Cilwgan',
+    'Talyfyn', 'Glanferdd', 'Llechfraith', 'Pencarregwen', 'Rhosgeir',
+    'Craigddwr', 'Llwyncoed', 'Pantybanadl', 'Moeltryfan', 'Brynceinion',
+    'Tynygraig', 'Penllanerch', 'Dyffrynleuad', 'Tre-y-Gloch', 'Y Glyn Du',
+    'Cwmbala', 'Llanfelyn', 'Abernantglas', 'Tyddyn Ifor', 'Capel Rhyd',
+    'Pontdyfi', 'Crugleisiog', 'Blaencynon', 'Eglwyscarw', 'Maenllyd',
+    'Trefegwyn', 'Coedglynnog', 'Nantmorwyn', 'Llainbedr', 'Hafodygarth'
+]
+
+GEO_TERMS_IRELAND = [
+    'Ballyduffane', 'Kilbreena', 'Clonlaraigh', 'Lisdoonan', 'Knockaroe',
+    'Drumlehin', 'Caherlea', 'Inishowra', 'Rathnacree', 'Tullabeg',
+    'Gortshannon', 'Ballintubber East', 'Carrickullen', 'Dromaneen', 'Cloonmara',
+    'Ardkeel', 'Ballyfiach', 'Dunleha', 'Kilnacross', 'Murlehin',
+    'Kildoonagh', 'Loughbawn', 'Fanavore', 'Corroughmore', 'Caherdraigh',
+    'Toorbane', 'Lisnacally', 'Moyvarra', 'Glenavore', 'Drimnacreeva',
+    'Tullygaran', 'Claddanree', 'Ballyroneen', 'Kilnamullagh', 'Lismeelane',
+    'Cloonboyne', 'Ballynure West', 'Rathcallan', 'Inishgrae', 'Cregganbaun',
+    'Aghnasilla', 'Knockfarnan', 'Dromahenry', 'Killeenroe', 'Doonvarra',
+    'Gortloughane', 'Ballykeelagh', 'Carriglea', 'Tullynally', 'Clonara'
+]
+
+# Combined pool for general GB&I use (fallback)
+GEO_TERMS_GBI = [
+    'Braeside', 'Carrick Hill', 'Blackmoor', 'Silvermere', 'Moorland', 'Glenvista',
+    'Heathwood', 'Daleview', 'Ashridge', 'Downfield', 'Hilltop', 'Windermere',
+    'Grangemoor', 'Lochside', 'Redcliffe', 'Braemar', 'Oakridge', 'Riverdale',
+    'Kingsdown', 'Meadowbrook', 'Stonehill', 'Fernvale', 'Langford', 'Ayrfield'
+]
 
 GEOGRAPHIC_TERMS = [
     'Vale', 'Valley', 'Park', 'Woods', 'Fields', 'Trace', 'Heath', 'Prairie', 'Glen', 
@@ -75,100 +156,299 @@ def load_data():
         print(f"❌ Data file not found: {e}")
         return None
 
-def generate_founding_year(naming_type, state_code, prestige):
+def generate_founding_year(naming_type, state_code, prestige, country='United States'):
     """Generate founding year based on historical patterns, naming type, region, and prestige"""
     
-    # Base year ranges by era
-    ERA_RANGES = {
-        'early_boom': (1890, 1920),      # Early golf boom
-        'depression_era': (1920, 1950),   # Depression and WWII
-        'post_war': (1950, 1980),        # Post-war boom
-        'modern': (1980, 2000)           # Modern era
-    }
+    # Determine if this is a GB&I course
+    is_gbi = country in ['England', 'Scotland', 'Wales', 'Ireland']
     
-    # Determine region
-    if state_code in NORTHEAST_STATES:
-        region = 'northeast'
-    elif state_code in SOUTHERN_STATES:
-        region = 'south'
-    elif state_code in WEST_COAST_STATES:
-        region = 'west_coast'
-    elif state_code in MIDWEST_STATES:
-        region = 'midwest'
-    elif state_code in MOUNTAIN_STATES:
-        region = 'mountain'
-    elif state_code in SOUTHWEST_STATES:
-        region = 'southwest'
-    else:
-        region = 'other'
-    
-    # Regional era preferences (probability of each era)
-    REGIONAL_ERAS = {
-        'northeast': {
-            'early_boom': 0.6,      # Northeast had early golf boom
-            'depression_era': 0.25,
-            'post_war': 0.1,
-            'modern': 0.05
-        },
-        'south': {
-            'early_boom': 0.4,      # Some early clubs, but more post-war
-            'depression_era': 0.3,
-            'post_war': 0.2,
-            'modern': 0.1
-        },
-        'west_coast': {
-            'early_boom': 0.1,      # West Coast golf came later
-            'depression_era': 0.2,
-            'post_war': 0.4,
-            'modern': 0.3
-        },
-        'midwest': {
-            'early_boom': 0.3,
-            'depression_era': 0.3,
-            'post_war': 0.3,
-            'modern': 0.1
-        },
-        'mountain': {
-            'early_boom': 0.05,     # Mountain golf is mostly modern
-            'depression_era': 0.1,
-            'post_war': 0.3,
-            'modern': 0.55
-        },
-        'southwest': {
-            'early_boom': 0.1,
-            'depression_era': 0.2,
-            'post_war': 0.4,
-            'modern': 0.3
-        },
-        'other': {
-            'early_boom': 0.2,
-            'depression_era': 0.3,
-            'post_war': 0.3,
-            'modern': 0.2
+    if is_gbi:
+        # GB&I golf has much older history - different era ranges
+        ERA_RANGES = {
+            'early_origins': (1750, 1850),    # Very early golf origins
+            'victorian_boom': (1850, 1900),   # Victorian golf boom
+            'edwardian_era': (1900, 1920),    # Edwardian era
+            'interwar': (1920, 1950),         # Interwar period
+            'post_war': (1950, 1980),         # Post-war period
+            'modern': (1980, 2000)            # Modern era
         }
-    }
+        
+        # GB&I regional era preferences (much older than US)
+        REGIONAL_ERAS = {
+            'Scotland': {
+                'early_origins': 0.3,     # Scotland: birthplace of golf
+                'victorian_boom': 0.4,    # Victorian boom was huge in Scotland
+                'edwardian_era': 0.2,
+                'interwar': 0.05,
+                'post_war': 0.03,
+                'modern': 0.02
+            },
+            'England': {
+                'early_origins': 0.1,     # England: golf came later
+                'victorian_boom': 0.5,    # Victorian boom was massive in England
+                'edwardian_era': 0.3,
+                'interwar': 0.08,
+                'post_war': 0.02,
+                'modern': 0.0
+            },
+            'Ireland': {
+                'early_origins': 0.05,    # Ireland: golf came later
+                'victorian_boom': 0.4,    # Victorian boom
+                'edwardian_era': 0.4,     # Edwardian era was big for Irish golf
+                'interwar': 0.1,
+                'post_war': 0.03,
+                'modern': 0.02
+            },
+            'Wales': {
+                'early_origins': 0.05,    # Wales: golf came later
+                'victorian_boom': 0.3,    # Victorian boom
+                'edwardian_era': 0.5,     # Edwardian era was big for Welsh golf
+                'interwar': 0.1,
+                'post_war': 0.03,
+                'modern': 0.02
+            }
+        }
+        
+        region = country  # Use country as region for GB&I
+    else:
+        # US golf history - original ranges
+        ERA_RANGES = {
+            'early_boom': (1890, 1920),      # Early golf boom
+            'depression_era': (1920, 1950),   # Depression and WWII
+            'post_war': (1950, 1980),        # Post-war boom
+            'modern': (1980, 2000)           # Modern era
+        }
+        
+        # Determine US region
+        if state_code in NORTHEAST_STATES:
+            region = 'northeast'
+        elif state_code in SOUTHERN_STATES:
+            region = 'south'
+        elif state_code in WEST_COAST_STATES:
+            region = 'west_coast'
+        elif state_code in MIDWEST_STATES:
+            region = 'midwest'
+        elif state_code in MOUNTAIN_STATES:
+            region = 'mountain'
+        elif state_code in SOUTHWEST_STATES:
+            region = 'southwest'
+        else:
+            region = 'other'
+    
+    # US regional era preferences (only used for US courses)
+    if not is_gbi:
+        REGIONAL_ERAS = {
+            'northeast': {
+                'early_boom': 0.6,      # Northeast had early golf boom
+                'depression_era': 0.25,
+                'post_war': 0.1,
+                'modern': 0.05
+            },
+            'south': {
+                'early_boom': 0.4,      # Some early clubs, but more post-war
+                'depression_era': 0.3,
+                'post_war': 0.2,
+                'modern': 0.1
+            },
+            'west_coast': {
+                'early_boom': 0.1,      # West Coast golf came later
+                'depression_era': 0.2,
+                'post_war': 0.4,
+                'modern': 0.3
+            },
+            'midwest': {
+                'early_boom': 0.3,
+                'depression_era': 0.3,
+                'post_war': 0.3,
+                'modern': 0.1
+            },
+            'mountain': {
+                'early_boom': 0.05,     # Mountain golf is mostly modern
+                'depression_era': 0.1,
+                'post_war': 0.3,
+                'modern': 0.55
+            },
+            'southwest': {
+                'early_boom': 0.1,
+                'depression_era': 0.2,
+                'post_war': 0.4,
+                'modern': 0.3
+            },
+            'other': {
+                'early_boom': 0.2,
+                'depression_era': 0.3,
+                'post_war': 0.3,
+                'modern': 0.2
+            }
+        }
     
     # Naming type era preferences
-    NAMING_TYPE_ERAS = {
-        'family': {
-            'early_boom': 0.7,      # Family clubs tend to be older
-            'depression_era': 0.2,
-            'post_war': 0.1,
-            'modern': 0.0
-        },
-        'pcc': {
-            'early_boom': 0.0,      # PCC clubs are modern
-            'depression_era': 0.1,
-            'post_war': 0.6,
-            'modern': 0.3
-        },
-        'location': {
-            'early_boom': 0.2,      # Location-based are mixed
-            'depression_era': 0.3,
-            'post_war': 0.3,
-            'modern': 0.2
+    if is_gbi:
+        # GB&I naming type era preferences (much older)
+        NAMING_TYPE_ERAS = {
+            'family': {
+                'early_origins': 0.2,      # Family clubs can be very old
+                'victorian_boom': 0.6,     # Most family clubs from Victorian era
+                'edwardian_era': 0.2,
+                'interwar': 0.0,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'royal': {
+                'early_origins': 0.4,      # Royal clubs are very old
+                'victorian_boom': 0.5,     # Many royal charters in Victorian era
+                'edwardian_era': 0.1,
+                'interwar': 0.0,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'links': {
+                'early_origins': 0.3,      # Links courses are very old
+                'victorian_boom': 0.5,     # Victorian boom for links
+                'edwardian_era': 0.2,
+                'interwar': 0.0,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'county': {
+                'early_origins': 0.1,      # County clubs are old
+                'victorian_boom': 0.7,     # County clubs from Victorian era
+                'edwardian_era': 0.2,
+                'interwar': 0.0,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'manor': {
+                'early_origins': 0.1,      # Manor clubs are old
+                'victorian_boom': 0.6,     # Manor clubs from Victorian era
+                'edwardian_era': 0.3,
+                'interwar': 0.0,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'town': {
+                'early_origins': 0.05,     # Town clubs are old
+                'victorian_boom': 0.5,     # Town clubs from Victorian era
+                'edwardian_era': 0.4,
+                'interwar': 0.05,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'geo': {
+                'early_origins': 0.05,     # Geographic names are mixed
+                'victorian_boom': 0.4,     # Geographic names from Victorian era
+                'edwardian_era': 0.4,
+                'interwar': 0.1,
+                'post_war': 0.03,
+                'modern': 0.02
+            },
+            'park': {
+                'early_origins': 0.05,     # Park clubs are mixed
+                'victorian_boom': 0.4,     # Park clubs from Victorian era
+                'edwardian_era': 0.4,
+                'interwar': 0.1,
+                'post_war': 0.03,
+                'modern': 0.02
+            },
+            'club': {
+                'early_origins': 0.05,     # Club suffix is mixed
+                'victorian_boom': 0.3,     # Club suffix from Victorian era
+                'edwardian_era': 0.5,
+                'interwar': 0.1,
+                'post_war': 0.03,
+                'modern': 0.02
+            },
+            'standard': {
+                'early_origins': 0.05,     # Standard clubs are mixed
+                'victorian_boom': 0.3,     # Standard clubs from Victorian era
+                'edwardian_era': 0.5,
+                'interwar': 0.1,
+                'post_war': 0.03,
+                'modern': 0.02
+            }
         }
-    }
+    else:
+        # US naming type era preferences (original)
+        NAMING_TYPE_ERAS = {
+            'family': {
+                'early_boom': 0.7,      # Family clubs tend to be older
+                'depression_era': 0.2,
+                'post_war': 0.1,
+                'modern': 0.0
+            },
+            'pcc': {
+                'early_boom': 0.0,      # PCC clubs are modern
+                'depression_era': 0.1,
+                'post_war': 0.6,
+                'modern': 0.3
+            },
+            'location': {
+                'early_boom': 0.2,      # Location-based are mixed
+                'depression_era': 0.3,
+                'post_war': 0.3,
+                'modern': 0.2
+            },
+            'standard': {
+                'early_boom': 0.3,      # Standard clubs are mixed
+                'depression_era': 0.3,
+                'post_war': 0.3,
+                'modern': 0.1
+            },
+            'links': {
+                'early_boom': 0.6,      # Links courses tend to be older
+                'depression_era': 0.3,
+                'post_war': 0.1,
+                'modern': 0.0
+            },
+            'royal': {
+                'early_boom': 0.8,      # Royal clubs are very old
+                'depression_era': 0.2,
+                'post_war': 0.0,
+                'modern': 0.0
+            },
+            'geo': {
+                'early_boom': 0.2,      # Geographic names are mixed
+                'depression_era': 0.3,
+                'post_war': 0.3,
+                'modern': 0.2
+            },
+            'district': {
+                'early_boom': 0.4,      # District clubs are somewhat old
+                'depression_era': 0.4,
+                'post_war': 0.2,
+                'modern': 0.0
+            },
+            'county': {
+                'early_boom': 0.7,      # County clubs are very old
+                'depression_era': 0.2,
+                'post_war': 0.1,
+                'modern': 0.0
+            },
+            'town': {
+                'early_boom': 0.5,      # Town clubs are old
+                'depression_era': 0.3,
+                'post_war': 0.2,
+                'modern': 0.0
+            },
+            'manor': {
+                'early_boom': 0.6,      # Manor clubs are old
+                'depression_era': 0.3,
+                'post_war': 0.1,
+                'modern': 0.0
+            },
+            'park': {
+                'early_boom': 0.4,      # Park clubs are mixed
+                'depression_era': 0.3,
+                'post_war': 0.2,
+                'modern': 0.1
+            },
+            'club': {
+                'early_boom': 0.3,      # Club suffix is mixed
+                'depression_era': 0.3,
+                'post_war': 0.3,
+                'modern': 0.1
+            }
+        }
     
     # Combine regional and naming type preferences
     era_weights = {}
@@ -210,8 +490,104 @@ def generate_founding_year(naming_type, state_code, prestige):
     
     return final_year
 
-def generate_course_name(city_name, state_code, naming_type='random'):
-    """Generate course name based on naming convention"""
+def generate_course_name_ireland(city_name):
+    """Generate authentic Irish golf club names with diverse patterns."""
+    rand = random.random()
+    
+    if rand < 0.25:
+        # Geographic names (using Irish-specific terms) - Most common
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Golf Club", 'geo'
+    elif rand < 0.35:
+        # County clubs (very Irish)
+        county_names = ['County Sligo', 'County Louth', 'County Wicklow', 'County Kerry', 'County Cork', 'County Clare', 'County Galway', 'County Mayo']
+        county = random.choice(county_names)
+        return f"{county} Golf Club", 'county'
+    elif rand < 0.45:
+        # Links courses (common in Ireland) - use fictional name
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Links", 'links'
+    elif rand < 0.55:
+        # Manor/estate style - use fictional name
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Manor Golf Club", 'manor'
+    elif rand < 0.65:
+        # Park style - use fictional name
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Park Golf Club", 'park'
+    elif rand < 0.75:
+        # Town/Parish clubs - use fictional name
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Town Golf Club", 'town'
+    elif rand < 0.85:
+        # Links with fictional name
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Links Golf Club", 'links'
+    else:
+        # Club suffix (less common but authentic) - use fictional name
+        geo = random.choice(GEO_TERMS_IRELAND)
+        return f"{geo} Club", 'club'
+
+def generate_course_name_gb(city_name, country='England'):
+    """Generate a British-style club name for England, Scotland, Wales with region-specific terms."""
+    rand = random.random()
+    
+    if rand < 0.05:
+        # Royal prefix - use fictional name
+        if country == 'Scotland':
+            geo = random.choice(GEO_TERMS_SCOTLAND)
+        elif country == 'Wales':
+            geo = random.choice(GEO_TERMS_WALES)
+        else:  # England
+            geo = random.choice(GEO_TERMS_ENGLAND)
+        return f"Royal {geo} Golf Club", 'royal'
+    elif rand < 0.35:
+        # Geographic names (most common) - use region-specific terms
+        if country == 'Scotland':
+            geo = random.choice(GEO_TERMS_SCOTLAND)
+        elif country == 'Wales':
+            geo = random.choice(GEO_TERMS_WALES)
+        else:  # England
+            geo = random.choice(GEO_TERMS_ENGLAND)
+        return f"{geo} Golf Club", 'geo'
+    elif rand < 0.55:
+        # Links courses - use fictional name
+        if country == 'Scotland':
+            geo = random.choice(GEO_TERMS_SCOTLAND)
+        elif country == 'Wales':
+            geo = random.choice(GEO_TERMS_WALES)
+        else:  # England
+            geo = random.choice(GEO_TERMS_ENGLAND)
+        return f"{geo} Links", 'links'
+    elif rand < 0.75:
+        # Additional authentic patterns - use fictional names
+        if country == 'Scotland':
+            geo = random.choice(GEO_TERMS_SCOTLAND)
+        elif country == 'Wales':
+            geo = random.choice(GEO_TERMS_WALES)
+        else:  # England
+            geo = random.choice(GEO_TERMS_ENGLAND)
+        
+        patterns = [
+            f"{geo} Park Golf Club",
+            f"{geo} Manor Golf Club", 
+            f"{geo} Heath Golf Club",
+            f"{geo} Common Golf Club",
+            f"{geo} Downs Golf Club"
+        ]
+        return random.choice(patterns), 'standard'
+    else:
+        # Standard pattern - use fictional name
+        if country == 'Scotland':
+            geo = random.choice(GEO_TERMS_SCOTLAND)
+        elif country == 'Wales':
+            geo = random.choice(GEO_TERMS_WALES)
+        else:  # England
+            geo = random.choice(GEO_TERMS_ENGLAND)
+        return f"{geo} Golf Club", 'standard'
+
+def generate_course_name_us(city_name, state_code, naming_type='random'):
+    """Original US naming logic."""
     if naming_type == 'random':
         rand = random.random()
         if rand < 0.1:
@@ -244,8 +620,15 @@ def generate_course_name(city_name, state_code, naming_type='random'):
         suffix = random.choice(CLUB_SUFFIXES)
         return f"{family_name} {geo_term} {suffix}", 'family'
 
-
-
+def generate_course_name(city_name, state_or_region, naming_type='random', country='United States'):
+    """Top-level name generator that dispatches based on country."""
+    if country == 'Ireland':
+        return generate_course_name_ireland(city_name)
+    elif country in ['England', 'Scotland', 'Wales']:
+        return generate_course_name_gb(city_name, country)
+    else:
+        return generate_course_name_us(city_name, state_or_region, naming_type)
+    
 def generate_holes():
     """Generate 18 holes with par distribution and placement rules"""
     max_attempts = 1000
@@ -601,32 +984,79 @@ def generate_hole_difficulties(holes, yardages, handicap_indexes):
     
     return difficulties
 
-def generate_course_factors(naming_type):
-    """Generate course factors based on naming type only."""
-    # Generate base factors with some randomness
-    factors = {
-        'width_index': np.random.beta(4, 2),  # Slightly wider fairways
-        'hazard_density': np.random.beta(2, 4),  # Fewer hazards
-        'green_speed': np.random.beta(3, 2),
-        'turf_firmness': np.random.beta(2, 3),
-        'rough_length': np.random.beta(2, 3),
-        'terrain_difficulty': np.random.beta(2, 4)
-    }
+def generate_course_factors(naming_type, country='United States'):
+    """Generate course factors based on naming type and country/region."""
+    
+    # Determine if this is a GB&I course
+    is_gbi = country in ['England', 'Scotland', 'Wales', 'Ireland']
+    
+    if is_gbi:
+        # GB&I Links-style characteristics
+        factors = {
+            'width_index': np.random.beta(2, 4),  # Narrower fairways (links characteristic)
+            'hazard_density': np.random.beta(3, 3),  # Moderate hazards (bunkers, gorse)
+            'green_speed': np.random.beta(2, 4),  # Slower greens (links greens)
+            'turf_firmness': np.random.beta(4, 2),  # Very firm turf (links characteristic)
+            'rough_length': np.random.beta(3, 2),  # Longer rough (fescue, gorse)
+            'terrain_difficulty': np.random.beta(4, 2)  # More undulating terrain
+        }
+        
+        # GB&I specific adjustments based on country
+        if country == 'Scotland':
+            # Scottish links: most traditional
+            factors['width_index'] *= 0.8  # Even narrower
+            factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * 1.2)  # Very firm
+            factors['rough_length'] = min(1.0, factors['rough_length'] * 1.1)  # Longer rough
+        elif country == 'Ireland':
+            # Irish links: similar to Scottish but slightly more forgiving
+            factors['width_index'] *= 0.9
+            factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * 1.1)
+        elif country == 'England':
+            # English links: slightly more manicured
+            factors['green_speed'] = min(1.0, factors['green_speed'] * 1.2)
+            factors['rough_length'] *= 0.9
+        elif country == 'Wales':
+            # Welsh links: similar to English
+            factors['green_speed'] = min(1.0, factors['green_speed'] * 1.1)
+            factors['rough_length'] *= 0.95
+    else:
+        # US Parkland-style characteristics
+        factors = {
+            'width_index': np.random.beta(4, 2),  # Wider fairways
+            'hazard_density': np.random.beta(2, 4),  # Fewer hazards
+            'green_speed': np.random.beta(3, 2),  # Faster greens
+            'turf_firmness': np.random.beta(2, 3),  # Softer turf
+            'rough_length': np.random.beta(2, 3),  # Shorter rough
+            'terrain_difficulty': np.random.beta(2, 4)  # Less undulating
+        }
 
     # Prestige based on naming type
     if naming_type == 'pcc':
         factors['prestige'] = np.random.beta(3, 2)  # Higher prestige for PCC
     elif naming_type == 'family':
         factors['prestige'] = np.random.beta(4, 2)  # Highest prestige for family clubs
+    elif naming_type in ['royal', 'links']:
+        factors['prestige'] = np.random.beta(4, 1.5)  # Very high prestige for royal/links
+    elif naming_type in ['county', 'manor']:
+        factors['prestige'] = np.random.beta(3.5, 2)  # High prestige for county/manor
     else:
         factors['prestige'] = np.random.beta(2, 3)  # Lower prestige for location-based
 
-    # Prestige correlations
+    # Prestige correlations (different for GB&I vs US)
     prestige_factor = factors['prestige']
-    # Higher prestige = faster greens, firmer turf, longer rough
-    factors['green_speed'] = min(1.0, factors['green_speed'] * (1 + prestige_factor * 0.2))
-    factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * (1 + prestige_factor * 0.2))
-    factors['rough_length'] = min(1.0, factors['rough_length'] * (1 + prestige_factor * 0.2))
+    
+    if is_gbi:
+        # GB&I: Higher prestige = firmer turf, longer rough, more strategic
+        factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * (1 + prestige_factor * 0.3))
+        factors['rough_length'] = min(1.0, factors['rough_length'] * (1 + prestige_factor * 0.2))
+        factors['hazard_density'] = min(1.0, factors['hazard_density'] * (1 + prestige_factor * 0.1))
+        # GB&I greens stay slower even with prestige
+        factors['green_speed'] = min(0.7, factors['green_speed'] * (1 + prestige_factor * 0.1))
+    else:
+        # US: Higher prestige = faster greens, firmer turf, longer rough
+        factors['green_speed'] = min(1.0, factors['green_speed'] * (1 + prestige_factor * 0.2))
+        factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * (1 + prestige_factor * 0.2))
+        factors['rough_length'] = min(1.0, factors['rough_length'] * (1 + prestige_factor * 0.2))
 
     # Calculate strategic_penal_index based on other factors
     penal_elements = (
@@ -637,12 +1067,13 @@ def generate_course_factors(naming_type):
     factors['strategic_penal_index'] = penal_elements + strategic_elements
     # Clamp to 0-1
     factors['strategic_penal_index'] = max(0.0, min(1.0, factors['strategic_penal_index']))
+    
     return factors
 
 def calculate_course_rating_and_slope(course_data):
     """
-    Calculate Course Rating and Slope Rating for PGA Tour-level courses.
-    All courses are designed to be professional tour quality.
+    Calculate Course Rating and Slope Rating for courses.
+    Different calculations for GB&I links vs US parkland courses.
     """
     # Extract course variables
     par = course_data['total_par']
@@ -654,71 +1085,136 @@ def calculate_course_rating_and_slope(course_data):
     terrain_difficulty = course_data['terrain_difficulty']
     prestige = course_data['prestige']
     
-    # --- Course Rating (Scratch Golfer) ---
-    # Base: start with par
-    course_rating = par
+    # Determine if this is a GB&I course based on location
+    location = course_data.get('location', '')
+    is_gbi = any(country in location for country in ['England', 'Scotland', 'Wales', 'Ireland'])
     
-    # Yardage adjustment: 0.15 strokes per 100 yards over 6500 (more aggressive for tour courses)
-    yardage_adj = max(0, (yardage - 6500) / 100) * 0.15
-    
-    # Strategic/Penal index: up to +3.0 strokes for most penal (more aggressive)
-    spi_adj = spi * 3.0
-    
-    # Other factors: each can add up to 0.6 strokes (more aggressive)
-    green_adj = green_speed * 0.6
-    rough_adj = rough_length * 0.6
-    hazard_adj = hazard_density * 0.6
-    terrain_adj = terrain_difficulty * 0.6
-    
-    # Prestige: higher prestige = slightly lower rating (better conditioning)
-    prestige_adj = (0.5 - prestige) * 0.2
-    
-    course_rating += yardage_adj + spi_adj + green_adj + rough_adj + hazard_adj + terrain_adj + prestige_adj
-    
-    # All courses are PGA Tour level: 74-78 range
-    course_rating = max(74.0, min(78.0, course_rating))
-    
-    # --- Bogey Rating (Bogey Golfer) ---
-    # Start with par + 22 (tour courses are harder for bogey golfers)
-    bogey_base = par + 22
-    
-    # Yardage: 0.3 strokes per 100 yards over 6000 (bigger effect on bogey golfers)
-    yardage_adj_bogey = max(0, (yardage - 6000) / 100) * 0.3
-    
-    # Strategic/Penal index: up to +6 strokes for most penal (bigger effect)
-    spi_adj_bogey = spi * 6.0
-    
-    # Other factors: each can add up to 1.2 strokes (bigger effect)
-    green_adj_bogey = green_speed * 1.2
-    rough_adj_bogey = rough_length * 1.2
-    hazard_adj_bogey = hazard_density * 1.2
-    terrain_adj_bogey = terrain_difficulty * 1.2
-    
-    # Prestige: higher prestige = slightly lower rating
-    prestige_adj_bogey = (0.5 - prestige) * 0.4
-    
-    bogey_rating = bogey_base + yardage_adj_bogey + spi_adj_bogey + green_adj_bogey + rough_adj_bogey + hazard_adj_bogey + terrain_adj_bogey + prestige_adj_bogey
-    
-    # Ensure bogey rating is at least 20 strokes higher than course rating (tour courses are harder)
-    bogey_rating = max(course_rating + 20, bogey_rating)
-    
-    # All courses are PGA Tour level: bogey rating should be 95-105 range
-    bogey_rating = max(95.0, min(105.0, bogey_rating))
-    
-    # --- Slope Rating ---
-    # USGA formula: Slope Rating = (Bogey Rating - Course Rating) × 5.381
-    slope_rating = int(round((bogey_rating - course_rating) * 5.381))
-    
-    # All courses are PGA Tour level: 145-150 range
-    slope_rating = max(145, min(150, slope_rating))
+    if is_gbi:
+        # GB&I Links-style rating calculation
+        # --- Course Rating (Scratch Golfer) ---
+        # Base: start with par
+        course_rating = par
+        
+        # Yardage adjustment: 0.12 strokes per 100 yards over 6500 (links are more strategic than long)
+        yardage_adj = max(0, (yardage - 6500) / 100) * 0.12
+        
+        # Strategic/Penal index: up to +4.0 strokes for most penal (links are very strategic)
+        spi_adj = spi * 4.0
+        
+        # Links-specific factors: terrain and rough are more important than green speed
+        terrain_adj = terrain_difficulty * 0.8  # Undulating terrain is key
+        rough_adj = rough_length * 0.7  # Fescue rough is punishing
+        hazard_adj = hazard_density * 0.5  # Bunkers and gorse
+        green_adj = green_speed * 0.3  # Links greens are slower but tricky
+        
+        # Prestige: higher prestige = slightly lower rating (better conditioning)
+        prestige_adj = (0.5 - prestige) * 0.15
+        
+        course_rating += yardage_adj + spi_adj + terrain_adj + rough_adj + hazard_adj + green_adj + prestige_adj
+        
+        # GB&I courses: 72-76 range (more varied than US)
+        course_rating = max(72.0, min(76.0, course_rating))
+        
+        # --- Bogey Rating (Bogey Golfer) ---
+        # Start with par + 20 (links are hard for bogey golfers)
+        bogey_base = par + 20
+        
+        # Yardage: 0.25 strokes per 100 yards over 6000
+        yardage_adj_bogey = max(0, (yardage - 6000) / 100) * 0.25
+        
+        # Strategic/Penal index: up to +8 strokes for most penal (bigger effect on bogey golfers)
+        spi_adj_bogey = spi * 8.0
+        
+        # Other factors: terrain and rough are very punishing
+        terrain_adj_bogey = terrain_difficulty * 1.5
+        rough_adj_bogey = rough_length * 1.4
+        hazard_adj_bogey = hazard_density * 1.0
+        green_adj_bogey = green_speed * 0.6
+        
+        # Prestige: higher prestige = slightly lower rating
+        prestige_adj_bogey = (0.5 - prestige) * 0.3
+        
+        bogey_rating = bogey_base + yardage_adj_bogey + spi_adj_bogey + terrain_adj_bogey + rough_adj_bogey + hazard_adj_bogey + green_adj_bogey + prestige_adj_bogey
+        
+        # Ensure bogey rating is at least 18 strokes higher than course rating
+        bogey_rating = max(course_rating + 18, bogey_rating)
+        
+        # GB&I courses: bogey rating should be 90-100 range
+        bogey_rating = max(90.0, min(100.0, bogey_rating))
+        
+        # --- Slope Rating ---
+        # USGA formula: Slope Rating = (Bogey Rating - Course Rating) × 5.381
+        slope_rating = int(round((bogey_rating - course_rating) * 5.381))
+        
+        # GB&I courses: 130-145 range (more varied than US)
+        slope_rating = max(130, min(145, slope_rating))
+        
+    else:
+        # US Parkland-style rating calculation (original logic)
+        # --- Course Rating (Scratch Golfer) ---
+        # Base: start with par
+        course_rating = par
+        
+        # Yardage adjustment: 0.15 strokes per 100 yards over 6500 (more aggressive for tour courses)
+        yardage_adj = max(0, (yardage - 6500) / 100) * 0.15
+        
+        # Strategic/Penal index: up to +3.0 strokes for most penal (more aggressive)
+        spi_adj = spi * 3.0
+        
+        # Other factors: each can add up to 0.6 strokes (more aggressive)
+        green_adj = green_speed * 0.6
+        rough_adj = rough_length * 0.6
+        hazard_adj = hazard_density * 0.6
+        terrain_adj = terrain_difficulty * 0.6
+        
+        # Prestige: higher prestige = slightly lower rating (better conditioning)
+        prestige_adj = (0.5 - prestige) * 0.2
+        
+        course_rating += yardage_adj + spi_adj + green_adj + rough_adj + hazard_adj + terrain_adj + prestige_adj
+        
+        # All courses are PGA Tour level: 74-78 range
+        course_rating = max(74.0, min(78.0, course_rating))
+        
+        # --- Bogey Rating (Bogey Golfer) ---
+        # Start with par + 22 (tour courses are harder for bogey golfers)
+        bogey_base = par + 22
+        
+        # Yardage: 0.3 strokes per 100 yards over 6000 (bigger effect on bogey golfers)
+        yardage_adj_bogey = max(0, (yardage - 6000) / 100) * 0.3
+        
+        # Strategic/Penal index: up to +6 strokes for most penal (bigger effect)
+        spi_adj_bogey = spi * 6.0
+        
+        # Other factors: each can add up to 1.2 strokes (bigger effect)
+        green_adj_bogey = green_speed * 1.2
+        rough_adj_bogey = rough_length * 1.2
+        hazard_adj_bogey = hazard_density * 1.2
+        terrain_adj_bogey = terrain_difficulty * 1.2
+        
+        # Prestige: higher prestige = slightly lower rating
+        prestige_adj_bogey = (0.5 - prestige) * 0.4
+        
+        bogey_rating = bogey_base + yardage_adj_bogey + spi_adj_bogey + green_adj_bogey + rough_adj_bogey + hazard_adj_bogey + terrain_adj_bogey + prestige_adj_bogey
+        
+        # Ensure bogey rating is at least 20 strokes higher than course rating (tour courses are harder)
+        bogey_rating = max(course_rating + 20, bogey_rating)
+        
+        # All courses are PGA Tour level: bogey rating should be 95-105 range
+        bogey_rating = max(95.0, min(105.0, bogey_rating))
+        
+        # --- Slope Rating ---
+        # USGA formula: Slope Rating = (Bogey Rating - Course Rating) × 5.381
+        slope_rating = int(round((bogey_rating - course_rating) * 5.381))
+        
+        # All courses are PGA Tour level: 145-150 range
+        slope_rating = max(145, min(150, slope_rating))
     
     return round(course_rating, 1), slope_rating
 
-def generate_complete_course(city_name=None, state_code=None, naming_type='random'):
-    """Generate a complete course with all components"""
-    
+def generate_complete_course(city_name=None, state_code=None, naming_type='random', cities_df=None):
     # Load data
-    cities_df = load_data()
+    if cities_df is None:
+        cities_df = load_data()
     if cities_df is None:
         return None
     
@@ -729,7 +1225,11 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
         state_code = city_row['state']
     
     # Get elevation data for the selected city
-    city_data = cities_df[(cities_df['city'] == city_name) & (cities_df['state'] == state_code)]
+    city_data = cities_df[
+        (cities_df['city'] == city_name) &
+        ((cities_df['state'] == state_code) | (cities_df['state'].isna()))
+    ]
+
     if city_data.empty:
         print(f"❌ No data found for {city_name}, {state_code}")
         return None
@@ -737,8 +1237,9 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     elevation_ft = city_data.iloc[0]['elevation_ft']
     
     # Generate course name
-    course_name, naming_type = generate_course_name(city_name, state_code, naming_type)
-    
+    country = city_data.iloc[0]['country']
+    course_name, naming_type = generate_course_name(city_name, state_code, naming_type, country)
+        
     # Generate holes
     holes = generate_holes()
     if holes is None:
@@ -758,7 +1259,7 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     difficulties = generate_hole_difficulties(holes, yardages, handicap_indexes)
     
     # Generate course factors
-    factors = generate_course_factors(naming_type)
+    factors = generate_course_factors(naming_type, country)
     
     # Calculate summary totals
     total_par = sum(holes)
@@ -769,14 +1270,20 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     back_nine_yardage = sum(yardages[9:])
     
     # Determine founding year based on historical patterns, naming type, region, and prestige
-    founding_year = generate_founding_year(naming_type, state_code, factors['prestige'])
+    founding_year = generate_founding_year(naming_type, state_code, factors['prestige'], country)
     
     # Create complete course data
+    # Format location based on country
+    if country == 'United States':
+        location = f"{city_name}, {state_code} (US)"
+    else:
+        location = f"{city_name}, {country}"
+    
     course_data = {
         'name': course_name,
         'city': city_name,
         'state': state_code,
-        'location': f"{city_name}, {state_code} (US)",
+        'location': location,
         'founding_year': founding_year,
         'naming_type': naming_type,
         'elevation_ft': elevation_ft,
@@ -929,13 +1436,70 @@ def print_complete_course(course_data):
     print(f"Hardest hole: {course_data['difficulties'].index(max_difficulty) + 1} (Index {course_data['handicap_indexes'][course_data['difficulties'].index(max_difficulty)]})")
     print(f"Easiest hole: {course_data['difficulties'].index(min_difficulty) + 1} (Index {course_data['handicap_indexes'][course_data['difficulties'].index(min_difficulty)]})")
 
+def prompt_for_location(cities_df):
+    """Prompt user to select country and (if US) a state"""
+    available_countries = cities_df['country'].dropna().unique()
+    country_options = sorted(set(available_countries))
+
+    print("\n🌍 Select a country to generate a course in:")
+    for i, country in enumerate(country_options, 1):
+        print(f"{i}. {country}")
+    
+    while True:
+        try:
+            country_choice = int(input("Enter number: "))
+            if 1 <= country_choice <= len(country_options):
+                selected_country = country_options[country_choice - 1]
+                break
+        except ValueError:
+            pass
+        print("Invalid input. Try again.")
+
+    selected_state = None
+    if selected_country == "United States":
+        us_states = sorted(cities_df[cities_df['country'] == "United States"]['state'].dropna().unique())
+        print("\n🇺🇸 Select a US state:")
+        for i, state in enumerate(us_states, 1):
+            print(f"{i}. {state}")
+        
+        while True:
+            try:
+                state_choice = int(input("Enter number: "))
+                if 1 <= state_choice <= len(us_states):
+                    selected_state = us_states[state_choice - 1]
+                    break
+            except ValueError:
+                pass
+            print("Invalid input. Try again.")
+    
+    return selected_country, selected_state
+
 def main():
     """Generate a sample complete course and insert it into the database"""
     print("🏌️  Complete Course Generation")
     print("=" * 100)
     
-    # Generate a complete course
-    course = generate_complete_course()
+    # Load full cities dataset
+    cities_df = load_data()
+    if cities_df is None:
+        return
+
+    # Prompt user for location
+    selected_country, selected_state = prompt_for_location(cities_df)
+
+    # Filter to only cities in selected region
+    if selected_state:
+        filtered_df = cities_df[(cities_df['country'] == selected_country) & (cities_df['state'] == selected_state)]
+    else:
+        filtered_df = cities_df[cities_df['country'] == selected_country]
+
+    # Generate course using filtered data
+    course = generate_complete_course(
+        city_name=None,
+        state_code=selected_state,
+        naming_type='random',
+        cities_df=filtered_df
+    )
     
     if course:
         print_complete_course(course)
