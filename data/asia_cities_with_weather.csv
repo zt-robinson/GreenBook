@@ -1,0 +1,1141 @@
+city,country,month,month_num,temperature_2m_mean,windspeed_10m_mean,precipitation_sum,relative_humidity_2m_mean,cloudcover_mean
+Hiroshima,Japan,January,1,43.82,13.59,1.69,62.06,62.24
+Hiroshima,Japan,February,2,47.04,14.19,4.67,62.11,72.26
+Hiroshima,Japan,March,3,49.28,14.01,4.9,62.1,69.67
+Hiroshima,Japan,April,4,63.26,12.46,7.25,62.52,76.71
+Hiroshima,Japan,May,5,67.13,14.05,8.48,57.02,66.27
+Hiroshima,Japan,June,6,74.34,11.08,12.88,66.46,77.84
+Hiroshima,Japan,July,7,84.06,11.89,12.3,67.71,73.33
+Hiroshima,Japan,August,8,86.84,12.03,2.85,62.31,58.32
+Hiroshima,Japan,September,9,83.35,11.66,3.11,63.4,57.7
+Hiroshima,Japan,October,10,70.11,13.54,9.18,67.43,77.93
+Hiroshima,Japan,November,11,57.81,14.7,11.05,62.49,62.08
+Hiroshima,Japan,December,12,45.27,13.62,0.1,60.74,62.69
+Yono,Japan,January,1,43.48,10.23,1.38,52.99,24.39
+Yono,Japan,February,2,45.4,11.43,2.52,62.82,47.74
+Yono,Japan,March,3,48.55,13.79,5.65,56.96,39.25
+Yono,Japan,April,4,62.16,10.35,3.36,69.67,57.67
+Yono,Japan,May,5,67.4,12.52,5.4,69.12,48.77
+Yono,Japan,June,6,73.47,10.26,11.02,75.43,59.33
+Yono,Japan,July,7,83.34,9.91,5.38,75.89,63.55
+Yono,Japan,August,8,84.07,11.65,20.44,76.1,58.81
+Yono,Japan,September,9,79.38,11.15,4.0,78.03,59.92
+Yono,Japan,October,10,68.17,9.23,7.52,78.03,72.51
+Yono,Japan,November,11,56.06,10.0,2.99,67.85,45.71
+Yono,Japan,December,12,45.24,9.61,0.01,54.9,15.45
+Sendai,Japan,January,1,39.62,14.43,2.8,66.03,57.02
+Sendai,Japan,February,2,40.36,14.92,1.48,63.57,61.95
+Sendai,Japan,March,3,42.56,17.99,3.77,62.74,62.77
+Sendai,Japan,April,4,58.42,14.68,3.98,67.06,59.63
+Sendai,Japan,May,5,63.91,14.46,3.28,67.19,57.99
+Sendai,Japan,June,6,70.69,12.93,3.65,76.67,59.57
+Sendai,Japan,July,7,79.01,10.53,5.33,78.74,68.62
+Sendai,Japan,August,8,81.25,15.0,5.23,83.87,71.21
+Sendai,Japan,September,9,74.17,10.67,6.14,83.82,77.53
+Sendai,Japan,October,10,64.06,13.06,3.6,77.53,64.36
+Sendai,Japan,November,11,51.21,13.96,1.76,71.22,57.65
+Sendai,Japan,December,12,39.6,13.69,0.19,69.26,53.76
+Kitakyushu,Japan,January,1,46.12,12.79,2.69,71.5,66.16
+Kitakyushu,Japan,February,2,47.9,12.58,6.7,76.44,69.93
+Kitakyushu,Japan,March,3,51.19,15.07,7.61,70.56,65.57
+Kitakyushu,Japan,April,4,61.43,11.52,7.25,81.3,69.86
+Kitakyushu,Japan,May,5,66.21,12.83,4.68,72.78,54.3
+Kitakyushu,Japan,June,6,73.44,12.62,10.01,80.46,69.2
+Kitakyushu,Japan,July,7,82.98,12.05,23.79,80.85,68.17
+Kitakyushu,Japan,August,8,85.22,14.44,8.96,77.59,48.92
+Kitakyushu,Japan,September,9,82.48,12.35,3.56,75.59,50.4
+Kitakyushu,Japan,October,10,70.91,14.45,5.73,76.96,73.91
+Kitakyushu,Japan,November,11,60.12,14.59,12.42,71.91,64.69
+Kitakyushu,Japan,December,12,48.59,15.41,0.88,61.87,69.35
+Chiba,Japan,January,1,46.34,12.84,1.91,54.22,36.33
+Chiba,Japan,February,2,47.2,13.7,2.82,63.71,62.68
+Chiba,Japan,March,3,50.01,15.73,7.14,59.02,53.61
+Chiba,Japan,April,4,62.35,12.42,4.59,75.02,76.28
+Chiba,Japan,May,5,67.79,16.22,7.75,73.93,70.2
+Chiba,Japan,June,6,73.33,13.01,13.02,78.24,74.74
+Chiba,Japan,July,7,83.07,12.72,6.13,78.85,78.09
+Chiba,Japan,August,8,83.79,13.34,20.43,80.44,60.47
+Chiba,Japan,September,9,79.6,14.25,5.36,81.03,59.21
+Chiba,Japan,October,10,69.26,12.57,11.17,79.96,74.2
+Chiba,Japan,November,11,57.48,12.29,4.88,69.56,52.34
+Chiba,Japan,December,12,48.08,12.53,0.07,52.97,31.46
+Sakai,Japan,January,1,44.45,9.75,0.66,64.82,49.46
+Sakai,Japan,February,2,46.9,10.24,3.39,68.49,66.24
+Sakai,Japan,March,3,48.86,11.62,6.19,64.24,61.19
+Sakai,Japan,April,4,63.74,9.52,5.76,66.16,75.38
+Sakai,Japan,May,5,66.69,10.45,8.49,65.61,65.33
+Sakai,Japan,June,6,74.77,9.76,11.46,71.59,75.21
+Sakai,Japan,July,7,84.97,10.92,6.53,72.14,71.79
+Sakai,Japan,August,8,86.41,11.2,5.23,68.9,50.01
+Sakai,Japan,September,9,83.3,11.15,3.19,69.67,50.11
+Sakai,Japan,October,10,71.64,11.04,4.26,71.28,65.32
+Sakai,Japan,November,11,58.98,11.54,4.83,66.76,55.87
+Sakai,Japan,December,12,47.15,10.29,0.22,59.46,45.84
+Shizuoka,Japan,January,1,46.85,13.65,1.74,58.03,50.26
+Shizuoka,Japan,February,2,49.77,12.28,8.58,69.58,70.58
+Shizuoka,Japan,March,3,50.33,16.09,13.43,60.19,58.93
+Shizuoka,Japan,April,4,62.98,11.91,8.25,74.09,78.72
+Shizuoka,Japan,May,5,67.15,11.96,13.95,76.15,74.56
+Shizuoka,Japan,June,6,73.47,11.56,16.24,79.09,80.44
+Shizuoka,Japan,July,7,83.5,13.05,5.85,78.71,76.97
+Shizuoka,Japan,August,8,83.32,11.06,30.72,81.66,72.35
+Shizuoka,Japan,September,9,80.62,12.05,5.13,79.25,64.32
+Shizuoka,Japan,October,10,71.38,10.35,10.95,78.68,71.92
+Shizuoka,Japan,November,11,59.95,12.04,5.0,71.69,62.23
+Shizuoka,Japan,December,12,47.33,14.91,0.12,55.39,44.59
+Kumamoto,Japan,January,1,44.14,8.13,1.0,73.82,51.11
+Kumamoto,Japan,February,2,49.78,9.55,7.71,75.78,67.97
+Kumamoto,Japan,March,3,51.73,11.03,12.57,68.68,57.74
+Kumamoto,Japan,April,4,63.64,8.8,8.75,77.37,80.8
+Kumamoto,Japan,May,5,67.77,9.79,11.14,66.05,64.1
+Kumamoto,Japan,June,6,73.44,9.8,19.13,78.74,82.82
+Kumamoto,Japan,July,7,82.0,10.93,15.37,80.23,62.22
+Kumamoto,Japan,August,8,84.68,10.99,5.67,73.74,41.99
+Kumamoto,Japan,September,9,82.04,10.93,3.44,71.1,45.31
+Kumamoto,Japan,October,10,71.01,9.5,6.21,77.24,68.48
+Kumamoto,Japan,November,11,59.18,9.5,6.65,74.39,54.93
+Kumamoto,Japan,December,12,44.68,8.05,0.41,68.74,48.45
+Okayama,Japan,January,1,41.57,10.09,1.5,73.05,49.64
+Okayama,Japan,February,2,44.16,8.89,4.35,75.59,62.83
+Okayama,Japan,March,3,47.23,11.54,6.32,69.89,58.54
+Okayama,Japan,April,4,61.52,8.36,5.76,71.65,74.28
+Okayama,Japan,May,5,65.12,9.43,6.62,69.33,59.4
+Okayama,Japan,June,6,73.37,8.55,9.1,76.44,73.8
+Okayama,Japan,July,7,82.99,10.08,8.24,78.58,71.01
+Okayama,Japan,August,8,84.54,9.37,4.87,73.4,51.46
+Okayama,Japan,September,9,81.01,8.42,2.82,73.76,49.06
+Okayama,Japan,October,10,67.38,8.39,5.43,78.32,69.28
+Okayama,Japan,November,11,54.29,9.44,4.98,76.67,52.22
+Okayama,Japan,December,12,42.99,11.95,0.31,71.37,43.4
+Hamamatsu,Japan,January,1,45.75,15.4,1.18,58.91,51.27
+Hamamatsu,Japan,February,2,49.24,14.47,6.93,67.22,66.6
+Hamamatsu,Japan,March,3,49.88,18.04,8.55,61.6,58.32
+Hamamatsu,Japan,April,4,63.55,14.08,9.33,72.16,78.0
+Hamamatsu,Japan,May,5,67.55,13.98,13.55,74.01,73.41
+Hamamatsu,Japan,June,6,73.75,13.4,15.22,78.57,79.26
+Hamamatsu,Japan,July,7,84.3,15.12,3.6,77.14,77.05
+Hamamatsu,Japan,August,8,84.32,12.49,29.95,78.95,72.27
+Hamamatsu,Japan,September,9,81.08,13.02,4.93,79.48,67.7
+Hamamatsu,Japan,October,10,71.61,11.16,10.81,77.6,74.95
+Hamamatsu,Japan,November,11,60.0,13.14,4.25,70.7,61.14
+Hamamatsu,Japan,December,12,46.55,16.75,0.02,56.02,47.99
+Hachioji,Japan,January,1,42.57,11.88,1.39,50.59,20.7
+Hachioji,Japan,February,2,45.02,13.34,2.37,61.3,44.42
+Hachioji,Japan,March,3,47.9,15.65,6.08,55.39,36.34
+Hachioji,Japan,April,4,61.65,11.2,3.77,66.99,52.5
+Hachioji,Japan,May,5,66.8,14.27,6.46,66.36,41.82
+Hachioji,Japan,June,6,72.84,11.54,12.04,73.17,47.55
+Hachioji,Japan,July,7,82.96,10.65,4.8,73.64,52.34
+Hachioji,Japan,August,8,83.54,12.97,19.4,75.61,52.48
+Hachioji,Japan,September,9,79.03,11.71,2.9,76.41,55.8
+Hachioji,Japan,October,10,67.86,10.62,5.86,76.59,68.77
+Hachioji,Japan,November,11,55.57,11.01,2.83,67.24,42.99
+Hachioji,Japan,December,12,44.06,11.66,0.04,54.31,10.49
+Honchō,Japan,January,1,44.75,10.45,1.52,53.0,25.02
+Honchō,Japan,February,2,46.32,11.96,2.9,63.01,48.89
+Honchō,Japan,March,3,49.37,14.69,6.11,57.67,40.11
+Honchō,Japan,April,4,62.59,11.0,3.5,71.44,58.34
+Honchō,Japan,May,5,67.88,13.58,5.0,71.11,47.93
+Honchō,Japan,June,6,73.46,10.76,12.68,77.77,52.92
+Honchō,Japan,July,7,83.63,11.11,7.09,77.13,58.32
+Honchō,Japan,August,8,84.38,12.68,22.06,77.73,54.29
+Honchō,Japan,September,9,80.02,13.58,5.3,79.12,56.29
+Honchō,Japan,October,10,69.25,11.34,9.15,78.27,69.53
+Honchō,Japan,November,11,57.12,11.04,3.34,67.27,46.51
+Honchō,Japan,December,12,46.6,9.61,0.02,53.96,16.67
+Kagoshima,Japan,January,1,50.1,12.54,1.12,70.72,55.45
+Kagoshima,Japan,February,2,56.3,12.98,8.1,75.6,75.15
+Kagoshima,Japan,March,3,56.06,14.01,11.19,68.68,58.77
+Kagoshima,Japan,April,4,66.65,12.14,0.4,79.56,84.58
+Kagoshima,Japan,May,5,70.4,12.58,0.23,73.3,74.97
+Kagoshima,Japan,June,6,75.97,12.55,0.47,81.75,85.01
+Kagoshima,Japan,July,7,85.73,13.31,4.17,77.66,65.9
+Kagoshima,Japan,August,8,86.04,14.38,0.97,75.71,59.44
+Kagoshima,Japan,September,9,82.54,12.54,1.74,74.62,58.67
+Kagoshima,Japan,October,10,75.05,11.12,2.88,77.32,75.62
+Kagoshima,Japan,November,11,63.75,13.07,1.07,72.42,60.94
+Kagoshima,Japan,December,12,49.71,12.86,0.03,67.54,53.9
+Niigata,Japan,January,1,40.01,15.54,8.87,77.08,82.27
+Niigata,Japan,February,2,40.76,14.47,4.71,73.93,79.45
+Niigata,Japan,March,3,42.83,17.93,6.19,72.24,76.0
+Niigata,Japan,April,4,55.86,12.04,2.47,73.7,56.57
+Niigata,Japan,May,5,62.35,12.32,4.92,71.01,53.77
+Niigata,Japan,June,6,71.62,10.58,2.51,75.93,51.76
+Niigata,Japan,July,7,79.1,12.95,12.72,83.12,78.03
+Niigata,Japan,August,8,82.37,10.56,1.66,80.05,58.93
+Niigata,Japan,September,9,77.02,12.41,11.92,80.17,69.52
+Niigata,Japan,October,10,65.85,13.85,5.79,75.7,60.44
+Niigata,Japan,November,11,53.04,16.62,10.06,74.56,72.36
+Niigata,Japan,December,12,41.26,19.95,12.62,78.69,85.2
+Himeji,Japan,January,1,42.02,11.9,0.75,72.29,51.0
+Himeji,Japan,February,2,44.71,12.73,3.44,73.77,64.45
+Himeji,Japan,March,3,47.35,14.22,6.49,70.19,59.37
+Himeji,Japan,April,4,61.82,11.2,7.18,71.26,74.86
+Himeji,Japan,May,5,64.71,12.79,9.55,70.29,64.2
+Himeji,Japan,June,6,72.97,10.66,8.75,75.89,73.78
+Himeji,Japan,July,7,82.62,11.34,5.16,78.89,72.76
+Himeji,Japan,August,8,85.07,13.3,5.0,72.95,48.69
+Himeji,Japan,September,9,82.4,12.63,1.71,73.19,50.85
+Himeji,Japan,October,10,70.42,12.49,5.1,74.77,67.07
+Himeji,Japan,November,11,57.26,13.01,6.08,71.04,56.66
+Himeji,Japan,December,12,43.71,12.16,0.07,69.36,43.44
+Matsudo,Japan,January,1,43.49,9.93,1.52,55.57,50.84
+Matsudo,Japan,February,2,45.35,11.36,2.76,63.77,69.41
+Matsudo,Japan,March,3,48.64,14.04,6.36,58.23,57.84
+Matsudo,Japan,April,4,62.11,11.51,3.63,72.04,77.24
+Matsudo,Japan,May,5,67.5,14.65,5.54,71.69,73.34
+Matsudo,Japan,June,6,73.32,11.06,12.45,76.59,77.87
+Matsudo,Japan,July,7,83.35,11.31,6.71,76.94,82.23
+Matsudo,Japan,August,8,84.24,12.73,21.25,77.35,74.16
+Matsudo,Japan,September,9,79.68,12.55,5.03,79.43,69.33
+Matsudo,Japan,October,10,68.78,10.63,8.92,78.89,77.2
+Matsudo,Japan,November,11,56.43,9.36,3.44,68.07,59.86
+Matsudo,Japan,December,12,45.64,9.21,0.02,53.66,46.72
+Nishinomiya-hama,Japan,January,1,44.83,12.85,0.65,64.13,52.36
+Nishinomiya-hama,Japan,February,2,47.32,12.64,3.59,67.65,65.42
+Nishinomiya-hama,Japan,March,3,49.02,13.0,6.5,64.15,61.46
+Nishinomiya-hama,Japan,April,4,63.55,12.34,6.0,67.26,75.23
+Nishinomiya-hama,Japan,May,5,66.6,12.07,9.97,65.9,65.69
+Nishinomiya-hama,Japan,June,6,74.49,11.67,11.04,72.81,75.25
+Nishinomiya-hama,Japan,July,7,84.47,11.71,6.01,74.37,73.17
+Nishinomiya-hama,Japan,August,8,86.12,12.43,4.66,69.73,49.1
+Nishinomiya-hama,Japan,September,9,83.09,11.5,3.94,70.35,48.84
+Nishinomiya-hama,Japan,October,10,71.58,11.95,4.48,70.94,63.86
+Nishinomiya-hama,Japan,November,11,59.0,13.51,4.79,65.92,53.16
+Nishinomiya-hama,Japan,December,12,47.19,12.31,0.11,59.47,43.23
+Kawaguchi,Japan,,January,1,44.58,10.36,1.5,52.7,24.65
+Kawaguchi,Japan,,February,2,46.2,11.69,2.81,62.72,48.44
+Kawaguchi,Japan,,March,3,49.21,14.18,6.1,57.36,39.82
+Kawaguchi,Japan,,April,4,62.51,10.68,3.55,70.98,57.82
+Kawaguchi,Japan,,May,5,67.8,13.23,5.36,70.49,47.37
+Kawaguchi,Japan,,June,6,73.5,10.6,12.43,77.05,52.67
+Kawaguchi,Japan,,July,7,83.6,10.64,6.63,76.68,58.16
+Kawaguchi,Japan,,August,8,84.31,11.98,21.25,77.09,55.47
+Kawaguchi,Japan,,September,9,79.78,12.43,4.91,78.93,56.84
+Kawaguchi,Japan,,October,10,68.9,10.11,8.69,78.28,71.11
+Kawaguchi,Japan,,November,11,56.84,10.27,3.35,67.3,46.78
+Kawaguchi,Japan,,December,12,46.41,9.52,0.01,53.85,16.09
+Kanazawa,Japan,,January,1,41.72,17.85,11.26,73.92,78.87
+Kanazawa,Japan,February,2,43.15,16.77,6.25,72.21,76.96
+Kanazawa,Japan,March,3,45.39,19.8,9.05,69.43,77.71
+Kanazawa,Japan,April,4,59.05,13.74,6.36,69.08,69.09
+Kanazawa,Japan,May,5,64.43,15.57,7.76,67.11,69.66
+Kanazawa,Japan,June,6,73.89,13.34,6.13,69.92,74.36
+Kanazawa,Japan,July,7,82.15,16.55,12.25,75.49,82.9
+Kanazawa,Japan,August,8,83.86,13.75,3.7,76.66,67.27
+Kanazawa,Japan,September,9,79.94,13.93,5.7,77.0,63.34
+Kanazawa,Japan,October,10,66.85,15.09,9.93,78.2,71.51
+Kanazawa,Japan,November,11,54.32,17.12,16.47,76.43,69.95
+Kanazawa,Japan,December,12,43.26,18.93,14.91,77.18,86.1
+Utsunomiya,Japan,January,1,40.2,14.7,1.5,59.24,34.79
+Utsunomiya,Japan,February,2,42.59,14.34,1.89,64.12,56.24
+Utsunomiya,Japan,March,3,45.73,17.94,5.21,58.8,51.35
+Utsunomiya,Japan,April,4,60.94,13.2,3.83,68.15,72.08
+Utsunomiya,Japan,May,5,66.31,15.6,6.9,69.34,69.05
+Utsunomiya,Japan,June,6,72.71,13.59,5.87,76.08,73.91
+Utsunomiya,Japan,July,7,81.71,12.01,5.75,77.73,81.85
+Utsunomiya,Japan,August,8,82.62,13.67,9.77,79.09,67.28
+Utsunomiya,Japan,September,9,77.8,13.11,8.72,81.03,68.9
+Utsunomiya,Japan,October,10,66.52,11.51,5.49,79.48,74.55
+Utsunomiya,Japan,November,11,53.4,12.84,3.11,73.09,48.12
+Utsunomiya,Japan,December,12,40.8,13.23,0.0,63.79,29.6
+Ōita,Japan,January,1,45.48,10.3,0.85,69.54,61.61
+Ōita,Japan,February,2,48.6,10.64,5.98,76.07,68.75
+Ōita,Japan,March,3,51.15,11.79,6.45,69.44,63.65
+Ōita,Japan,April,4,62.43,9.73,7.72,80.54,74.37
+Ōita,Japan,May,5,66.87,11.25,6.74,70.09,62.26
+Ōita,Japan,June,6,73.15,9.04,11.18,81.38,71.16
+Ōita,Japan,July,7,82.96,9.51,7.71,79.07,64.25
+Ōita,Japan,August,8,84.81,11.11,15.04,76.66,49.92
+Ōita,Japan,September,9,81.33,10.73,5.91,77.4,55.57
+Ōita,Japan,October,10,70.59,10.91,6.2,80.78,74.3
+Ōita,Japan,November,11,59.86,11.36,3.33,73.92,61.87
+Ōita,Japan,December,12,47.08,10.78,0.11,62.67,60.53
+Matsuyama,Japan,January,1,45.45,9.65,1.32,65.24,59.52
+Matsuyama,Japan,February,2,48.18,9.93,4.47,70.41,66.92
+Matsuyama,Japan,March,3,49.96,11.04,6.9,66.73,63.55
+Matsuyama,Japan,April,4,62.55,8.7,5.84,74.46,71.47
+Matsuyama,Japan,May,5,66.8,10.42,11.02,66.76,62.27
+Matsuyama,Japan,June,6,73.94,9.08,13.62,75.94,71.08
+Matsuyama,Japan,July,7,83.8,8.74,14.54,75.25,65.35
+Matsuyama,Japan,August,8,85.31,10.75,7.96,73.17,55.56
+Matsuyama,Japan,September,9,82.07,11.17,2.63,74.31,55.25
+Matsuyama,Japan,October,10,70.81,12.42,8.01,77.25,72.97
+Matsuyama,Japan,November,11,58.96,13.12,8.1,71.89,59.7
+Matsuyama,Japan,December,12,47.56,11.52,0.27,61.99,60.54
+Amagasaki,Japan,January,1,44.59,10.14,0.65,64.4,52.3
+Amagasaki,Japan,February,2,47.04,10.84,3.45,67.99,66.9
+Amagasaki,Japan,March,3,48.91,11.15,6.36,63.74,62.45
+Amagasaki,Japan,April,4,63.76,10.12,5.84,65.86,75.41
+Amagasaki,Japan,May,5,66.69,10.68,8.84,65.37,65.43
+Amagasaki,Japan,June,6,74.76,10.03,11.35,71.65,75.37
+Amagasaki,Japan,July,7,84.92,10.9,6.29,72.42,73.17
+Amagasaki,Japan,August,8,86.32,11.13,5.02,68.65,49.81
+Amagasaki,Japan,September,9,83.18,10.57,3.39,69.17,47.91
+Amagasaki,Japan,October,10,71.41,11.04,4.39,70.73,63.18
+Amagasaki,Japan,November,11,58.63,11.76,4.77,66.5,53.16
+Amagasaki,Japan,December,12,47.1,10.5,0.19,59.35,43.62
+Kurashiki,Japan,January,1,42.01,10.61,0.81,70.8,53.61
+Kurashiki,Japan,February,2,44.36,9.47,4.18,74.78,62.36
+Kurashiki,Japan,March,3,47.46,12.14,6.35,69.2,57.3
+Kurashiki,Japan,April,4,61.71,8.7,5.1,71.47,52.73
+Kurashiki,Japan,May,5,65.15,9.65,6.83,69.5,41.27
+Kurashiki,Japan,June,6,73.24,8.98,9.58,76.89,53.78
+Kurashiki,Japan,July,7,83.04,10.34,7.37,78.16,51.37
+Kurashiki,Japan,August,8,84.59,10.33,4.94,72.92,47.5
+Kurashiki,Japan,September,9,80.85,8.72,2.88,74.17,47.04
+Kurashiki,Japan,October,10,67.9,9.36,4.88,77.82,53.14
+Kurashiki,Japan,November,11,55.31,9.86,4.31,75.15,48.64
+Kurashiki,Japan,December,12,43.86,12.39,0.03,68.45,49.33
+Yokosuka,Japan,January,1,46.21,12.54,1.51,52.7,25.55
+Yokosuka,Japan,February,2,47.31,13.57,3.35,63.53,51.41
+Yokosuka,Japan,March,3,50.03,15.4,8.53,58.08,42.39
+Yokosuka,Japan,April,4,62.38,10.68,5.23,73.13,60.91
+Yokosuka,Japan,May,5,67.64,14.31,7.62,73.16,50.71
+Yokosuka,Japan,June,6,73.31,10.57,14.41,77.93,50.5
+Yokosuka,Japan,July,7,83.44,10.98,4.38,77.55,58.46
+Yokosuka,Japan,August,8,84.39,13.12,19.38,77.57,51.54
+Yokosuka,Japan,September,9,80.19,13.75,5.0,78.65,52.9
+Yokosuka,Japan,October,10,69.72,11.99,9.45,77.62,68.1
+Yokosuka,Japan,November,11,57.91,12.64,4.44,66.98,48.45
+Yokosuka,Japan,December,12,48.12,11.87,0.04,53.56,17.06
+Bucheon,South Korea,January,1,30.09,10.41,0.3,70.12,42.47
+Bucheon,South Korea,February,2,37.63,10.98,1.56,76.28,59.25
+Bucheon,South Korea,March,3,43.22,13.56,0.62,61.26,43.32
+Bucheon,South Korea,April,4,58.92,11.55,1.27,63.27,49.4
+Bucheon,South Korea,May,5,63.61,12.9,3.8,71.13,44.41
+Bucheon,South Korea,June,6,74.39,11.9,4.37,68.89,42.38
+Bucheon,South Korea,July,7,79.57,14.03,18.05,87.61,80.72
+Bucheon,South Korea,August,8,84.15,10.44,4.46,81.2,51.67
+Bucheon,South Korea,September,9,77.35,10.47,5.19,79.35,56.87
+Bucheon,South Korea,October,10,60.95,9.61,2.5,77.79,47.94
+Bucheon,South Korea,November,11,47.92,10.59,1.32,72.32,39.99
+Bucheon,South Korea,December,12,31.82,10.89,0.11,63.91,36.5
+Jeonju,South Korea,January,1,35.92,7.73,2.17,69.54,55.5
+Jeonju,South Korea,February,2,42.09,7.0,4.54,75.4,66.8
+Jeonju,South Korea,March,3,45.9,10.29,2.84,63.95,50.65
+Jeonju,South Korea,April,4,60.97,7.26,3.21,68.53,60.29
+Jeonju,South Korea,May,5,65.66,8.43,4.14,65.88,44.09
+Jeonju,South Korea,June,6,74.79,7.98,4.86,65.28,55.98
+Jeonju,South Korea,July,7,81.41,8.43,16.92,77.95,72.42
+Jeonju,South Korea,August,8,84.42,6.84,5.05,76.42,43.85
+Jeonju,South Korea,September,9,79.84,6.13,7.35,75.09,53.38
+Jeonju,South Korea,October,10,63.3,5.82,3.1,77.58,57.89
+Jeonju,South Korea,November,11,51.89,8.6,1.36,68.58,48.38
+Jeonju,South Korea,December,12,37.45,7.6,0.55,68.55,60.19
+Ansan,South Korea,January,1,30.83,8.43,0.45,68.25,43.75
+Ansan,South Korea,February,2,38.12,8.87,1.72,75.26,61.81
+Ansan,South Korea,March,3,43.71,10.8,0.77,61.82,42.47
+Ansan,South Korea,April,4,59.08,8.93,1.56,63.34,49.9
+Ansan,South Korea,May,5,63.47,9.89,3.76,68.35,43.06
+Ansan,South Korea,June,6,73.98,9.02,5.0,66.41,42.41
+Ansan,South Korea,July,7,79.32,10.25,19.03,83.42,76.11
+Ansan,South Korea,August,8,83.81,7.58,5.27,77.04,47.74
+Ansan,South Korea,September,9,77.49,7.64,6.94,75.17,55.13
+Ansan,South Korea,October,10,61.35,7.27,3.1,73.1,48.35
+Ansan,South Korea,November,11,48.57,8.1,1.98,67.69,41.13
+Ansan,South Korea,December,12,32.78,8.14,0.18,59.97,34.63
+Cheongju,South Korea,January,1,32.14,6.36,0.7,67.75,52.62
+Cheongju,South Korea,February,2,39.54,7.12,1.56,71.46,65.91
+Cheongju,South Korea,March,3,44.78,8.87,1.02,57.54,46.39
+Cheongju,South Korea,April,4,61.17,7.22,1.81,58.18,55.84
+Cheongju,South Korea,May,5,65.56,7.82,4.34,60.92,42.98
+Cheongju,South Korea,June,6,75.58,7.08,3.94,60.48,49.76
+Cheongju,South Korea,July,7,80.8,8.85,22.91,77.27,77.13
+Cheongju,South Korea,August,8,84.4,6.41,5.57,71.59,49.61
+Cheongju,South Korea,September,9,78.44,6.56,12.02,71.81,57.15
+Cheongju,South Korea,October,10,61.12,5.95,3.5,75.17,57.96
+Cheongju,South Korea,November,11,48.97,6.52,0.98,67.78,45.19
+Cheongju,South Korea,December,12,33.51,6.73,0.15,62.6,47.32
+Anyang,South Korea,January,1,30.95,8.02,0.41,67.83,43.76
+Anyang,South Korea,February,2,38.36,8.34,1.68,74.47,62.53
+Anyang,South Korea,March,3,43.87,10.3,0.87,60.93,43.58
+Anyang,South Korea,April,4,59.52,8.5,1.51,62.25,51.02
+Anyang,South Korea,May,5,63.79,9.25,3.68,66.84,43.35
+Anyang,South Korea,June,6,74.3,8.4,4.58,64.85,43.0
+Anyang,South Korea,July,7,79.37,9.59,19.32,82.38,75.5
+Anyang,South Korea,August,8,83.84,7.17,4.74,75.8,47.77
+Anyang,South Korea,September,9,77.47,7.2,6.67,74.18,55.38
+Anyang,South Korea,October,10,61.37,6.91,2.9,72.22,49.18
+Anyang,South Korea,November,11,48.67,7.69,1.75,66.76,41.56
+Anyang,South Korea,December,12,32.72,7.9,0.11,58.72,35.32
+Changwon,South Korea,January,1,37.81,8.58,1.38,55.7,37.87
+Changwon,South Korea,February,2,42.96,8.79,6.13,67.71,65.86
+Changwon,South Korea,March,3,47.46,10.76,3.19,57.58,50.12
+Changwon,South Korea,April,4,59.66,9.88,6.94,69.97,61.12
+Changwon,South Korea,May,5,65.4,11.04,6.61,64.64,46.47
+Changwon,South Korea,June,6,72.99,9.42,8.92,73.36,64.03
+Changwon,South Korea,July,7,79.68,10.32,11.74,85.64,72.0
+Changwon,South Korea,August,8,83.98,10.03,5.53,76.51,46.29
+Changwon,South Korea,September,9,79.34,9.12,20.34,75.62,55.74
+Changwon,South Korea,October,10,65.48,8.4,7.96,73.83,65.18
+Changwon,South Korea,November,11,53.52,8.47,4.15,66.33,46.58
+Changwon,South Korea,December,12,39.87,9.44,0.04,48.92,35.95
+Pohang,South Korea,January,1,38.72,11.62,1.05,51.83,40.64
+Pohang,South Korea,February,2,43.3,12.54,4.55,68.87,67.33
+Pohang,South Korea,March,3,47.52,12.6,3.49,55.72,47.74
+Pohang,South Korea,April,4,60.45,11.0,3.4,63.93,59.8
+Pohang,South Korea,May,5,66.23,11.69,2.49,58.57,44.23
+Pohang,South Korea,June,6,74.6,9.85,4.36,65.01,59.06
+Pohang,South Korea,July,7,81.77,10.54,13.87,72.84,67.38
+Pohang,South Korea,August,8,82.95,11.18,1.22,75.02,46.87
+Pohang,South Korea,September,9,77.22,11.22,6.22,77.03,66.07
+Pohang,South Korea,October,10,65.29,10.98,5.2,71.01,67.31
+Pohang,South Korea,November,11,54.51,11.0,2.45,65.2,54.07
+Pohang,South Korea,December,12,40.05,10.96,0.04,42.85,40.72
+Uijeongbu,South Korea,January,1,29.1,6.53,0.38,69.01,45.24
+Uijeongbu,South Korea,February,2,37.1,6.83,2.03,75.08,64.96
+Uijeongbu,South Korea,March,3,42.87,9.09,1.12,58.4,47.22
+Uijeongbu,South Korea,April,4,59.4,7.33,1.02,60.44,53.55
+Uijeongbu,South Korea,May,5,63.34,7.85,4.8,69.72,46.63
+Uijeongbu,South Korea,June,6,74.04,6.92,3.75,67.37,40.75
+Uijeongbu,South Korea,July,7,78.52,8.11,25.33,86.62,74.28
+Uijeongbu,South Korea,August,8,82.72,5.57,4.98,80.93,47.76
+Uijeongbu,South Korea,September,9,75.49,5.64,6.13,79.45,57.54
+Uijeongbu,South Korea,October,10,59.46,4.88,2.26,77.48,51.68
+Uijeongbu,South Korea,November,11,47.41,6.97,1.19,68.08,44.87
+Uijeongbu,South Korea,December,12,30.78,7.09,0.21,61.46,37.1
+Hwaseong,South Korea,January,1,31.08,8.38,0.61,68.72,44.09
+Hwaseong,South Korea,February,2,38.28,8.9,2.01,75.61,60.51
+Hwaseong,South Korea,March,3,43.92,10.97,0.88,62.23,40.62
+Hwaseong,South Korea,April,4,59.18,9.03,1.68,64.03,46.9
+Hwaseong,South Korea,May,5,63.59,9.84,3.85,68.0,40.13
+Hwaseong,South Korea,June,6,73.97,9.14,5.2,66.06,40.5
+Hwaseong,South Korea,July,7,79.61,10.32,19.96,82.21,73.22
+Hwaseong,South Korea,August,8,83.77,7.59,5.6,76.71,44.32
+Hwaseong,South Korea,September,9,77.62,7.56,7.94,75.13,52.77
+Hwaseong,South Korea,October,10,61.34,7.3,3.62,73.39,46.11
+Hwaseong,South Korea,November,11,48.55,7.92,2.46,68.45,39.57
+Hwaseong,South Korea,December,12,32.66,8.43,0.21,61.68,32.35
+Masan,South Korea,January,1,37.87,7.94,1.37,54.68,38.05
+Masan,South Korea,February,2,42.92,7.77,6.21,66.73,65.76
+Masan,South Korea,March,3,47.59,10.03,4.13,56.87,51.76
+Masan,South Korea,April,4,60.02,9.38,6.04,69.53,62.68
+Masan,South Korea,May,5,65.91,10.25,6.67,64.09,46.75
+Masan,South Korea,June,6,73.37,8.72,8.8,73.03,63.31
+Masan,South Korea,July,7,80.13,9.29,11.13,85.27,70.94
+Masan,South Korea,August,8,84.16,9.51,5.76,76.82,43.14
+Masan,South Korea,September,9,79.68,8.75,21.0,75.74,53.95
+Masan,South Korea,October,10,65.71,7.91,7.94,73.64,64.47
+Masan,South Korea,November,11,53.79,8.16,4.17,66.31,46.33
+Masan,South Korea,December,12,40.37,8.87,0.05,48.55,36.33
+Jeju City,South Korea,January,1,45.89,13.62,3.6,64.62,73.22
+Jeju City,South Korea,February,2,49.07,15.07,8.21,72.16,79.86
+Jeju City,South Korea,March,3,51.17,15.04,4.36,64.27,66.26
+Jeju City,South Korea,April,4,60.88,12.08,3.9,73.43,70.17
+Jeju City,South Korea,May,5,65.59,12.94,1.8,65.8,51.18
+Jeju City,South Korea,June,6,72.94,11.95,12.17,75.13,72.51
+Jeju City,South Korea,July,7,83.44,14.56,6.7,75.06,66.2
+Jeju City,South Korea,August,8,85.38,12.01,1.86,73.15,43.85
+Jeju City,South Korea,September,9,81.29,13.21,5.26,74.3,56.08
+Jeju City,South Korea,October,10,69.45,13.8,5.32,70.85,78.53
+Jeju City,South Korea,November,11,59.17,14.62,13.31,66.13,66.28
+Jeju City,South Korea,December,12,47.55,14.66,0.24,55.46,76.55
+Cheonan,South Korea,January,1,31.56,8.29,0.87,70.1,44.78
+Cheonan,South Korea,February,2,38.81,8.71,2.3,75.69,58.46
+Cheonan,South Korea,March,3,44.42,10.51,0.97,60.24,39.08
+Cheonan,South Korea,April,4,59.85,8.95,1.68,62.41,43.34
+Cheonan,South Korea,May,5,64.28,9.63,3.91,66.41,36.71
+Cheonan,South Korea,June,6,74.39,9.37,4.71,64.6,35.67
+Cheonan,South Korea,July,7,80.23,10.37,20.24,80.89,67.65
+Cheonan,South Korea,August,8,83.74,7.7,4.39,76.99,41.39
+Cheonan,South Korea,September,9,77.78,7.99,11.24,75.99,49.02
+Cheonan,South Korea,October,10,61.04,7.61,3.9,77.04,43.79
+Cheonan,South Korea,November,11,48.7,8.45,2.23,70.06,38.22
+Cheonan,South Korea,December,12,33.16,8.8,0.24,66.08,35.26
+Gwangmyeong,South Korea,January,1,30.41,9.45,0.33,68.95,43.92
+Gwangmyeong,South Korea,February,2,38.06,9.82,1.64,74.71,62.49
+Gwangmyeong,South Korea,March,3,43.56,12.45,0.69,59.96,43.96
+Gwangmyeong,South Korea,April,4,59.35,10.33,1.29,61.88,51.55
+Gwangmyeong,South Korea,May,5,63.86,11.52,3.7,68.98,44.83
+Gwangmyeong,South Korea,June,6,74.68,10.58,4.41,66.6,43.31
+Gwangmyeong,South Korea,July,7,79.55,12.42,20.78,85.56,79.11
+Gwangmyeong,South Korea,August,8,84.21,9.1,4.08,78.6,51.32
+Gwangmyeong,South Korea,September,9,77.44,9.23,5.69,76.99,56.64
+Gwangmyeong,South Korea,October,10,61.22,8.45,2.51,75.17,49.52
+Gwangmyeong,South Korea,November,11,48.31,9.42,1.4,69.52,42.35
+Gwangmyeong,South Korea,December,12,32.22,9.6,0.12,61.7,35.89
+Gimhae,South Korea,January,1,37.17,12.3,1.55,58.48,37.85
+Gimhae,South Korea,February,2,42.74,13.37,5.49,69.99,66.16
+Gimhae,South Korea,March,3,46.85,15.01,3.2,59.75,47.82
+Gimhae,South Korea,April,4,58.69,13.56,7.18,70.94,56.28
+Gimhae,South Korea,May,5,64.11,14.89,5.91,66.03,46.65
+Gimhae,South Korea,June,6,72.11,13.18,9.13,74.15,65.96
+Gimhae,South Korea,July,7,78.72,14.38,14.32,86.34,76.27
+Gimhae,South Korea,August,8,83.46,13.48,4.09,75.93,55.82
+Gimhae,South Korea,September,9,78.36,12.11,17.31,75.4,61.16
+Gimhae,South Korea,October,10,64.65,12.27,8.18,74.75,65.62
+Gimhae,South Korea,November,11,52.47,12.13,3.93,67.17,46.66
+Gimhae,South Korea,December,12,38.24,12.7,0.04,50.36,34.97
+Jinju,South Korea,January,1,35.25,5.59,1.27,66.18,42.89
+Jinju,South Korea,February,2,41.32,5.59,7.68,76.64,64.65
+Jinju,South Korea,March,3,46.42,8.25,3.75,62.84,53.53
+Jinju,South Korea,April,4,58.96,5.52,6.94,75.07,62.02
+Jinju,South Korea,May,5,64.84,6.73,7.68,68.85,46.62
+Jinju,South Korea,June,6,72.86,4.81,10.47,74.99,61.83
+Jinju,South Korea,July,7,80.0,5.67,11.07,86.23,64.27
+Jinju,South Korea,August,8,82.98,4.97,6.2,79.77,43.68
+Jinju,South Korea,September,9,77.97,4.78,13.75,80.79,56.26
+Jinju,South Korea,October,10,62.55,4.5,6.03,79.63,62.49
+Jinju,South Korea,November,11,50.9,6.11,3.38,73.09,47.28
+Jinju,South Korea,December,12,36.48,5.7,0.05,60.29,46.3
+Yeosu,South Korea,January,1,39.21,17.79,1.27,59.85,46.76
+Yeosu,South Korea,February,2,43.64,17.41,2.95,72.32,67.08
+Yeosu,South Korea,March,3,47.85,18.06,2.21,61.17,52.55
+Yeosu,South Korea,April,4,59.47,12.04,7.46,74.13,64.56
+Yeosu,South Korea,May,5,65.32,14.63,5.39,66.44,46.37
+Yeosu,South Korea,June,6,72.3,12.73,8.24,74.79,63.28
+Yeosu,South Korea,July,7,78.4,13.72,15.09,90.02,72.43
+Yeosu,South Korea,August,8,83.85,12.11,1.74,77.08,38.03
+Yeosu,South Korea,September,9,80.13,13.17,7.44,75.7,49.76
+Yeosu,South Korea,October,10,66.12,15.38,5.51,70.51,62.78
+Yeosu,South Korea,November,11,55.4,15.79,1.86,63.23,48.44
+Yeosu,South Korea,December,12,41.07,17.34,0.01,53.67,42.63
+Gumi,South Korea,January,1,34.62,5.13,0.95,59.99,42.67
+Gumi,South Korea,February,2,40.51,3.92,1.65,70.05,65.8
+Gumi,South Korea,March,3,46.46,6.38,1.97,53.89,50.77
+Gumi,South Korea,April,4,60.75,4.27,2.08,61.2,60.76
+Gumi,South Korea,May,5,65.98,4.99,2.36,59.53,44.87
+Gumi,South Korea,June,6,75.73,4.55,3.5,59.51,52.53
+Gumi,South Korea,July,7,80.64,4.45,13.12,76.9,65.75
+Gumi,South Korea,August,8,83.64,4.09,2.76,69.85,45.76
+Gumi,South Korea,September,9,77.06,3.56,6.05,74.17,61.7
+Gumi,South Korea,October,10,60.48,3.06,1.71,77.25,62.45
+Gumi,South Korea,November,11,49.44,4.44,0.68,68.67,50.04
+Gumi,South Korea,December,12,36.96,5.47,0.1,51.93,45.57
+Iksan,South Korea,January,1,35.04,8.47,2.77,71.15,51.77
+Iksan,South Korea,February,2,40.99,7.94,4.66,76.49,64.29
+Iksan,South Korea,March,3,44.93,11.51,2.49,66.94,48.4
+Iksan,South Korea,April,4,59.11,8.19,3.13,71.55,57.08
+Iksan,South Korea,May,5,64.24,9.89,4.12,70.79,42.95
+Iksan,South Korea,June,6,73.67,9.02,3.59,70.75,51.79
+Iksan,South Korea,July,7,80.83,9.83,20.82,81.47,68.58
+Iksan,South Korea,August,8,84.02,7.73,3.16,78.29,41.28
+Iksan,South Korea,September,9,79.18,6.6,7.53,77.06,51.29
+Iksan,South Korea,October,10,62.65,6.7,3.49,78.89,55.0
+Iksan,South Korea,November,11,51.31,9.62,1.6,69.04,45.75
+Iksan,South Korea,December,12,37.11,8.86,0.65,68.74,58.81
+Mokpo,South Korea,January,1,38.02,14.91,1.61,74.76,61.47
+Mokpo,South Korea,February,2,42.59,13.64,1.65,80.21,69.69
+Mokpo,South Korea,March,3,45.82,15.24,2.33,72.04,56.68
+Mokpo,South Korea,April,4,58.3,11.32,3.13,78.31,60.28
+Mokpo,South Korea,May,5,64.19,13.48,3.62,74.58,45.69
+Mokpo,South Korea,June,6,72.58,12.07,6.78,79.02,65.0
+Mokpo,South Korea,July,7,80.06,13.82,8.12,87.39,71.24
+Mokpo,South Korea,August,8,83.23,10.76,7.87,82.14,41.55
+Mokpo,South Korea,September,9,79.68,10.75,4.17,79.06,50.24
+Mokpo,South Korea,October,10,64.66,12.17,4.96,77.33,61.52
+Mokpo,South Korea,November,11,53.72,15.36,1.33,69.22,53.55
+Mokpo,South Korea,December,12,40.52,16.91,0.19,68.8,61.14
+Gunsan,South Korea,January,1,34.54,10.48,2.81,73.15,49.34
+Gunsan,South Korea,February,2,40.28,9.94,5.27,78.27,61.27
+Gunsan,South Korea,March,3,44.28,13.73,2.31,70.48,46.75
+Gunsan,South Korea,April,4,57.75,9.86,3.19,75.34,56.23
+Gunsan,South Korea,May,5,63.26,12.2,4.2,75.46,42.63
+Gunsan,South Korea,June,6,72.85,11.44,2.85,75.7,49.64
+Gunsan,South Korea,July,7,80.44,11.8,25.21,84.06,66.44
+Gunsan,South Korea,August,8,83.72,9.71,1.13,80.07,40.23
+Gunsan,South Korea,September,9,78.74,8.32,7.66,78.73,49.8
+Gunsan,South Korea,October,10,62.32,8.43,4.16,79.93,52.45
+Gunsan,South Korea,November,11,51.06,11.55,1.87,69.55,42.41
+Gunsan,South Korea,December,12,36.98,11.56,0.72,69.56,58.4
+Wonju,South Korea,January,1,31.38,4.88,0.34,65.9,46.22
+Wonju,South Korea,February,2,38.74,4.89,1.61,70.52,70.66
+Wonju,South Korea,March,3,43.14,8.27,1.43,54.41,49.36
+Wonju,South Korea,April,4,60.08,5.88,1.81,55.91,51.94
+Wonju,South Korea,May,5,64.41,6.18,3.73,60.55,44.45
+Wonju,South Korea,June,6,74.75,5.29,5.47,60.25,46.19
+Wonju,South Korea,July,7,79.37,6.51,21.21,77.31,74.96
+Wonju,South Korea,August,8,82.62,4.88,5.98,73.0,48.3
+Wonju,South Korea,September,9,75.66,4.42,9.56,74.21,62.74
+Wonju,South Korea,October,10,59.9,3.64,4.06,75.98,60.18
+Wonju,South Korea,November,11,47.81,4.97,1.19,70.19,52.96
+Wonju,South Korea,December,12,32.47,5.13,0.09,57.85,40.57
+Suncheon,South Korea,January,1,35.62,10.11,0.89,69.11,48.65
+Suncheon,South Korea,February,2,40.61,9.14,3.69,79.82,66.31
+Suncheon,South Korea,March,3,44.95,11.38,2.0,66.94,54.67
+Suncheon,South Korea,April,4,58.41,8.69,5.59,75.51,63.16
+Suncheon,South Korea,May,5,63.06,8.76,6.36,70.48,47.3
+Suncheon,South Korea,June,6,70.55,7.78,10.43,76.28,64.12
+Suncheon,South Korea,July,7,77.77,7.67,12.17,88.05,69.51
+Suncheon,South Korea,August,8,80.2,6.89,4.8,82.79,42.79
+Suncheon,South Korea,September,9,75.73,6.88,15.54,84.02,54.92
+Suncheon,South Korea,October,10,60.65,7.25,3.96,81.59,63.02
+Suncheon,South Korea,November,11,49.34,9.2,1.78,74.04,50.86
+Suncheon,South Korea,December,12,36.43,11.48,0.08,64.95,51.3
+Sejong,South Korea,January,1,31.97,6.42,0.92,68.56,51.5
+Sejong,South Korea,February,2,39.27,7.1,1.88,72.75,65.88
+Sejong,South Korea,March,3,44.52,8.94,1.1,58.5,45.03
+Sejong,South Korea,April,4,60.66,7.02,1.52,59.57,54.31
+Sejong,South Korea,May,5,64.99,7.37,4.27,62.76,42.15
+Sejong,South Korea,June,6,74.94,6.72,4.13,62.09,47.81
+Sejong,South Korea,July,7,80.2,8.03,21.75,79.53,74.37
+Sejong,South Korea,August,8,83.75,5.96,4.62,74.18,46.76
+Sejong,South Korea,September,9,78.04,6.19,9.61,73.66,55.06
+Sejong,South Korea,October,10,60.85,5.73,3.68,77.71,56.78
+Sejong,South Korea,November,11,48.75,6.35,1.09,69.48,44.69
+Sejong,South Korea,December,12,33.74,6.59,0.16,64.05,46.29
+Chuncheon,South Korea,January,1,33.26,6.29,1.03,56.64,45.95
+Chuncheon,South Korea,February,2,37.07,5.32,5.76,74.65,73.12
+Chuncheon,South Korea,March,3,42.46,7.35,3.11,59.28,53.18
+Chuncheon,South Korea,April,4,58.28,6.23,1.48,59.9,53.93
+Chuncheon,South Korea,May,5,64.69,6.78,3.58,58.5,48.26
+Chuncheon,South Korea,June,6,72.76,5.03,4.28,67.81,44.77
+Chuncheon,South Korea,July,7,79.53,5.94,7.89,75.67,72.1
+Chuncheon,South Korea,August,8,80.95,4.32,3.29,78.08,44.4
+Chuncheon,South Korea,September,9,72.0,4.52,19.55,84.02,69.22
+Chuncheon,South Korea,October,10,59.88,4.63,5.62,76.51,63.09
+Chuncheon,South Korea,November,11,49.39,5.73,1.95,67.22,54.76
+Chuncheon,South Korea,December,12,35.41,7.19,0.55,43.83,37.81
+Icheon,South Korea,January,1,29.95,5.42,0.93,72.58,43.46
+Icheon,South Korea,February,2,37.52,5.17,3.57,79.06,64.2
+Icheon,South Korea,March,3,43.71,8.15,1.87,60.83,45.06
+Icheon,South Korea,April,4,60.03,5.98,2.8,63.67,51.33
+Icheon,South Korea,May,5,64.6,6.45,3.99,68.15,42.42
+Icheon,South Korea,June,6,74.52,5.38,7.56,67.27,42.36
+Icheon,South Korea,July,7,79.01,6.86,23.79,86.82,71.3
+Icheon,South Korea,August,8,82.31,4.43,5.66,83.77,45.97
+Icheon,South Korea,September,9,75.54,4.32,12.41,83.49,58.11
+Icheon,South Korea,October,10,58.84,3.64,5.34,84.89,53.0
+Icheon,South Korea,November,11,47.01,5.32,3.32,75.55,42.41
+Icheon,South Korea,December,12,31.5,5.37,0.18,64.88,36.75
+Geelong,Australia,January,1,66.63,15.15,0.74,73.34,60.46
+Geelong,Australia,February,2,66.89,15.26,0.02,65.16,49.52
+Geelong,Australia,March,3,65.23,14.84,0.1,66.42,48.72
+Geelong,Australia,April,4,57.35,12.04,1.65,75.74,73.8
+Geelong,Australia,May,5,53.87,9.49,0.91,79.85,60.11
+Geelong,Australia,June,6,50.35,11.86,0.57,76.75,72.69
+Geelong,Australia,July,7,49.55,13.52,1.43,80.3,70.79
+Geelong,Australia,August,8,54.07,13.68,0.65,72.87,62.13
+Geelong,Australia,September,9,54.43,17.47,1.37,70.9,69.93
+Geelong,Australia,October,10,58.29,14.26,3.84,69.55,59.78
+Geelong,Australia,November,11,62.97,14.9,1.75,67.33,68.58
+Geelong,Australia,December,12,66.06,16.3,0.53,63.86,54.44
+Hobart,Australia,January,1,63.68,18.73,1.24,60.43,62.01
+Hobart,Australia,February,2,64.33,18.67,0.18,56.14,54.11
+Hobart,Australia,March,3,60.63,19.18,0.35,62.28,56.52
+Hobart,Australia,April,4,56.11,16.11,1.07,65.66,58.94
+Hobart,Australia,May,5,52.34,16.18,1.01,72.28,66.06
+Hobart,Australia,June,6,48.28,14.46,1.03,76.63,75.22
+Hobart,Australia,July,7,47.43,17.56,2.02,73.96,64.63
+Hobart,Australia,August,8,52.08,20.05,2.71,68.83,68.66
+Hobart,Australia,September,9,51.87,22.58,2.27,59.47,54.78
+Hobart,Australia,October,10,54.68,18.56,1.18,60.82,40.03
+Hobart,Australia,November,11,58.47,19.97,0.87,64.94,57.34
+Hobart,Australia,December,12,62.33,18.92,2.99,61.61,49.46
+Townsville,Australia,January,1,83.56,16.95,6.65,79.76,72.13
+Townsville,Australia,February,2,81.47,15.34,11.5,81.61,75.39
+Townsville,Australia,March,3,81.4,16.75,5.6,78.26,68.81
+Townsville,Australia,April,4,78.52,16.45,0.13,73.81,57.74
+Townsville,Australia,May,5,74.48,17.44,0.34,71.18,59.59
+Townsville,Australia,June,6,68.08,13.95,0.5,71.91,32.44
+Townsville,Australia,July,7,67.95,16.66,0.01,67.51,45.68
+Townsville,Australia,August,8,70.21,16.57,0.53,76.85,43.15
+Townsville,Australia,September,9,74.38,17.69,0.01,70.65,53.46
+Townsville,Australia,October,10,78.35,18.03,0.09,69.2,42.47
+Townsville,Australia,November,11,80.75,17.48,3.9,70.29,54.35
+Townsville,Australia,December,12,81.84,14.82,8.98,79.79,62.11
+Cairns,Australia,January,1,82.82,11.76,15.53,82.34,77.84
+Cairns,Australia,February,2,81.67,11.57,12.52,84.56,79.13
+Cairns,Australia,March,3,80.49,14.48,24.3,84.88,77.94
+Cairns,Australia,April,4,78.51,15.44,12.74,80.55,74.74
+Cairns,Australia,May,5,74.91,16.28,3.98,80.52,76.32
+Cairns,Australia,June,6,71.14,12.9,0.79,77.04,47.01
+Cairns,Australia,July,7,70.04,14.66,2.62,76.49,64.55
+Cairns,Australia,August,8,71.91,11.88,1.89,78.16,57.08
+Cairns,Australia,September,9,74.76,16.21,1.28,73.84,59.54
+Cairns,Australia,October,10,77.98,15.09,1.0,73.05,53.03
+Cairns,Australia,November,11,80.34,14.13,2.13,72.52,53.75
+Cairns,Australia,December,12,81.61,11.03,18.31,83.26,69.08
+Toowoomba,Australia,January,1,73.18,20.57,5.29,81.98,71.44
+Toowoomba,Australia,February,2,72.62,18.05,1.76,80.17,69.39
+Toowoomba,Australia,March,3,68.65,20.45,1.62,79.59,70.8
+Toowoomba,Australia,April,4,64.13,15.51,2.98,77.46,60.71
+Toowoomba,Australia,May,5,58.23,16.49,0.66,80.92,59.85
+Toowoomba,Australia,June,6,52.29,15.08,0.76,72.52,39.33
+Toowoomba,Australia,July,7,51.31,18.4,0.72,75.28,46.89
+Toowoomba,Australia,August,8,60.64,16.54,2.2,68.8,44.9
+Toowoomba,Australia,September,9,62.46,15.92,1.52,60.98,36.1
+Toowoomba,Australia,October,10,65.53,19.45,1.34,68.95,59.06
+Toowoomba,Australia,November,11,70.69,19.1,5.4,77.65,71.2
+Toowoomba,Australia,December,12,72.3,18.28,5.45,78.24,60.0
+Darwin,Australia,January,1,83.06,17.55,21.14,82.11,84.96
+Darwin,Australia,February,2,84.02,15.51,17.22,81.2,77.09
+Darwin,Australia,March,3,83.21,14.02,16.57,83.17,81.23
+Darwin,Australia,April,4,83.5,15.25,0.49,65.99,60.16
+Darwin,Australia,May,5,82.46,16.11,0.01,61.42,41.68
+Darwin,Australia,June,6,76.78,14.44,0.0,61.9,27.0
+Darwin,Australia,July,7,76.66,14.91,0.08,58.77,42.71
+Darwin,Australia,August,8,79.53,13.95,0.0,64.91,21.52
+Darwin,Australia,September,9,83.39,15.85,2.48,65.71,43.07
+Darwin,Australia,October,10,85.52,14.44,1.51,68.1,47.62
+Darwin,Australia,November,11,84.28,13.4,10.54,74.79,68.1
+Darwin,Australia,December,12,84.33,14.23,9.22,78.96,76.16
+Rockingham,Australia,January,1,74.88,21.44,0.02,63.93,16.84
+Rockingham,Australia,February,2,76.4,20.66,0.11,59.62,33.11
+Rockingham,Australia,March,3,72.88,19.73,0.07,60.42,20.99
+Rockingham,Australia,April,4,69.74,16.64,0.09,51.87,29.4
+Rockingham,Australia,May,5,66.62,16.51,3.08,66.72,55.77
+Rockingham,Australia,June,6,60.52,16.53,4.34,76.15,52.84
+Rockingham,Australia,July,7,59.22,20.02,4.64,76.58,55.71
+Rockingham,Australia,August,8,60.69,21.81,4.46,74.93,66.42
+Rockingham,Australia,September,9,60.84,19.46,0.92,71.4,27.25
+Rockingham,Australia,October,10,64.16,19.61,0.74,72.89,44.28
+Rockingham,Australia,November,11,66.89,21.75,0.98,66.18,38.73
+Rockingham,Australia,December,12,72.32,22.43,0.05,63.88,21.96
+Launceston,Australia,January,1,65.95,16.05,1.83,64.47,46.89
+Launceston,Australia,February,2,65.56,16.2,0.29,62.51,29.37
+Launceston,Australia,March,3,62.7,14.67,0.5,66.09,34.55
+Launceston,Australia,April,4,54.54,11.72,1.11,75.6,39.25
+Launceston,Australia,May,5,50.5,10.84,1.31,78.74,42.23
+Launceston,Australia,June,6,44.65,11.97,2.29,82.87,49.85
+Launceston,Australia,July,7,44.44,11.87,3.66,85.22,46.48
+Launceston,Australia,August,8,51.18,15.64,2.58,83.5,65.02
+Launceston,Australia,September,9,50.78,19.12,1.91,74.91,47.24
+Launceston,Australia,October,10,55.17,14.45,1.12,68.49,32.93
+Launceston,Australia,November,11,60.02,16.32,2.86,69.02,48.14
+Launceston,Australia,December,12,62.62,16.75,1.32,69.24,39.25
+Bendigo,Australia,January,1,70.3,14.86,5.34,61.43,44.34
+Bendigo,Australia,February,2,71.28,16.02,0.09,49.93,28.85
+Bendigo,Australia,March,3,67.83,13.34,0.0,51.85,23.09
+Bendigo,Australia,April,4,56.19,12.56,0.47,67.71,48.07
+Bendigo,Australia,May,5,51.63,10.6,1.75,74.61,41.79
+Bendigo,Australia,June,6,45.97,11.85,0.74,79.06,54.05
+Bendigo,Australia,July,7,46.34,12.69,1.64,80.08,61.9
+Bendigo,Australia,August,8,50.36,12.85,1.49,80.52,61.8
+Bendigo,Australia,September,9,52.15,15.55,0.87,68.39,58.04
+Bendigo,Australia,October,10,59.47,14.97,1.25,59.57,45.67
+Bendigo,Australia,November,11,66.49,14.19,1.72,52.73,49.79
+Bendigo,Australia,December,12,70.05,15.55,0.73,48.76,31.57
+Ballarat,Australia,January,1,64.5,19.1,1.33,72.66,61.95
+Ballarat,Australia,February,2,65.86,19.46,0.03,60.9,45.2
+Ballarat,Australia,March,3,63.29,18.13,0.03,63.38,42.73
+Ballarat,Australia,April,4,52.98,15.11,3.62,78.69,72.91
+Ballarat,Australia,May,5,49.74,14.35,0.98,81.99,59.55
+Ballarat,Australia,June,6,44.52,16.65,1.03,84.05,75.22
+Ballarat,Australia,July,7,44.79,18.48,3.0,85.86,76.05
+Ballarat,Australia,August,8,49.32,19.23,1.06,79.93,66.01
+Ballarat,Australia,September,9,49.14,20.76,1.7,78.33,73.72
+Ballarat,Australia,October,10,54.45,18.19,1.53,72.36,61.47
+Ballarat,Australia,November,11,61.2,18.28,0.9,64.04,66.0
+Ballarat,Australia,December,12,64.51,18.83,0.72,60.37,47.78
+Mandurah,Australia,January,1,76.45,15.24,0.0,56.18,17.47
+Mandurah,Australia,February,2,78.43,13.27,0.08,50.69,32.81
+Mandurah,Australia,March,3,73.53,14.34,0.05,55.22,21.19
+Mandurah,Australia,April,4,70.02,13.42,0.03,48.48,29.05
+Mandurah,Australia,May,5,66.72,13.4,2.96,64.32,56.16
+Mandurah,Australia,June,6,60.04,14.37,3.09,74.75,53.12
+Mandurah,Australia,July,7,58.89,17.56,4.87,74.49,56.47
+Mandurah,Australia,August,8,60.44,18.49,3.02,73.75,66.77
+Mandurah,Australia,September,9,61.08,13.26,0.45,66.3,28.59
+Mandurah,Australia,October,10,64.68,13.41,0.62,67.94,44.56
+Mandurah,Australia,November,11,67.76,14.21,1.17,59.37,38.32
+Mandurah,Australia,December,12,74.08,14.49,0.06,55.3,22.34
+Mackay,Australia,January,1,83.39,12.52,7.1,79.03,67.65
+Mackay,Australia,February,2,81.44,12.98,8.33,79.19,63.77
+Mackay,Australia,March,3,79.94,15.01,5.9,80.25,65.95
+Mackay,Australia,April,4,75.65,14.56,2.26,80.16,52.95
+Mackay,Australia,May,5,70.6,14.52,5.23,84.68,51.09
+Mackay,Australia,June,6,64.29,10.61,2.76,79.46,26.3
+Mackay,Australia,July,7,63.73,12.95,0.42,78.32,36.42
+Mackay,Australia,August,8,67.54,10.64,1.32,87.34,41.08
+Mackay,Australia,September,9,72.06,12.45,0.32,76.53,45.59
+Mackay,Australia,October,10,75.9,11.13,1.34,75.34,31.15
+Mackay,Australia,November,11,79.29,11.71,4.2,74.37,53.64
+Mackay,Australia,December,12,80.37,11.39,12.18,80.52,53.82
+Bundaberg,Australia,January,1,80.17,16.06,4.24,84.93,66.92
+Bundaberg,Australia,February,2,79.05,16.29,1.48,81.16,50.22
+Bundaberg,Australia,March,3,76.15,18.38,2.86,84.21,62.05
+Bundaberg,Australia,April,4,71.51,14.41,5.08,88.51,51.68
+Bundaberg,Australia,May,5,66.67,15.34,0.88,84.87,42.14
+Bundaberg,Australia,June,6,60.1,11.92,1.09,72.33,28.38
+Bundaberg,Australia,July,7,60.22,14.43,0.64,72.86,36.31
+Bundaberg,Australia,August,8,64.99,14.16,1.92,81.75,37.97
+Bundaberg,Australia,September,9,68.17,15.98,0.22,73.2,39.53
+Bundaberg,Australia,October,10,71.95,18.03,2.12,74.11,42.68
+Bundaberg,Australia,November,11,76.59,16.46,1.81,76.38,58.03
+Bundaberg,Australia,December,12,77.87,16.19,9.03,78.83,58.97
+Bunbury,Australia,January,1,73.91,16.89,0.0,56.35,21.7
+Bunbury,Australia,February,2,76.31,14.02,0.0,48.95,34.87
+Bunbury,Australia,March,3,71.02,14.21,0.02,57.87,25.2
+Bunbury,Australia,April,4,66.73,14.45,0.0,54.68,29.67
+Bunbury,Australia,May,5,62.78,11.78,6.77,73.62,55.71
+Bunbury,Australia,June,6,57.29,13.66,5.44,83.2,57.42
+Bunbury,Australia,July,7,56.08,14.53,8.05,84.75,58.54
+Bunbury,Australia,August,8,58.27,16.01,6.61,84.64,68.22
+Bunbury,Australia,September,9,57.46,12.34,0.71,79.17,39.53
+Bunbury,Australia,October,10,62.03,13.89,1.18,77.0,48.23
+Bunbury,Australia,November,11,64.42,14.69,1.64,66.62,40.52
+Bunbury,Australia,December,12,71.23,15.27,0.15,59.37,27.93
+Maitland,Australia,January,1,76.17,13.11,1.75,71.12,61.97
+Maitland,Australia,February,2,74.95,11.28,3.73,76.35,66.12
+Maitland,Australia,March,3,70.99,11.18,1.96,76.67,56.77
+Maitland,Australia,April,4,64.74,11.07,6.69,78.78,51.15
+Maitland,Australia,May,5,57.96,8.06,4.04,84.85,59.91
+Maitland,Australia,June,6,53.64,10.6,2.92,76.77,53.09
+Maitland,Australia,July,7,53.58,12.91,1.43,72.97,46.34
+Maitland,Australia,August,8,58.77,10.62,1.68,74.54,49.59
+Maitland,Australia,September,9,61.51,13.61,2.02,62.01,38.91
+Maitland,Australia,October,10,64.04,11.81,1.8,71.7,58.82
+Maitland,Australia,November,11,71.22,12.04,2.01,74.06,63.3
+Maitland,Australia,December,12,75.0,14.03,0.49,68.76,43.12
+Armadale,Australia,January,1,75.75,16.75,0.57,53.44,16.6
+Armadale,Australia,February,2,78.65,15.5,0.16,45.07,33.34
+Armadale,Australia,March,3,72.19,16.73,0.11,55.56,21.38
+Armadale,Australia,April,4,68.35,15.63,0.28,47.82,30.05
+Armadale,Australia,May,5,63.95,12.66,2.56,63.44,55.02
+Armadale,Australia,June,6,57.12,12.3,4.52,78.32,50.81
+Armadale,Australia,July,7,55.72,14.88,6.78,79.23,55.56
+Armadale,Australia,August,8,57.48,16.29,5.03,77.62,64.58
+Armadale,Australia,September,9,58.89,14.52,1.52,68.08,27.83
+Armadale,Australia,October,10,63.01,14.48,1.89,68.9,42.88
+Armadale,Australia,November,11,66.59,16.17,0.87,59.66,38.86
+Armadale,Australia,December,12,73.61,17.04,0.06,53.59,21.56
+Rockhampton,Australia,January,1,83.11,12.7,2.72,72.2,68.09
+Rockhampton,Australia,February,2,81.39,12.34,1.6,69.02,55.72
+Rockhampton,Australia,March,3,78.89,14.68,2.74,69.92,66.04
+Rockhampton,Australia,April,4,73.11,11.73,5.65,74.18,57.25
+Rockhampton,Australia,May,5,68.77,12.23,0.58,72.91,51.15
+Rockhampton,Australia,June,6,61.3,10.66,1.67,70.83,30.28
+Rockhampton,Australia,July,7,61.1,12.18,0.19,71.57,39.39
+Rockhampton,Australia,August,8,67.27,10.62,3.55,78.91,48.61
+Rockhampton,Australia,September,9,70.63,12.51,0.04,68.45,41.87
+Rockhampton,Australia,October,10,74.77,13.13,0.89,71.18,42.34
+Rockhampton,Australia,November,11,79.28,12.76,1.8,71.47,56.05
+Rockhampton,Australia,December,12,80.92,13.01,1.82,73.43,56.92
+Hervey Bay,Australia,January,1,80.6,14.04,5.77,80.94,67.17
+Hervey Bay,Australia,February,2,79.73,14.06,2.47,76.27,48.59
+Hervey Bay,Australia,March,3,76.89,14.36,5.36,79.23,61.35
+Hervey Bay,Australia,April,4,72.02,13.93,3.67,81.24,51.75
+Hervey Bay,Australia,May,5,66.6,12.57,2.26,82.68,44.14
+Hervey Bay,Australia,June,6,58.87,10.04,0.52,78.47,28.65
+Hervey Bay,Australia,July,7,59.24,12.44,1.23,77.55,38.92
+Hervey Bay,Australia,August,8,64.45,12.52,2.89,83.53,38.32
+Hervey Bay,Australia,September,9,68.63,14.34,1.06,73.12,41.19
+Hervey Bay,Australia,October,10,72.29,15.07,3.96,73.51,45.63
+Hervey Bay,Australia,November,11,76.71,15.4,3.13,75.64,61.41
+Hervey Bay,Australia,December,12,78.08,13.93,15.21,76.25,59.03
+Reservoir,Australia,January,1,68.11,12.53,3.96,73.38,60.27
+Reservoir,Australia,February,2,68.42,12.8,0.17,64.92,49.98
+Reservoir,Australia,March,3,66.26,12.49,0.15,65.16,45.31
+Reservoir,Australia,April,4,56.86,11.09,4.83,80.12,69.62
+Reservoir,Australia,May,5,52.35,8.24,1.19,84.84,55.95
+Reservoir,Australia,June,6,48.52,9.7,1.0,84.27,67.65
+Reservoir,Australia,July,7,48.24,11.32,3.41,85.64,73.52
+Reservoir,Australia,August,8,54.18,14.25,0.96,74.01,59.71
+Reservoir,Australia,September,9,54.72,14.6,2.04,70.15,66.19
+Reservoir,Australia,October,10,58.7,12.76,1.56,69.66,58.1
+Reservoir,Australia,November,11,64.57,13.24,1.93,65.83,64.88
+Reservoir,Australia,December,12,67.79,12.9,0.78,62.12,50.62
+Tamworth,Australia,January,1,79.35,16.72,3.61,59.31,56.29
+Tamworth,Australia,February,2,78.28,16.13,1.57,59.95,55.06
+Tamworth,Australia,March,3,72.77,15.28,1.06,60.43,47.65
+Tamworth,Australia,April,4,62.64,12.68,2.76,72.63,54.95
+Tamworth,Australia,May,5,56.24,12.44,1.91,74.32,54.69
+Tamworth,Australia,June,6,48.18,11.15,3.0,82.51,68.01
+Tamworth,Australia,July,7,48.12,13.92,1.82,78.6,66.08
+Tamworth,Australia,August,8,55.24,12.35,2.46,75.12,52.6
+Tamworth,Australia,September,9,56.6,13.79,1.81,65.85,31.0
+Tamworth,Australia,October,10,63.06,14.22,1.55,66.4,44.93
+Tamworth,Australia,November,11,73.62,15.1,2.27,59.64,51.96
+Tamworth,Australia,December,12,78.72,16.58,0.73,48.91,35.18
+Wagga Wagga,Australia,January,1,74.86,16.7,3.18,60.58,43.77
+Wagga Wagga,Australia,February,2,77.26,16.38,0.58,49.93,30.99
+Wagga Wagga,Australia,March,3,72.91,14.79,0.77,48.51,27.13
+Wagga Wagga,Australia,April,4,58.8,12.13,1.41,66.55,31.88
+Wagga Wagga,Australia,May,5,53.72,12.21,0.29,66.86,43.93
+Wagga Wagga,Australia,June,6,46.81,10.98,1.09,79.53,56.37
+Wagga Wagga,Australia,July,7,45.87,12.32,1.59,81.49,58.68
+Wagga Wagga,Australia,August,8,51.46,11.57,0.92,79.57,55.71
+Wagga Wagga,Australia,September,9,53.6,15.37,1.33,68.47,43.84
+Wagga Wagga,Australia,October,10,61.69,15.58,0.96,59.13,36.35
+Wagga Wagga,Australia,November,11,71.18,15.2,2.93,52.25,47.38
+Wagga Wagga,Australia,December,12,75.0,15.86,1.27,47.28,21.85
+Albury,Australia,January,1,75.64,13.42,2.57,57.43,42.28
+Albury,Australia,February,2,76.85,12.99,0.57,50.28,29.51
+Albury,Australia,March,3,71.63,10.91,0.87,51.5,22.52
+Albury,Australia,April,4,58.09,10.44,0.55,66.18,38.56
+Albury,Australia,May,5,52.65,9.54,1.07,69.08,47.88
+Albury,Australia,June,6,46.72,9.26,1.41,78.1,57.25
+Albury,Australia,July,7,45.79,10.84,1.88,81.27,59.74
+Albury,Australia,August,8,51.27,10.46,1.97,79.3,64.25
+Albury,Australia,September,9,54.15,14.53,1.52,67.37,51.06
+Albury,Australia,October,10,61.71,13.92,1.68,59.94,35.83
+Albury,Australia,November,11,69.65,12.55,2.42,56.81,48.7
+Albury,Australia,December,12,74.25,14.26,0.89,49.03,23.9
+Berwick,Australia,January,1,66.27,10.3,4.98,75.07,59.45
+Berwick,Australia,February,2,66.66,10.42,0.49,66.46,49.77
+Berwick,Australia,March,3,65.15,10.41,0.4,66.05,46.95
+Berwick,Australia,April,4,55.95,9.0,4.81,80.12,72.53
+Berwick,Australia,May,5,52.39,7.28,1.34,82.14,55.67
+Berwick,Australia,June,6,48.14,8.32,1.74,82.09,71.17
+Berwick,Australia,July,7,47.61,9.79,5.46,83.56,73.25
+Berwick,Australia,August,8,53.64,11.81,1.02,72.35,60.15
+Berwick,Australia,September,9,53.27,11.8,2.55,71.87,70.19
+Berwick,Australia,October,10,57.19,10.44,3.24,70.69,59.96
+Berwick,Australia,November,11,63.18,11.05,2.23,66.93,66.59
+Berwick,Australia,December,12,65.71,10.82,1.3,64.94,53.34
+Port Macquarie,Australia,January,1,75.6,13.39,3.72,82.04,61.36
+Port Macquarie,Australia,February,2,75.29,13.06,5.3,83.56,57.39
+Port Macquarie,Australia,March,3,71.52,11.22,3.13,83.3,57.36
+Port Macquarie,Australia,April,4,67.04,13.51,10.01,83.15,51.74
+Port Macquarie,Australia,May,5,60.25,10.65,3.14,87.37,55.11
+Port Macquarie,Australia,June,6,55.31,12.08,2.57,80.28,43.54
+Port Macquarie,Australia,July,7,54.64,13.12,1.31,76.65,45.98
+Port Macquarie,Australia,August,8,60.02,12.05,1.29,81.5,48.53
+Port Macquarie,Australia,September,9,61.15,14.0,2.47,74.54,36.99
+Port Macquarie,Australia,October,10,64.78,13.21,2.62,79.68,55.81
+Port Macquarie,Australia,November,11,71.44,13.7,4.68,82.49,60.83
+Port Macquarie,Australia,December,12,74.55,14.52,0.64,79.22,40.48
+Queanbeyan,Australia,January,1,68.56,15.22,3.52,72.95,69.94
+Queanbeyan,Australia,February,2,68.46,15.1,2.18,71.11,66.56
+Queanbeyan,Australia,March,3,65.2,13.34,0.68,66.69,56.1
+Queanbeyan,Australia,April,4,54.43,12.68,1.71,74.59,52.55
+Queanbeyan,Australia,May,5,48.2,12.45,1.29,80.33,62.15
+Queanbeyan,Australia,June,6,42.59,13.76,1.4,82.21,66.99
+Queanbeyan,Australia,July,7,43.11,15.06,0.74,80.12,67.48
+Queanbeyan,Australia,August,8,48.31,15.08,0.36,77.08,60.42
+Queanbeyan,Australia,September,9,51.66,19.82,0.48,61.49,45.59
+Queanbeyan,Australia,October,10,56.98,15.42,0.78,64.88,55.54
+Queanbeyan,Australia,November,11,66.18,17.78,2.99,62.95,68.88
+Queanbeyan,Australia,December,12,69.28,17.54,2.33,60.64,45.74
+Hamilton,New Zealand,January,1,68.16,12.83,3.16,78.24,61.39
+Hamilton,New Zealand,February,2,64.84,13.46,2.85,78.34,50.01
+Hamilton,New Zealand,March,3,59.39,14.26,5.43,82.18,51.46
+Hamilton,New Zealand,April,4,57.77,11.8,2.11,86.87,57.89
+Hamilton,New Zealand,May,5,50.63,12.06,4.11,88.25,48.52
+Hamilton,New Zealand,June,6,51.01,11.53,3.09,90.51,76.06
+Hamilton,New Zealand,July,7,47.29,10.34,4.99,93.29,60.43
+Hamilton,New Zealand,August,8,49.19,13.02,4.35,90.16,67.98
+Hamilton,New Zealand,September,9,52.79,16.11,3.63,86.12,59.77
+Hamilton,New Zealand,October,10,56.55,16.21,4.51,82.83,66.95
+Hamilton,New Zealand,November,11,60.3,14.97,4.01,78.43,69.89
+Hamilton,New Zealand,December,12,64.82,14.84,2.81,76.9,57.98
+Tauranga,New Zealand,January,1,69.94,15.42,4.56,75.72,59.75
+Tauranga,New Zealand,February,2,68.21,15.75,2.96,74.69,47.75
+Tauranga,New Zealand,March,3,62.62,14.47,2.05,73.19,43.97
+Tauranga,New Zealand,April,4,60.61,12.46,2.13,79.99,52.62
+Tauranga,New Zealand,May,5,54.55,15.28,3.6,78.1,38.57
+Tauranga,New Zealand,June,6,54.06,14.56,6.78,82.25,67.42
+Tauranga,New Zealand,July,7,51.15,12.69,4.26,83.03,45.48
+Tauranga,New Zealand,August,8,52.34,14.05,3.27,79.49,61.9
+Tauranga,New Zealand,September,9,55.98,17.53,1.73,73.73,47.85
+Tauranga,New Zealand,October,10,58.7,16.3,4.67,75.88,59.33
+Tauranga,New Zealand,November,11,62.15,16.04,1.81,72.95,61.68
+Tauranga,New Zealand,December,12,67.51,16.89,1.01,73.16,51.98
+Dunedin,New Zealand,January,1,60.45,16.95,1.92,71.87,65.45
+Dunedin,New Zealand,February,2,59.5,17.24,1.05,71.31,63.87
+Dunedin,New Zealand,March,3,53.99,17.62,1.6,73.25,65.78
+Dunedin,New Zealand,April,4,51.23,12.85,2.02,78.81,63.13
+Dunedin,New Zealand,May,5,44.53,16.22,1.14,79.53,59.95
+Dunedin,New Zealand,June,6,43.09,13.36,2.65,83.88,73.29
+Dunedin,New Zealand,July,7,43.47,14.99,3.6,81.93,68.38
+Dunedin,New Zealand,August,8,44.1,12.92,1.27,74.62,55.52
+Dunedin,New Zealand,September,9,48.46,19.65,1.88,68.55,59.73
+Dunedin,New Zealand,October,10,50.79,15.35,6.68,78.36,70.93
+Dunedin,New Zealand,November,11,54.16,16.66,2.86,73.89,64.66
+Dunedin,New Zealand,December,12,59.09,16.87,2.77,76.62,74.56
+Lower Hutt,New Zealand,January,1,66.64,22.78,0.92,71.94,42.73
+Lower Hutt,New Zealand,February,2,64.54,26.35,1.06,71.56,46.9
+Lower Hutt,New Zealand,March,3,60.62,24.59,1.47,70.88,47.16
+Lower Hutt,New Zealand,April,4,58.55,20.94,3.51,76.67,47.33
+Lower Hutt,New Zealand,May,5,52.71,21.39,3.61,78.18,52.77
+Lower Hutt,New Zealand,June,6,52.68,18.32,2.37,80.36,56.72
+Lower Hutt,New Zealand,July,7,51.12,20.78,2.44,81.07,59.84
+Lower Hutt,New Zealand,August,8,52.18,23.41,5.19,78.83,58.49
+Lower Hutt,New Zealand,September,9,54.2,23.87,5.25,73.82,42.98
+Lower Hutt,New Zealand,October,10,56.76,22.17,3.92,75.43,56.28
+Lower Hutt,New Zealand,November,11,59.14,23.63,2.31,73.97,59.62
+Lower Hutt,New Zealand,December,12,63.16,26.72,3.01,77.64,64.73
+Palmerston North,New Zealand,January,1,66.33,17.24,1.57,73.73,63.47
+Palmerston North,New Zealand,February,2,63.5,19.01,2.15,73.8,57.13
+Palmerston North,New Zealand,March,3,59.05,20.78,2.99,74.53,59.72
+Palmerston North,New Zealand,April,4,56.82,16.2,2.01,78.5,54.77
+Palmerston North,New Zealand,May,5,50.27,15.52,2.94,81.47,58.61
+Palmerston North,New Zealand,June,6,50.7,15.26,1.68,84.06,69.58
+Palmerston North,New Zealand,July,7,48.13,12.93,2.33,84.51,64.84
+Palmerston North,New Zealand,August,8,50.26,15.54,5.59,82.12,65.41
+Palmerston North,New Zealand,September,9,52.0,19.3,6.42,80.94,57.39
+Palmerston North,New Zealand,October,10,55.74,16.77,4.18,79.04,66.76
+Palmerston North,New Zealand,November,11,58.8,20.92,3.14,76.42,68.32
+Palmerston North,New Zealand,December,12,63.23,18.61,2.52,76.14,73.18
+Rotorua,New Zealand,January,1,68.75,13.65,4.58,74.91,65.62
+Rotorua,New Zealand,February,2,66.71,13.93,2.19,74.66,53.83
+Rotorua,New Zealand,March,3,60.39,13.94,2.19,74.25,52.66
+Rotorua,New Zealand,April,4,58.42,11.5,2.1,80.58,64.13
+Rotorua,New Zealand,May,5,51.72,12.9,3.37,79.8,51.94
+Rotorua,New Zealand,June,6,51.26,12.51,5.71,84.7,75.22
+Rotorua,New Zealand,July,7,48.41,11.52,3.79,84.96,58.59
+Rotorua,New Zealand,August,8,50.02,12.52,3.09,81.53,69.79
+Rotorua,New Zealand,September,9,53.68,14.93,2.14,76.22,57.96
+Rotorua,New Zealand,October,10,57.19,14.65,4.86,77.0,71.11
+Rotorua,New Zealand,November,11,60.47,13.77,1.9,73.98,67.59
+Rotorua,New Zealand,December,12,66.27,14.81,1.27,73.72,60.45
+Hastings,New Zealand,January,1,67.52,15.73,5.1,74.93,62.79
+Hastings,New Zealand,February,2,65.62,14.83,0.92,73.01,45.38
+Hastings,New Zealand,March,3,60.5,16.03,0.48,67.61,55.11
+Hastings,New Zealand,April,4,58.14,13.98,1.1,72.98,47.89
+Hastings,New Zealand,May,5,50.79,14.85,3.33,77.35,49.37
+Hastings,New Zealand,June,6,50.88,14.23,5.33,82.85,67.37
+Hastings,New Zealand,July,7,48.37,13.25,2.33,81.72,59.23
+Hastings,New Zealand,August,8,50.82,15.76,2.06,74.67,57.95
+Hastings,New Zealand,September,9,54.27,18.58,1.58,66.14,46.04
+Hastings,New Zealand,October,10,57.95,17.2,0.62,68.14,54.73
+Hastings,New Zealand,November,11,60.94,15.72,0.91,68.26,61.55
+Hastings,New Zealand,December,12,66.56,17.5,4.1,72.23,64.89
+Nelson,New Zealand,January,1,66.7,20.61,1.96,72.83,53.07
+Nelson,New Zealand,February,2,64.82,19.19,0.23,70.99,41.79
+Nelson,New Zealand,March,3,59.94,17.68,0.52,69.57,56.11
+Nelson,New Zealand,April,4,57.43,16.26,3.06,78.71,56.8
+Nelson,New Zealand,May,5,50.27,12.65,1.23,75.98,51.62
+Nelson,New Zealand,June,6,49.16,11.14,5.39,84.34,72.76
+Nelson,New Zealand,July,7,47.3,11.34,2.3,84.06,56.46
+Nelson,New Zealand,August,8,48.82,14.21,4.02,83.64,53.63
+Nelson,New Zealand,September,9,51.82,18.65,2.27,74.36,48.59
+Nelson,New Zealand,October,10,55.45,18.18,4.1,80.07,62.3
+Nelson,New Zealand,November,11,59.62,18.54,2.06,73.85,58.76
+Nelson,New Zealand,December,12,65.13,19.11,1.96,73.96,54.33
+Napier,New Zealand,January,1,67.91,16.33,5.25,74.52,56.26
+Napier,New Zealand,February,2,66.01,15.04,0.89,72.93,43.16
+Napier,New Zealand,March,3,61.09,16.75,0.77,67.73,53.23
+Napier,New Zealand,April,4,58.65,14.35,1.08,72.63,48.42
+Napier,New Zealand,May,5,51.25,15.39,3.21,76.81,47.2
+Napier,New Zealand,June,6,51.27,14.73,5.36,82.34,63.55
+Napier,New Zealand,July,7,48.8,13.6,2.21,81.25,56.84
+Napier,New Zealand,August,8,51.29,16.31,2.0,74.27,56.65
+Napier,New Zealand,September,9,54.72,18.88,1.61,65.72,42.15
+Napier,New Zealand,October,10,58.36,17.77,0.54,67.61,53.47
+Napier,New Zealand,November,11,61.5,16.52,0.77,67.97,57.42
+Napier,New Zealand,December,12,66.92,18.03,4.16,72.4,62.25
+Invercargill,New Zealand,January,1,58.1,21.9,4.42,79.55,74.08
+Invercargill,New Zealand,February,2,57.01,20.83,5.25,77.89,69.27
+Invercargill,New Zealand,March,3,53.01,21.97,4.8,78.88,72.71
+Invercargill,New Zealand,April,4,52.1,17.81,4.36,83.05,76.79
+Invercargill,New Zealand,May,5,45.8,18.67,4.57,83.23,69.37
+Invercargill,New Zealand,June,6,44.41,13.76,3.52,87.32,79.86
+Invercargill,New Zealand,July,7,42.24,13.79,3.29,87.34,67.4
+Invercargill,New Zealand,August,8,45.05,16.51,3.15,79.75,66.92
+Invercargill,New Zealand,September,9,47.57,23.51,6.14,75.94,73.95
+Invercargill,New Zealand,October,10,50.06,18.0,5.61,81.48,72.6
+Invercargill,New Zealand,November,11,53.14,20.21,3.81,74.33,66.02
+Invercargill,New Zealand,December,12,58.16,20.6,3.85,78.18,75.15
+Upper Hutt,New Zealand,January,1,66.52,19.57,1.44,72.03,42.7
+Upper Hutt,New Zealand,February,2,64.43,22.54,1.14,71.75,46.82
+Upper Hutt,New Zealand,March,3,60.55,22.22,1.5,70.84,47.05
+Upper Hutt,New Zealand,April,4,58.44,18.49,2.95,76.08,47.3
+Upper Hutt,New Zealand,May,5,52.5,18.25,2.96,77.32,52.7
+Upper Hutt,New Zealand,June,6,52.24,15.93,2.51,80.14,56.63
+Upper Hutt,New Zealand,July,7,50.74,17.5,2.64,80.85,59.79
+Upper Hutt,New Zealand,August,8,52.17,20.55,5.67,77.6,58.49
+Upper Hutt,New Zealand,September,9,54.07,21.31,5.76,74.15,43.04
+Upper Hutt,New Zealand,October,10,56.76,19.05,4.26,74.57,56.35
+Upper Hutt,New Zealand,November,11,59.6,21.86,3.16,72.73,59.85
+Upper Hutt,New Zealand,December,12,63.62,22.47,3.19,75.81,64.76
+Whangārei,New Zealand,January,1,69.32,13.47,2.18,78.45,57.29
+Whangārei,New Zealand,February,2,68.02,12.64,0.17,76.83,54.48
+Whangārei,New Zealand,March,3,63.9,14.84,1.52,74.69,52.28
+Whangārei,New Zealand,April,4,61.91,13.5,3.24,83.04,61.67
+Whangārei,New Zealand,May,5,56.16,14.18,3.53,82.92,49.22
+Whangārei,New Zealand,June,6,56.6,12.55,5.97,86.84,72.84
+Whangārei,New Zealand,July,7,53.17,12.65,6.18,86.94,56.44
+Whangārei,New Zealand,August,8,54.44,13.76,4.03,84.02,64.67
+Whangārei,New Zealand,September,9,56.48,15.72,2.04,78.62,59.42
+Whangārei,New Zealand,October,10,58.96,15.62,2.35,78.91,62.63
+Whangārei,New Zealand,November,11,62.35,13.75,1.62,76.41,65.02
+Whangārei,New Zealand,December,12,67.17,14.37,1.42,74.51,53.84
+Gisborne,New Zealand,January,1,68.58,17.45,4.22,74.51,57.43
+Gisborne,New Zealand,February,2,67.36,16.52,1.21,71.76,45.92
+Gisborne,New Zealand,March,3,61.67,17.21,2.13,71.48,52.07
+Gisborne,New Zealand,April,4,58.51,13.71,1.25,77.03,54.69
+Gisborne,New Zealand,May,5,51.91,14.05,4.86,80.81,53.6
+Gisborne,New Zealand,June,6,52.89,16.1,10.48,83.27,66.9
+Gisborne,New Zealand,July,7,50.35,13.52,3.71,81.79,57.13
+Gisborne,New Zealand,August,8,51.94,17.0,3.64,76.14,58.54
+Gisborne,New Zealand,September,9,55.07,18.4,1.75,70.1,44.54
+Gisborne,New Zealand,October,10,57.99,18.97,1.73,71.85,55.25
+Gisborne,New Zealand,November,11,61.47,16.59,1.67,70.96,59.8
+Gisborne,New Zealand,December,12,67.51,19.56,9.06,73.56,63.14
+New Plymouth,New Zealand,January,1,66.74,17.55,3.81,78.66,52.58
+New Plymouth,New Zealand,February,2,63.49,19.24,2.1,79.59,45.88
+New Plymouth,New Zealand,March,3,60.25,20.09,3.03,77.65,52.37
+New Plymouth,New Zealand,April,4,58.63,16.78,7.85,81.9,52.13
+New Plymouth,New Zealand,May,5,52.57,18.88,3.38,80.8,50.68
+New Plymouth,New Zealand,June,6,51.99,16.25,4.42,85.14,72.79
+New Plymouth,New Zealand,July,7,50.05,17.73,4.09,85.61,54.14
+New Plymouth,New Zealand,August,8,52.01,20.64,6.17,81.93,66.85
+New Plymouth,New Zealand,September,9,53.85,23.21,4.58,79.73,54.56
+New Plymouth,New Zealand,October,10,56.36,20.09,5.23,80.36,62.03
+New Plymouth,New Zealand,November,11,59.17,18.7,3.13,80.68,63.63
+New Plymouth,New Zealand,December,12,63.21,20.71,2.58,81.8,57.17
+Porirua,New Zealand,January,1,66.59,21.63,1.17,72.09,42.73
+Porirua,New Zealand,February,2,64.49,25.07,1.1,71.76,46.87
+Porirua,New Zealand,March,3,60.58,23.66,1.4,70.92,47.14
+Porirua,New Zealand,April,4,58.49,20.16,3.27,76.56,47.31
+Porirua,New Zealand,May,5,52.64,20.28,3.22,77.92,52.81
+Porirua,New Zealand,June,6,52.51,17.45,2.43,80.35,56.7
+Porirua,New Zealand,July,7,50.95,19.71,2.55,81.09,59.84
+Porirua,New Zealand,August,8,52.13,22.51,5.35,78.93,58.35
+Porirua,New Zealand,September,9,54.13,22.95,5.51,74.03,42.97
+Porirua,New Zealand,October,10,56.71,21.14,4.05,75.48,56.27
+Porirua,New Zealand,November,11,59.14,22.77,2.53,74.06,59.54
+Porirua,New Zealand,December,12,63.13,25.55,2.96,77.62,64.74
+Whanganui,New Zealand,January,1,63.74,15.54,2.86,77.43,57.89
+Whanganui,New Zealand,February,2,61.09,16.91,2.26,77.22,48.12
+Whanganui,New Zealand,March,3,56.81,17.68,2.69,77.31,52.74
+Whanganui,New Zealand,April,4,54.87,14.23,2.37,80.96,47.42
+Whanganui,New Zealand,May,5,48.3,14.17,3.16,83.39,51.36
+Whanganui,New Zealand,June,6,48.28,13.95,1.89,85.15,65.41
+Whanganui,New Zealand,July,7,46.07,13.26,3.01,85.86,57.16
+Whanganui,New Zealand,August,8,48.03,16.43,4.55,82.41,62.33
+Whanganui,New Zealand,September,9,49.92,18.37,5.61,80.74,51.79
+Whanganui,New Zealand,October,10,53.44,17.09,3.94,79.43,61.22
+Whanganui,New Zealand,November,11,56.67,17.41,2.38,78.73,61.2
+Whanganui,New Zealand,December,12,60.96,16.89,2.85,79.22,65.1
+Ashburton,New Zealand,January,1,63.82,17.75,1.34,70.05,31.11
+Ashburton,New Zealand,February,2,61.03,15.11,1.49,72.27,43.86
+Ashburton,New Zealand,March,3,55.92,17.38,0.62,71.69,40.56
+Ashburton,New Zealand,April,4,52.99,12.55,1.04,78.4,44.93
+Ashburton,New Zealand,May,5,43.8,11.7,1.38,83.84,45.8
+Ashburton,New Zealand,June,6,44.61,10.76,2.14,87.6,45.69
+Ashburton,New Zealand,July,7,43.19,10.35,1.8,86.15,55.2
+Ashburton,New Zealand,August,8,44.91,12.22,1.61,78.66,36.05
+Ashburton,New Zealand,September,9,49.28,15.13,1.42,73.34,27.41
+Ashburton,New Zealand,October,10,52.85,13.74,4.25,77.23,41.25
+Ashburton,New Zealand,November,11,56.34,17.03,0.8,74.25,51.91
+Ashburton,New Zealand,December,12,61.35,16.5,2.65,73.94,47.49
+Timaru,New Zealand,January,1,62.66,15.23,1.16,72.98,60.08
+Timaru,New Zealand,February,2,59.8,13.8,1.64,75.54,58.27
+Timaru,New Zealand,March,3,55.22,14.48,0.65,73.8,62.11
+Timaru,New Zealand,April,4,51.63,12.39,1.07,80.61,57.33
+Timaru,New Zealand,May,5,43.33,11.57,0.77,81.65,60.76
+Timaru,New Zealand,June,6,42.8,9.05,1.66,88.66,77.17
+Timaru,New Zealand,July,7,42.05,9.04,2.36,83.95,69.96
+Timaru,New Zealand,August,8,43.43,11.3,1.15,78.97,58.07
+Timaru,New Zealand,September,9,48.47,14.64,1.31,74.33,52.21
+Timaru,New Zealand,October,10,51.7,13.74,5.12,79.76,67.01
+Timaru,New Zealand,November,11,54.94,14.44,0.72,76.38,64.45
+Timaru,New Zealand,December,12,60.18,14.96,1.73,75.24,64.6
+Blenheim,New Zealand,January,1,64.82,23.35,0.9,74.82,42.68
+Blenheim,New Zealand,February,2,63.46,25.34,0.5,73.56,46.76
+Blenheim,New Zealand,March,3,59.85,24.21,1.72,71.54,47.06
+Blenheim,New Zealand,April,4,57.57,20.75,3.34,77.52,47.21
+Blenheim,New Zealand,May,5,51.98,20.45,2.16,76.48,52.65
+Blenheim,New Zealand,June,6,51.72,18.87,3.79,80.62,56.59
+Blenheim,New Zealand,July,7,50.16,18.33,2.62,80.56,59.73
+Blenheim,New Zealand,August,8,50.92,22.48,3.14,78.1,58.25
+Blenheim,New Zealand,September,9,53.17,24.24,3.72,73.19,42.96
+Blenheim,New Zealand,October,10,55.59,22.22,4.56,77.43,56.33
+Blenheim,New Zealand,November,11,58.64,23.83,1.31,74.68,60.01
+Blenheim,New Zealand,December,12,62.79,25.88,1.76,77.43,64.79
+Paraparaumu,New Zealand,January,1,66.82,18.7,1.99,66.89,42.7
+Paraparaumu,New Zealand,February,2,65.38,22.68,1.24,69.63,46.82
+Paraparaumu,New Zealand,March,3,61.38,22.96,1.71,66.88,47.05
+Paraparaumu,New Zealand,April,4,59.65,21.48,2.59,75.84,47.3
+Paraparaumu,New Zealand,May,5,53.72,22.62,1.91,72.6,52.7
+Paraparaumu,New Zealand,June,6,53.51,21.3,2.67,75.28,56.63
+Paraparaumu,New Zealand,July,7,51.26,20.47,2.78,77.57,59.79
+Paraparaumu,New Zealand,August,8,52.05,20.19,6.51,76.85,58.51
+Paraparaumu,New Zealand,September,9,53.49,18.16,6.85,77.71,43.05
+Paraparaumu,New Zealand,October,10,56.58,18.21,4.27,74.71,56.36
+Paraparaumu,New Zealand,November,11,60.25,25.24,4.27,71.66,59.85
+Paraparaumu,New Zealand,December,12,64.23,22.89,2.9,74.72,64.79

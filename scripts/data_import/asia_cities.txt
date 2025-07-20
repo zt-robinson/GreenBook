@@ -1,0 +1,95 @@
+Hiroshima,Japan
+Yono,Japan
+Sendai,Japan
+Kitakyushu,Japan
+Chiba,Japan
+Sakai,Japan
+Shizuoka,Japan
+Kumamoto,Japan
+Okayama,Japan
+Hamamatsu,Japan
+Hachioji,Japan
+Honchō,Japan
+Kagoshima,Japan
+Niigata,Japan
+Himeji,Japan
+Matsudo,Japan
+Nishinomiya-hama,Japan
+Kawaguchi,Japan
+Kanazawa,Japan
+Utsunomiya,Japan
+Ōita,Japan
+Matsuyama,Japan
+Amagasaki,Japan
+Kurashiki,Japan
+Yokosuka,Japan
+Bucheon,South Korea
+Jeonju,South Korea
+Ansan,South Korea
+Cheongju,South Korea
+Anyang,South Korea
+Changwon,South Korea
+Pohang,South Korea
+Uijeongbu,South Korea
+Hwaseong,South Korea
+Masan,South Korea
+Jeju City,South Korea
+Cheonan,South Korea
+Gwangmyeong,South Korea
+Gimhae,South Korea
+Jinju,South Korea
+Yeosu,South Korea
+Gumi,South Korea
+Iksan,South Korea
+Mokpo,South Korea
+Gunsan,South Korea
+Wonju,South Korea
+Suncheon,South Korea
+Sejong,South Korea
+Chuncheon,South Korea
+Icheon,South Korea
+Geelong,Australia
+Hobart,Australia
+Townsville,Australia
+Cairns,Australia
+Toowoomba,Australia
+Darwin,Australia
+Rockingham,Australia
+Launceston,Australia
+Bendigo,Australia
+Ballarat,Australia
+Mandurah,Australia
+Mackay,Australia
+Bundaberg,Australia
+Bunbury,Australia
+Maitland,Australia
+Armadale,Australia
+Rockhampton,Australia
+Hervey Bay,Australia
+Reservoir,Australia
+Tamworth,Australia
+Wagga Wagga,Australia
+Albury,Australia
+Berwick,Australia
+Port Macquarie,Australia
+Queanbeyan,Australia
+Hamilton,New Zealand
+Tauranga,New Zealand
+Dunedin,New Zealand
+Lower Hutt,New Zealand
+Palmerston North,New Zealand
+Rotorua,New Zealand
+Hastings,New Zealand
+Nelson,New Zealand
+Napier,New Zealand
+Invercargill,New Zealand
+Upper Hutt,New Zealand
+Whangārei,New Zealand
+Gisborne,New Zealand
+New Plymouth,New Zealand
+Porirua,New Zealand
+Whanganui,New Zealand
+Ashburton,New Zealand
+Timaru,New Zealand
+Blenheim,New Zealand
+Paraparaumu,New Zealand
