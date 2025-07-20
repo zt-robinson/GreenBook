@@ -128,6 +128,61 @@ GEO_TERMS_GBI = [
     'Kingsdown', 'Meadowbrook', 'Stonehill', 'Fernvale', 'Langford', 'Ayrfield'
 ]
 
+# Fictional geographic terms for Japan-style names
+GEO_TERMS_JAPAN = [
+    'Matsuyama', 'Hakone', 'Karuizawa', 'Nikko', 'Kusatsu',
+    'Beppu', 'Atami', 'Izu', 'Shirakawa', 'Takayama',
+    'Yufuin', 'Gero', 'Kinosaki', 'Arima', 'Dogo',
+    'Kusatsu', 'Shibu', 'Minakami', 'Yumoto', 'Kinugawa',
+    'Nasu', 'Shiobara', 'Okukinu', 'Oku-Nikko', 'Chuzenji',
+    'Yumoto', 'Kawaguchi', 'Sai', 'Shobu', 'Tatebayashi',
+    'Kumagaya', 'Gyoda', 'Fukaya', 'Honjo', 'Kazo',
+    'Kumagaya', 'Gyoda', 'Fukaya', 'Honjo', 'Kazo',
+    'Kawagoe', 'Iruma', 'Tokorozawa', 'Sayama', 'Hanno',
+    'Chichibu', 'Nagatoro', 'Yokoze', 'Ogose', 'Ranzan',
+    'Higashimatsuyama', 'Sakado', 'Tsukuba', 'Tsuchiura', 'Ushiku',
+    'Toride', 'Ryugasaki', 'Moriya', 'Inashiki', 'Ami'
+]
+
+# Fictional geographic terms for South Korea-style names
+GEO_TERMS_KOREA = [
+    'Jeju', 'Busan', 'Gangwon', 'Gyeongju', 'Andong',
+    'Sokcho', 'Tongyeong', 'Yeosu', 'Mokpo', 'Gangneung',
+    'Chuncheon', 'Wonju', 'Chungju', 'Jeonju', 'Gwangju',
+    'Daejeon', 'Ulsan', 'Incheon', 'Suwon', 'Seongnam',
+    'Bucheon', 'Ansan', 'Anyang', 'Pohang', 'Changwon',
+    'Gimhae', 'Jinju', 'Suncheon', 'Jeju City', 'Seogwipo',
+    'Gangneung', 'Donghae', 'Samcheok', 'Taebaek', 'Chungju',
+    'Jecheon', 'Boeun', 'Okcheon', 'Yeongdong', 'Jincheon',
+    'Cheongju', 'Eumseong', 'Jeungpyeong', 'Goesan', 'Cheongju',
+    'Boeun', 'Okcheon', 'Yeongdong', 'Jincheon', 'Eumseong'
+]
+
+# Fictional geographic terms for Australia-style names
+GEO_TERMS_AUSTRALIA = [
+    'Bondi', 'Surfers', 'Byron', 'Noosa', 'Port Douglas',
+    'Cairns', 'Townsville', 'Mackay', 'Rockhampton', 'Bundaberg',
+    'Hervey Bay', 'Sunshine Coast', 'Gold Coast', 'Tweed Heads', 'Ballina',
+    'Coffs Harbour', 'Port Macquarie', 'Newcastle', 'Central Coast', 'Wollongong',
+    'Kiama', 'Nowra', 'Batemans Bay', 'Narooma', 'Eden',
+    'Lakes Entrance', 'Paynesville', 'Metung', 'Bairnsdale', 'Orbost',
+    'Mallacoota', 'Merimbula', 'Tathra', 'Bermagui', 'Ulladulla',
+    'Milton', 'Ulladulla', 'Batemans Bay', 'Moruya', 'Narooma',
+    'Tilba', 'Bermagui', 'Tathra', 'Merimbula', 'Pambula'
+]
+
+# Fictional geographic terms for New Zealand-style names
+GEO_TERMS_NEW_ZEALAND = [
+    'Rotorua', 'Taupo', 'Queenstown', 'Wanaka', 'Te Anau',
+    'Milford', 'Kaikoura', 'Nelson', 'Marlborough', 'Hawkes Bay',
+    'Napier', 'Hastings', 'Gisborne', 'Tauranga', 'Whakatane',
+    'Rotorua', 'Taupo', 'Turangi', 'Tokoroa', 'Putaruru',
+    'Matamata', 'Cambridge', 'Hamilton', 'Raglan', 'Te Awamutu',
+    'Otorohanga', 'Te Kuiti', 'Taumarunui', 'National Park', 'Ohakune',
+    'Raetihi', 'Waiouru', 'Taihape', 'Hunterville', 'Marton',
+    'Bulls', 'Feilding', 'Palmerston North', 'Levin', 'Otaki'
+]
+
 GEOGRAPHIC_TERMS = [
     'Vale', 'Valley', 'Park', 'Woods', 'Fields', 'Trace', 'Heath', 'Prairie', 'Glen', 
     'Meadows', 'Marsh', 'Ridge', 'Hollow', 'Creek', 'Hills', 'Willows', 'Hall', 'Manor', 
@@ -172,6 +227,100 @@ def load_data():
         print(f"❌ Data file not found: {e}")
         return None
 
+def get_existing_course_names():
+    """Get all existing course names from the database to avoid duplicates."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute('SELECT name FROM courses')
+        existing_names = {row[0] for row in cursor.fetchall()}
+        conn.close()
+        return existing_names
+    except Exception as e:
+        print(f"⚠️  Warning: Could not load existing course names: {e}")
+        return set()
+
+def get_existing_courses_with_cities():
+    """Get existing courses with their city information for city name conflict checking."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute('SELECT name, city FROM courses')
+        existing_courses = [{'name': row[0], 'city': row[1]} for row in cursor.fetchall()]
+        conn.close()
+        return existing_courses
+    except Exception as e:
+        print(f"⚠️  Warning: Could not load existing courses with cities: {e}")
+        return []
+
+def is_similar_name(new_name, existing_names, similarity_threshold=0.8):
+    """Check if a new name is too similar to existing names."""
+    from difflib import SequenceMatcher
+    
+    # Normalize names for comparison (lowercase, remove common words)
+    def normalize_name(name):
+        name = name.lower()
+        # Remove common words that don't affect uniqueness
+        common_words = ['golf', 'club', 'country', 'national', 'the']
+        for word in common_words:
+            name = name.replace(word, '').strip()
+        return name
+    
+    normalized_new = normalize_name(new_name)
+    
+    for existing_name in existing_names:
+        normalized_existing = normalize_name(existing_name)
+        
+        # Check exact match after normalization
+        if normalized_new == normalized_existing:
+            return True
+        
+        # Check similarity using SequenceMatcher
+        similarity = SequenceMatcher(None, normalized_new, normalized_existing).ratio()
+        if similarity > similarity_threshold:
+            return True
+        
+        # Check if one name is contained within the other
+        if normalized_new in normalized_existing or normalized_existing in normalized_new:
+            if len(normalized_new) > 5 and len(normalized_existing) > 5:  # Avoid false positives with short names
+                return True
+    
+    return False
+
+def check_city_name_conflicts(new_name, new_city, existing_courses):
+    """Check if adding a course with city name conflicts with existing courses in same city."""
+    # Extract city name from new course name (before any suffix)
+    def extract_city_from_name(name):
+        # Remove common suffixes
+        suffixes = [' golf club', ' country club', ' hunt club', ' golf & country club', 
+                   ' cricket club', ' athletic club', ' club', ' national golf club',
+                   ' golf & hunt club', ' golf & tennis club', ' polo club', ' hunt & country club']
+        
+        name_lower = name.lower()
+        for suffix in suffixes:
+            if name_lower.endswith(suffix):
+                name_lower = name_lower[:-len(suffix)]
+                break
+        
+        return name_lower.strip()
+    
+    new_city_in_name = extract_city_from_name(new_name)
+    
+    # Check if the new name starts with the city name
+    if new_city_in_name.lower() == new_city.lower():
+        # Look for existing courses in the same city
+        for existing_course in existing_courses:
+            existing_city = existing_course.get('city', '')
+            if existing_city.lower() == new_city.lower():
+                existing_name = existing_course.get('name', '')
+                existing_city_in_name = extract_city_from_name(existing_name)
+                
+                # If existing course also has city name, this is a conflict
+                if existing_city_in_name.lower() == existing_city.lower():
+                    return True
+    
+    return False
+
 def select_weighted_club_suffix():
     """Select a club suffix using weighted probabilities for US courses"""
     rand = random.random()
@@ -190,6 +339,9 @@ def generate_founding_year(naming_type, state_code, prestige, country='United St
     
     # Determine if this is a GB&I course
     is_gbi = country in ['England', 'Scotland', 'Wales', 'Ireland']
+    
+    # Determine if this is a JP/KR/AU/NZ course
+    is_asia_pacific = country in ['Japan', 'South Korea', 'Australia', 'New Zealand']
     
     if is_gbi:
         # GB&I golf has much older history - different era ranges
@@ -239,6 +391,44 @@ def generate_founding_year(naming_type, state_code, prestige, country='United St
         }
         
         region = country  # Use country as region for GB&I
+    elif is_asia_pacific:
+        # Asia-Pacific golf history - different era ranges
+        ERA_RANGES = {
+            'early_development': (1900, 1950),    # Early golf development
+            'post_war_growth': (1950, 1980),      # Post-war growth
+            'modern_boom': (1980, 2000),          # Modern golf boom
+            'contemporary': (2000, 2020)          # Contemporary era
+        }
+        
+        # Asia-Pacific regional era preferences
+        REGIONAL_ERAS = {
+            'Japan': {
+                'early_development': 0.3,     # Japan: early development
+                'post_war_growth': 0.4,       # Post-war boom was huge in Japan
+                'modern_boom': 0.2,
+                'contemporary': 0.1
+            },
+            'South Korea': {
+                'early_development': 0.2,     # Korea: golf came later
+                'post_war_growth': 0.3,       # Post-war growth
+                'modern_boom': 0.4,           # Modern boom was massive
+                'contemporary': 0.1
+            },
+            'Australia': {
+                'early_development': 0.4,     # Australia: early British influence
+                'post_war_growth': 0.3,       # Post-war development
+                'modern_boom': 0.2,           # Modern tourism boom
+                'contemporary': 0.1
+            },
+            'New Zealand': {
+                'early_development': 0.4,     # NZ: early British influence
+                'post_war_growth': 0.3,       # Post-war development
+                'modern_boom': 0.2,           # Modern tourism
+                'contemporary': 0.1
+            }
+        }
+        
+        region = country  # Use country as region for Asia-Pacific
     else:
         # US golf history - original ranges
         ERA_RANGES = {
@@ -265,7 +455,7 @@ def generate_founding_year(naming_type, state_code, prestige, country='United St
             region = 'other'
     
     # US regional era preferences (only used for US courses)
-    if not is_gbi:
+    if not is_gbi and not is_asia_pacific:
         REGIONAL_ERAS = {
             'northeast': {
                 'early_boom': 0.6,      # Northeast had early golf boom
@@ -394,6 +584,46 @@ def generate_founding_year(naming_type, state_code, prestige, country='United St
                 'interwar': 0.1,
                 'post_war': 0.03,
                 'modern': 0.02
+            }
+        }
+    elif is_asia_pacific:
+        # Asia-Pacific naming type era preferences
+        NAMING_TYPE_ERAS = {
+            'geo': {
+                'early_development': 0.3,      # Geographic names are mixed
+                'post_war_growth': 0.4,        # Post-war growth
+                'modern_boom': 0.2,
+                'contemporary': 0.1
+            },
+            'country': {
+                'early_development': 0.2,      # Country clubs are mixed
+                'post_war_growth': 0.5,        # Post-war boom for country clubs
+                'modern_boom': 0.2,
+                'contemporary': 0.1
+            },
+            'links': {
+                'early_development': 0.4,      # Links courses are older
+                'post_war_growth': 0.4,        # Post-war growth for links
+                'modern_boom': 0.1,
+                'contemporary': 0.1
+            },
+            'park': {
+                'early_development': 0.2,      # Park clubs are mixed
+                'post_war_growth': 0.4,        # Post-war growth
+                'modern_boom': 0.3,
+                'contemporary': 0.1
+            },
+            'club': {
+                'early_development': 0.2,      # Club suffix is mixed
+                'post_war_growth': 0.4,        # Post-war growth
+                'modern_boom': 0.3,
+                'contemporary': 0.1
+            },
+            'standard': {
+                'early_development': 0.2,      # Standard clubs are mixed
+                'post_war_growth': 0.4,        # Post-war growth
+                'modern_boom': 0.3,
+                'contemporary': 0.1
             }
         }
     else:
@@ -561,8 +791,8 @@ def generate_course_name_gb(city_name, country='England'):
     """Generate a British-style club name for England, Scotland, Wales with region-specific terms."""
     rand = random.random()
     
-    if rand < 0.05:
-        # Royal prefix - use fictional name
+    if rand < 0.25:
+        # Royal prefix - use fictional name (increased from 5% to 25%)
         if country == 'Scotland':
             geo = random.choice(GEO_TERMS_SCOTLAND)
         elif country == 'Wales':
@@ -570,7 +800,7 @@ def generate_course_name_gb(city_name, country='England'):
         else:  # England
             geo = random.choice(GEO_TERMS_ENGLAND)
         return f"Royal {geo} Golf Club", 'royal'
-    elif rand < 0.35:
+    elif rand < 0.55:
         # Geographic names (most common) - use region-specific terms
         if country == 'Scotland':
             geo = random.choice(GEO_TERMS_SCOTLAND)
@@ -579,7 +809,7 @@ def generate_course_name_gb(city_name, country='England'):
         else:  # England
             geo = random.choice(GEO_TERMS_ENGLAND)
         return f"{geo} Golf Club", 'geo'
-    elif rand < 0.55:
+    elif rand < 0.70:
         # Links courses - use fictional name
         if country == 'Scotland':
             geo = random.choice(GEO_TERMS_SCOTLAND)
@@ -588,7 +818,7 @@ def generate_course_name_gb(city_name, country='England'):
         else:  # England
             geo = random.choice(GEO_TERMS_ENGLAND)
         return f"{geo} Links", 'links'
-    elif rand < 0.75:
+    elif rand < 0.85:
         # Additional authentic patterns - use fictional names
         if country == 'Scotland':
             geo = random.choice(GEO_TERMS_SCOTLAND)
@@ -614,6 +844,122 @@ def generate_course_name_gb(city_name, country='England'):
         else:  # England
             geo = random.choice(GEO_TERMS_ENGLAND)
         return f"{geo} Golf Club", 'standard'
+
+def generate_course_name_japan(city_name):
+    """Generate authentic Japanese golf club names with diverse patterns."""
+    rand = random.random()
+    
+    if rand < 0.4:
+        # Geographic names (most common) - use fictional Japanese terms
+        geo = random.choice(GEO_TERMS_JAPAN)
+        return f"{geo} Golf Club", 'geo'
+    elif rand < 0.6:
+        # Country Club style (very common in Japan)
+        geo = random.choice(GEO_TERMS_JAPAN)
+        return f"{geo} Country Club", 'country'
+    elif rand < 0.75:
+        # Golf & Country Club (common pattern)
+        geo = random.choice(GEO_TERMS_JAPAN)
+        return f"{geo} Golf & Country Club", 'country'
+    elif rand < 0.85:
+        # Park style - use fictional name
+        geo = random.choice(GEO_TERMS_JAPAN)
+        return f"{geo} Park Golf Club", 'park'
+    elif rand < 0.95:
+        # Links style (less common but authentic)
+        geo = random.choice(GEO_TERMS_JAPAN)
+        return f"{geo} Links", 'links'
+    else:
+        # Club suffix (less common but authentic)
+        geo = random.choice(GEO_TERMS_JAPAN)
+        return f"{geo} Club", 'club'
+
+def generate_course_name_korea(city_name):
+    """Generate authentic South Korean golf club names with diverse patterns."""
+    rand = random.random()
+    
+    if rand < 0.4:
+        # Geographic names (most common) - use fictional Korean terms
+        geo = random.choice(GEO_TERMS_KOREA)
+        return f"{geo} Golf Club", 'geo'
+    elif rand < 0.6:
+        # Country Club style (very common in Korea)
+        geo = random.choice(GEO_TERMS_KOREA)
+        return f"{geo} Country Club", 'country'
+    elif rand < 0.75:
+        # Golf & Country Club (common pattern)
+        geo = random.choice(GEO_TERMS_KOREA)
+        return f"{geo} Golf & Country Club", 'country'
+    elif rand < 0.85:
+        # Park style - use fictional name
+        geo = random.choice(GEO_TERMS_KOREA)
+        return f"{geo} Park Golf Club", 'park'
+    elif rand < 0.95:
+        # Links style (less common but authentic)
+        geo = random.choice(GEO_TERMS_KOREA)
+        return f"{geo} Links", 'links'
+    else:
+        # Club suffix (less common but authentic)
+        geo = random.choice(GEO_TERMS_KOREA)
+        return f"{geo} Club", 'club'
+
+def generate_course_name_australia(city_name):
+    """Generate authentic Australian golf club names with diverse patterns."""
+    rand = random.random()
+    
+    if rand < 0.3:
+        # Geographic names (common) - use fictional Australian terms
+        geo = random.choice(GEO_TERMS_AUSTRALIA)
+        return f"{geo} Golf Club", 'geo'
+    elif rand < 0.5:
+        # Country Club style (common in Australia)
+        geo = random.choice(GEO_TERMS_AUSTRALIA)
+        return f"{geo} Country Club", 'country'
+    elif rand < 0.65:
+        # Links courses (very common in Australia)
+        geo = random.choice(GEO_TERMS_AUSTRALIA)
+        return f"{geo} Links", 'links'
+    elif rand < 0.8:
+        # Golf & Country Club (common pattern)
+        geo = random.choice(GEO_TERMS_AUSTRALIA)
+        return f"{geo} Golf & Country Club", 'country'
+    elif rand < 0.9:
+        # Park style - use fictional name
+        geo = random.choice(GEO_TERMS_AUSTRALIA)
+        return f"{geo} Park Golf Club", 'park'
+    else:
+        # Club suffix (less common but authentic)
+        geo = random.choice(GEO_TERMS_AUSTRALIA)
+        return f"{geo} Club", 'club'
+
+def generate_course_name_new_zealand(city_name):
+    """Generate authentic New Zealand golf club names with diverse patterns."""
+    rand = random.random()
+    
+    if rand < 0.3:
+        # Geographic names (common) - use fictional NZ terms
+        geo = random.choice(GEO_TERMS_NEW_ZEALAND)
+        return f"{geo} Golf Club", 'geo'
+    elif rand < 0.5:
+        # Country Club style (common in NZ)
+        geo = random.choice(GEO_TERMS_NEW_ZEALAND)
+        return f"{geo} Country Club", 'country'
+    elif rand < 0.65:
+        # Links courses (very common in NZ)
+        geo = random.choice(GEO_TERMS_NEW_ZEALAND)
+        return f"{geo} Links", 'links'
+    elif rand < 0.8:
+        # Golf & Country Club (common pattern)
+        geo = random.choice(GEO_TERMS_NEW_ZEALAND)
+        return f"{geo} Golf & Country Club", 'country'
+    elif rand < 0.9:
+        # Park style - use fictional name
+        geo = random.choice(GEO_TERMS_NEW_ZEALAND)
+        return f"{geo} Park Golf Club", 'park'
+    else:
+        # Club suffix (less common but authentic)
+        geo = random.choice(GEO_TERMS_NEW_ZEALAND)
+        return f"{geo} Club", 'club'
 
 def generate_course_name_us(city_name, state_code, naming_type='random'):
     """Original US naming logic."""
@@ -655,6 +1001,14 @@ def generate_course_name(city_name, state_or_region, naming_type='random', count
         return generate_course_name_ireland(city_name)
     elif country in ['England', 'Scotland', 'Wales']:
         return generate_course_name_gb(city_name, country)
+    elif country == 'Japan':
+        return generate_course_name_japan(city_name)
+    elif country == 'South Korea':
+        return generate_course_name_korea(city_name)
+    elif country == 'Australia':
+        return generate_course_name_australia(city_name)
+    elif country == 'New Zealand':
+        return generate_course_name_new_zealand(city_name)
     else:
         return generate_course_name_us(city_name, state_or_region, naming_type)
     
@@ -1019,6 +1373,9 @@ def generate_course_factors(naming_type, country='United States'):
     # Determine if this is a GB&I course
     is_gbi = country in ['England', 'Scotland', 'Wales', 'Ireland']
     
+    # Determine if this is a JP/KR/AU/NZ course
+    is_asia_pacific = country in ['Japan', 'South Korea', 'Australia', 'New Zealand']
+    
     if is_gbi:
         # GB&I Links-style characteristics
         factors = {
@@ -1048,6 +1405,42 @@ def generate_course_factors(naming_type, country='United States'):
             # Welsh links: similar to English
             factors['green_speed'] = min(1.0, factors['green_speed'] * 1.1)
             factors['rough_length'] *= 0.95
+    elif is_asia_pacific:
+        # Asia-Pacific characteristics (mix of styles)
+        factors = {
+            'width_index': np.random.beta(3, 3),  # Medium fairways
+            'hazard_density': np.random.beta(3, 3),  # Moderate hazards
+            'green_speed': np.random.beta(3, 2),  # Medium-fast greens
+            'turf_firmness': np.random.beta(3, 3),  # Medium firmness
+            'rough_length': np.random.beta(2, 3),  # Shorter rough
+            'terrain_difficulty': np.random.beta(3, 3)  # Medium terrain
+        }
+        
+        # Asia-Pacific specific adjustments based on country
+        if country == 'Japan':
+            # Japanese courses: well-manicured, narrow fairways, fast greens
+            factors['width_index'] *= 0.8  # Narrower fairways
+            factors['green_speed'] = min(1.0, factors['green_speed'] * 1.3)  # Fast greens
+            factors['hazard_density'] = min(1.0, factors['hazard_density'] * 1.2)  # Strategic hazards
+            factors['terrain_difficulty'] = min(1.0, factors['terrain_difficulty'] * 1.1)  # Hilly terrain
+        elif country == 'South Korea':
+            # Korean courses: similar to Japan but slightly more forgiving
+            factors['width_index'] *= 0.85  # Narrow fairways
+            factors['green_speed'] = min(1.0, factors['green_speed'] * 1.2)  # Fast greens
+            factors['hazard_density'] = min(1.0, factors['hazard_density'] * 1.1)  # Strategic hazards
+            factors['terrain_difficulty'] = min(1.0, factors['terrain_difficulty'] * 1.2)  # Mountainous
+        elif country == 'Australia':
+            # Australian courses: links-style, wider fairways, natural hazards
+            factors['width_index'] = min(1.0, factors['width_index'] * 1.2)  # Wider fairways
+            factors['green_speed'] *= 0.9  # Slower greens (links-style)
+            factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * 1.1)  # Firm turf
+            factors['rough_length'] = min(1.0, factors['rough_length'] * 1.1)  # Natural rough
+        elif country == 'New Zealand':
+            # NZ courses: similar to Australia but more varied terrain
+            factors['width_index'] = min(1.0, factors['width_index'] * 1.1)  # Wider fairways
+            factors['green_speed'] *= 0.9  # Slower greens (links-style)
+            factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * 1.1)  # Firm turf
+            factors['terrain_difficulty'] = min(1.0, factors['terrain_difficulty'] * 1.2)  # Very varied terrain
     else:
         # US Parkland-style characteristics
         factors = {
@@ -1071,7 +1464,7 @@ def generate_course_factors(naming_type, country='United States'):
     else:
         factors['prestige'] = np.random.beta(2, 3)  # Lower prestige for location-based
 
-    # Prestige correlations (different for GB&I vs US)
+    # Prestige correlations (different for GB&I vs US vs Asia-Pacific)
     prestige_factor = factors['prestige']
     
     if is_gbi:
@@ -1081,6 +1474,12 @@ def generate_course_factors(naming_type, country='United States'):
         factors['hazard_density'] = min(1.0, factors['hazard_density'] * (1 + prestige_factor * 0.1))
         # GB&I greens stay slower even with prestige
         factors['green_speed'] = min(0.7, factors['green_speed'] * (1 + prestige_factor * 0.1))
+    elif is_asia_pacific:
+        # Asia-Pacific: Higher prestige = faster greens, better conditioning, more strategic
+        factors['green_speed'] = min(1.0, factors['green_speed'] * (1 + prestige_factor * 0.2))
+        factors['turf_firmness'] = min(1.0, factors['turf_firmness'] * (1 + prestige_factor * 0.15))
+        factors['hazard_density'] = min(1.0, factors['hazard_density'] * (1 + prestige_factor * 0.1))
+        factors['rough_length'] = min(1.0, factors['rough_length'] * (1 + prestige_factor * 0.1))
     else:
         # US: Higher prestige = faster greens, firmer turf, longer rough
         factors['green_speed'] = min(1.0, factors['green_speed'] * (1 + prestige_factor * 0.2))
@@ -1117,6 +1516,9 @@ def calculate_course_rating_and_slope(course_data):
     # Determine if this is a GB&I course based on location
     location = course_data.get('location', '')
     is_gbi = any(country in location for country in ['England', 'Scotland', 'Wales', 'Ireland'])
+    
+    # Determine if this is an Asia-Pacific course based on location
+    is_asia_pacific = any(country in location for country in ['Japan', 'South Korea', 'Australia', 'New Zealand'])
     
     if is_gbi:
         # GB&I Links-style rating calculation
@@ -1177,6 +1579,66 @@ def calculate_course_rating_and_slope(course_data):
         
         # GB&I courses: 130-145 range (more varied than US)
         slope_rating = max(130, min(145, slope_rating))
+        
+    elif is_asia_pacific:
+        # Asia-Pacific rating calculation (mix of styles)
+        # --- Course Rating (Scratch Golfer) ---
+        # Base: start with par
+        course_rating = par
+        
+        # Yardage adjustment: 0.14 strokes per 100 yards over 6500 (similar to US)
+        yardage_adj = max(0, (yardage - 6500) / 100) * 0.14
+        
+        # Strategic/Penal index: up to +3.5 strokes for most penal
+        spi_adj = spi * 3.5
+        
+        # Asia-Pacific specific factors: balanced approach
+        terrain_adj = terrain_difficulty * 0.6  # Terrain is important
+        rough_adj = rough_length * 0.5  # Rough is moderate
+        hazard_adj = hazard_density * 0.6  # Hazards are important
+        green_adj = green_speed * 0.4  # Greens are medium-fast
+        
+        # Prestige: higher prestige = slightly lower rating (better conditioning)
+        prestige_adj = (0.5 - prestige) * 0.2
+        
+        course_rating += yardage_adj + spi_adj + terrain_adj + rough_adj + hazard_adj + green_adj + prestige_adj
+        
+        # Asia-Pacific courses: 72-76 range (similar to GB&I)
+        course_rating = max(72.0, min(76.0, course_rating))
+        
+        # --- Bogey Rating (Bogey Golfer) ---
+        # Start with par + 21 (moderate difficulty for bogey golfers)
+        bogey_base = par + 21
+        
+        # Yardage: 0.28 strokes per 100 yards over 6000
+        yardage_adj_bogey = max(0, (yardage - 6000) / 100) * 0.28
+        
+        # Strategic/Penal index: up to +7 strokes for most penal
+        spi_adj_bogey = spi * 7.0
+        
+        # Other factors: balanced approach
+        terrain_adj_bogey = terrain_difficulty * 1.2
+        rough_adj_bogey = rough_length * 1.0
+        hazard_adj_bogey = hazard_density * 1.1
+        green_adj_bogey = green_speed * 0.8
+        
+        # Prestige: higher prestige = slightly lower rating
+        prestige_adj_bogey = (0.5 - prestige) * 0.3
+        
+        bogey_rating = bogey_base + yardage_adj_bogey + spi_adj_bogey + terrain_adj_bogey + rough_adj_bogey + hazard_adj_bogey + green_adj_bogey + prestige_adj_bogey
+        
+        # Ensure bogey rating is at least 19 strokes higher than course rating
+        bogey_rating = max(course_rating + 19, bogey_rating)
+        
+        # Asia-Pacific courses: bogey rating should be 92-98 range
+        bogey_rating = max(92.0, min(98.0, bogey_rating))
+        
+        # --- Slope Rating ---
+        # USGA formula: Slope Rating = (Bogey Rating - Course Rating) × 5.381
+        slope_rating = int(round((bogey_rating - course_rating) * 5.381))
+        
+        # Asia-Pacific courses: 135-145 range (similar to GB&I)
+        slope_rating = max(135, min(145, slope_rating))
         
     else:
         # US Parkland-style rating calculation (original logic)
@@ -1247,6 +1709,10 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     if cities_df is None:
         return None
     
+    # Load existing course names and courses with cities to avoid duplicates
+    existing_names = get_existing_course_names()
+    existing_courses_with_cities = get_existing_courses_with_cities()
+    
     # Select city if not provided
     if city_name is None or state_code is None:
         city_row = cities_df.sample(n=1).iloc[0]
@@ -1265,9 +1731,52 @@ def generate_complete_course(city_name=None, state_code=None, naming_type='rando
     
     elevation_ft = city_data.iloc[0]['elevation_ft']
     
-    # Generate course name
+    # Generate course name with duplicate checking
     country = city_data.iloc[0]['country']
-    course_name, naming_type = generate_course_name(city_name, state_code, naming_type, country)
+    max_attempts = 50  # Limit attempts to avoid infinite loops
+    
+    for attempt in range(max_attempts):
+        course_name, naming_type = generate_course_name(city_name, state_code, naming_type, country)
+        
+        # Check if name already exists, is too similar, or has city name conflicts
+        name_exists = course_name in existing_names
+        name_similar = is_similar_name(course_name, existing_names)
+        city_conflict = check_city_name_conflicts(course_name, city_name, existing_courses_with_cities)
+        
+        if not name_exists and not name_similar and not city_conflict:
+            break
+        
+        # If we're on the last attempt, try a different city
+        if attempt == max_attempts - 1:
+            print(f"⚠️  Could not generate unique name for {city_name}, trying different city...")
+            # Try a few different cities
+            for _ in range(5):
+                city_row = cities_df.sample(n=1).iloc[0]
+                city_name = city_row['city']
+                state_code = city_row['state']
+                
+                city_data = cities_df[
+                    (cities_df['city'] == city_name) &
+                    ((cities_df['state'] == state_code) | (cities_df['state'].isna()))
+                ]
+                
+                if not city_data.empty:
+                    elevation_ft = city_data.iloc[0]['elevation_ft']
+                    country = city_data.iloc[0]['country']
+                    course_name, naming_type = generate_course_name(city_name, state_code, naming_type, country)
+                    
+                    name_exists = course_name in existing_names
+                    name_similar = is_similar_name(course_name, existing_names)
+                    city_conflict = check_city_name_conflicts(course_name, city_name, existing_courses_with_cities)
+                    
+                    if not name_exists and not name_similar and not city_conflict:
+                        break
+            else:
+                print(f"❌ Failed to generate unique course name after multiple attempts")
+                return None
+        else:
+            # Try a different naming type for variety
+            naming_type = random.choice(['random', 'family', 'pcc', 'location'])
         
     # Generate holes
     holes = generate_holes()
