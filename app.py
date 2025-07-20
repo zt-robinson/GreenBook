@@ -68,12 +68,15 @@ def country_to_flag(country):
 def country_to_flag_iso(country):
     mapping = {
         'USA': 'us',
-        'England': 'gb',
+        '(US)': 'us',  # Handle US courses with (US) format
+        'England': 'gb-eng',  # Use English flag instead of UK flag
         'Scotland': 'gb-sct',  # Use 'gb-sct' if you have the SVG, else fallback to 'gb'
+        'Wales': 'gb-wls',  # Use Welsh flag
         'Ireland': 'ie',
         'Australia': 'au',
         'Canada': 'ca',
         'Japan': 'jp',
+        'South Korea': 'kr',
         'Germany': 'de',
         'Sweden': 'se',
         'New Zealand': 'nz',
@@ -237,7 +240,7 @@ def courses():
         else:
             course['display_terrain'] = 'Hilly'
     conn.close()
-    return render_template('courses.html', courses=courses)
+    return render_template('courses.html', courses=courses, country_to_flag_iso=country_to_flag_iso)
 
 @app.route('/schedule')
 def schedule():
