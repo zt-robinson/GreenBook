@@ -9,15 +9,16 @@ import sys
 from datetime import datetime, timedelta
 import random
 
-# Add the parent directory to the path so we can import from core
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+# Add the project root directory to the path so we can import from core
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+sys.path.append(PROJECT_ROOT)
 
 from core.tournament_logic import tournament_logic
 from core.event_types import event_type_manager
 
 def get_last_event_date_and_week(season_number):
     """Get the start date and week number of the last event in the season"""
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    tournaments_db_path = os.path.join(PROJECT_ROOT, 'data', 'golf_tournaments.db')
     
     if not os.path.exists(tournaments_db_path):
         return None, 0
@@ -62,8 +63,8 @@ def get_next_event_date_and_week(season_number):
 
 def get_available_courses_for_season(season_number):
     """Get list of available UK courses for the season (exclude already used)"""
-    courses_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_courses.db')
-    tournaments_db_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'golf_tournaments.db')
+    courses_db_path = os.path.join(PROJECT_ROOT, 'data', 'golf_courses.db')
+    tournaments_db_path = os.path.join(PROJECT_ROOT, 'data', 'golf_tournaments.db')
     
     if not os.path.exists(courses_db_path):
         print("❌ Courses database not found.")
@@ -72,7 +73,7 @@ def get_available_courses_for_season(season_number):
     conn = sqlite3.connect(courses_db_path)
     cur = conn.cursor()
     # Only UK courses for The Royal Open
-    cur.execute("SELECT id, name, state_country FROM courses WHERE state_country LIKE '%UK%' OR location LIKE '%UK%' ORDER BY name")
+    cur.execute("SELECT id, name, state_country, location FROM courses WHERE state_country LIKE '%UK%' OR location LIKE '%UK%' OR location LIKE '%England%' OR location LIKE '%Scotland%' OR location LIKE '%Wales%' ORDER BY name")
     all_courses = cur.fetchall()
     conn.close()
 
@@ -89,8 +90,13 @@ def select_course(courses):
     print(f"\n📋 Available UK Courses ({len(courses)} total):")
     print("-" * 60)
     
-    for idx, (course_id, course_name, state_country) in enumerate(courses, 1):
-        print(f"{idx:2d}. {course_name} ({state_country}) (ID: {course_id})")
+    for idx, (course_id, course_name, state_country, location) in enumerate(courses, 1):
+        # Extract country from location for UK courses
+        if location and ',' in location:
+            country = location.split(', ')[-1]  # Get the last part after the last comma
+        else:
+            country = state_country or 'Unknown'
+        print(f"{idx:2d}. {course_name} ({country}) (ID: {course_id})")
     
     print("-" * 60)
     
@@ -101,7 +107,12 @@ def select_course(courses):
             
             if 0 <= course_index < len(courses):
                 selected_course = courses[course_index]
-                print(f"\n✅ Selected: {selected_course[1]} ({selected_course[2]}) (ID: {selected_course[0]})")
+                # Extract country from location for UK courses
+                if selected_course[3] and ',' in selected_course[3]:  # location field
+                    country = selected_course[3].split(', ')[-1]
+                else:
+                    country = selected_course[2] or 'Unknown'  # state_country field
+                print(f"\n✅ Selected: {selected_course[1]} ({country}) (ID: {selected_course[0]})")
                 return selected_course
             else:
                 print(f"❌ Please enter a number between 1 and {len(courses)}")
@@ -184,7 +195,7 @@ def main():
     if not selected_course:
         return
     
-    course_id, course_name, state_country = selected_course
+    course_id, course_name, state_country, location = selected_course
     
     # Get the next event date and week
     start_date, week_number = get_next_event_date_and_week(season_number)
@@ -193,7 +204,12 @@ def main():
     
     print(f"\n📝 Creating The Royal Open with parameters:")
     print(f"   Name: The Royal Open")
-    print(f"   Course: {course_name} ({state_country})")
+    # Extract country from location for UK courses
+    if location and ',' in location:
+        country = location.split(', ')[-1]
+    else:
+        country = state_country or 'Unknown'
+    print(f"   Course: {course_name} ({country})")
     print(f"   Date: {start_date}")
     print(f"   Season: {season_number}, Week: {week_number}")
     

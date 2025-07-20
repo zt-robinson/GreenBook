@@ -13,8 +13,8 @@ import logging
 # Setup
 load_dotenv()
 API_KEY = os.getenv("VISUAL_CROSSING_API_KEY")
-INPUT_FILE = "data/gbi_cities_with_elevation.csv"
-OUTPUT_FILE = "data/visual_crossing_gbi_2024.csv"
+INPUT_FILE = "data/asia_cities_with_elevation.csv"
+OUTPUT_FILE = "data/visual_crossing_asia_2024.csv"
 YEAR = 2024
 BASE_URL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline"
 LOG_FILE = "logs/fetch_gbi_weather.log"

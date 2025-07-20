@@ -132,7 +132,7 @@ def get_available_courses_for_season(season_number):
     
     conn = sqlite3.connect(courses_db_path)
     cur = conn.cursor()
-    cur.execute('SELECT id, name FROM courses ORDER BY name')
+    cur.execute('SELECT id, name, state_country, location FROM courses ORDER BY name')
     all_courses = cur.fetchall()
     print(f"[DEBUG] Number of courses found: {len(all_courses)}")
     conn.close()
@@ -164,8 +164,13 @@ def main():
     print(f"📋 Found {len(courses)} available courses")
     print("\n📋 Available Courses ({} total):".format(len(courses)))
     print("-" * 60)
-    for idx, (cid, cname) in enumerate(courses, 1):
-        print(f" {idx}. {cname} (ID: {cid})")
+    for idx, (cid, cname, state_country, location) in enumerate(courses, 1):
+        # Extract country from location for international courses
+        if location and ',' in location:
+            country = location.split(', ')[-1]  # Get the last part after the last comma
+        else:
+            country = state_country or 'Unknown'
+        print(f" {idx}. {cname} ({country}) (ID: {cid})")
     print("-" * 60)
     while True:
         try:
@@ -181,10 +186,15 @@ def main():
             return
     course_id = courses[course_choice - 1][0]
     course_name = courses[course_choice - 1][1]
+    # Extract country for display
+    if courses[course_choice - 1][3] and ',' in courses[course_choice - 1][3]:  # location field
+        country = courses[course_choice - 1][3].split(', ')[-1]
+    else:
+        country = courses[course_choice - 1][2] or 'Unknown'  # state_country field
     
     print(f"\n📝 Creating Continental Championship with parameters:")
     print(f"   Name: The Continental Championship")
-    print(f"   Course: {course_name}")
+    print(f"   Course: {course_name} ({country})")
     print(f"   Season: {season_number}")
     print(f"   Description: Special continental championship event")
     

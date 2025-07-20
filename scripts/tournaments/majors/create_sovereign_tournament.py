@@ -77,7 +77,7 @@ def get_available_courses_for_season(season_number):
     
     conn = sqlite3.connect(courses_db_path)
     cur = conn.cursor()
-    cur.execute('SELECT id, name, state_country FROM courses ORDER BY name')
+    cur.execute('SELECT id, name, state_country, location FROM courses ORDER BY name')
     all_courses = cur.fetchall()
     conn.close()
 
@@ -94,8 +94,13 @@ def select_course(courses):
     print(f"\n📋 Available Courses ({len(courses)} total):")
     print("-" * 60)
     
-    for idx, (course_id, course_name, state_country) in enumerate(courses, 1):
-        print(f"{idx:2d}. {course_name} ({state_country}) (ID: {course_id})")
+    for idx, (course_id, course_name, state_country, location) in enumerate(courses, 1):
+        # Extract country from location for international courses
+        if location and ',' in location:
+            country = location.split(', ')[-1]  # Get the last part after the last comma
+        else:
+            country = state_country or 'Unknown'
+        print(f"{idx:2d}. {course_name} ({country}) (ID: {course_id})")
     
     print("-" * 60)
     
@@ -106,7 +111,12 @@ def select_course(courses):
             
             if 0 <= course_index < len(courses):
                 selected_course = courses[course_index]
-                print(f"\n✅ Selected: {selected_course[1]} ({selected_course[2]}) (ID: {selected_course[0]})")
+                # Extract country from location for international courses
+                if selected_course[3] and ',' in selected_course[3]:  # location field
+                    country = selected_course[3].split(', ')[-1]
+                else:
+                    country = selected_course[2] or 'Unknown'  # state_country field
+                print(f"\n✅ Selected: {selected_course[1]} ({country}) (ID: {selected_course[0]})")
                 return selected_course
             else:
                 print(f"❌ Please enter a number between 1 and {len(courses)}")
@@ -191,7 +201,7 @@ def main():
     if not selected_course:
         return
     
-    course_id, course_name, state_country = selected_course
+    course_id, course_name, state_country, location = selected_course
     
     # Get the next event date and week
     start_date, week_number = get_next_event_date_and_week(season_number)
@@ -200,7 +210,12 @@ def main():
     
     print(f"\n📝 Creating The Sovereign Tournament with parameters:")
     print(f"   Name: The Sovereign Tournament")
-    print(f"   Course: {course_name} ({state_country})")
+    # Extract country from location for international courses
+    if location and ',' in location:
+        country = location.split(', ')[-1]
+    else:
+        country = state_country or 'Unknown'
+    print(f"   Course: {course_name} ({country})")
     print(f"   Date: {start_date}")
     print(f"   Season: {season_number}, Week: {week_number}")
     

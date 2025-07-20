@@ -43,11 +43,11 @@ This document outlines the season schedule for the golf simulation. The schedule
 | 27 | Signature Event #6 | | |
 | 28 | Standard Event #13 | | |
 | 29 | Standard Event #14 | | |
-| 30 | Standard Invitational #6 | | |
+| 30 | Standard Event #15 | | |
 | 31 | Royal Open | Fourth Major | |
-| 32 | Standard Event #15 | | |
-| 33 | Standard Invitational #7 | | |
-| 34 | Standard Event #16 | | |
+| 32 | Standard Event #16 | | |
+| 33 | Standard Invitational #6 | | |
+| 34 | Standard Event #17 | | |
 | 35 | Signature Event #7 | | |
 
 ## Notes

@@ -28,8 +28,8 @@ def get_elevation(lat, lon):
     return None
 
 def main():
-    input_file = os.path.join(os.path.dirname(__file__), "gbi_cities.txt")
-    output_file = "gbi_city_geodata.csv"
+    input_file = os.path.join(os.path.dirname(__file__), "asia_cities.txt")
+    output_file = "asia_city_geodata.csv"
 
     with open(input_file, "r", encoding="utf-8") as f:
         cities = [line.strip() for line in f if line.strip()]

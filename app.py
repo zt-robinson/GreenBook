@@ -185,7 +185,11 @@ def courses():
                     'England': 'England',
                     'Scotland': 'Scotland', 
                     'Wales': 'Wales',
-                    'Ireland': 'Ireland'
+                    'Ireland': 'Ireland',
+                    'Japan': 'Japan',
+                    'South Korea': 'South Korea',
+                    'Australia': 'Australia',
+                    'New Zealand': 'New Zealand'
                 }
                 if country in country_mapping:
                     # Look up by city and country for GB&I courses

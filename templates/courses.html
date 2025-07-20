@@ -7,49 +7,49 @@
     <h1 class="page-title">Golf Courses</h1>
     <p class="page-subtitle">Championship venues with detailed characteristics and course specifications</p>
 
-    <div class="table-container">
-        <table style="width: 100%; table-layout: fixed;">
+    <div class="table-container" style="max-width: 1000px; margin: 0 auto;">
+        <table style="width: 100%; table-layout: auto; font-size: 0.85em;">
             <thead>
                 <tr>
-                    <th style="width: 35%; text-align: left;">COURSE NAME</th>
-                    <th style="width: 25%; text-align: left;">LOCATION</th>
-                    <th style="width: 8%; text-align: center;">PAR</th>
-                    <th style="width: 12%; text-align: center;">YARDAGE</th>
-                    <th style="width: 12%; text-align: center;">RATING / SLOPE</th>
-                    <th style="width: 8%; text-align: center;">FOUNDED</th>
+                    <th style="text-align: left; padding: 6px 4px;">COURSE NAME</th>
+                    <th style="text-align: left; padding: 6px 4px;">LOCATION</th>
+                    <th style="text-align: center; padding: 6px 4px;">PAR</th>
+                    <th style="text-align: center; padding: 6px 4px;">YARDAGE</th>
+                    <th style="text-align: center; padding: 6px 4px;">RATING / SLOPE</th>
+                    <th style="text-align: center; padding: 6px 4px;">FOUNDED</th>
                 </tr>
             </thead>
             <tbody>
                 {% for course in courses %}
                 <tr class="course-row" data-course-id="{{ course['id'] }}" style="cursor: pointer;">
-                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; padding: 6px 4px; font-size: 0.85em;">
                         <strong>{{ course['name'] }}</strong>
                     </td>
-                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left;">
+                    <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; padding: 6px 4px; font-size: 0.85em;">
                         {{ course['location'] }}
                     </td>
-                    <td style="text-align: center;">
+                    <td style="text-align: center; padding: 6px 4px; font-size: 0.85em;">
                         {% if course['par'] is not none %}
                             {{ course['par'] }}
                         {% else %}
                             —
                         {% endif %}
                     </td>
-                    <td style="text-align: center;">
+                    <td style="text-align: center; padding: 6px 4px; font-size: 0.85em;">
                         {% if course['yardage'] is not none %}
                             {{ "{:,}".format(course['yardage']) }}
                         {% else %}
                             —
                         {% endif %}
                     </td>
-                    <td style="text-align: center;">
+                    <td style="text-align: center; padding: 6px 4px; font-size: 0.85em;">
                         {% if course['course_rating'] is not none and course['slope_rating'] is not none %}
                             {{ '%.1f'|format(course['course_rating']) }} / {{ course['slope_rating'] }}
                         {% else %}
                             —
                         {% endif %}
                     </td>
-                    <td style="text-align: center;">
+                    <td style="text-align: center; padding: 6px 4px; font-size: 0.85em;">
                         {% if course['est_year'] is not none %}
                             {{ course['est_year'] }}
                         {% else %}
@@ -60,51 +60,51 @@
                 <tr class="course-details-row" id="details-{{ course['id'] }}" style="display: none;">
                     <td colspan="6">
                         <div style="padding: 1rem; background: #f8f9fa; border-radius: 8px; margin: 0.5rem 0;">
-                            <h4 style="margin: 0 0 1rem 0; color: #495057;">Scorecard</h4>
+                            <h4 style="margin: 0 0 1rem 0; color: #495057; font-size: 1rem;">Scorecard</h4>
                             <div class="scorecard-container">
-                                <table class="scorecard-table" style="width: 100%; border-collapse: collapse; text-align: center;">
+                                <table class="scorecard-table" style="width: 100%; border-collapse: collapse; text-align: center; font-size: 0.9em;">
                                     <tr>
-                                        <th style="text-align: center;">Hole</th>
-                                        {% for i in range(1, 10) %}<th style="text-align: center;">{{ i }}</th>{% endfor %}
-                                        <th style="text-align: center; background-color: #f0f0f0;">OUT</th>
-                                        {% for i in range(10, 19) %}<th style="text-align: center;">{{ i }}</th>{% endfor %}
-                                        <th style="text-align: center; background-color: #f0f0f0;">IN</th>
-                                        <th style="text-align: center; background-color: #d4d4d4;">TOTAL</th>
+                                        <th style="text-align: center; padding: 4px 2px; background-color: #25643a; color: white; font-weight: 600;">Hole</th>
+                                        {% for i in range(1, 10) %}<th style="text-align: center; padding: 4px 2px; background-color: #25643a; color: white; font-weight: 600;">{{ i }}</th>{% endfor %}
+                                        <th style="text-align: center; background-color: #174a2a; color: white; padding: 4px 2px; font-weight: 600;">OUT</th>
+                                        {% for i in range(10, 19) %}<th style="text-align: center; padding: 4px 2px; background-color: #25643a; color: white; font-weight: 600;">{{ i }}</th>{% endfor %}
+                                        <th style="text-align: center; background-color: #174a2a; color: white; padding: 4px 2px; font-weight: 600;">IN</th>
+                                        <th style="text-align: center; background-color: #0d2e1a; color: white; padding: 4px 2px; font-weight: 600;">TOTAL</th>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center;">Yardage</th>
+                                        <th style="text-align: center; padding: 4px 2px; background-color: #25643a; color: white; font-weight: 600;">Yardage</th>
                                         {% set front9_yard = course.holes[:9] | sum(attribute='yardage') %}
                                         {% set back9_yard = course.holes[9:] | sum(attribute='yardage') %}
                                         {% set total_yard = front9_yard + back9_yard %}
-                                        {% for hole in course.holes[:9] %}<td style="text-align: center;">{{ "{:,}".format(hole.yardage) }}</td>{% endfor %}
-                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ "{:,}".format(front9_yard) }}</strong></td>
-                                        {% for hole in course.holes[9:] %}<td style="text-align: center;">{{ "{:,}".format(hole.yardage) }}</td>{% endfor %}
-                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ "{:,}".format(back9_yard) }}</strong></td>
-                                        <td style="text-align: center; background-color: #d4d4d4;"><strong>{{ "{:,}".format(total_yard) }}</strong></td>
+                                        {% for hole in course.holes[:9] %}<td style="text-align: center; padding: 4px 2px;">{{ "{:,}".format(hole.yardage) }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #e8f5e8; padding: 4px 2px; font-weight: 600;">{{ "{:,}".format(front9_yard) }}</td>
+                                        {% for hole in course.holes[9:] %}<td style="text-align: center; padding: 4px 2px;">{{ "{:,}".format(hole.yardage) }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #e8f5e8; padding: 4px 2px; font-weight: 600;">{{ "{:,}".format(back9_yard) }}</td>
+                                        <td style="text-align: center; background-color: #d4edda; padding: 4px 2px; font-weight: 600;">{{ "{:,}".format(total_yard) }}</td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center;">Par</th>
+                                        <th style="text-align: center; padding: 4px 2px; background-color: #25643a; color: white; font-weight: 600;">Par</th>
                                         {% set front9_par = course.holes[:9] | sum(attribute='par') %}
                                         {% set back9_par = course.holes[9:] | sum(attribute='par') %}
                                         {% set total_par = front9_par + back9_par %}
-                                        {% for hole in course.holes[:9] %}<td style="text-align: center;">{{ hole.par }}</td>{% endfor %}
-                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ front9_par }}</strong></td>
-                                        {% for hole in course.holes[9:] %}<td style="text-align: center;">{{ hole.par }}</td>{% endfor %}
-                                        <td style="text-align: center; background-color: #f0f0f0;"><strong>{{ back9_par }}</strong></td>
-                                        <td style="text-align: center; background-color: #d4d4d4;"><strong>{{ total_par }}</strong></td>
+                                        {% for hole in course.holes[:9] %}<td style="text-align: center; padding: 4px 2px;">{{ hole.par }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #e8f5e8; padding: 4px 2px; font-weight: 600;">{{ front9_par }}</td>
+                                        {% for hole in course.holes[9:] %}<td style="text-align: center; padding: 4px 2px;">{{ hole.par }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #e8f5e8; padding: 4px 2px; font-weight: 600;">{{ back9_par }}</td>
+                                        <td style="text-align: center; background-color: #d4edda; padding: 4px 2px; font-weight: 600;">{{ total_par }}</td>
                                     </tr>
                                     <tr>
-                                        <th style="text-align: center;">HCP</th>
-                                        {% for hole in course.holes[:9] %}<td style="text-align: center;">{{ hole.handicap }}</td>{% endfor %}
-                                        <td style="text-align: center; background-color: #f0f0f0;"></td>
-                                        {% for hole in course.holes[9:] %}<td style="text-align: center;">{{ hole.handicap }}</td>{% endfor %}
-                                        <td style="text-align: center; background-color: #f0f0f0;"></td>
-                                        <td style="text-align: center; background-color: #d4d4d4;"></td>
+                                        <th style="text-align: center; padding: 4px 2px; background-color: #25643a; color: white; font-weight: 600;">HCP</th>
+                                        {% for hole in course.holes[:9] %}<td style="text-align: center; padding: 4px 2px;">{{ hole.handicap }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #e8f5e8; padding: 4px 2px;"></td>
+                                        {% for hole in course.holes[9:] %}<td style="text-align: center; padding: 4px 2px;">{{ hole.handicap }}</td>{% endfor %}
+                                        <td style="text-align: center; background-color: #e8f5e8; padding: 4px 2px;"></td>
+                                        <td style="text-align: center; background-color: #d4edda; padding: 4px 2px;"></td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="course-details" style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center;">
-                                <div style="display: flex; justify-content: center; gap: 2.5rem;">
+                                <div style="display: flex; justify-content: center; gap: 2.5rem; font-size: 0.9em;">
                                     <div><strong>Terrain Type:</strong> {{ course.display_terrain }}</div>
                                     <div><strong>Green Speed:</strong> {{ course.display_stimp }}</div>
                                     <div><strong>Rough Height:</strong> {{ course.display_rough }}</div>
